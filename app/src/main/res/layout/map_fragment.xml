@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
         android:onClick="didTapMapButton"
-        android:text="Start"
-        style="@style/WalkButtonStyle" />
-
+        style="@style/WalkButtonStyle"
+        android:background="@drawable/play" />
 </FrameLayout>

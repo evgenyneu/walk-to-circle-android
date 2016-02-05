@@ -11,3 +11,12 @@ https://support.google.com/cloud/answer/6158862?hl=en#creating-android-api-keys
     <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">YOUR KEY</string>
 </resources>
 ```
+
+## Scaling drawables
+
+* *ldpi*: 0.75x
+* *mdpi*: 1x
+* *hdpi*: 1.5x
+* *xhdpi*: 2x
+* *xxhdpi*: 3x
+* *xxxhdpi*: 4x (Launcher icon only)

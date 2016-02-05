@@ -2,6 +2,7 @@ package com.evgenii.walktocircle;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 
 public class WalkApplication extends Application {
 
@@ -10,6 +11,7 @@ public class WalkApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        Log.d("ii", "Screen density: " + getResources().getDisplayMetrics().density);
         WalkApplication.context = getApplicationContext();
     }
 
