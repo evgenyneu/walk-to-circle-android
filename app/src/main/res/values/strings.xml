@@ -1,3 +1,11 @@
 <resources>
+    <string name="font_family">sans-serif-light</string>
     <string name="app_name">Walk to Circle</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_map_container">MapContainerActivity</string>
+    <string name="location_denied_message">"Walk to Circle" needs access to your location in order to notify you when you reach a circle on the map. Your location info never leaves your phone and stays private.</string>
+    <string name="location_denied_request_enable_permission">Please enable location permission in the app settings.</string>
+    <string name="location_denied_open_settings_button">Open app settings</string>
+    <string name="location_denied_request_permission_button">Request location permission</string>
+    <string name="dialog_button_ok">OK</string>
 </resources>

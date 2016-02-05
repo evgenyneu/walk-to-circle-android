@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/fragmentBackground">
 
     <FrameLayout
+        android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/container" />
+        android:layout_height="match_parent" />
 
     <Button
+        android:id="@+id/startActivityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
         android:onClick="didTapMapButton"
-        android:text="Flip"
-        style="@style/WalkButtonStyle"
-        android:visibility="gone"/>
+        android:text="Start"
+        style="@style/WalkButtonStyle" />
 
 </FrameLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/margin_xx_large"
+    android:paddingStart="@dimen/margin_normal"
+    android:paddingEnd="@dimen/margin_normal"
+    android:background="@color/fragmentBackground">
+
+    <TextView
+        android:textSize="@dimen/font_size_body"
+        android:lineSpacingMultiplier="@dimen/line_spacing_multiplier_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/location_denied_message" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/location_denied_request_permission_group"
+        android:layout_marginTop="@dimen/margin_x_large">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/location_denied_request_permission_button"
+            android:onClick="locationDenied_didTapRequestLocationPermissionButton"
+            style="@style/WalkButtonStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/location_denied_enable_permission_group"
+        android:layout_marginTop="@dimen/margin_large">
+
+        <TextView
+            android:textSize="@dimen/font_size_body"
+            android:lineSpacingMultiplier="@dimen/line_spacing_multiplier_body"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/location_denied_request_enable_permission"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_x_large"
+            android:text="@string/location_denied_open_settings_button"
+            android:onClick="locationDenied_didTapOpenSettingsButton"
+            style="@style/WalkButtonStyle" />
+    </LinearLayout>
+</LinearLayout>

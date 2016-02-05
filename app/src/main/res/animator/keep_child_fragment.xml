@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Animation used to keep sub-fragments visible during animation of parent
+ http://stackoverflow.com/q/14900738/297131
+ -->
+
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator
+        android:valueFrom="1.0"
+        android:valueTo="1.0"
+        android:propertyName="alpha"
+        android:duration="@integer/card_flip_time_full" />
+</set>

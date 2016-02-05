@@ -1,11 +1,23 @@
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/colorStatusBar</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="android:colorBackground">@color/windowBackground</item>
+        <item name="buttonStyle">@style/WalkButtonStyle</item>
+        <item name="android:textViewStyle">@style/WalkTextViewStyle</item>
+        <item name="colorButtonNormal">@color/buttonColor</item>
     </style>
 
+    <style name="WalkButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="backgroundTint">@color/buttonColor</item>
+        <item name="android:textColor">@color/buttonTextColor</item>
+        <item name="android:fontFamily">@string/font_family</item>
+        <item name="android:textSize">@dimen/font_size_button</item>
+    </style>
+
+    <style name="WalkTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@string/font_family</item>
+    </style>
 </resources>
