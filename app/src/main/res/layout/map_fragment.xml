@@ -11,10 +11,10 @@
 
     <Button
         android:id="@+id/startActivityButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/image_button_size"
+        android:layout_height="@dimen/image_button_size"
         android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="@dimen/margin_small"
         android:onClick="didTapMapButton"
-        style="@style/WalkButtonStyle"
         android:background="@drawable/play" />
 </FrameLayout>
