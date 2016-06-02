@@ -1,14 +1,11 @@
 package com.evgenii.walktocircle.WalkMap;
-
+import com.evgenii.walktocircle.R;
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import com.evgenii.walktocircle.Libs.BounceInterpolator;
-
-import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.WalkApplication;
 
 

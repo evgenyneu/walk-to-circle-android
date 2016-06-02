@@ -2,13 +2,10 @@ package com.evgenii.walktocircle;
 
 import android.app.Dialog;
 import android.app.Fragment;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
