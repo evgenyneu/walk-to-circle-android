@@ -6,6 +6,7 @@ import com.evgenii.walktocircle.WalkGoogleApiClient;
 import com.evgenii.walktocircle.WalkLocationDetector;
 import com.evgenii.walktocircle.WalkLocationPermissions;
 import com.evgenii.walktocircle.WalkLocationService;
+import com.evgenii.walktocircle.WalkMap.StartButton;
 import com.evgenii.walktocircle.WalkPosition;
 import com.google.android.gms.maps.GoogleMap;
 import android.app.Fragment;
@@ -34,12 +35,14 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
 
     private GoogleMap mMap;
     private WalkLocationService locationService = new WalkLocationService();
+    private StartButton mStartButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.map_fragment, container, false);
+        mStartButton = new StartButton(getActivity());
         WalkCameraDistance.setFragmentCameraDistance(view);
         initMap();
         return view;
@@ -55,6 +58,12 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     public void onPause() {
         super.onPause();
         stopLocationUpdates();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mStartButton.destroy();
     }
 
     // Create markers
@@ -114,6 +123,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         enableMyLocationAndZoom();
         createMarkers();
         mMap.getUiSettings().setMapToolbarEnabled(false);
+        mStartButton.show();
     }
 
     public void enableMyLocationAndZoom() {
@@ -143,7 +153,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     }
 
     private void zoomToLastLocationAndStartLocationUpdated() {
-        Log.d("ii", "zoomToLastLocationAndStartLocationUpdated");
+//        Log.d("ii", "zoomToLastLocationAndStartLocationUpdated");
 
         // 1. First, get last location and zoom the map there.
         // Last location is returned immediately but can be null.
@@ -169,15 +179,15 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         Location mapCenter =  WalkLocation.getMapCenter(mMap);
         if (mapCenter.distanceTo(location) < 150) {
             float currentZoom = mMap.getCameraPosition().zoom;
-            Log.d("ii", "Current zoom " + currentZoom);
+//            Log.d("ii", "Current zoom " + currentZoom);
             // Skip zoom if already zoomed
             if (Math.abs(WalkConstants.mapInitialZoom - currentZoom) < 1.5) {
-                Log.d("ii", "MAP zoomToCurrentLocation ALREADY ZOOMED");
+//                Log.d("ii", "MAP zoomToCurrentLocation ALREADY ZOOMED");
                 return;
             }
         }
 
-        Log.d("ii", "MAP zoomToCurrentLocation");
+//        Log.d("ii", "MAP zoomToCurrentLocation");
 
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
 
@@ -188,7 +198,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     // ----------------------
 
     void startLocationUpdates() {
-        Log.d("ii", "MAP startLocationUpdates");
+//        Log.d("ii", "MAP startLocationUpdates");
         locationService.startLocationUpdates(this, 1000);
     }
 
@@ -199,7 +209,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     // com.google.android.gms.location.LocationListener
     @Override
     public void onLocationChanged(Location location) {
-        Log.d("ii", "MAP onLocationChanged");
+//        Log.d("ii", "MAP onLocationChanged");
 
         zoomMapToLocation(location);
         stopLocationUpdates();

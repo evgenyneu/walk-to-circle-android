@@ -11,7 +11,7 @@ public class WalkApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Log.d("ii", "Screen density: " + getResources().getDisplayMetrics().density);
+//        Log.d("ii", "Screen density: " + getResources().getDisplayMetrics().density);
         WalkApplication.context = getApplicationContext();
     }
 

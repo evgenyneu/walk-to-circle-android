@@ -16,5 +16,6 @@
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="@dimen/margin_small"
         android:onClick="didTapMapButton"
-        android:background="@drawable/play" />
+        android:background="@drawable/play"
+        android:visibility="invisible"/>
 </FrameLayout>
