@@ -63,7 +63,6 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mStartButton.destroy();
     }
 
     // Create markers
