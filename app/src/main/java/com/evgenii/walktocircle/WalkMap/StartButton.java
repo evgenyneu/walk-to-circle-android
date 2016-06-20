@@ -24,10 +24,20 @@ public class StartButton {
         BounceInterpolator interpolator = new BounceInterpolator(0.2, 20);
         myAnim.setInterpolator(interpolator);
 
-        Button button = (Button)mActivity.findViewById(R.id.startActivityButton);
+        Button button = getStartButton();
         button.setVisibility(View.VISIBLE);
         button.startAnimation(myAnim);
 
         WalkApplication.getSounds().playSound(R.raw.blop);
+    }
+
+    public void rotate180Degrees() {
+        final Animation myAnim = AnimationUtils.loadAnimation(mActivity, R.anim.bounce);
+        Button button = getStartButton();
+        button.startAnimation(myAnim);
+    }
+
+    public Button getStartButton() {
+        return (Button) mActivity.findViewById(R.id.startActivityButton);
     }
 }

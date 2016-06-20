@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
@@ -121,10 +123,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void didTapMapButton(View view) {
-        if (getMapFragment() == null) {
-            showMapFragment();
-        } else {
-            showLocationDeniedFragment();
+        WalkMapFragment mapFragment = getMapFragment();
+        if (mapFragment != null) {
+            mapFragment.didTapStartButton();
         }
     }
 

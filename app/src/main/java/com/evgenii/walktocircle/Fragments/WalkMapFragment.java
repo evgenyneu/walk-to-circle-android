@@ -65,6 +65,10 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         super.onDestroyView();
     }
 
+    public void didTapStartButton() {
+        mStartButton.rotate180Degrees();
+    }
+
     // Create markers
     // ----------------------
 
