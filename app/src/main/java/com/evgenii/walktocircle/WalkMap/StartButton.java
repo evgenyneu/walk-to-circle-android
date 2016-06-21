@@ -10,6 +10,8 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
+
 import com.evgenii.walktocircle.Libs.BounceInterpolator;
 import com.evgenii.walktocircle.WalkApplication;
 
@@ -29,22 +31,22 @@ public class StartButton {
         BounceInterpolator interpolator = new BounceInterpolator(0.2, 20);
         myAnim.setInterpolator(interpolator);
 
-        final Button button = getStartButton();
+        final View button = getStartImage();
         button.setEnabled(false); // Disable button to improve animation performance
         button.setVisibility(View.VISIBLE);
 
         myAnim.setAnimationListener(new AnimationListener() {
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        button.setEnabled(true);
-                    }
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                button.setEnabled(true);
+            }
 
-                    @Override
-                    public void onAnimationRepeat(Animation animation) { }
+            @Override
+            public void onAnimationRepeat(Animation animation) { }
 
-                    @Override
-                    public void onAnimationStart(Animation animation) { }
-                });
+            @Override
+            public void onAnimationStart(Animation animation) { }
+        });
 
         button.startAnimation(myAnim);
 
@@ -52,7 +54,7 @@ public class StartButton {
     }
 
     public void rotate180Degrees() {
-        final Button button = getStartButton();
+        final View button = getStartImage();
         button.setEnabled(false); // Disable button to improve animation performance
 
         AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(mActivity,
@@ -82,7 +84,7 @@ public class StartButton {
         animatorSet.start();
     }
 
-    public Button getStartButton() {
-        return (Button) mActivity.findViewById(R.id.startActivityButton);
+    public View getStartImage() {
+        return (ImageView) mActivity.findViewById(R.id.startActivityImage);
     }
 }
