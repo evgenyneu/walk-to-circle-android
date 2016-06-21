@@ -10,7 +10,7 @@
         android:layout_height="match_parent" />
 
     <ImageView
-        android:id="@+id/startActivityImage"
+        android:id="@+id/startImage"
         android:layout_width="@dimen/image_button_size"
         android:layout_height="@dimen/image_button_size"
         android:layout_gravity="center_horizontal|bottom"

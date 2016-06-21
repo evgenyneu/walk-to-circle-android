@@ -32,22 +32,7 @@ public class StartButton {
         myAnim.setInterpolator(interpolator);
 
         final View button = getStartImage();
-        button.setEnabled(false); // Disable button to improve animation performance
         button.setVisibility(View.VISIBLE);
-
-        myAnim.setAnimationListener(new AnimationListener() {
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                button.setEnabled(true);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) { }
-
-            @Override
-            public void onAnimationStart(Animation animation) { }
-        });
-
         button.startAnimation(myAnim);
 
         WalkApplication.getSounds().playSound(R.raw.blop);
@@ -55,7 +40,6 @@ public class StartButton {
 
     public void rotate180Degrees() {
         final View button = getStartImage();
-        button.setEnabled(false); // Disable button to improve animation performance
 
         AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(mActivity,
                 R.animator.rotate_start_button_180);
@@ -63,28 +47,10 @@ public class StartButton {
         BounceInterpolator interpolator = new BounceInterpolator(0.2, 7);
         animatorSet.setInterpolator(interpolator);
         animatorSet.setTarget(button);
-
-        animatorSet.addListener(
-        new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                button.setEnabled(true);
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) { }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) { }
-
-            @Override
-            public void onAnimationStart(Animator animation) { }
-        });
-
         animatorSet.start();
     }
 
     public View getStartImage() {
-        return (ImageView) mActivity.findViewById(R.id.startActivityImage);
+        return (ImageView) mActivity.findViewById(R.id.startImage);
     }
 }
