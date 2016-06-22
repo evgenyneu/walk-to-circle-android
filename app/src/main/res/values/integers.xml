@@ -5,4 +5,5 @@
     <integer name="map_button_rotate_duration">2000</integer>
     <integer name="map_button_flip_offset">200</integer>
     <integer name="map_button_flip_fade_duration">1</integer>
+    <integer name="map_button_rewind_arrows_full_circle_duration">2000</integer>
 </resources>

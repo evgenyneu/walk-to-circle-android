@@ -16,22 +16,35 @@
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="@dimen/margin_small"
         android:background="@drawable/play"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
-    <TextView
-        android:id="@+id/countdownTextView"
+    <FrameLayout
+        android:id="@+id/countdownFrameLayout"
         android:layout_width="@dimen/start_button_size"
         android:layout_height="@dimen/start_button_size"
         android:layout_gravity="center_horizontal|bottom"
-        android:gravity="center"
         android:layout_marginBottom="@dimen/margin_small"
-        android:textSize="@dimen/font_size_start_button"
-        android:textColor="@color/buttonTextColor"
-        android:text="5"
-        android:background="@drawable/rewind"
-        android:alpha="0"
-        android:paddingBottom="4dp"
-        />
+        android:alpha="0">
+
+        <TextView
+            android:id="@+id/countdownTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="@dimen/font_size_start_button"
+            android:textColor="@color/startButtonTextColor"
+            android:textStyle="bold"
+            android:text="5"
+            android:background="@drawable/rewind"
+            android:paddingBottom="4dp" />
+
+        <ImageView
+            android:id="@+id/rewindArrowsImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rewind_arrows" />
+
+    </FrameLayout>
 
     <Button
         android:layout_width="@dimen/start_button_size"
@@ -39,6 +52,6 @@
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="@dimen/margin_small"
         android:onClick="didTapMapButton"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent" />
 
 </FrameLayout>

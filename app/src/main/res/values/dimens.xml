@@ -9,7 +9,7 @@
     <!-- Typography -->
     <dimen name="font_size_button">18sp</dimen>
     <dimen name="font_size_body">20sp</dimen>
-    <dimen name="font_size_start_button">50dp</dimen>
+    <dimen name="font_size_start_button">40sp</dimen>
     <item name="line_spacing_multiplier_body" format="float" type="dimen">1.1</item>
 
     <!-- Animation -->

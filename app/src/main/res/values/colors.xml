@@ -8,4 +8,5 @@
     <color name="fragmentBackground">#5E6293</color>
     <color name="buttonColor">#FFFFFF</color>
     <color name="buttonTextColor">#757AB6</color>
+    <color name="startButtonTextColor">#9AA3F1</color>
 </resources>

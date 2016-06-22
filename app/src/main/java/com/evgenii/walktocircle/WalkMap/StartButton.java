@@ -22,15 +22,15 @@ public class StartButton {
 
     // Show the start button with animation and sound
     public void show() {
-        final Animation myAnim = AnimationUtils.loadAnimation(mActivity, R.anim.bounce);
+        final Animation animation = AnimationUtils.loadAnimation(mActivity, R.anim.bounce);
 
         // Use bounce animation with amplitude and frequency
         BounceInterpolator interpolator = new BounceInterpolator(0.2, 20);
-        myAnim.setInterpolator(interpolator);
+        animation.setInterpolator(interpolator);
 
         final View button = getStartImage();
         button.setVisibility(View.VISIBLE);
-        button.startAnimation(myAnim);
+        button.startAnimation(animation);
 
         WalkApplication.getSounds().playSound(R.raw.blop);
     }
@@ -38,6 +38,7 @@ public class StartButton {
     public void rotate180Degrees() {
         rotateStartButton180DegreesOut();
         rotateRewindButton180DegreesIn();
+        rotateRewindArrows();
     }
 
     void rotateStartButton180DegreesOut() {
@@ -53,7 +54,7 @@ public class StartButton {
     }
 
     void rotateRewindButton180DegreesIn() {
-        final View button = getRewindImage();
+        final View button = getRewindGroup();
 
         AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(mActivity,
                 R.animator.rotate_180_degrees_in);
@@ -64,6 +65,13 @@ public class StartButton {
         animatorSet.start();
     }
 
+    void rotateRewindArrows() {
+        final Animation animation = AnimationUtils.loadAnimation(mActivity, R.anim.rotate_continuously);
+        final View view = getRewindArrows();
+        view.clearAnimation();
+        view.startAnimation(animation);
+    }
+
     BounceInterpolator getRotate180BounceInterpolator() {
         return new BounceInterpolator(0.2, 7);
     }
@@ -72,7 +80,11 @@ public class StartButton {
         return (View) mActivity.findViewById(R.id.startImage);
     }
 
-    View getRewindImage() {
-        return (View) mActivity.findViewById(R.id.countdownTextView);
+    View getRewindGroup() {
+        return (View) mActivity.findViewById(R.id.countdownFrameLayout);
+    }
+
+    View getRewindArrows() {
+        return (View) mActivity.findViewById(R.id.rewindArrowsImageView);
     }
 }
