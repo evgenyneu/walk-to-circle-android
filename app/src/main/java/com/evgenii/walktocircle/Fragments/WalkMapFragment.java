@@ -13,7 +13,6 @@ import android.app.Fragment;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,7 +65,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     }
 
     public void didTapStartButton() {
-        mStartButton.rotate180Degrees();
+        mStartButton.startCountdown();
     }
 
     // Create markers

@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 
 import com.evgenii.walktocircle.Libs.BounceInterpolator;
 import com.evgenii.walktocircle.WalkApplication;
@@ -15,9 +14,12 @@ import com.evgenii.walktocircle.WalkApplication;
 
 public class StartButton {
     Activity mActivity;
+    StartButtonCountdown mStartButtonCountdown;
 
     public StartButton(Activity activity) {
+
         mActivity = activity;
+        mStartButtonCountdown = new StartButtonCountdown(mActivity);
     }
 
     // Show the start button with animation and sound
@@ -35,13 +37,14 @@ public class StartButton {
         WalkApplication.getSounds().playSound(R.raw.blop);
     }
 
-    public void rotate180Degrees() {
+    // Rotates the start button and shows the countdown animation
+    public void startCountdown() {
         rotateStartButton180DegreesOut();
         rotateRewindButton180DegreesIn();
-        rotateRewindArrows();
+        mStartButtonCountdown.startCountdown();
     }
 
-    void rotateStartButton180DegreesOut() {
+    private void rotateStartButton180DegreesOut() {
         final View button = getStartImage();
 
         AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(mActivity,
@@ -53,7 +56,7 @@ public class StartButton {
         animatorSet.start();
     }
 
-    void rotateRewindButton180DegreesIn() {
+    private void rotateRewindButton180DegreesIn() {
         final View button = getRewindGroup();
 
         AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(mActivity,
@@ -65,26 +68,15 @@ public class StartButton {
         animatorSet.start();
     }
 
-    void rotateRewindArrows() {
-        final Animation animation = AnimationUtils.loadAnimation(mActivity, R.anim.rotate_continuously);
-        final View view = getRewindArrows();
-        view.clearAnimation();
-        view.startAnimation(animation);
-    }
-
-    BounceInterpolator getRotate180BounceInterpolator() {
+    private BounceInterpolator getRotate180BounceInterpolator() {
         return new BounceInterpolator(0.2, 7);
     }
 
-    View getStartImage() {
+    private View getStartImage() {
         return (View) mActivity.findViewById(R.id.startImage);
     }
 
-    View getRewindGroup() {
+    private View getRewindGroup() {
         return (View) mActivity.findViewById(R.id.countdownFrameLayout);
-    }
-
-    View getRewindArrows() {
-        return (View) mActivity.findViewById(R.id.rewindArrowsImageView);
     }
 }
