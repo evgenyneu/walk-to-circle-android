@@ -36,34 +36,36 @@ public class StartButton {
     }
 
     public void rotate180Degrees() {
-        rotateStartButton180DegreesAndFadeOut();
-        rotateRewindButton180DegreesAndFadeIn();
+        rotateStartButton180DegreesOut();
+        rotateRewindButton180DegreesIn();
     }
 
-    void rotateStartButton180DegreesAndFadeOut() {
+    void rotateStartButton180DegreesOut() {
         final View button = getStartImage();
 
         AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(mActivity,
-                R.animator.rotate_180_degress_and_fade_out);
+                R.animator.rotate_180_degress_out);
 
-        BounceInterpolator interpolator = new BounceInterpolator(0.2, 7);
+        BounceInterpolator interpolator = getRotate180BounceInterpolator();
         animatorSet.setInterpolator(interpolator);
         animatorSet.setTarget(button);
         animatorSet.start();
     }
 
-    void rotateRewindButton180DegreesAndFadeIn() {
+    void rotateRewindButton180DegreesIn() {
         final View button = getRewindImage();
-        button.setVisibility(View.VISIBLE);
-        button.setAlpha(0);
 
         AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(mActivity,
-                R.animator.rotate_180_degrees_and_fade_in);
+                R.animator.rotate_180_degrees_in);
 
-        BounceInterpolator interpolator = new BounceInterpolator(0.2, 7);
+        BounceInterpolator interpolator = getRotate180BounceInterpolator();
         animatorSet.setInterpolator(interpolator);
         animatorSet.setTarget(button);
         animatorSet.start();
+    }
+
+    BounceInterpolator getRotate180BounceInterpolator() {
+        return new BounceInterpolator(0.2, 7);
     }
 
     View getStartImage() {
