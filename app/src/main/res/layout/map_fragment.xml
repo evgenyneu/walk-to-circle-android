@@ -18,6 +18,15 @@
         android:background="@drawable/play"
         android:visibility="invisible"/>
 
+    <ImageView
+        android:id="@+id/rewindImage"
+        android:layout_width="@dimen/image_button_size"
+        android:layout_height="@dimen/image_button_size"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:background="@drawable/rewind"
+        android:visibility="invisible"/>
+
     <Button
         android:layout_width="@dimen/image_button_size"
         android:layout_height="@dimen/image_button_size"
