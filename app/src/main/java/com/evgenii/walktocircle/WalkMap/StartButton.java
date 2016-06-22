@@ -69,10 +69,10 @@ public class StartButton {
     }
 
     View getStartImage() {
-        return (ImageView) mActivity.findViewById(R.id.startImage);
+        return (View) mActivity.findViewById(R.id.startImage);
     }
 
     View getRewindImage() {
-        return (ImageView) mActivity.findViewById(R.id.rewindImage);
+        return (View) mActivity.findViewById(R.id.countdownTextView);
     }
 }
