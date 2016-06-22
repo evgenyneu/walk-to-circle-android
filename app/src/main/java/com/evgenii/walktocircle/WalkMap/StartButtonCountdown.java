@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.evgenii.walktocircle.R;
+import com.evgenii.walktocircle.WalkApplication;
 
 public class StartButtonCountdown {
     Activity mActivity;
@@ -22,6 +23,10 @@ public class StartButtonCountdown {
         rotateRewindArrows();
         setInitialNumber();
         startCountdownTimer();
+    }
+
+    void stopCountdown() {
+        cancelCountdownTimer();
     }
 
     private void setInitialNumber() {
@@ -56,7 +61,7 @@ public class StartButtonCountdown {
 
                 if (currentCountdownValue < getCountdownDurationSeconds()) {
                     updateCountdownValue(currentCountdownValue);
-                    playTickSound();
+                    playClickSound();
                 }
 
                 if (currentCountdownValue == 0) {}
@@ -75,8 +80,8 @@ public class StartButtonCountdown {
         mCountdownTimer = null;
     }
 
-    private void playTickSound() {
-
+    private void playClickSound() {
+        WalkApplication.getSounds().playSound(R.raw.click_sound);
     }
 
     private View getRewindArrows() {

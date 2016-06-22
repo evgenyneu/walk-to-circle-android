@@ -13,6 +13,7 @@ import android.app.Fragment;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,12 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mStartButton.stopCountdown();
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         zoomToLastLocationAndStartLocationUpdated();
@@ -59,10 +66,6 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         stopLocationUpdates();
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
 
     public void didTapStartButton() {
         mStartButton.startCountdown();

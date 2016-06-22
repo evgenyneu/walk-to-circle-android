@@ -13,13 +13,11 @@ import com.evgenii.walktocircle.WalkApplication;
 
 
 public class StartButton {
-    Activity mActivity;
-    StartButtonCountdown mStartButtonCountdown;
+    private Activity mActivity;
+    private StartButtonCountdown mStartButtonCountdown;
 
     public StartButton(Activity activity) {
-
         mActivity = activity;
-        mStartButtonCountdown = new StartButtonCountdown(mActivity);
     }
 
     // Show the start button with animation and sound
@@ -39,9 +37,18 @@ public class StartButton {
 
     // Rotates the start button and shows the countdown animation
     public void startCountdown() {
+        if (mStartButtonCountdown != null) { stopCountdown();}
+        mStartButtonCountdown = new StartButtonCountdown(mActivity);
+
         rotateStartButton180DegreesOut();
         rotateRewindButton180DegreesIn();
         mStartButtonCountdown.startCountdown();
+    }
+
+    public void stopCountdown() {
+        if (mStartButtonCountdown == null) { return; }
+        mStartButtonCountdown.stopCountdown();
+        mStartButtonCountdown = null;
     }
 
     private void rotateStartButton180DegreesOut() {
