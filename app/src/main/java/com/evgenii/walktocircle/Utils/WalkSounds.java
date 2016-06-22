@@ -4,29 +4,31 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.util.Log;
 
+import java.util.HashMap;
+
 public class WalkSounds {
-    MediaPlayer mPlayer;
-    Context mContext;
+    private HashMap<Integer, WalkOneSound> mSounds = new HashMap<Integer, WalkOneSound>();
+    private Context mContext;
 
     public WalkSounds(Context context) {
         mContext = context;
     }
 
-    public void destroy() {
-        // Stop the sound
-        if (mPlayer != null) {
-            mPlayer.stop();
-            mPlayer = null;
+    public void stop() {
+        for (WalkOneSound oneSound : mSounds.values()) {
+            oneSound.stop();
         }
+        mSounds.clear();
     }
 
     public void playSound(int soundId) {
-        if (mPlayer != null) {
-            mPlayer.stop();
-            mPlayer.reset();
+        WalkOneSound mOneSound = mSounds.get(soundId);
+
+        if (mOneSound == null) {
+            mOneSound = new WalkOneSound(mContext, soundId);
+            mSounds.put(soundId, mOneSound);
         }
 
-        mPlayer = MediaPlayer.create(mContext, soundId);
-        mPlayer.start();
+        mOneSound.play();
     }
 }
