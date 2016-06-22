@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/startImage"
-        android:layout_width="@dimen/image_button_size"
-        android:layout_height="@dimen/image_button_size"
+        android:layout_width="@dimen/start_button_size"
+        android:layout_height="@dimen/start_button_size"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="@dimen/margin_small"
         android:background="@drawable/play"
@@ -20,16 +20,27 @@
 
     <ImageView
         android:id="@+id/rewindImage"
-        android:layout_width="@dimen/image_button_size"
-        android:layout_height="@dimen/image_button_size"
+        android:layout_width="@dimen/start_button_size"
+        android:layout_height="@dimen/start_button_size"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="@dimen/margin_small"
         android:background="@drawable/rewind"
         android:alpha="0"/>
 
+    <TextView
+        android:id="@+id/countdownTextView"
+        android:layout_width="@dimen/start_button_size"
+        android:layout_height="@dimen/start_button_size"
+        android:layout_gravity="center_horizontal|bottom"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:textSize="@dimen/font_size_start_button"
+        android:textColor="@color/buttonTextColor"
+        android:text="5"/>
+
     <Button
-        android:layout_width="@dimen/image_button_size"
-        android:layout_height="@dimen/image_button_size"
+        android:layout_width="@dimen/start_button_size"
+        android:layout_height="@dimen/start_button_size"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="@dimen/margin_small"
         android:onClick="didTapMapButton"
