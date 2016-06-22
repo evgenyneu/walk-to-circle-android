@@ -199,6 +199,8 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
 
     void startLocationUpdates() {
         WalkApplication.getLocationService().startLocationUpdates(this, 1000);
+
+        TODO: Drop the pin when the user taps the start button!
     }
 
     void stopLocationUpdates() {
