@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 
 import com.evgenii.walktocircle.R;
 
@@ -16,6 +17,13 @@ public class StartButtonCountdown {
 
     void startCountdown() {
         rotateRewindArrows();
+        setInitialNumber();
+    }
+
+    private void setInitialNumber() {
+        final TextView textView = getCountdownTextView();
+        int countdownDuration = mActivity.getResources().getInteger(R.integer.map_countdown_duration_seconds);
+        textView.setText(String.valueOf(countdownDuration));
     }
 
     private void rotateRewindArrows() {
@@ -27,5 +35,9 @@ public class StartButtonCountdown {
 
     private View getRewindArrows() {
         return (View) mActivity.findViewById(R.id.rewindArrowsImageView);
+    }
+
+    private TextView getCountdownTextView() {
+        return (TextView) mActivity.findViewById(R.id.countdownTextView);
     }
 }
