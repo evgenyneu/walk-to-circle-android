@@ -22,9 +22,10 @@ public class WalkOneSound {
         }
     }
 
-    public void play() {
+    public void play(double volume) {
         stop();
         mPlayer = MediaPlayer.create(mContext, mSoundId);
+        mPlayer.setVolume((float)volume, (float)volume);
         mPlayer.start();
     }
 }

@@ -14,7 +14,6 @@ public class WalkApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-//        Log.d("ii", "Screen density: " + getResources().getDisplayMetrics().density);
         WalkApplication.context = getApplicationContext();
         walkSounds = new WalkSounds(WalkApplication.context);
     }
@@ -22,8 +21,17 @@ public class WalkApplication extends Application {
     public static Context getAppContext() {
         return WalkApplication.context;
     }
+
     public static WalkSounds getSounds() {
         return walkSounds;
+    }
+
+    public static void activityResumed() {
+        walkSounds.unSilence();
+    }
+
+    public static void activityPaused() {
+        walkSounds.silence();
     }
 
 }

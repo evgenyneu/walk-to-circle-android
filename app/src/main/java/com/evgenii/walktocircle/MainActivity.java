@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        WalkApplication.activityResumed();
         startGooglePlayServices();
 
         if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
@@ -55,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
         } else if (WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen(this)) {
             showLocationDeniedFragment();
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        WalkApplication.activityPaused();
     }
 
     private void startGooglePlayServices() {

@@ -32,7 +32,7 @@ public class StartButton {
         button.setVisibility(View.VISIBLE);
         button.startAnimation(animation);
 
-        WalkApplication.getSounds().playSound(R.raw.blop);
+        WalkApplication.getSounds().playSound(R.raw.blop, 1);
     }
 
     // Rotates the start button and shows the countdown animation

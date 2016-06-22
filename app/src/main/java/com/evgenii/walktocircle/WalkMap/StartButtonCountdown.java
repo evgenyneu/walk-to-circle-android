@@ -81,7 +81,7 @@ public class StartButtonCountdown {
     }
 
     private void playClickSound() {
-        WalkApplication.getSounds().playSound(R.raw.click_sound);
+        WalkApplication.getSounds().playSound(R.raw.click_sound, 0.3);
     }
 
     private View getRewindArrows() {
