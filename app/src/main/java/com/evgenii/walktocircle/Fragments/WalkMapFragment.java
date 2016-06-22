@@ -198,7 +198,6 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     // ----------------------
 
     void startLocationUpdates() {
-//        Log.d("ii", "MAP startLocationUpdates");
         locationService.startLocationUpdates(this, 1000);
     }
 
