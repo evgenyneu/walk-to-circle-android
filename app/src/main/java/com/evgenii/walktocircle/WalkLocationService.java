@@ -25,8 +25,6 @@ public class WalkLocationService {
 
         LocationServices.FusedLocationApi.requestLocationUpdates(
                 WalkGoogleApiClient.getInstance().getClient(), mLocationRequest, inLocationListener);
-
-//        Log.d("ii", "startLocationUpdates");
     }
 
     public void stopLocationUpdates() {
@@ -38,6 +36,5 @@ public class WalkLocationService {
                 locationListener);
 
         locationListener = null;
-//        Log.d("ii", "stopLocationUpdates");
     }
 }
