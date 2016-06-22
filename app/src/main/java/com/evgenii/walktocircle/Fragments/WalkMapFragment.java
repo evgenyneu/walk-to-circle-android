@@ -1,6 +1,7 @@
 package com.evgenii.walktocircle.Fragments;
 import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.Utils.WalkLocation;
+import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.WalkConstants;
 import com.evgenii.walktocircle.WalkGoogleApiClient;
 import com.evgenii.walktocircle.WalkLocationDetector;
@@ -34,7 +35,6 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         com.google.android.gms.location.LocationListener {
 
     private GoogleMap mMap;
-    private WalkLocationService locationService = new WalkLocationService();
     private StartButton mStartButton;
 
     @Override
@@ -198,11 +198,11 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     // ----------------------
 
     void startLocationUpdates() {
-        locationService.startLocationUpdates(this, 1000);
+        WalkApplication.getLocationService().startLocationUpdates(this, 1000);
     }
 
     void stopLocationUpdates() {
-        locationService.stopLocationUpdates();
+        WalkApplication.getLocationService().stopLocationUpdates();
     }
 
     // com.google.android.gms.location.LocationListener
