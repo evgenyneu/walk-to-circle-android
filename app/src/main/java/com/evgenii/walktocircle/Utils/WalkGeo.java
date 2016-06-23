@@ -15,18 +15,37 @@ public class WalkGeo {
     }
 
 
+    /**
+     * Returns random coordinate
+     * which is between minDistanceMeters and maxDistanceMeters from the start point.
+     * @param fromLocation the start location
+     * @param minDistanceMeters the minimum distance in meters from the location
+     * @param maxDistanceMeters the maxumum distance in meters from the location
+     * @return random coordinate which is between minDistanceMeters and maxDistanceMeters from the start point.
+     */
     public static Location randomLocationAtDistanceRange(Location fromLocation,
                                                          Double minDistanceMeters,
                                                          Double maxDistanceMeters) {
 
+        Double minDistanceMetersCorrected = minDistanceMeters;
+        Double maxDistanceMetersCorrected = maxDistanceMeters;
 
-        Double distanceMeters = WalkRandom.randomDoubleBetween(minDistanceMeters, maxDistanceMeters);
+        // Correct the distance by 0.25%.
+        // That is amount of inaccuracy in distance calculation.
+        // We want to make sure the returned coordinate is always inside min/max range.
+        if (minDistanceMetersCorrected != maxDistanceMetersCorrected) {
+            minDistanceMetersCorrected += minDistanceMetersCorrected * 0.0025;
+            maxDistanceMetersCorrected -= maxDistanceMetersCorrected * 0.0025;
+        }
+
+        if (minDistanceMetersCorrected > maxDistanceMetersCorrected) {
+            minDistanceMetersCorrected = maxDistanceMetersCorrected;
+        }
+
+        Double distanceMeters = WalkRandom.randomDoubleBetween(minDistanceMetersCorrected, maxDistanceMetersCorrected);
         Double bearingDegrees = WalkGeo.randomBetween0and360Degrees();
 
-//
-//        let bearingDegrees = iiGeo.randomBearinDegrees()
-
-        return new Location("");
+        return destination(fromLocation, distanceMeters, bearingDegrees);
     }
 
     /**
