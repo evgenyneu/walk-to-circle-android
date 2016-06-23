@@ -6,7 +6,7 @@ import com.evgenii.walktocircle.WalkConstants;
 import com.evgenii.walktocircle.WalkGoogleApiClient;
 import com.evgenii.walktocircle.WalkLocationDetector;
 import com.evgenii.walktocircle.WalkLocationPermissions;
-import com.evgenii.walktocircle.WalkLocationService;
+import com.evgenii.walktocircle.WalkMap.DropPin;
 import com.evgenii.walktocircle.WalkMap.StartButton;
 import com.evgenii.walktocircle.WalkPosition;
 import com.google.android.gms.maps.GoogleMap;
@@ -14,7 +14,6 @@ import android.app.Fragment;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +35,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
 
     private GoogleMap mMap;
     private StartButton mStartButton;
+    private DropPin mDropPin;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,6 +43,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
 
         View view = inflater.inflate(R.layout.map_fragment, container, false);
         mStartButton = new StartButton(getActivity());
+        mDropPin = new DropPin();
         WalkCameraDistance.setFragmentCameraDistance(view);
         initMap();
         return view;
@@ -57,7 +58,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     @Override
     public void onResume() {
         super.onResume();
-        zoomToLastLocationAndStartLocationUpdated();
+        zoomToLastLocationAndStartLocationUpdates();
     }
 
     @Override
@@ -68,7 +69,11 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
 
 
     public void didTapStartButton() {
+        Location lastLocation = getLastLocation();
+        if (lastLocation == null) { return; }
+
         mStartButton.startCountdown();
+        mDropPin.dropPin(lastLocation);
     }
 
     // Create markers
@@ -134,7 +139,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     public void enableMyLocationAndZoom() {
         if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
             enableMyLocation();
-            zoomToLastLocationAndStartLocationUpdated();
+            zoomToLastLocationAndStartLocationUpdates();
         }
     }
 
@@ -157,7 +162,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         return null;
     }
 
-    private void zoomToLastLocationAndStartLocationUpdated() {
+    private void zoomToLastLocationAndStartLocationUpdates() {
         // 1. First, get last location and zoom the map there.
         // Last location is returned immediately but can be null.
         // -------------
@@ -199,8 +204,6 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
 
     void startLocationUpdates() {
         WalkApplication.getLocationService().startLocationUpdates(this, 1000);
-
-        TODO: Drop the pin when the user taps the start button!
     }
 
     void stopLocationUpdates() {
