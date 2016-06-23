@@ -131,7 +131,6 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         enableMyLocationAndZoom();
-        createMarkers();
         mMap.getUiSettings().setMapToolbarEnabled(false);
         mStartButton.show();
     }
