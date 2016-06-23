@@ -14,6 +14,13 @@ public class WalkLocation {
         return location;
     }
 
+    public static Location fromLatLng(double latitude, double longitude) {
+        Location location = new Location("any string");
+        location.setLatitude(latitude);
+        location.setLongitude(longitude);
+        return location;
+    }
+
     public static Location getMapCenter(GoogleMap map) {
         LatLng latLng = map.getCameraPosition().target;
         return locationFromLatLng(latLng);
