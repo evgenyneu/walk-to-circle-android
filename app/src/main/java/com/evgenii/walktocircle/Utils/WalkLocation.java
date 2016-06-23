@@ -25,4 +25,8 @@ public class WalkLocation {
         LatLng latLng = map.getCameraPosition().target;
         return locationFromLatLng(latLng);
     }
+
+    public static LatLng latLngFromLocation(Location location) {
+        return new LatLng(location.getLatitude(), location.getLongitude());
+    }
 }

@@ -73,7 +73,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         if (lastLocation == null) { return; }
 
         mStartButton.startCountdown();
-        mDropPin.dropPin(lastLocation);
+        mDropPin.dropPin(lastLocation, mMap);
     }
 
     // Create markers
