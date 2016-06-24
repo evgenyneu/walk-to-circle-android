@@ -43,7 +43,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
 
         View view = inflater.inflate(R.layout.map_fragment, container, false);
         mStartButton = new StartButton(getActivity());
-        mDropPin = new DropPin();
+        mDropPin = new DropPin(getActivity());
         WalkCameraDistance.setFragmentCameraDistance(view);
         initMap();
         return view;

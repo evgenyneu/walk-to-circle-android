@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.WalkApplication;
+import com.evgenii.walktocircle.WalkConstants;
 
 public class StartButtonCountdown {
     Activity mActivity;
@@ -81,7 +82,8 @@ public class StartButtonCountdown {
     }
 
     private void playClickSound() {
-        WalkApplication.getSounds().playSound(R.raw.click_sound, 0.3);
+        WalkApplication.getSounds().playSound(R.raw.click_sound,
+                WalkConstants.mapStartButtonCountdownClickVolume);
     }
 
     private View getRewindArrows() {

@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils;
 
 import com.evgenii.walktocircle.Libs.BounceInterpolator;
 import com.evgenii.walktocircle.WalkApplication;
+import com.evgenii.walktocircle.WalkConstants;
 
 
 public class StartButton {
@@ -32,7 +33,7 @@ public class StartButton {
         button.setVisibility(View.VISIBLE);
         button.startAnimation(animation);
 
-        WalkApplication.getSounds().playSound(R.raw.blop, 1);
+        WalkApplication.getSounds().playSound(R.raw.blop, WalkConstants.mapStartButtonBlopVolume);
     }
 
     // Rotates the start button and shows the countdown animation
