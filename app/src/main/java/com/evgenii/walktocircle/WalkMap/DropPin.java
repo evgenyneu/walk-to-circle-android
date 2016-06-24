@@ -50,7 +50,7 @@ public class DropPin {
 
         final long duration = 400;
         final long startTime = SystemClock.uptimeMillis();
-        final Interpolator interpolator = new BounceInterpolator(0.1, 2);
+        final Interpolator interpolator = new BounceInterpolator(0.2, 2);
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
@@ -62,7 +62,7 @@ public class DropPin {
                 marker.setPosition(new LatLng(lat, lng));
                 if (elapsed < duration) {
                     // Post again 10ms later.
-                    handler.postDelayed(this, 5);
+                    handler.postDelayed(this, 16);
                 } else {
                     marker.setPosition(target);
                 }
