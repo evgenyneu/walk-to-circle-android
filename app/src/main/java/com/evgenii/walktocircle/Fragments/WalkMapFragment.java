@@ -1,5 +1,6 @@
 package com.evgenii.walktocircle.Fragments;
 import com.evgenii.walktocircle.R;
+import com.evgenii.walktocircle.Utils.WalkGeo;
 import com.evgenii.walktocircle.Utils.WalkLocation;
 import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.WalkConstants;
@@ -7,6 +8,7 @@ import com.evgenii.walktocircle.WalkGoogleApiClient;
 import com.evgenii.walktocircle.WalkLocationDetector;
 import com.evgenii.walktocircle.WalkLocationPermissions;
 import com.evgenii.walktocircle.WalkMap.DropPin;
+import com.evgenii.walktocircle.WalkMap.PrepareMapForPin;
 import com.evgenii.walktocircle.WalkMap.StartButton;
 import com.evgenii.walktocircle.WalkPosition;
 import com.google.android.gms.maps.GoogleMap;
@@ -36,6 +38,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     private GoogleMap mMap;
     private StartButton mStartButton;
     private DropPin mDropPin;
+    private PrepareMapForPin mPrepareMapForPin;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +47,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         View view = inflater.inflate(R.layout.map_fragment, container, false);
         mStartButton = new StartButton(getActivity());
         mDropPin = new DropPin(getActivity());
+        mPrepareMapForPin = new PrepareMapForPin();
         WalkCameraDistance.setFragmentCameraDistance(view);
         initMap();
         return view;
@@ -72,34 +76,20 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         Location lastLocation = getLastLocation();
         if (lastLocation == null) { return; }
 
-        mStartButton.startCountdown();
-        mDropPin.dropPin(lastLocation, mMap);
-    }
+        final Location pinLocation = WalkGeo.randomLocationAtDistanceRange(lastLocation,
+                WalkConstants.minCircleDistanceFromCurrentLocationMeters,
+                WalkConstants.maxCircleDistanceFromCurrentLocationMeters);
 
-    // Create markers
-    // ----------------------
+        mPrepareMapForPin.prepare(lastLocation, pinLocation, mMap, new GoogleMap.CancelableCallback() {
+            @Override
+            public void onFinish() {
+                mDropPin.dropPin(pinLocation, mMap);
+                mStartButton.startCountdown();
+            }
 
-    private void createMarkers() {
-        ArrayList<WalkPosition> walkPositions = WalkLocationDetector.getInstance().getPositions();
-
-        for(WalkPosition position: walkPositions) {
-            createMarker(position);
-        }
-    }
-
-    void createMarker(WalkPosition position) {
-        CircleOptions circleOptions = new CircleOptions()
-                .center(position.latLng)
-                .fillColor(Color.parseColor("#33A4AFFF"))
-                .strokeColor(Color.parseColor("#A4AFFF"))
-                .strokeWidth(3)
-                .radius(WalkConstants.mCircleRadiusMeters); // In meters
-
-        // Add a marker
-        mMap.addMarker(new MarkerOptions().position(position.latLng).title(position.name));
-
-        // Get back the mutable Circle
-        Circle circle = mMap.addCircle(circleOptions);
+            @Override
+            public void onCancel() {}
+        });
     }
 
     // Map
@@ -121,8 +111,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
      *
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
+     * This is where we can add markers or lines, add listeners or move the camera.
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.

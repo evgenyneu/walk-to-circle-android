@@ -34,12 +34,8 @@ public class DropPin {
         mActivity = activity;
     }
 
-    public void dropPin(Location currentLocation, GoogleMap map) {
+    public void dropPin(Location pinLocation, GoogleMap map) {
         removePreviousMarker();
-
-        Location pinLocation = WalkGeo.randomLocationAtDistanceRange(currentLocation,
-                WalkConstants.minCircleDistanceFromCurrentLocationMeters,
-                WalkConstants.maxCircleDistanceFromCurrentLocationMeters);
 
         LatLng latLng = WalkLocation.latLngFromLocation(pinLocation);
 

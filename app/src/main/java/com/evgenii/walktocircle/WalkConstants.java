@@ -2,7 +2,35 @@ package com.evgenii.walktocircle;
 
 public class WalkConstants {
     public static double mReachPositionVariationMeters = 50;
-    public static float mapInitialZoom = 17;
+
+    // Map position and zoom
+    // -----------
+
+    // The duration of the animation that centers the map on current user location
+    // before dropping the pin, in milliseconds.
+    public static int mapPositionAnimationDurationMilliseconds = 400;
+
+    // The maximum allowed displacements of the current user position from the center of the map.
+    // If user position is farther away from the map's center the map is re-centered.
+    public static int mapMaxDistanceFromMapCenterMeters = 100;
+
+    // The default zoom level of the map. The map is zoomed it this level before the pin is dropped.
+    public static float mapInitialZoom = 16;
+
+    // The maximum allowed difference between the current map zoom level and the "mapInitialZoom"
+    // setting. If the difference is greater the map is zoomed at the "mapInitialZoom" level.
+    // Units: the GoogleMap zoom level units.
+    public static float mapZoomLevelDelta = 1;
+
+    // The maximum allowed bearing from zero degrees. If bearing is greater the map's bearing
+    // is set back to zero.
+    public static float mapMaxBearing = 20;
+
+
+    // The maximum allowed tilt of the map in degrees. If the map tilt is greater
+    // the tilt is restored to zero.
+    public static float mapMaxTilt = 10;
+
 
     // Map pin and circle
     // -----------
@@ -12,7 +40,11 @@ public class WalkConstants {
     public static double mapPinDropAnimationAmplitude = 0.11;
     public static double mapPinDropAnimationFrequency = 4.6;
     public static double mCircleRadiusMeters = 90;
+
+    // Minimum distance of a pin from the current location, in meters
     public static double minCircleDistanceFromCurrentLocationMeters = 300;
+
+    // Maximum distance of a pin from the current location, in meters
     public static double maxCircleDistanceFromCurrentLocationMeters = 500;
 
     // Sounds
@@ -20,5 +52,5 @@ public class WalkConstants {
 
     public static double mapPinThrowAndDropVolume = 1.0;
     public static double mapStartButtonBlopVolume = 0.4;
-    public static double mapStartButtonCountdownClickVolume = 0.6;
+    public static double mapStartButtonCountdownClickVolume = 0.4;
 }
