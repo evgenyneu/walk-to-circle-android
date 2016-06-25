@@ -11,8 +11,13 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 
 public class PrepareMapForPin {
-    public void prepare(Location userLocation, Location pinLocation, GoogleMap map, GoogleMap.CancelableCallback callback) {
-        animateCameraToUserLocation(userLocation, map, callback);
+    public void prepare(Location userLocation, Location pinLocation, GoogleMap map, final Runnable callback) {
+        animateCameraToUserLocation(userLocation, map, new Runnable() {
+            @Override
+            public void run() {
+                callback.run();
+            }
+        });
     }
 
     /**
@@ -23,13 +28,21 @@ public class PrepareMapForPin {
      * @param map the map object
      * @param callback called after camera animation is complete
      */
-    public void animateCameraToUserLocation(Location userLocation, GoogleMap map, GoogleMap.CancelableCallback callback) {
+    public void animateCameraToUserLocation(Location userLocation, GoogleMap map, final Runnable callback) {
         CameraUpdate update = getUserCenteredCameraUpdate(userLocation, map);
 
         if (update != null) {
-            map.animateCamera(update, WalkConstants.mapPositionAnimationDurationMilliseconds, callback);
+            map.animateCamera(update, WalkConstants.mapPositionAnimationDurationMilliseconds, new GoogleMap.CancelableCallback() {
+                @Override
+                public void onFinish() {
+                    callback.run();
+                }
+
+                @Override
+                public void onCancel() { }
+            });
         } else {
-            callback.onFinish();
+            callback.run();
         }
     }
 

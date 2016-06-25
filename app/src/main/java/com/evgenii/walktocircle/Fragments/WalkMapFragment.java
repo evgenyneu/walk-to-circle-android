@@ -80,15 +80,12 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
                 WalkConstants.minCircleDistanceFromCurrentLocationMeters,
                 WalkConstants.maxCircleDistanceFromCurrentLocationMeters);
 
-        mPrepareMapForPin.prepare(lastLocation, pinLocation, mMap, new GoogleMap.CancelableCallback() {
+        mPrepareMapForPin.prepare(lastLocation, pinLocation, mMap, new Runnable() {
             @Override
-            public void onFinish() {
+            public void run() {
                 mDropPin.dropPin(pinLocation, mMap);
                 mStartButton.startCountdown();
             }
-
-            @Override
-            public void onCancel() {}
         });
     }
 
