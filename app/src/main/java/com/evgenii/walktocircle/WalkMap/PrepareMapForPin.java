@@ -22,7 +22,7 @@ public class PrepareMapForPin {
 
     /**
      * Animates the camera to current user's location with default zoom level.
-     * If user's locatino is already shown on the map with proper zoom the camera animation
+     * If user's location is already shown on the map with proper zoom the camera animation
      * is not performed and the callback is called right away.
      * @param userLocation location which is used to animate the camera to
      * @param map the map object
