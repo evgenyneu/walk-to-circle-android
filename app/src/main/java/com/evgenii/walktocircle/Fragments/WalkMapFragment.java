@@ -26,8 +26,6 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 
-import java.util.ArrayList;
-
 public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         com.google.android.gms.location.LocationListener {
 
@@ -76,9 +74,12 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
                 WalkConstants.minCircleDistanceFromCurrentLocationMeters,
                 WalkConstants.maxCircleDistanceFromCurrentLocationMeters);
 
-        Point mapSize = new Point(getView().getWidth(), getView().getHeight());
+        Point mapSizePixels = new Point(getView().getWidth(), getView().getHeight());
+        Point startButtonSizePixels = mStartButton.getSizePixels();
 
-        mPrepareMapForPin.prepare(lastLocation, pinLocation, mMap, mapSize, new Runnable() {
+        mPrepareMapForPin.prepare(lastLocation, pinLocation, mMap,
+                mapSizePixels, startButtonSizePixels, new Runnable() {
+
             @Override
             public void run() {
                 mDropPin.dropPin(pinLocation, mMap);

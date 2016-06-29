@@ -2,6 +2,8 @@ package com.evgenii.walktocircle.WalkMap;
 
 import android.graphics.Point;
 import android.location.Location;
+import android.util.Log;
+
 import com.evgenii.walktocircle.Utils.WalkLocation;
 import com.evgenii.walktocircle.WalkConstants;
 import com.google.android.gms.maps.CameraUpdate;
@@ -13,13 +15,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 
 public class PrepareMapForPin {
-    public void prepare(Location userLocation, final Location pinLocation, final GoogleMap map,
-                        final Point mapSizePixels, final Runnable callback) {
+    public void prepare(Location userLocation, final Location pinLocation,
+                        final GoogleMap map, final Point mapSizePixels,
+                        final Point startButtonSizePixels, final Runnable callback) {
 
         animateCameraToUserLocation(userLocation, map, new Runnable() {
             @Override
             public void run() {
-                animateCameraToShowPin(pinLocation, map, mapSizePixels, callback);
+                animateCameraToShowPin(pinLocation, map, mapSizePixels, startButtonSizePixels, callback);
             }
         });
     }
@@ -62,13 +65,6 @@ public class PrepareMapForPin {
         CameraPosition.Builder cameraPositionBuilder = new CameraPosition.Builder(map.getCameraPosition());
         boolean didChangeCamera = false;
 
-        // Center the map on user location if it is not visible on the map
-        LatLngBounds bounds = map.getProjection().getVisibleRegion().latLngBounds;
-        if (!bounds.contains(userLatLng)) {
-            cameraPositionBuilder.target(userLatLng);
-            didChangeCamera = true;
-        }
-
         // Zoom
         float currentZoom = map.getCameraPosition().zoom;
         if (Math.abs(WalkConstants.mapInitialZoom - currentZoom) > WalkConstants.mapZoomLevelDelta) {
@@ -89,6 +85,13 @@ public class PrepareMapForPin {
             didChangeCamera = true;
         }
 
+        // Center the map on user location if it is not visible on the map
+        LatLngBounds bounds = map.getProjection().getVisibleRegion().latLngBounds;
+        if (!bounds.contains(userLatLng) || didChangeCamera) {
+            cameraPositionBuilder.target(userLatLng);
+            didChangeCamera = true;
+        }
+
         if (!didChangeCamera) { return null; }
 
         CameraPosition newCameraPosition = cameraPositionBuilder.build();
@@ -100,10 +103,12 @@ public class PrepareMapForPin {
      * @param pinLocation location of the pin
      * @param map map object
      * @param mapSizePixels size of the map in pixels
+     * @param startButtonSizePixels size of the start button in pixels
      * @param callback called when camera update animation is finished
      */
-    private void animateCameraToShowPin(Location pinLocation, GoogleMap map, Point mapSizePixels, final Runnable callback) {
-        CameraUpdate update = getCameraUpdateToShowPin(pinLocation, map, mapSizePixels);
+    private void animateCameraToShowPin(Location pinLocation, GoogleMap map, Point mapSizePixels,
+                                        Point startButtonSizePixels, final Runnable callback) {
+        CameraUpdate update = getCameraUpdateToShowPin(pinLocation, map, mapSizePixels, startButtonSizePixels);
 
         if (update == null) {
             // No camera update is necessary
@@ -130,36 +135,71 @@ public class PrepareMapForPin {
      * @param mapSizePixels the size of the map in pixels
      * @return Returns the update for the camera needed to show the pin. Returns null if no camera update is necessary to show the pin.
      */
-    private CameraUpdate getCameraUpdateToShowPin(Location pinLocation, GoogleMap map, Point mapSizePixels) {
-        Projection projection = map.getProjection();
-        Point startPoint = projection.toScreenLocation(WalkLocation.latLngFromLocation(pinLocation));
+    private CameraUpdate getCameraUpdateToShowPin(Location pinLocation, GoogleMap map,
+                                                  Point mapSizePixels, Point startButtonSizePixels) {
 
-        float scrollX = 0;
+        Projection projection = map.getProjection();
+        Point pinScreenLocation = projection.toScreenLocation(WalkLocation.latLngFromLocation(pinLocation));
+
+        Point scroll = new Point(0, 0);
         float circleSizeInPixels = (float)WalkLocation.fromMetersToMapPixels(map, WalkConstants.mCircleRadiusMeters) *
                 WalkConstants.mapPaddingMultiplierFromCircleToMapEdgePixels;
-        float scrollY = 0;
 
-        if (startPoint.x < circleSizeInPixels) {
-            scrollX = startPoint.x - circleSizeInPixels;
+        // Circle is beyond the left edge of the screen
+        float beyondLeftEdge = pinScreenLocation.x - circleSizeInPixels;
+        if (beyondLeftEdge < 0) {
+            scroll.x = (int) beyondLeftEdge;
         }
 
-        if (startPoint.x > (mapSizePixels.x - circleSizeInPixels)) {
-            scrollX = startPoint.x - (mapSizePixels.x - circleSizeInPixels);
+        // Circle is beyond the right edge of the screen
+        float beyondRightEdge = pinScreenLocation.x - (mapSizePixels.x - circleSizeInPixels);
+        if (beyondRightEdge > 0) {
+            scroll.x = (int) beyondRightEdge;
         }
 
-        if (startPoint.y < circleSizeInPixels) {
-            scrollY = startPoint.y - circleSizeInPixels;
+        // Circle is beyond the top edge of the screen
+        float beyondToEdge = pinScreenLocation.y - circleSizeInPixels - WalkConstants.statusBarHeightPixels;
+        if (beyondToEdge < 0) {
+            scroll.y = (int) beyondToEdge;
         }
 
-        if (startPoint.y > (mapSizePixels.y - circleSizeInPixels)) {
-            scrollY = startPoint.y - (mapSizePixels.y - circleSizeInPixels);
+        // Circle is beyond the button edge of the screen
+        float beyondBottomEdge = pinScreenLocation.y - (mapSizePixels.y - circleSizeInPixels);
+        if (beyondBottomEdge > 0) {
+            scroll.y = (int) beyondBottomEdge;
         }
 
-        if (startPoint.x == 0 && startPoint.y == 0) {
+        scroll = correctScrollForStartButton(scroll, pinScreenLocation, mapSizePixels, startButtonSizePixels);
+
+        if (scroll.x == 0 && scroll.y == 0) {
             // No camera update is necessary
             return null;
         }
 
-        return CameraUpdateFactory.scrollBy(scrollX, scrollY);
+        return CameraUpdateFactory.scrollBy(scroll.x, scroll.y);
+    }
+
+    /**
+     * Correct the scroll of the camera in order to avoid the pin showing on top of the start button.
+     */
+    private Point correctScrollForStartButton(Point scroll, Point pinScreenLocation, Point mapSizePixels, Point startButtonSizePixels) {
+        pinScreenLocation = new Point(pinScreenLocation.x + scroll.x, pinScreenLocation.y - scroll.y);
+
+        float yCorrection = (mapSizePixels.y - pinScreenLocation.y) - startButtonSizePixels.y;
+
+        if (yCorrection < 0) {
+
+            float xCorrection = Math.abs(mapSizePixels.x / 2 - pinScreenLocation.x) - startButtonSizePixels.x;
+            if (xCorrection < 0) {
+                if ((mapSizePixels.x / 2) > pinScreenLocation.x) {
+                    xCorrection *= -1;
+                }
+
+                scroll.x += xCorrection;
+                scroll.y -= yCorrection;
+            }
+        }
+
+        return scroll;
     }
 }

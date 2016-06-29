@@ -4,6 +4,7 @@ import com.evgenii.walktocircle.R;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.app.Activity;
+import android.graphics.Point;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -86,5 +87,13 @@ public class StartButton {
 
     private View getRewindGroup() {
         return (View) mActivity.findViewById(R.id.countdownFrameLayout);
+    }
+
+    /**
+     * @return the size in pixels of the start button
+     */
+    public Point getSizePixels() {
+        View image = getStartImage();
+        return new Point(image.getWidth(), image.getHeight());
     }
 }

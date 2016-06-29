@@ -3,6 +3,9 @@ package com.evgenii.walktocircle;
 public class WalkConstants {
     public static double mReachPositionVariationMeters = 50;
 
+    // The height of the status bar in pixels. Used to avoid the circle from overlapping with the status bar.
+    public static float statusBarHeightPixels = 50;
+
     // Map position and zoom
     // -----------
 
