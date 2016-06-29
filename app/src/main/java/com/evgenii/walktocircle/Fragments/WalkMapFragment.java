@@ -41,7 +41,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         View view = inflater.inflate(R.layout.map_fragment, container, false);
         mStartButton = new StartButton(getActivity());
         mDropPin = new DropPin(getActivity());
-        mPrepareMapForPin = new PrepareMapForPin();
+        mPrepareMapForPin = new PrepareMapForPin(getActivity());
         WalkCameraDistance.setFragmentCameraDistance(view);
         initMap();
         return view;
@@ -118,6 +118,8 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         mMap = googleMap;
         enableMyLocationAndZoom();
         mMap.getUiSettings().setMapToolbarEnabled(false);
+
+        Show the start button after location has been determined
         mStartButton.show();
     }
 

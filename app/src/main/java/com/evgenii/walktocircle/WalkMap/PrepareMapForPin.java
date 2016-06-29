@@ -1,10 +1,12 @@
 package com.evgenii.walktocircle.WalkMap;
 
+import android.app.Activity;
 import android.graphics.Point;
 import android.location.Location;
 import android.util.Log;
 
 import com.evgenii.walktocircle.Utils.WalkLocation;
+import com.evgenii.walktocircle.Utils.WalkView;
 import com.evgenii.walktocircle.WalkConstants;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -15,6 +17,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 
 public class PrepareMapForPin {
+
+    private Activity mActivity;
+
+    public PrepareMapForPin(Activity activity) {
+        mActivity = activity;
+    }
+
     public void prepare(Location userLocation, final Location pinLocation,
                         final GoogleMap map, final Point mapSizePixels,
                         final Point startButtonSizePixels, final Runnable callback) {
@@ -158,7 +167,8 @@ public class PrepareMapForPin {
         }
 
         // Circle is beyond the top edge of the screen
-        float beyondToEdge = pinScreenLocation.y - circleSizeInPixels - WalkConstants.statusBarHeightPixels;
+        float beyondToEdge = pinScreenLocation.y - circleSizeInPixels - WalkView.getStatusBarHeight(mActivity);
+        Log.d("ii", "Status bar height: " + WalkView.getStatusBarHeight(mActivity));
         if (beyondToEdge < 0) {
             scroll.y = (int) beyondToEdge;
         }
@@ -185,7 +195,8 @@ public class PrepareMapForPin {
     private Point correctScrollForStartButton(Point scroll, Point pinScreenLocation, Point mapSizePixels, Point startButtonSizePixels) {
         pinScreenLocation = new Point(pinScreenLocation.x + scroll.x, pinScreenLocation.y - scroll.y);
 
-        float yCorrection = (mapSizePixels.y - pinScreenLocation.y) - startButtonSizePixels.y;
+        float yCorrection = (mapSizePixels.y - pinScreenLocation.y) - (startButtonSizePixels.y * (float)1.3);
+
 
         if (yCorrection < 0) {
 
@@ -197,6 +208,9 @@ public class PrepareMapForPin {
 
                 scroll.x += xCorrection;
                 scroll.y -= yCorrection;
+
+                Log.d("ii", "!!!!! Start button correction: " + xCorrection + ", " + yCorrection);
+
             }
         }
 
