@@ -5,17 +5,16 @@ import com.evgenii.walktocircle.Utils.WalkLocation;
 import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.WalkConstants;
 import com.evgenii.walktocircle.WalkGoogleApiClient;
-import com.evgenii.walktocircle.WalkLocationDetector;
 import com.evgenii.walktocircle.WalkLocationPermissions;
 import com.evgenii.walktocircle.WalkMap.DropPin;
 import com.evgenii.walktocircle.WalkMap.PrepareMapForPin;
 import com.evgenii.walktocircle.WalkMap.StartButton;
-import com.evgenii.walktocircle.WalkPosition;
 import com.google.android.gms.maps.GoogleMap;
 import android.app.Fragment;
-import android.graphics.Color;
+import android.graphics.Point;
 import android.location.Location;
 import android.os.Bundle;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +24,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.Circle;
-import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
@@ -80,7 +76,9 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
                 WalkConstants.minCircleDistanceFromCurrentLocationMeters,
                 WalkConstants.maxCircleDistanceFromCurrentLocationMeters);
 
-        mPrepareMapForPin.prepare(lastLocation, pinLocation, mMap, new Runnable() {
+        Point mapSize = new Point(getView().getWidth(), getView().getHeight());
+
+        mPrepareMapForPin.prepare(lastLocation, pinLocation, mMap, mapSize, new Runnable() {
             @Override
             public void run() {
                 mDropPin.dropPin(pinLocation, mMap);

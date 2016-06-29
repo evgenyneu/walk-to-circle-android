@@ -26,10 +26,14 @@ public class WalkConstants {
     // is set back to zero.
     public static float mapMaxBearing = 20;
 
-
     // The maximum allowed tilt of the map in degrees. If the map tilt is greater
     // the tilt is restored to zero.
     public static float mapMaxTilt = 10;
+
+    // The multiplier to get the padding from the edge of the circle to the edge of the map on screen.
+    // Example, if it is 1.3 and the radius of the circle is 100 pixels, the distance from circle center
+    // to the map screen will be 130 pixels.
+    public static float mapPaddingMultiplierFromCircleToMapEdgePixels = (float)1.3;
 
 
     // Map pin and circle
