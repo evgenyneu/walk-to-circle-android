@@ -20,10 +20,10 @@ public class StartButtonCountdown {
         mActivity = activity;
     }
 
-    void startCountdown() {
+    void rotateAndShowInitialNumber() {
+        cancelCountdownTimer();
         rotateRewindArrows();
         setInitialNumber();
-        startCountdownTimer();
     }
 
     void stopCountdown() {
@@ -48,7 +48,7 @@ public class StartButtonCountdown {
         view.startAnimation(animation);
     }
 
-    private void startCountdownTimer() {
+    public void startCountdownTimer() {
         cancelCountdownTimer();
 
         int delayBeforeCountdownSeconds = getDelayBeforeCountdownSeconds();

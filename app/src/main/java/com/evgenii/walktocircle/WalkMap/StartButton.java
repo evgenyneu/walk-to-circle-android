@@ -38,13 +38,17 @@ public class StartButton {
     }
 
     // Rotates the start button and shows the countdown animation
-    public void startCountdown() {
+    public void rotateAndShowInitialNumber() {
         if (mStartButtonCountdown != null) { stopCountdown();}
         mStartButtonCountdown = new StartButtonCountdown(mActivity);
 
         rotateStartButton180DegreesOut();
         rotateRewindButton180DegreesIn();
-        mStartButtonCountdown.startCountdown();
+        mStartButtonCountdown.rotateAndShowInitialNumber();
+    }
+
+    public void startCountdown() {
+        mStartButtonCountdown.startCountdownTimer();
     }
 
     public void stopCountdown() {
