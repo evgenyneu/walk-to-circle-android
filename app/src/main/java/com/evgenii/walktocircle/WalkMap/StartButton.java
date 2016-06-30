@@ -24,14 +24,15 @@ public class StartButton {
 
     // Show the start button with animation and sound
     public void show() {
+        final View button = getStartImage();
+        if (button.getVisibility() == View.VISIBLE) { return; } // Start button already visible
+        button.setVisibility(View.VISIBLE);
+
         final Animation animation = AnimationUtils.loadAnimation(mActivity, R.anim.bounce);
 
         // Use bounce animation with amplitude and frequency
         BounceInterpolator interpolator = new BounceInterpolator(0.2, 20);
         animation.setInterpolator(interpolator);
-
-        final View button = getStartImage();
-        button.setVisibility(View.VISIBLE);
         button.startAnimation(animation);
 
         WalkApplication.getSounds().playSound(R.raw.blop, WalkConstants.mapStartButtonBlopVolume);

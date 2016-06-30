@@ -9,6 +9,7 @@ import com.evgenii.walktocircle.WalkLocationPermissions;
 import com.evgenii.walktocircle.WalkMap.DropPin;
 import com.evgenii.walktocircle.WalkMap.PrepareMapForPin;
 import com.evgenii.walktocircle.WalkMap.StartButton;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.GoogleMap;
 import android.app.Fragment;
 import android.graphics.Point;
@@ -24,7 +25,9 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 
 public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         com.google.android.gms.location.LocationListener {
@@ -116,18 +119,13 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        enableMyLocationAndZoom();
-        mMap.getUiSettings().setMapToolbarEnabled(false);
 
-        Show the start button after location has been determined
-        mStartButton.show();
-    }
-
-    public void enableMyLocationAndZoom() {
         if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
             enableMyLocation();
             zoomToLastLocationAndStartLocationUpdates();
         }
+
+        mMap.getUiSettings().setMapToolbarEnabled(false);
     }
 
     // My location
@@ -149,6 +147,8 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         return null;
     }
 
+    // Zoom to last location and start location updates.
+    // This method is supposed to be called when the screen or map is initialized.
     private void zoomToLastLocationAndStartLocationUpdates() {
         // 1. First, get last location and zoom the map there.
         // Last location is returned immediately but can be null.
@@ -157,17 +157,19 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         Location lastLocation = getLastLocation();
 
         if (lastLocation != null) {
-            zoomMapToLocation(lastLocation);
+            zoomMapToLastLocation(lastLocation);
         }
 
         // 2. Start location updates.
-        // Zoom the map to this updated location if it is significantly different from last location.
+        // Location updates are needed to determine more accurate user location
+        // that will be used to drop the new pin.
         // -------------
 
         startLocationUpdates();
     }
 
-    private void zoomMapToLocation(Location location) {
+    // The map is zoomed to last known location.
+    private void zoomMapToLastLocation(Location location) {
         if (mMap == null) { return; }
 
         // Skip zoom if map is already centered correctly
@@ -186,7 +188,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, WalkConstants.mapInitialZoom));
     }
 
-    // Location
+    // Location updates
     // ----------------------
 
     void startLocationUpdates() {
@@ -197,10 +199,11 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         WalkApplication.getLocationService().stopLocationUpdates();
     }
 
-    // com.google.android.gms.location.LocationListener
+    // Updated location is used to show the start button
     @Override
     public void onLocationChanged(Location location) {
-        zoomMapToLocation(location);
+        zoomMapToLastLocation(location);
+        mStartButton.show();
         stopLocationUpdates();
     }
 }
