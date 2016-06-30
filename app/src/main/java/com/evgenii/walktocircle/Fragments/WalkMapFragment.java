@@ -119,13 +119,15 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        enableMyLocationAndZoomToLastLocation();
+        mMap.getUiSettings().setMapToolbarEnabled(false);
+    }
 
+    public void enableMyLocationAndZoomToLastLocation() {
         if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
             enableMyLocation();
             zoomToLastLocationAndStartLocationUpdates();
         }
-
-        mMap.getUiSettings().setMapToolbarEnabled(false);
     }
 
     // My location
