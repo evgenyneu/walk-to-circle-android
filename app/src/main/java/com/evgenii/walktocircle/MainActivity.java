@@ -131,24 +131,19 @@ public class MainActivity extends AppCompatActivity {
     // ----------------------
 
     void reloadMap() {
-        WalkMapFragment map = getMapFragment();
+        WalkMapFragment map = (WalkMapFragment) WalkFragmentType.Map.getFragment();
         if (map != null) {
             map.enableMyLocationAndZoomToLastLocation();
         }
     }
 
-    WalkMapFragment getMapFragment() {
-        return (WalkMapFragment) WalkFragmentType.Map.getFragment();
-    }
-
     public void didTapMapButton(View view) {
-        WalkMapFragment mapFragment = getMapFragment();
+        WalkMapFragment mapFragment = (WalkMapFragment) WalkFragmentType.Map.getFragment();
         if (mapFragment != null) {
             mapFragment.didTapStartButton();
         }
     }
-
-
+    
     // Location denied fragment
     // ----------------------
 
