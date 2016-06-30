@@ -9,25 +9,20 @@ import com.evgenii.walktocircle.WalkLocationPermissions;
 import com.evgenii.walktocircle.WalkMap.DropPin;
 import com.evgenii.walktocircle.WalkMap.PrepareMapForPin;
 import com.evgenii.walktocircle.WalkMap.StartButton;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.GoogleMap;
 import android.app.Fragment;
 import android.graphics.Point;
 import android.location.Location;
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.evgenii.walktocircle.Utils.WalkCameraDistance;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 
 public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         com.google.android.gms.location.LocationListener {
@@ -37,12 +32,15 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     private DropPin mDropPin;
     private PrepareMapForPin mPrepareMapForPin;
 
+    // Will be called when the countdown timer reaches zero.
+    public Runnable didFinishCountdown;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.map_fragment, container, false);
-        mStartButton = new StartButton(getActivity());
+        mStartButton = new StartButton(getActivity(), didFinishCountdown);
         mDropPin = new DropPin(getActivity());
         mPrepareMapForPin = new PrepareMapForPin(getActivity());
         WalkCameraDistance.setFragmentCameraDistance(view);

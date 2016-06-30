@@ -4,8 +4,10 @@ import android.app.Dialog;
 import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
+import com.evgenii.walktocircle.Fragments.WalkFragment;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
 import com.google.android.gms.common.ConnectionResult;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getFragmentManager()
                     .beginTransaction()
-                    .add(R.id.container, new WalkMapFragment())
+                    .add(R.id.container, createWalkMapFragment())
                     .commit();
         }
 
@@ -107,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // Map
+    // Map fragment
     // ----------------------
 
     void reloadMap() {
@@ -119,7 +121,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void showMapFragment() {
         if (getMapFragment() != null) { return; } // Already showing map
-        showFragmentWithFlipAnimation(new WalkMapFragment());
+        showFragmentWithFlipAnimation(createWalkMapFragment());
+    }
+
+    private WalkMapFragment createWalkMapFragment() {
+        WalkMapFragment walkMapFragment = new WalkMapFragment();
+        walkMapFragment.didFinishCountdown = new Runnable() {
+            @Override
+            public void run() {
+                showWalkFragment();
+            }
+        };
+        return walkMapFragment;
     }
 
     WalkMapFragment getMapFragment() {
@@ -133,6 +146,20 @@ public class MainActivity extends AppCompatActivity {
         if (mapFragment != null) {
             mapFragment.didTapStartButton();
         }
+    }
+
+    // Walk fragment
+    // ----------------------
+
+    private void showWalkFragment() {
+        if (getWalkFragment() != null) { return; } // Already showing
+        showFragmentWithFlipAnimation(new WalkFragment());
+    }
+
+    WalkFragment getWalkFragment() {
+        Fragment fragment = getCurrentFragment();
+        if (fragment instanceof WalkFragment) { return (WalkFragment)fragment; }
+        return null;
     }
 
     // Location denied fragment
