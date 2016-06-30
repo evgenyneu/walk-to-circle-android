@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.evgenii.walktocircle.FragmentManager.WalkFragmentOpener;
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
@@ -143,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             mapFragment.didTapStartButton();
         }
     }
-    
+
     // Location denied fragment
     // ----------------------
 
