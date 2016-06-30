@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragmentBackground">
+
+    <Button
+        android:layout_width="@dimen/start_button_size"
+        android:layout_height="@dimen/start_button_size"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:onClick="didTapMapButton"
+        android:background="@android:color/transparent" />
+
+</FrameLayout>
