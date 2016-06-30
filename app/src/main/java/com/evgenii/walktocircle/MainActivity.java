@@ -1,5 +1,6 @@
 package com.evgenii.walktocircle;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,10 +18,14 @@ import com.google.android.gms.common.GoogleApiAvailability;
 public class MainActivity extends AppCompatActivity {
     WalkFragmentOpener mFragmentOpener;
 
+    public static Activity instance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        instance = this;
 
         mFragmentOpener = new WalkFragmentOpener(this);
 
@@ -52,9 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
-
+        instance = null;
         StartButtonCountdown.didFinishCountdown = null;
+
+        super.onDestroy();
     }
 
     @Override

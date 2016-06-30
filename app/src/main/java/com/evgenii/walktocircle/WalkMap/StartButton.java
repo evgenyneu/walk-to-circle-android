@@ -1,4 +1,5 @@
 package com.evgenii.walktocircle.WalkMap;
+import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.R;
 
 import android.animation.AnimatorInflater;
@@ -15,13 +16,8 @@ import com.evgenii.walktocircle.WalkConstants;
 
 
 public class StartButton {
-    private Activity mActivity;
     private StartButtonCountdown mStartButtonCountdown;
     private boolean isStartButtonVisible = true;
-
-    public StartButton(Activity activity) {
-        mActivity = activity;
-    }
 
     // Show the start button with animation and sound
     public void show() {
@@ -29,7 +25,7 @@ public class StartButton {
         if (button.getVisibility() == View.VISIBLE) { return; } // Start button already visible
         button.setVisibility(View.VISIBLE);
 
-        final Animation animation = AnimationUtils.loadAnimation(mActivity, R.anim.bounce);
+        final Animation animation = AnimationUtils.loadAnimation(MainActivity.instance, R.anim.bounce);
 
         // Use bounce animation with amplitude and frequency
         BounceInterpolator interpolator = new BounceInterpolator(0.2, 20);
@@ -42,7 +38,7 @@ public class StartButton {
     // Rotates the start button and shows the countdown animation
     public void rotateAndShowInitialNumber() {
         stopCountdown();
-        mStartButtonCountdown = new StartButtonCountdown(mActivity);
+        mStartButtonCountdown = new StartButtonCountdown();
 
         if (isStartButtonVisible) {
             // Showing the start button, flip it around to show the countdown.
@@ -70,7 +66,7 @@ public class StartButton {
     private void rotateStartButton180DegreesOut() {
         final View button = getStartImage();
 
-        AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(mActivity,
+        AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(MainActivity.instance,
                 R.animator.rotate_180_degress_out);
 
         BounceInterpolator interpolator = getRotate180BounceInterpolator();
@@ -82,7 +78,7 @@ public class StartButton {
     private void rotateRewindButton180DegreesIn() {
         final View button = getRewindGroup();
 
-        AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(mActivity,
+        AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(MainActivity.instance,
                 R.animator.rotate_180_degrees_in);
 
         BounceInterpolator interpolator = getRotate180BounceInterpolator();
@@ -94,7 +90,7 @@ public class StartButton {
     private void rotateRewindButton360Degrees() {
         final View button = getRewindGroup();
 
-        AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(mActivity,
+        AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(MainActivity.instance,
                 R.animator.rotate_360_degrees);
 
         BounceInterpolator interpolator = getRotate180BounceInterpolator();
@@ -108,11 +104,11 @@ public class StartButton {
     }
 
     private View getStartImage() {
-        return (View) mActivity.findViewById(R.id.startImage);
+        return (View) MainActivity.instance.findViewById(R.id.startImage);
     }
 
     private View getRewindGroup() {
-        return (View) mActivity.findViewById(R.id.countdownFrameLayout);
+        return (View) MainActivity.instance.findViewById(R.id.countdownFrameLayout);
     }
 
     /**

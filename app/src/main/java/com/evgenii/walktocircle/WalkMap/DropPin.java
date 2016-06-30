@@ -1,4 +1,5 @@
 package com.evgenii.walktocircle.WalkMap;
+import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.R;
 
 import android.animation.ObjectAnimator;
@@ -28,12 +29,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class DropPin {
     static private Marker mPreviousMarker;
     static private Circle mPreviousCircle;
-    private Activity mActivity;
-
-
-    public DropPin(Activity activity) {
-        mActivity = activity;
-    }
 
     public void dropPin(Location pinLocation, GoogleMap map) {
         removePreviousMarker();
@@ -95,8 +90,8 @@ public class DropPin {
 
         CircleOptions circleOptions = new CircleOptions()
                 .center(latLng)
-                .fillColor(ContextCompat.getColor(mActivity, R.color.mapPinFillColor))
-                .strokeColor(ContextCompat.getColor(mActivity, R.color.mapPinStrokeColor))
+                .fillColor(ContextCompat.getColor(MainActivity.instance, R.color.mapPinFillColor))
+                .strokeColor(ContextCompat.getColor(MainActivity.instance, R.color.mapPinStrokeColor))
                 .strokeWidth(WalkConstants.mapPinStrokeWidth)
                 .radius(WalkConstants.mCircleRadiusMeters);
 

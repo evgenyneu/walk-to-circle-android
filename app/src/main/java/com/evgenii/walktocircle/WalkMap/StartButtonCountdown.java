@@ -7,21 +7,17 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.WalkConstants;
 
 public class StartButtonCountdown {
-    Activity mActivity;
     CountDownTimer mCountdownTimer;
     int currentCountdownValue = 0;
 
     // Will be called when the countdown timer reaches zero.
     public static Runnable didFinishCountdown;
-
-    public StartButtonCountdown(Activity activity) {
-        mActivity = activity;
-    }
 
     void rotateAndShowInitialNumber() {
         cancelCountdownTimer();
@@ -45,7 +41,7 @@ public class StartButtonCountdown {
     }
 
     private void rotateRewindArrows() {
-        final Animation animation = AnimationUtils.loadAnimation(mActivity, R.anim.rotate_continuously);
+        final Animation animation = AnimationUtils.loadAnimation(MainActivity.instance, R.anim.rotate_continuously);
         final View view = getRewindArrows();
         view.clearAnimation();
         view.startAnimation(animation);
@@ -94,18 +90,18 @@ public class StartButtonCountdown {
     }
 
     private View getRewindArrows() {
-        return mActivity.findViewById(R.id.rewindArrowsImageView);
+        return MainActivity.instance.findViewById(R.id.rewindArrowsImageView);
     }
 
     private TextView getCountdownTextView() {
-        return (TextView) mActivity.findViewById(R.id.countdownTextView);
+        return (TextView) MainActivity.instance.findViewById(R.id.countdownTextView);
     }
 
     private int getCountdownDurationSeconds() {
-        return mActivity.getResources().getInteger(R.integer.map_countdown_duration_seconds);
+        return MainActivity.instance.getResources().getInteger(R.integer.map_countdown_duration_seconds);
     }
 
     private int getDelayBeforeCountdownSeconds() {
-        return mActivity.getResources().getInteger(R.integer.map_delay_before_countdown_seconds);
+        return MainActivity.instance.getResources().getInteger(R.integer.map_delay_before_countdown_seconds);
     }
 }

@@ -5,6 +5,7 @@ import android.graphics.Point;
 import android.location.Location;
 import android.util.Log;
 
+import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.Utils.WalkLocation;
 import com.evgenii.walktocircle.Utils.WalkView;
 import com.evgenii.walktocircle.WalkConstants;
@@ -17,13 +18,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 
 public class PrepareMapForPin {
-
-    private Activity mActivity;
-
-    public PrepareMapForPin(Activity activity) {
-        mActivity = activity;
-    }
-
     public void prepare(Location userLocation, final Location pinLocation,
                         final GoogleMap map, final Point mapSizePixels,
                         final Point startButtonSizePixels, final Runnable callback) {
@@ -167,7 +161,7 @@ public class PrepareMapForPin {
         }
 
         // Circle is beyond the top edge of the screen
-        float beyondToEdge = pinScreenLocation.y - circleRadiusInPixels - WalkView.getStatusBarHeight(mActivity);
+        float beyondToEdge = pinScreenLocation.y - circleRadiusInPixels - WalkView.getStatusBarHeight(MainActivity.instance);
         if (beyondToEdge < 0) {
             scroll.y = (int) beyondToEdge;
         }
