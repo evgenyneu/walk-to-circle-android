@@ -23,14 +23,14 @@ public class StartButtonCountdown {
     void rotateAndShowInitialNumber() {
         cancelCountdownTimer();
         rotateRewindArrows();
-        setInitialNumber();
+        showInitialNumber();
     }
 
     void stopCountdown() {
         cancelCountdownTimer();
     }
 
-    private void setInitialNumber() {
+    private void showInitialNumber() {
         int countdownDurationSeconds = getCountdownDurationSeconds();
         updateCountdownValue(countdownDurationSeconds);
     }
