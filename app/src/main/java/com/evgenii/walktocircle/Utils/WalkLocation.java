@@ -35,8 +35,8 @@ public class WalkLocation {
      * @param meters distance in meters.
      * @return distance in pixels on the map.
      */
-    public static double fromMetersToMapPixels(GoogleMap map, double meters) {
-        Location locationSource = fromLatLng(35, 139); // Arbitrary location
+    public static double fromMetersToMapPixels(Location locationSource, GoogleMap map, double meters) {
+//        Location locationSource = fromLatLng(35, 139); // Arbitrary location
         Location locationDestination = WalkGeo.destination(locationSource, meters, 90.0);
         Projection projection = map.getProjection();
         Point locationSourcePixels = projection.toScreenLocation(WalkLocation.latLngFromLocation(locationSource));

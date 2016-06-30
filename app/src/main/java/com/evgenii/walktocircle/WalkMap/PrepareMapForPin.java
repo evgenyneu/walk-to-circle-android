@@ -151,30 +151,29 @@ public class PrepareMapForPin {
         Point pinScreenLocation = projection.toScreenLocation(WalkLocation.latLngFromLocation(pinLocation));
 
         Point scroll = new Point(0, 0);
-        float circleSizeInPixels = (float)WalkLocation.fromMetersToMapPixels(map, WalkConstants.mCircleRadiusMeters) *
+        float circleRadiusInPixels = (float)WalkLocation.fromMetersToMapPixels(pinLocation, map, WalkConstants.mCircleRadiusMeters) *
                 WalkConstants.mapPaddingMultiplierFromCircleToMapEdgePixels;
 
         // Circle is beyond the left edge of the screen
-        float beyondLeftEdge = pinScreenLocation.x - circleSizeInPixels;
+        float beyondLeftEdge = pinScreenLocation.x - circleRadiusInPixels;
         if (beyondLeftEdge < 0) {
             scroll.x = (int) beyondLeftEdge;
         }
 
         // Circle is beyond the right edge of the screen
-        float beyondRightEdge = pinScreenLocation.x - (mapSizePixels.x - circleSizeInPixels);
+        float beyondRightEdge = pinScreenLocation.x - (mapSizePixels.x - circleRadiusInPixels);
         if (beyondRightEdge > 0) {
             scroll.x = (int) beyondRightEdge;
         }
 
         // Circle is beyond the top edge of the screen
-        float beyondToEdge = pinScreenLocation.y - circleSizeInPixels - WalkView.getStatusBarHeight(mActivity);
-        Log.d("ii", "Status bar height: " + WalkView.getStatusBarHeight(mActivity));
+        float beyondToEdge = pinScreenLocation.y - circleRadiusInPixels - WalkView.getStatusBarHeight(mActivity);
         if (beyondToEdge < 0) {
             scroll.y = (int) beyondToEdge;
         }
 
         // Circle is beyond the button edge of the screen
-        float beyondBottomEdge = pinScreenLocation.y - (mapSizePixels.y - circleSizeInPixels);
+        float beyondBottomEdge = pinScreenLocation.y - (mapSizePixels.y - circleRadiusInPixels);
         if (beyondBottomEdge > 0) {
             scroll.y = (int) beyondBottomEdge;
         }
@@ -208,9 +207,6 @@ public class PrepareMapForPin {
 
                 scroll.x += xCorrection;
                 scroll.y -= yCorrection;
-
-                Log.d("ii", "!!!!! Start button correction: " + xCorrection + ", " + yCorrection);
-
             }
         }
 
