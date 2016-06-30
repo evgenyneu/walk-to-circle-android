@@ -1,13 +1,12 @@
 package com.evgenii.walktocircle;
 
 import android.app.Dialog;
-import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.evgenii.walktocircle.Fragments.WalkFragment;
+import com.evgenii.walktocircle.FragmentManager.WalkFragmentOpener;
+import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
 import com.google.android.gms.common.ConnectionResult;
@@ -15,12 +14,14 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    WalkFragmentOpener mFragmentOpener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mFragmentOpener = new WalkFragmentOpener(this);
 
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getFragmentManager()
                     .beginTransaction()
-                    .add(R.id.container, createWalkMapFragment())
+                    .add(R.id.container, WalkFragmentType.Map.create())
                     .commit();
         }
 
@@ -42,19 +43,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onResumeFragments() {
+        super.onResumeFragments();
 
         WalkApplication.activityResumed();
         startGooglePlayServices();
 
         if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
             // Show normal screen if we have location permission and showing "location denied" screen
-            if (getLocationDeniedFragment() != null) {
-                showMapFragment();
+            if (WalkFragmentType.LocationDenied.isVisible(mFragmentOpener)) {
+                WalkFragmentType.Map.show(mFragmentOpener);
             }
         } else if (WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen(this)) {
-            showLocationDeniedFragment();
+            WalkFragmentType.LocationDenied.show(mFragmentOpener);
         }
     }
 
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
-                    showMapFragment();
+                    WalkFragmentType.Map.show(mFragmentOpener);
                     reloadMap();
                 }
             }
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         WalkLocationPermissions.getInstance().didGrantCallback = new Runnable() {
             @Override
             public void run() {
-                showMapFragment();
+                WalkFragmentType.Map.show(mFragmentOpener);
                 reloadMap();
             }
         };
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         WalkLocationPermissions.getInstance().didDenyCallback = new Runnable() {
             @Override
             public void run() {
-                showLocationDeniedFragment();
+                WalkFragmentType.LocationDenied.show(mFragmentOpener);
             }
         };
     }
@@ -119,26 +120,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void showMapFragment() {
-        if (getMapFragment() != null) { return; } // Already showing map
-        showFragmentWithFlipAnimation(createWalkMapFragment());
-    }
-
-    private WalkMapFragment createWalkMapFragment() {
-        WalkMapFragment walkMapFragment = new WalkMapFragment();
-        walkMapFragment.didFinishCountdown = new Runnable() {
-            @Override
-            public void run() {
-                showWalkFragment();
-            }
-        };
-        return walkMapFragment;
-    }
-
     WalkMapFragment getMapFragment() {
-        Fragment fragment = getCurrentFragment();
-        if (fragment instanceof WalkMapFragment) { return (WalkMapFragment)fragment; }
-        return null;
+        return (WalkMapFragment) WalkFragmentType.Map.getFragment(mFragmentOpener);
     }
 
     public void didTapMapButton(View view) {
@@ -148,25 +131,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Walk fragment
-    // ----------------------
-
-    private void showWalkFragment() {
-        if (getWalkFragment() != null) { return; } // Already showing
-        showFragmentWithFlipAnimation(new WalkFragment());
-    }
-
-    WalkFragment getWalkFragment() {
-        Fragment fragment = getCurrentFragment();
-        if (fragment instanceof WalkFragment) { return (WalkFragment)fragment; }
-        return null;
-    }
 
     // Location denied fragment
     // ----------------------
 
     public void locationDenied_didTapOpenSettingsButton(View view) {
-        WalkLocationDeniedFragment fragment = getLocationDeniedFragment();
+        WalkLocationDeniedFragment fragment = (WalkLocationDeniedFragment)
+                WalkFragmentType.LocationDenied.getFragment(mFragmentOpener);
+
         if (fragment == null) { return; }
         fragment.didTapOpenSettings();
     }
@@ -175,52 +147,11 @@ public class MainActivity extends AppCompatActivity {
         WalkLocationPermissions.getInstance().requestLocationPermissionIfNotGranted(this);
     }
 
-    WalkLocationDeniedFragment getLocationDeniedFragment() {
-        Fragment fragment = getCurrentFragment();
-        if (fragment instanceof WalkLocationDeniedFragment) { return (WalkLocationDeniedFragment)fragment; }
-        return null;
-    }
-
     // Permissions
     // ----------------------
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         WalkLocationPermissions.getInstance().onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    private void showLocationDeniedFragment() {
-        showFragmentWithFlipAnimation(new WalkLocationDeniedFragment());
-    }
-
-    // Show fragments
-    // ----------------------
-
-    private void showFragmentWithFlipAnimation(Fragment fragment) {
-        Fragment currentFragment = getCurrentFragment();
-
-        if (currentFragment != null && currentFragment.getClass().equals(fragment.getClass())) {
-            return;
-        }
-
-        WalkAnimation animation = getNextAnimation();
-
-        getFragmentManager()
-            .beginTransaction()
-            .setCustomAnimations(animation.enter, animation.exit, 0, 0)
-            .replace(R.id.container, fragment)
-            .commit();
-    }
-
-    private WalkAnimation getNextAnimation() {
-        if (getCurrentFragment() instanceof WalkMapFragment) {
-            return new WalkAnimation(R.animator.flip_top_in, R.animator.flip_top_out);
-        } else {
-            return new WalkAnimation(R.animator.flip_bottom_in, R.animator.flip_bottom_out);
-        }
-    }
-
-    private Fragment getCurrentFragment() {
-        return getFragmentManager().findFragmentById(R.id.container);
     }
 }
