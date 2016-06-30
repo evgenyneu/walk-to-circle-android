@@ -12,28 +12,34 @@ public enum WalkFragmentType {
     LocationDenied;
 
     public Fragment getFragment(WalkFragmentOpener fragmentOpener) {
-
         Fragment fragment = fragmentOpener.getCurrentFragment();
-
-        switch(this) {
-            case Map: {
-                if (fragment instanceof WalkMapFragment) { return fragment; }
-            }
-
-            case Walk: {
-                if (fragment instanceof WalkFragment) { return fragment; }
-            }
-
-            case LocationDenied:  {
-                if (fragment instanceof WalkLocationDeniedFragment) { return fragment; }
-            }
-        }
-
+        if (isFragmentOfType(fragment)) { return fragment; }
         return null;
     }
 
+    /**
+     * Returns true if the supplied fragment instance is of the current type
+     */
+    public boolean isFragmentOfType(Fragment fragment) {
+        switch(this) {
+            case Map: {
+                if (fragment instanceof WalkMapFragment) { return true; }
+            }
+
+            case Walk: {
+                if (fragment instanceof WalkFragment) { return true; }
+            }
+
+            case LocationDenied:  {
+                if (fragment instanceof WalkLocationDeniedFragment) { return true; }
+            }
+        }
+
+        return false;
+    }
+
     public boolean isVisible(WalkFragmentOpener fragmentOpener) {
-        Fragment fragment = fragmentOpener.getCurrentFragment();
+        Fragment fragment = getFragment(fragmentOpener);
         return fragment != null;
     }
 

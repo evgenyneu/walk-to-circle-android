@@ -17,11 +17,10 @@ public class StartButtonCountdown {
     int currentCountdownValue = 0;
 
     // Will be called when the countdown timer reaches zero.
-    private Runnable mDidFinishCountdown;
+    public static Runnable didFinishCountdown;
 
-    public StartButtonCountdown(Activity activity, Runnable didFinishCountdown) {
+    public StartButtonCountdown(Activity activity) {
         mActivity = activity;
-        mDidFinishCountdown = didFinishCountdown;
     }
 
     void rotateAndShowInitialNumber() {
@@ -70,8 +69,8 @@ public class StartButtonCountdown {
                 }
 
                 if (currentCountdownValue == 0) {
-                    if (mDidFinishCountdown != null) {
-                        mDidFinishCountdown.run();
+                    if (didFinishCountdown != null) {
+                        didFinishCountdown.run();
                     }
                 }
             }

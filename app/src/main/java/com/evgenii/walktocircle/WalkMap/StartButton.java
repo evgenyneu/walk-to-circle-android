@@ -19,12 +19,8 @@ public class StartButton {
     private StartButtonCountdown mStartButtonCountdown;
     private boolean isStartButtonVisible = true;
 
-    // Will be called when the countdown timer reaches zero.
-    private Runnable mDidFinishCountdown;
-
-    public StartButton(Activity activity, Runnable didFinishCountdown) {
+    public StartButton(Activity activity) {
         mActivity = activity;
-        mDidFinishCountdown = didFinishCountdown;
     }
 
     // Show the start button with animation and sound
@@ -46,7 +42,7 @@ public class StartButton {
     // Rotates the start button and shows the countdown animation
     public void rotateAndShowInitialNumber() {
         stopCountdown();
-        mStartButtonCountdown = new StartButtonCountdown(mActivity, mDidFinishCountdown);
+        mStartButtonCountdown = new StartButtonCountdown(mActivity);
 
         if (isStartButtonVisible) {
             // Showing the start button, flip it around to show the countdown.

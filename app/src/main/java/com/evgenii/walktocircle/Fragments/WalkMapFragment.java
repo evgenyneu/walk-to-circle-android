@@ -32,15 +32,12 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     private DropPin mDropPin;
     private PrepareMapForPin mPrepareMapForPin;
 
-    // Will be called when the countdown timer reaches zero.
-    public Runnable didFinishCountdown;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.map_fragment, container, false);
-        mStartButton = new StartButton(getActivity(), didFinishCountdown);
+        mStartButton = new StartButton(getActivity());
         mDropPin = new DropPin(getActivity());
         mPrepareMapForPin = new PrepareMapForPin(getActivity());
         WalkCameraDistance.setFragmentCameraDistance(view);

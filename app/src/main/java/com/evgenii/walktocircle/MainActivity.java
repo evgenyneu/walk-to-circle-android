@@ -9,6 +9,7 @@ import com.evgenii.walktocircle.FragmentManager.WalkFragmentOpener;
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
+import com.evgenii.walktocircle.WalkMap.StartButtonCountdown;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
@@ -22,6 +23,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mFragmentOpener = new WalkFragmentOpener(this);
+
+        StartButtonCountdown.didFinishCountdown = new Runnable() {
+            @Override
+            public void run() {
+                WalkFragmentType.Walk.show(mFragmentOpener);
+            }
+        };
 
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
@@ -40,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
             // Request location permission if we are not going to show location denied screen in onResume
             WalkLocationPermissions.getInstance().requestLocationPermissionIfNotGranted(this);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        StartButtonCountdown.didFinishCountdown = null;
     }
 
     @Override
