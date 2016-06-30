@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.location.Location;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.util.Property;
 import android.util.Size;
 import android.view.animation.Interpolator;

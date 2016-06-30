@@ -11,8 +11,8 @@ public enum WalkFragmentType {
     Walk,
     LocationDenied;
 
-    public Fragment getFragment(WalkFragmentOpener fragmentOpener) {
-        Fragment fragment = fragmentOpener.getCurrentFragment();
+    public Fragment getFragment() {
+        Fragment fragment = WalkFragmentOpener.getCurrentFragment();
         if (isFragmentOfType(fragment)) { return fragment; }
         return null;
     }
@@ -38,8 +38,8 @@ public enum WalkFragmentType {
         return false;
     }
 
-    public boolean isVisible(WalkFragmentOpener fragmentOpener) {
-        Fragment fragment = getFragment(fragmentOpener);
+    public boolean isVisible() {
+        Fragment fragment = getFragment();
         return fragment != null;
     }
 
@@ -61,9 +61,9 @@ public enum WalkFragmentType {
         return null;
     }
 
-    public void show(WalkFragmentOpener fragmentOpener) {
-        if (isVisible(fragmentOpener)) { return; } // Already shown
+    public void show() {
+        if (isVisible()) { return; } // Already shown
         Fragment fragment = create();
-        fragmentOpener.showFragmentWithFlipAnimation(fragment);
+        WalkFragmentOpener.showFragmentWithFlipAnimation(fragment);
     }
 };

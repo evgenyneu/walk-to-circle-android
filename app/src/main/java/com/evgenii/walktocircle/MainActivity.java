@@ -16,8 +16,6 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 
 public class MainActivity extends AppCompatActivity {
-    WalkFragmentOpener mFragmentOpener;
-
     public static Activity instance;
 
     @Override
@@ -27,12 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
         instance = this;
 
-        mFragmentOpener = new WalkFragmentOpener(this);
-
         StartButtonCountdown.didFinishCountdown = new Runnable() {
             @Override
             public void run() {
-                WalkFragmentType.Walk.show(mFragmentOpener);
+                WalkFragmentType.Walk.show();
             }
         };
 
@@ -72,11 +68,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
             // Show normal screen if we have location permission and showing "location denied" screen
-            if (WalkFragmentType.LocationDenied.isVisible(mFragmentOpener)) {
-                WalkFragmentType.Map.show(mFragmentOpener);
+            if (WalkFragmentType.LocationDenied.isVisible()) {
+                WalkFragmentType.Map.show();
             }
         } else if (WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen(this)) {
-            WalkFragmentType.LocationDenied.show(mFragmentOpener);
+            WalkFragmentType.LocationDenied.show();
         }
     }
 
@@ -106,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
-                    WalkFragmentType.Map.show(mFragmentOpener);
+                    WalkFragmentType.Map.show();
                     reloadMap();
                 }
             }
@@ -117,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         WalkLocationPermissions.getInstance().didGrantCallback = new Runnable() {
             @Override
             public void run() {
-                WalkFragmentType.Map.show(mFragmentOpener);
+                WalkFragmentType.Map.show();
                 reloadMap();
             }
         };
@@ -125,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         WalkLocationPermissions.getInstance().didDenyCallback = new Runnable() {
             @Override
             public void run() {
-                WalkFragmentType.LocationDenied.show(mFragmentOpener);
+                WalkFragmentType.LocationDenied.show();
             }
         };
     }
@@ -142,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     WalkMapFragment getMapFragment() {
-        return (WalkMapFragment) WalkFragmentType.Map.getFragment(mFragmentOpener);
+        return (WalkMapFragment) WalkFragmentType.Map.getFragment();
     }
 
     public void didTapMapButton(View view) {
@@ -158,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void locationDenied_didTapOpenSettingsButton(View view) {
         WalkLocationDeniedFragment fragment = (WalkLocationDeniedFragment)
-                WalkFragmentType.LocationDenied.getFragment(mFragmentOpener);
+                WalkFragmentType.LocationDenied.getFragment();
 
         if (fragment == null) { return; }
         fragment.didTapOpenSettings();
