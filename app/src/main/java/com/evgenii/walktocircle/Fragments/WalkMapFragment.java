@@ -70,7 +70,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     public static void ifVisibleEnableMyLocationAndZoomToLastLocation() {
         WalkMapFragment fragment = (WalkMapFragment) WalkFragmentType.Map.getFragmentIfCurrentlyVisible();
 
-        if (fragment != null && fragment.mMap != null) {
+        if (fragment != null) {
             fragment.enableMyLocationAndZoomToLastLocation();
         }
     }
