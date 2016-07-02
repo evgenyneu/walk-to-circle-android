@@ -4,6 +4,12 @@
     android:layout_height="match_parent"
     android:background="@color/fragmentBackground">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/branch_background"/>
+
     <ImageButton
         android:layout_width="@dimen/start_button_size"
         android:layout_height="@dimen/start_button_size"
