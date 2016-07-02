@@ -15,10 +15,17 @@ public class WalkFragmentOpener {
     public static void showFragmentWithFlipAnimation(Fragment fragment) {
         Fragment currentFragment = getCurrentFragment();
 
-        if (currentFragment != null && currentFragment.getClass().equals(fragment.getClass())) {
+        if (currentFragment == null) {
+            // There are no currently shown fragments, show without animation
+            MainActivity.instance.getFragmentManager()
+                .beginTransaction()
+                .add(R.id.container, fragment)
+                .commit();
+        } else if (currentFragment.getClass().equals(fragment.getClass())) {
             return;
         }
 
+        // Show fragment with animation
         WalkAnimation animation = getNextAnimation();
 
         MainActivity.instance.getFragmentManager()

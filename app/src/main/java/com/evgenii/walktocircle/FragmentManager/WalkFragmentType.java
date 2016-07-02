@@ -117,7 +117,7 @@ public enum WalkFragmentType {
     /**
      * Shows the fragment to the user.
      */
-    public void createAndShowWithAnimation() {
+    private void createAndShowWithAnimation() {
         if (isVisible()) { return; } // Already shown
         Fragment fragment = create();
         WalkFragmentOpener.showFragmentWithFlipAnimation(fragment);

@@ -35,10 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Show map activity
         if (savedInstanceState == null) {
-            getFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.container, WalkFragmentType.Map.create())
-                    .commit();
+            WalkFragmentType.showWithAnimation();
         }
 
         // Show map when Google API is connected
@@ -119,8 +116,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
-                    WalkFragmentType.Map.createAndShowWithAnimation();
-                    reloadMap();
+                    WalkFragmentType.showWithAnimation();
                 }
             }
         };
@@ -133,15 +129,14 @@ public class MainActivity extends AppCompatActivity {
         WalkLocationPermissions.getInstance().didGrantCallback = new Runnable() {
             @Override
             public void run() {
-                WalkFragmentType.Map.createAndShowWithAnimation();
-                reloadMap();
+                WalkFragmentType.shouldBeDisplayedNow();
             }
         };
 
         WalkLocationPermissions.getInstance().didDenyCallback = new Runnable() {
             @Override
             public void run() {
-                WalkFragmentType.LocationDenied.createAndShowWithAnimation();
+                WalkFragmentType.shouldBeDisplayedNow();
             }
         };
     }
@@ -149,16 +144,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         WalkLocationPermissions.getInstance().onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    // Map fragment
-    // ----------------------
-
-    void reloadMap() {
-        WalkMapFragment map = (WalkMapFragment) WalkFragmentType.Map.getFragmentIfCurrentlyVisible();
-        if (map != null) {
-            map.enableMyLocationAndZoomToLastLocation();
-        }
     }
 
     public void didTapMapButton(View view) {
