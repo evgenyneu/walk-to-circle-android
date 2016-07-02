@@ -1,5 +1,5 @@
 <resources>
-    <string name="font_family">sans-serif-light</string>
+    <string name="font_family">sans-serif</string>
     <string name="app_name">Walk to Circle</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_map_container">MapContainerActivity</string>

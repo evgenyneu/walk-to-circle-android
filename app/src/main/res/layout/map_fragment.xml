@@ -33,7 +33,6 @@
             android:gravity="center"
             android:textSize="@dimen/font_size_start_button"
             android:textColor="@color/startButtonTextColor"
-            android:textStyle="bold"
             android:text="5"
             android:background="@drawable/rewind"
             android:paddingBottom="4dp" />
