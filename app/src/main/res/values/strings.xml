@@ -8,4 +8,7 @@
     <string name="location_denied_open_settings_button">Open app settings</string>
     <string name="location_denied_request_permission_button">Request location permission</string>
     <string name="dialog_button_ok">OK</string>
+    <string name="dialog_button_yes">Yes</string>
+    <string name="dialog_button_no">No</string>
+    <string name="walk_screen_abandon_this_walk">Abandon this walk?</string>
 </resources>

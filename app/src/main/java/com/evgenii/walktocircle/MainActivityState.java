@@ -49,7 +49,10 @@ public class MainActivityState {
         SharedPreferences preferences = MainActivity.instance.getPreferences(0);
         SharedPreferences.Editor editor = preferences.edit();
 
-        if (currentPinLocation != null) {
+        if (currentPinLocation == null) {
+            editor.putFloat(CURRENT_LOCATION_LATITUDE, 0);
+            editor.putFloat(CURRENT_LOCATION_LONGITUDE, 0);
+        } else {
             editor.putFloat(CURRENT_LOCATION_LATITUDE, (float)currentPinLocation.latitude);
             editor.putFloat(CURRENT_LOCATION_LONGITUDE, (float)currentPinLocation.longitude);
         }

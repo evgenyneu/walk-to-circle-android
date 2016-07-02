@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
+import com.evgenii.walktocircle.Fragments.WalkFragment;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
 import com.google.android.gms.common.ConnectionResult;
@@ -146,10 +147,25 @@ public class MainActivity extends AppCompatActivity {
         WalkLocationPermissions.getInstance().onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+    // Map fragment
+    // ----------------------
+
     public void didTapMapButton(View view) {
-        WalkMapFragment mapFragment = (WalkMapFragment) WalkFragmentType.Map.getFragmentIfCurrentlyVisible();
-        if (mapFragment != null) {
-            mapFragment.didTapStartButton();
+        WalkMapFragment fragment = (WalkMapFragment) WalkFragmentType.Map.getFragmentIfCurrentlyVisible();
+
+        if (fragment != null) {
+            fragment.didTapStartButton();
+        }
+    }
+
+    // Walk fragment
+    // ----------------------
+
+    public void didTapCloseWalkButton(View view) {
+        WalkFragment fragment = (WalkFragment) WalkFragmentType.Walk.getFragmentIfCurrentlyVisible();
+
+        if (fragment != null) {
+            fragment.didTapCloseButton();
         }
     }
 
