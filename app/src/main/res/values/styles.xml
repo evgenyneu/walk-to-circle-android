@@ -18,5 +18,6 @@
 
     <style name="WalkTextViewStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@string/font_family</item>
+        <item name="android:textColor">@color/textViewColor</item>
     </style>
 </resources>

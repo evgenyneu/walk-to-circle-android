@@ -28,11 +28,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_size_large"
-                android:lineSpacingExtra="@dimen/font_size_large_line_spacing_extra"
+                android:lineSpacingExtra="@dimen/line_spacing_extra_for_large_text"
                 android:shadowColor="@color/colorTextShadowColor"
-                android:shadowDx="0"
-                android:shadowDy="2"
-                android:shadowRadius="5"
+                android:shadowDx="@integer/text_shadow_dx"
+                android:shadowDy="@integer/text_shadow_dy"
+                android:shadowRadius="@integer/text_shadow_radius"
                 android:gravity="center_horizontal"
                 android:text="An early-morning walk is a blessing for the whole day. "/>
 
@@ -44,9 +44,9 @@
                 android:textStyle="italic"
                 android:textSize="@dimen/font_size_body"
                 android:shadowColor="@color/colorTextShadowColor"
-                android:shadowDx="0"
-                android:shadowDy="2"
-                android:shadowRadius="5"
+                android:shadowDx="@integer/text_shadow_dx"
+                android:shadowDy="@integer/text_shadow_dy"
+                android:shadowRadius="@integer/text_shadow_radius"
                 android:gravity="center_horizontal"
                 android:text="Henry David Thoreau"/>
         </LinearLayout>

@@ -11,6 +11,6 @@
     <color name="startButtonTextColor">#9AA3F1</color>
     <color name="mapPinFillColor">#33A4AFFF</color>
     <color name="mapPinStrokeColor">#A4AFFF</color>
-    <color name="textColorOnDarkBackground">#FFFFFF</color>
+    <color name="textViewColor">#FFFFFF</color>
     <color name="colorTextShadowColor">#000000</color>
 </resources>

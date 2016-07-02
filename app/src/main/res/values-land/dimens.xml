@@ -1,4 +1,4 @@
 <resources>
     <!--Walk screen -->
-    <dimen name="walk_screen_top_margin">40dp</dimen>
+    <dimen name="walk_screen_top_margin">50dp</dimen>
 </resources>

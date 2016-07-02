@@ -6,13 +6,19 @@
     android:paddingTop="@dimen/margin_xx_large"
     android:paddingStart="@dimen/margin_normal"
     android:paddingEnd="@dimen/margin_normal"
-    android:background="@color/fragmentBackground">
+    android:background="@drawable/blank_background">
+
 
     <TextView
         android:textSize="@dimen/font_size_body"
         android:lineSpacingMultiplier="@dimen/line_spacing_multiplier_body"
+        android:shadowColor="@color/colorTextShadowColor"
+        android:shadowDx="@integer/text_shadow_dx"
+        android:shadowDy="@integer/text_shadow_dy"
+        android:shadowRadius="@integer/text_shadow_radius"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:text="@string/location_denied_message" />
 
     <LinearLayout
@@ -41,8 +47,13 @@
         <TextView
             android:textSize="@dimen/font_size_body"
             android:lineSpacingMultiplier="@dimen/line_spacing_multiplier_body"
+            android:shadowColor="@color/colorTextShadowColor"
+            android:shadowDx="@integer/text_shadow_dx"
+            android:shadowDy="@integer/text_shadow_dy"
+            android:shadowRadius="@integer/text_shadow_radius"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center_horizontal"
             android:text="@string/location_denied_request_enable_permission"/>
 
         <Button
