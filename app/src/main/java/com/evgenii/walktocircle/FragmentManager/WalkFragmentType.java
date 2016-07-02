@@ -12,10 +12,21 @@ public enum WalkFragmentType {
     Walk,
     LocationDenied;
 
+    /**
+     * @return fragment object or null if this fragment is not the one that is currently shown.
+     */
     public Fragment getFragment() {
         Fragment fragment = WalkFragmentOpener.getCurrentFragment();
         if (isFragmentOfType(fragment)) { return fragment; }
         return null;
+    }
+
+    /**
+     * @return true if this is the currently shown fragment.
+     */
+    public boolean isVisible() {
+        Fragment fragment = getFragment();
+        return fragment != null;
     }
 
     /**
@@ -51,11 +62,10 @@ public enum WalkFragmentType {
         return false;
     }
 
-    public boolean isVisible() {
-        Fragment fragment = getFragment();
-        return fragment != null;
-    }
-
+    /**
+     * Creates a new fragment object.
+     * @return
+     */
     public Fragment create() {
         switch(this) {
             case Map: {
@@ -74,6 +84,9 @@ public enum WalkFragmentType {
         return null;
     }
 
+    /**
+     * Shows the fragment to the user.
+     */
     public void show() {
         if (isVisible()) { return; } // Already shown
         Fragment fragment = create();
