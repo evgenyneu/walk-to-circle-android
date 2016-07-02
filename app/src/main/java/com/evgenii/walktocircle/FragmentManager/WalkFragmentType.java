@@ -5,6 +5,7 @@ import android.app.Fragment;
 import com.evgenii.walktocircle.Fragments.WalkFragment;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
+import com.evgenii.walktocircle.WalkLocationPermissions;
 
 public enum WalkFragmentType {
     Map,
@@ -15,6 +16,20 @@ public enum WalkFragmentType {
         Fragment fragment = WalkFragmentOpener.getCurrentFragment();
         if (isFragmentOfType(fragment)) { return fragment; }
         return null;
+    }
+
+    /**
+     * @return the name of the fragment that is currently shown.
+     */
+    public static WalkFragmentType getCurrent() {
+        // Always show Location Denied screen if there are no location permissions
+        if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
+            return LocationDenied;
+        }
+
+
+
+        return Map;
     }
 
     /**
