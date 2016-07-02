@@ -27,8 +27,6 @@ public enum WalkFragmentType {
             return LocationDenied;
         }
 
-
-
         return Map;
     }
 

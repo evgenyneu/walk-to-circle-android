@@ -24,7 +24,10 @@ public class MainActivityState {
 
     public static void load(Bundle savedInstanceState) {
         mInstance = new MainActivityState();
-        mInstance.load(Bundle savedInstanceState);
+
+        if (savedInstanceState != null) {
+            mInstance.loadState(savedInstanceState);
+        }
     }
 
     private void loadState(Bundle savedInstanceState) {

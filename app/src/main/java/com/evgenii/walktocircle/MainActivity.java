@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Save the instance to the Activity.
+        // Save the instance to this Activity object
         // Important: make sure the instance variable is cleared in onDestroy
         instance = this;
 
