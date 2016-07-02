@@ -5,6 +5,7 @@ import android.app.Fragment;
 import com.evgenii.walktocircle.Fragments.WalkFragment;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
+import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.WalkLocationPermissions;
 
 public enum WalkFragmentType {
@@ -12,10 +13,42 @@ public enum WalkFragmentType {
     Walk,
     LocationDenied;
 
+    public static WalkFragmentType shouldBeDisplayedNow() {
+
+        // Location Denied: If location permission is not granted
+        if (WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen()) {
+            return LocationDenied;
+        }
+
+        // Walk: if user has dropped the pin
+        if (MainActivityState.getInstance().currentPinLocation != null) {
+            return Walk;
+        }
+
+
+//                ) {
+//            // Show normal screen if we have location permission and showing "location denied" screen
+//            if (WalkFragmentType.LocationDenied.isVisible()) {
+//                WalkFragmentType.Map.createAndShowWithAnimation();
+//            }
+//        } else if (WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen(this)) {
+//            WalkFragmentType.LocationDenied.createAndShowWithAnimation();
+//        }
+
+        return Map;
+    }
+
+    /**
+     * Create and show the current fragment with animation.
+     */
+    public static void showWithAnimation() {
+        shouldBeDisplayedNow().createAndShowWithAnimation();
+    }
+
     /**
      * @return fragment object or null if this fragment is not the one that is currently shown.
      */
-    public Fragment getFragment() {
+    public Fragment getFragmentIfCurrentlyVisible() {
         Fragment fragment = WalkFragmentOpener.getCurrentFragment();
         if (isFragmentOfType(fragment)) { return fragment; }
         return null;
@@ -25,7 +58,7 @@ public enum WalkFragmentType {
      * @return true if this is the currently shown fragment.
      */
     public boolean isVisible() {
-        Fragment fragment = getFragment();
+        Fragment fragment = getFragmentIfCurrentlyVisible();
         return fragment != null;
     }
 
@@ -46,17 +79,17 @@ public enum WalkFragmentType {
      */
     public boolean isFragmentOfType(Fragment fragment) {
         switch(this) {
-            case Map: {
+            case Map:
                 if (fragment instanceof WalkMapFragment) { return true; }
-            }
+                break;
 
-            case Walk: {
+            case Walk:
                 if (fragment instanceof WalkFragment) { return true; }
-            }
+                break;
 
-            case LocationDenied:  {
+            case LocationDenied:
                 if (fragment instanceof WalkLocationDeniedFragment) { return true; }
-            }
+                break;
         }
 
         return false;
@@ -68,17 +101,14 @@ public enum WalkFragmentType {
      */
     public Fragment create() {
         switch(this) {
-            case Map: {
+            case Map:
                 return new WalkMapFragment();
-            }
 
-            case Walk: {
+            case Walk:
                 return new WalkFragment();
-            }
 
-            case LocationDenied:  {
+            case LocationDenied:
                 return new WalkLocationDeniedFragment();
-            }
         }
 
         return null;
@@ -87,7 +117,7 @@ public enum WalkFragmentType {
     /**
      * Shows the fragment to the user.
      */
-    public void show() {
+    public void createAndShowWithAnimation() {
         if (isVisible()) { return; } // Already shown
         Fragment fragment = create();
         WalkFragmentOpener.showFragmentWithFlipAnimation(fragment);

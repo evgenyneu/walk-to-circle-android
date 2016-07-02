@@ -74,7 +74,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
 
         Point mapSizePixels = new Point(getView().getWidth(), getView().getHeight());
         Point startButtonSizePixels = mStartButton.getSizePixels();
-        mStartButton.rotateAndShowInitialNumber();
+        mStartButton.rotateAndShowInitialNumber(pinLocation);
 
         mPrepareMapForPin.prepare(lastLocation, pinLocation, mMap,
                 mapSizePixels, startButtonSizePixels, new Runnable() {

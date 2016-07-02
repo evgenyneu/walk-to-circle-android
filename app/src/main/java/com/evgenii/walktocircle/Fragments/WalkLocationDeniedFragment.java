@@ -37,7 +37,7 @@ public class WalkLocationDeniedFragment extends Fragment {
 
         if (requestPermissionGroup == null || enablePermissionGroup == null) { return; }
 
-        boolean requestPermission = WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen(activity);
+        boolean requestPermission = WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen();
 
         WalkView.toggleView(requestPermissionGroup, requestPermission);
         WalkView.toggleView(enablePermissionGroup, !requestPermission);

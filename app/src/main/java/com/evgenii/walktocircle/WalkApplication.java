@@ -32,6 +32,7 @@ public class WalkApplication extends Application {
         walkSounds.unSilence();
     }
 
+
     public static void activityPaused() {
         walkSounds.silence();
     }

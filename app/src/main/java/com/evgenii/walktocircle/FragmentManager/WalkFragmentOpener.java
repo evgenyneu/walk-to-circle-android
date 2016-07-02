@@ -8,6 +8,9 @@ import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.WalkAnimation;
 
+/**
+ * Show a fragment with animation.
+ */
 public class WalkFragmentOpener {
     public static void showFragmentWithFlipAnimation(Fragment fragment) {
         Fragment currentFragment = getCurrentFragment();

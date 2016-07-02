@@ -2,16 +2,13 @@ package com.evgenii.walktocircle;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
-import com.evgenii.walktocircle.WalkMap.StartButtonCountdown;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
@@ -29,15 +26,7 @@ public class MainActivity extends AppCompatActivity {
         instance = this;
 
         // Load saved data
-        MainActivityState.load(savedInstanceState);
-
-        // Show Walk screen when start button countdown reaches zero
-        StartButtonCountdown.didFinishCountdown = new Runnable() {
-            @Override
-            public void run() {
-                WalkFragmentType.Walk.show();
-            }
-        };
+        MainActivityState.load();
 
         // Make activity full screen
         getWindow().getDecorView().setSystemUiVisibility(
@@ -59,39 +48,38 @@ public class MainActivity extends AppCompatActivity {
         registerLocationPermissionCallback();
 
         // Request location permission if we are not going to show location denied screen in onResume
-        if (!WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen(this)) {
+        if (!WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen()) {
             WalkLocationPermissions.getInstance().requestLocationPermissionIfNotGranted(this);
         }
-    }
-
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        MainActivityState.save(outState);
-
-        super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onDestroy() {
         instance = null;
-        StartButtonCountdown.didFinishCountdown = null;
-
         super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        MainActivityState.save();
     }
 
     @Override
     protected void onResumeFragments() {
         super.onResumeFragments();
 
-        if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
-            // Show normal screen if we have location permission and showing "location denied" screen
-            if (WalkFragmentType.LocationDenied.isVisible()) {
-                WalkFragmentType.Map.show();
-            }
-        } else if (WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen(this)) {
-            WalkFragmentType.LocationDenied.show();
-        }
+        WalkFragmentType.showWithAnimation();
+
+//        if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
+//            // Show normal screen if we have location permission and showing "location denied" screen
+//            if (WalkFragmentType.LocationDenied.isVisible()) {
+//                WalkFragmentType.Map.createAndShowWithAnimation();
+//            }
+//        } else if (WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen(this)) {
+//            WalkFragmentType.LocationDenied.createAndShowWithAnimation();
+//        }
     }
 
     @Override
@@ -131,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
-                    WalkFragmentType.Map.show();
+                    WalkFragmentType.Map.createAndShowWithAnimation();
                     reloadMap();
                 }
             }
@@ -145,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         WalkLocationPermissions.getInstance().didGrantCallback = new Runnable() {
             @Override
             public void run() {
-                WalkFragmentType.Map.show();
+                WalkFragmentType.Map.createAndShowWithAnimation();
                 reloadMap();
             }
         };
@@ -153,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         WalkLocationPermissions.getInstance().didDenyCallback = new Runnable() {
             @Override
             public void run() {
-                WalkFragmentType.LocationDenied.show();
+                WalkFragmentType.LocationDenied.createAndShowWithAnimation();
             }
         };
     }
@@ -167,14 +155,14 @@ public class MainActivity extends AppCompatActivity {
     // ----------------------
 
     void reloadMap() {
-        WalkMapFragment map = (WalkMapFragment) WalkFragmentType.Map.getFragment();
+        WalkMapFragment map = (WalkMapFragment) WalkFragmentType.Map.getFragmentIfCurrentlyVisible();
         if (map != null) {
             map.enableMyLocationAndZoomToLastLocation();
         }
     }
 
     public void didTapMapButton(View view) {
-        WalkMapFragment mapFragment = (WalkMapFragment) WalkFragmentType.Map.getFragment();
+        WalkMapFragment mapFragment = (WalkMapFragment) WalkFragmentType.Map.getFragmentIfCurrentlyVisible();
         if (mapFragment != null) {
             mapFragment.didTapStartButton();
         }
@@ -185,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void locationDenied_didTapOpenSettingsButton(View view) {
         WalkLocationDeniedFragment fragment = (WalkLocationDeniedFragment)
-                WalkFragmentType.LocationDenied.getFragment();
+                WalkFragmentType.LocationDenied.getFragmentIfCurrentlyVisible();
 
         if (fragment == null) { return; }
         fragment.didTapOpenSettings();

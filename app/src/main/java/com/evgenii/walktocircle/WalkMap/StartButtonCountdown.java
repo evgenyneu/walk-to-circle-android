@@ -1,23 +1,28 @@
 package com.evgenii.walktocircle.WalkMap;
 
-import android.app.Activity;
+import android.location.Location;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.MainActivity;
+import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
+import com.evgenii.walktocircle.Utils.WalkLocation;
 import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.WalkConstants;
 
 public class StartButtonCountdown {
     CountDownTimer mCountdownTimer;
     int currentCountdownValue = 0;
+    Location mPinLocation;
 
-    // Will be called when the countdown timer reaches zero.
-    public static Runnable didFinishCountdown;
+    public StartButtonCountdown(Location pinLocation) {
+        mPinLocation = pinLocation;
+    }
 
     void rotateAndShowInitialNumber() {
         cancelCountdownTimer();
@@ -26,6 +31,7 @@ public class StartButtonCountdown {
     }
 
     void stopCountdown() {
+        mPinLocation = null;
         cancelCountdownTimer();
     }
 
@@ -65,9 +71,7 @@ public class StartButtonCountdown {
                 }
 
                 if (currentCountdownValue == 0) {
-                    if (didFinishCountdown != null) {
-                        didFinishCountdown.run();
-                    }
+                    startWalking();
                 }
             }
 
@@ -75,6 +79,11 @@ public class StartButtonCountdown {
         };
 
         mCountdownTimer.start();
+    }
+
+    private void startWalking() {
+        MainActivityState.getInstance().currentPinLocation = WalkLocation.latLngFromLocation(mPinLocation);
+        WalkFragmentType.showWithAnimation();
     }
 
     private void cancelCountdownTimer() {

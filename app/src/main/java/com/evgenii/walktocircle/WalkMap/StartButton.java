@@ -6,6 +6,7 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.app.Activity;
 import android.graphics.Point;
+import android.location.Location;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -36,9 +37,9 @@ public class StartButton {
     }
 
     // Rotates the start button and shows the countdown animation
-    public void rotateAndShowInitialNumber() {
+    public void rotateAndShowInitialNumber(Location pinLocation) {
         stopCountdown();
-        mStartButtonCountdown = new StartButtonCountdown();
+        mStartButtonCountdown = new StartButtonCountdown(pinLocation);
 
         if (isStartButtonVisible) {
             // Showing the start button, flip it around to show the countdown.
