@@ -19,7 +19,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/location_denied_request_permission_group"
+        android:id="@+id/location_denied_request_permission_automatically_group"
         android:layout_marginTop="@dimen/margin_x_large">
 
         <Button

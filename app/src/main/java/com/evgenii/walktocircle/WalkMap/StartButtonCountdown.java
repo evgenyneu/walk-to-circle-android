@@ -82,7 +82,7 @@ public class StartButtonCountdown {
     }
 
     private void startWalking() {
-        MainActivityState.getInstance().currentPinLocation = WalkLocation.latLngFromLocation(mPinLocation);
+            MainActivityState.getInstance().savePinLocation(WalkLocation.latLngFromLocation(mPinLocation));
         WalkFragmentType.showWithAnimation();
     }
 

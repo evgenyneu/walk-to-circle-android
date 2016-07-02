@@ -23,6 +23,7 @@ public class StartButton {
     // Show the start button with animation and sound
     public void show() {
         final View button = getStartImage();
+        if (button == null) { return; }
         if (button.getVisibility() == View.VISIBLE) { return; } // Start button already visible
         button.setVisibility(View.VISIBLE);
 

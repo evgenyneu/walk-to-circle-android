@@ -12,7 +12,6 @@ public class WalkApplication extends Application {
     private static WalkSounds walkSounds;
     private static WalkLocationService locationService = new WalkLocationService();
 
-
     public void onCreate() {
         super.onCreate();
 
@@ -31,7 +30,6 @@ public class WalkApplication extends Application {
     public static void activityResumed() {
         walkSounds.unSilence();
     }
-
 
     public static void activityPaused() {
         walkSounds.silence();

@@ -14,26 +14,15 @@ public enum WalkFragmentType {
     LocationDenied;
 
     public static WalkFragmentType shouldBeDisplayedNow() {
-
         // Location Denied: If location permission is not granted
-        if (WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen()) {
+        if (!WalkLocationPermissions.getInstance().hasLocationPermission()) {
             return LocationDenied;
         }
 
         // Walk: if user has dropped the pin
-        if (MainActivityState.getInstance().currentPinLocation != null) {
+        if (MainActivityState.getInstance().getCurrentPinLocation() != null) {
             return Walk;
         }
-
-
-//                ) {
-//            // Show normal screen if we have location permission and showing "location denied" screen
-//            if (WalkFragmentType.LocationDenied.isVisible()) {
-//                WalkFragmentType.Map.createAndShowWithAnimation();
-//            }
-//        } else if (WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen(this)) {
-//            WalkFragmentType.LocationDenied.createAndShowWithAnimation();
-//        }
 
         return Map;
     }

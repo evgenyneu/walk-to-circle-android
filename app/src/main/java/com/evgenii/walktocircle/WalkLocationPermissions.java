@@ -27,7 +27,18 @@ public class WalkLocationPermissions {
     public Runnable didGrantCallback;
     public Runnable didDenyCallback;
 
-    public boolean shouldShowLocationDeniedScreen() {
+
+    /**
+     *
+     * @return true if the app should show UI with rationale for requesting a location permission.
+     * False, if one of the following cases
+     * 1) Location permission has not been requested by the app yet.
+     * 2) Location permission has been requested and the user denied it with "do not ask again" option.
+     * 3) The app already has location permission.
+     * 4) The Android cation older than Marshmallow, which means the request permission has
+     * been granted when the app was installed.
+     */
+    public boolean shouldShowRequestPermissionRationale() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (!hasLocationPermission()) {
                 return MainActivity.instance.shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION);

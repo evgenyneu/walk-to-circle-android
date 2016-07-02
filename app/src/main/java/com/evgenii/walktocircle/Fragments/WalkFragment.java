@@ -48,7 +48,7 @@ public class WalkFragment extends Fragment {
     }
 
     private void abandonTheWalk() {
-        MainActivityState.getInstance().currentPinLocation = null;
+        MainActivityState.getInstance().savePinLocation(null);
         WalkFragmentType.showWithAnimation();
     }
 }

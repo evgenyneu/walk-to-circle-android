@@ -1,4 +1,5 @@
 package com.evgenii.walktocircle.Fragments;
+import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.Utils.WalkGeo;
 import com.evgenii.walktocircle.Utils.WalkLocation;
@@ -63,6 +64,16 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
         stopLocationUpdates();
     }
 
+    /**
+     * Zoom the map to location if the map fragment is currently visible.
+     */
+    public static void ifVisibleEnableMyLocationAndZoomToLastLocation() {
+        WalkMapFragment fragment = (WalkMapFragment) WalkFragmentType.Map.getFragmentIfCurrentlyVisible();
+
+        if (fragment != null) {
+            fragment.enableMyLocationAndZoomToLastLocation();
+        }
+    }
 
     public void didTapStartButton() {
         Location lastLocation = getLastLocation();

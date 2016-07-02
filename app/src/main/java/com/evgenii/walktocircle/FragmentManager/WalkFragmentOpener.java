@@ -2,17 +2,41 @@ package com.evgenii.walktocircle.FragmentManager;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.util.Log;
 
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
 import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.WalkAnimation;
+import com.evgenii.walktocircle.WalkApplication;
 
 /**
  * Show a fragment with animation.
  */
 public class WalkFragmentOpener {
+    // true if fragments can be shown.
+    private static boolean mCanShowFragments = false;
+
+    /**
+     * Call this method to ensure the fragments can be shown.
+     */
+    public static void allowShowingFragments() {
+        Log.d("ii", "allowShowingFragments");
+        mCanShowFragments = true;
+    }
+
+    /**
+     * Call this method to prevent showing fragments.
+     * This method is called in onSaveInstanceState activity method.
+     */
+    public static void disallowShowingFragments() {
+        mCanShowFragments = false;
+        Log.d("ii", "disallowShowingFragments");
+    }
+
     public static void showFragmentWithFlipAnimation(Fragment fragment) {
+        if (!mCanShowFragments) { return; }
+
         Fragment currentFragment = getCurrentFragment();
 
         if (currentFragment == null) {

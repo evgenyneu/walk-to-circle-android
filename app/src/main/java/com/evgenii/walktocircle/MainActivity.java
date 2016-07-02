@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.evgenii.walktocircle.FragmentManager.WalkFragmentOpener;
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.Fragments.WalkFragment;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
@@ -45,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         // Show map when user grants location permission
         registerLocationPermissionCallback();
 
-        // Request location permission if we are not going to show location denied screen in onResume
-        if (!WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen()) {
+        // Request location permission if we are not showing location denied screen
+        if (!WalkLocationPermissions.getInstance().shouldShowRequestPermissionRationale()) {
             WalkLocationPermissions.getInstance().requestLocationPermissionIfNotGranted(this);
         }
     }
@@ -58,26 +59,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-
-        MainActivityState.save();
-    }
-
-    @Override
     protected void onResumeFragments() {
         super.onResumeFragments();
 
+        WalkFragmentOpener.allowShowingFragments();
         WalkFragmentType.showWithAnimation();
+    }
 
-//        if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
-//            // Show normal screen if we have location permission and showing "location denied" screen
-//            if (WalkFragmentType.LocationDenied.isVisible()) {
-//                WalkFragmentType.Map.createAndShowWithAnimation();
-//            }
-//        } else if (WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen(this)) {
-//            WalkFragmentType.LocationDenied.createAndShowWithAnimation();
-//        }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        WalkFragmentOpener.disallowShowingFragments();
+
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -118,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
                     WalkFragmentType.showWithAnimation();
+                    WalkMapFragment.ifVisibleEnableMyLocationAndZoomToLastLocation();
                 }
             }
         };
@@ -131,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 WalkFragmentType.shouldBeDisplayedNow();
+                WalkMapFragment.ifVisibleEnableMyLocationAndZoomToLastLocation();
             }
         };
 

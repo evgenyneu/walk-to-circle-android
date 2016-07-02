@@ -32,15 +32,15 @@ public class WalkLocationDeniedFragment extends Fragment {
         Activity activity = getActivity();
         if (activity == null) { return; }
 
-        View requestPermissionGroup = activity.findViewById(R.id.location_denied_request_permission_group);
+        View requestPermissionAutomaticallyGroup = activity.findViewById(R.id.location_denied_request_permission_automatically_group);
         View enablePermissionGroup = activity.findViewById(R.id.location_denied_enable_permission_group);
 
-        if (requestPermissionGroup == null || enablePermissionGroup == null) { return; }
+        if (requestPermissionAutomaticallyGroup == null || enablePermissionGroup == null) { return; }
 
-        boolean requestPermission = WalkLocationPermissions.getInstance().shouldShowLocationDeniedScreen();
+        boolean requestPermissionAutomatically = WalkLocationPermissions.getInstance().shouldShowRequestPermissionRationale();
 
-        WalkView.toggleView(requestPermissionGroup, requestPermission);
-        WalkView.toggleView(enablePermissionGroup, !requestPermission);
+        WalkView.toggleView(requestPermissionAutomaticallyGroup, requestPermissionAutomatically);
+        WalkView.toggleView(enablePermissionGroup, !requestPermissionAutomatically);
     }
 
     public void didTapOpenSettings() {
