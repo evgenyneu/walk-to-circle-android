@@ -10,6 +10,53 @@
         android:scaleType="centerCrop"
         android:src="@drawable/branch_background"/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="136dp"
+        android:layout_marginStart="@dimen/margin_x_large"
+        android:layout_marginEnd="@dimen/margin_x_large"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:shadowColor="#000000"
+                android:shadowDx="0"
+                android:shadowDy="3"
+                android:shadowRadius="2"
+                android:gravity="center_horizontal"
+                android:text="An early-morning walk is a blessing for the whole day. An early-morning walk is a blessing for the whole day. An early-morning walk is a blessing for the whole day. An early-morning walk is a blessing for the whole day. An early-morning walk is a blessing for the whole day. An early-morning walk is a blessing for the whole day. "/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
+
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:shadowColor="#000000"
+                android:shadowDx="0"
+                android:shadowDy="3"
+                android:shadowRadius="2"
+                android:gravity="center_horizontal"
+                android:text="Henry David Thoreau"/>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
     <ImageButton
         android:layout_width="@dimen/start_button_size"
         android:layout_height="@dimen/start_button_size"
