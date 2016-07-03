@@ -18,6 +18,12 @@ public class WalkRandomQuote {
     }
 
     public static WalkQuote pickRandom(WalkQuote[] fromQuotes) {
-        return null;
+        int randomIndex = getRandomNumberGenerator().getRandomIntUntil(fromQuotes.length);
+
+        if (randomIndex > (fromQuotes.length - 1)) {
+            return null;
+        }
+
+        return fromQuotes[randomIndex];
     }
 }
