@@ -1,5 +1,6 @@
 package com.evgenii.walktocircle.WalkWalk;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
 
@@ -22,8 +23,10 @@ public class WalkRandomQuote {
         result.quoteToShow = pickRandom(newQuotes);
 
         // Add the picked quote to the list of shown quotes to avoid showing it soon again
-        alreadyShownQuotes.add(result.quoteToShow.text);
-        result.alreadyShownQuotes = alreadyShownQuotes;
+        Set<String> newAlreadyShownQuotes = new HashSet<String>();
+        newAlreadyShownQuotes.addAll(alreadyShownQuotes);
+        newAlreadyShownQuotes.add(result.quoteToShow.text);
+        result.alreadyShownQuotes = newAlreadyShownQuotes;
 
         return result;
     }
