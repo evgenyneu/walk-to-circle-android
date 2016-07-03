@@ -25,11 +25,37 @@ public class WalkRandomQuoteTest {
         WalkRandomQuote.mRandomNumberGenerator = null; // User real random number generator again
     }
 
+    // pickOne
+    // -------------------
+
     @Test
     public void returnsTutorialQuote() {
-        WalkQuote result = WalkRandomQuote.pickOne(true);
+        WalkRandomQuote.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(1);
+
+        WalkQuote[] quotes = {
+                new WalkQuote("Quote 1", "Author 1"),
+                new WalkQuote("Quote 2", "Author 2"),
+                new WalkQuote("Quote 3", "Author 3")
+        };
+
+        WalkQuote result = WalkRandomQuote.pickOne(true, quotes);
         assertTrue(result.text.contains("wonderful and"));
         assertEquals(result.author, "Evgenii Neumerzhitckii");
+    }
+
+    @Test
+    public void pickOneReturnsRandomQuote_whenNotInTutorialMode() {
+        WalkRandomQuote.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(1);
+
+        WalkQuote[] quotes = {
+                new WalkQuote("Quote 1", "Author 1"),
+                new WalkQuote("Quote 2", "Author 2"),
+                new WalkQuote("Quote 3", "Author 3")
+        };
+
+        WalkQuote result = WalkRandomQuote.pickOne(false, quotes);
+        assertEquals("Quote 2", result.text);
+        assertEquals(result.author, "Author 2");
     }
 
     // quoteToShow

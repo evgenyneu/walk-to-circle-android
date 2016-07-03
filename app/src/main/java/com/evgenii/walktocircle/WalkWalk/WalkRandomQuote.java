@@ -10,8 +10,17 @@ public class WalkRandomQuote {
     public static WalkRandomQuoteNumberGenerator mRandomNumberGenerator;
 
     /**
-     * The main method to be called on the main screen to get the current quote to be shown
-     * to the user and the list of already shown quotes.
+     * The main method to be called on the main screen to get the current quote to be shown.
+     * The function also saves the set of already shown quotes in app preferences.
+     * @return the quote to be shown now and the set of already shown quotes.
+     */
+    public static WalkQuote getQuoteToShowAndSaveShown() {
+//        quoteToShow(WalkManyQuotes.quotes)
+        return null;
+    }
+
+    /**
+     * Get the current quote to be shown to the user and the list of already shown quotes.
      * @param allQuotes all the quotes.
      * @param alreadyShownQuotes the list of quotes that are already shown to the user.
      * @return the quote to be shown now and the set of already shown quotes.
@@ -48,8 +57,12 @@ public class WalkRandomQuote {
         }
     }
 
-    public static WalkQuote pickOne(boolean isTutorial) {
-        return WalkManyQuotes.tutorialText;
+    public static WalkQuote pickOne(boolean isTutorial, WalkQuote[] fromQuotes) {
+        if (isTutorial) {
+            return WalkManyQuotes.tutorialText;
+        } else {
+            return pickRandom(fromQuotes);
+        }
     }
 
     /**

@@ -4,6 +4,9 @@ import android.content.SharedPreferences;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.HashSet;
+import java.util.Set;
+
 // Saved state for the app
 public class MainActivityState {
     // Contains the location of the currently dropped pin. If null, pin is not currently dropped.
@@ -12,9 +15,13 @@ public class MainActivityState {
     // If true then we show Congratulations fragment
     private boolean showCongratulationsScreen = false;
 
+    // The list of quotes already shown to the user. The list is maintained in order to avoid showing same quotes one after another.
+    private Set<String> alreadyShownQuotes;
+
     static final String CURRENT_LOCATION_LATITUDE = "currentLocationLatitude";
     static final String CURRENT_LOCATION_LONGITUDE = "currentLocationLongitude";
-    static final String SHOW_CONTRATULATIONS_SCREEEN = "showCongratulationsScreen";
+    static final String SHOW_CONGRATULATIONS_SCREEEN = "showCongratulationsScreen";
+    static final String ALREADY_SHOWN_QUOTES = "alreadyShownQuotes";
 
     private static MainActivityState mInstance;
 
@@ -37,7 +44,9 @@ public class MainActivityState {
             currentPinLocation = new LatLng(currentLocationLatitude, currentLocationLongitude);
         }
 
-        showCongratulationsScreen = preferences.getBoolean(SHOW_CONTRATULATIONS_SCREEEN, false);
+        showCongratulationsScreen = preferences.getBoolean(SHOW_CONGRATULATIONS_SCREEEN, false);
+
+        alreadyShownQuotes = preferences.getStringSet(ALREADY_SHOWN_QUOTES, new HashSet<String>());
     }
 
     private void saveState() {
@@ -52,7 +61,9 @@ public class MainActivityState {
             editor.putFloat(CURRENT_LOCATION_LONGITUDE, (float)currentPinLocation.longitude);
         }
 
-        editor.putBoolean(SHOW_CONTRATULATIONS_SCREEEN, showCongratulationsScreen);
+        editor.putBoolean(SHOW_CONGRATULATIONS_SCREEEN, showCongratulationsScreen);
+
+        editor.putStringSet(ALREADY_SHOWN_QUOTES, alreadyShownQuotes);
 
         editor.commit();
     }
@@ -67,6 +78,20 @@ public class MainActivityState {
     public static void savePinLocation(LatLng pinLocation) {
         if (mInstance != null) {
             mInstance.currentPinLocation = pinLocation;
+            mInstance.saveState();
+        }
+    }
+
+    // Already shown quotes
+    // -----------
+
+    public Set<String> getAlreadyShownQuotes() {
+        return alreadyShownQuotes;
+    }
+
+    public static void saveAlreadyShownQuotes(Set<String> shown) {
+        if (mInstance != null) {
+            mInstance.alreadyShownQuotes = shown;
             mInstance.saveState();
         }
     }
