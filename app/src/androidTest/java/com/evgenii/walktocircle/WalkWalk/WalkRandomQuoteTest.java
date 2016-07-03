@@ -37,6 +37,8 @@ public class WalkRandomQuoteTest {
 
     @Test
     public void returnsRandomAndUsedQuotes() {
+        WalkRandomQuote.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(1);
+
         WalkQuote[] quotes = {
                 new WalkQuote("Quote 1", "Author 1"),
                 new WalkQuote("Quote 2", "Author 2"),
@@ -46,6 +48,15 @@ public class WalkRandomQuoteTest {
         Set<String> shown = new HashSet<String>(Arrays.asList("Quote 2"));
 
         WalkQuoteToShow result = WalkRandomQuote.quoteToShow(quotes, shown);
+
+        // Quote to show
+        assertEquals("Quote 3", result.quoteToShow.text);
+        assertEquals("Author 3", result.quoteToShow.author);
+
+        // Already shown quotes
+        assertEquals(2, result.alreadyShownQuotes.size());
+        assertTrue(result.alreadyShownQuotes.contains("Quote 2"));
+        assertTrue(result.alreadyShownQuotes.contains("Quote 3"));
     }
 
     // pickRandom

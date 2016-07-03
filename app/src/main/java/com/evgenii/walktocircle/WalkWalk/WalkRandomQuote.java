@@ -8,8 +8,22 @@ public class WalkRandomQuote {
     // The property is null normally but in the unit test it is set with a fake random number generator.
     public static WalkRandomQuoteNumberGenerator mRandomNumberGenerator;
 
+    /**
+     * The main method to be called on the main screen to get the current quote to be shown
+     * to the user and the list of already shown quotes.
+     * @param allQuotes all the quotes.
+     * @param alreadyShownQuotes the list of quotes that are already shown to the user.
+     * @return the quote to be shown now and the set of already shown quotes.
+     */
     public static WalkQuoteToShow quoteToShow(WalkQuote[] allQuotes, Set<String> alreadyShownQuotes) {
         WalkQuoteToShow result = new WalkQuoteToShow();
+
+        WalkQuote[] newQuotes = excludeQuotes(allQuotes, alreadyShownQuotes);
+        result.quoteToShow = pickRandom(newQuotes);
+
+        // Add the picked quote to the list of shown quotes to avoid showing it soon again
+        alreadyShownQuotes.add(result.quoteToShow.text);
+        result.alreadyShownQuotes = alreadyShownQuotes;
 
         return result;
     }
@@ -26,6 +40,11 @@ public class WalkRandomQuote {
         return WalkManyQuotes.tutorialText;
     }
 
+    /**
+     *
+     * @param fromQuotes
+     * @return a random quote form the array.
+     */
     public static WalkQuote pickRandom(WalkQuote[] fromQuotes) {
         int randomIndex = getRandomNumberGenerator().getRandomIntUntil(fromQuotes.length);
 
