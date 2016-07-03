@@ -153,6 +153,29 @@ public class WalkRandomQuoteTest {
         }
     }
 
+    @Test
+    public void returnsRandomAndUsedQuotes_tutorialMode() {
+        WalkRandomQuote.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(1);
+
+        WalkQuote[] quotes = {
+                new WalkQuote("Quote 1", "Author 1"),
+                new WalkQuote("Quote 2", "Author 2"),
+                new WalkQuote("Quote 3", "Author 3")
+        };
+
+        Set<String> shown = new HashSet<String>(Arrays.asList("Quote 2"));
+
+        WalkQuoteToShow result = WalkRandomQuote.quoteToShow(true, quotes, shown);
+
+        // Quote to show
+        assertEquals("Walk to the circle that was shown on the map. You will be notified when you reach it. Have a wonderful and safe walk.", result.quoteToShow.text);
+        assertEquals("Evgenii Neumerzhitckii", result.quoteToShow.author);
+
+        // Already shown quotes
+        assertEquals(1, result.alreadyShownQuotes.size());
+        assertTrue(result.alreadyShownQuotes.contains("Quote 2"));
+    }
+
     // pickRandom
     // --------------------------
 

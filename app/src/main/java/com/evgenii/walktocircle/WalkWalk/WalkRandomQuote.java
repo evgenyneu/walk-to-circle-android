@@ -1,5 +1,7 @@
 package com.evgenii.walktocircle.WalkWalk;
 
+import com.evgenii.walktocircle.MainActivityState;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
@@ -15,8 +17,10 @@ public class WalkRandomQuote {
      * @return the quote to be shown now and the set of already shown quotes.
      */
     public static WalkQuote getQuoteToShowAndSaveShown() {
-//        quoteToShow(WalkManyQuotes.quotes)
-        return null;
+        MainActivityState state = MainActivityState.getInstance();
+        WalkQuoteToShow toShow = quoteToShow(state.isTutorialMode(), WalkManyQuotes.quotes, state.getAlreadyShownQuotes());
+        state.saveAlreadyShownQuotes(toShow.alreadyShownQuotes);
+        return toShow.quoteToShow;
     }
 
     /**
@@ -43,7 +47,10 @@ public class WalkRandomQuote {
             result.quoteToShow = pickOne(isTutorial, newQuotes);
         }
 
-        newAlreadyShownQuotes.add(result.quoteToShow.text);
+        if (!isTutorial) {
+            newAlreadyShownQuotes.add(result.quoteToShow.text);
+        }
+
         result.alreadyShownQuotes = newAlreadyShownQuotes;
 
         return result;
