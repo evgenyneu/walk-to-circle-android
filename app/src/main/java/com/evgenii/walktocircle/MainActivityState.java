@@ -50,6 +50,8 @@ public class MainActivityState {
 
         mShowCongratulationsScreen = preferences.getBoolean(SHOW_CONGRATULATIONS_SCREEEN, false);
 
+        mIsTutorialMode = preferences.getBoolean(IS_TUTORIAL_MODE, true);
+
         mAlreadyShownQuotes = preferences.getStringSet(ALREADY_SHOWN_QUOTES, new HashSet<String>());
     }
 
@@ -66,6 +68,8 @@ public class MainActivityState {
         }
 
         editor.putBoolean(SHOW_CONGRATULATIONS_SCREEEN, mShowCongratulationsScreen);
+
+        editor.putBoolean(IS_TUTORIAL_MODE, mIsTutorialMode);
 
         editor.putStringSet(ALREADY_SHOWN_QUOTES, mAlreadyShownQuotes);
 
@@ -96,6 +100,20 @@ public class MainActivityState {
     public static void saveAlreadyShownQuotes(Set<String> shown) {
         if (mInstance != null) {
             mInstance.mAlreadyShownQuotes = shown;
+            mInstance.saveState();
+        }
+    }
+
+    // Is tutorial mode
+    // -----------
+
+    public boolean isTutorialMode() {
+        return mIsTutorialMode;
+    }
+
+    public static void saveIsTutorialMode(boolean value) {
+        if (mInstance != null) {
+            mInstance.mIsTutorialMode = value;
             mInstance.saveState();
         }
     }
