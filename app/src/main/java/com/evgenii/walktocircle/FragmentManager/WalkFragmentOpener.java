@@ -21,7 +21,6 @@ public class WalkFragmentOpener {
      * Call this method to ensure the fragments can be shown.
      */
     public static void allowShowingFragments() {
-        Log.d("ii", "allowShowingFragments");
         mCanShowFragments = true;
     }
 
@@ -31,7 +30,6 @@ public class WalkFragmentOpener {
      */
     public static void disallowShowingFragments() {
         mCanShowFragments = false;
-        Log.d("ii", "disallowShowingFragments");
     }
 
     public static void showFragmentWithFlipAnimation(Fragment fragment) {

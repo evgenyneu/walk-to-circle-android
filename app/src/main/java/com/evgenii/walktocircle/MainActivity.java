@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentOpener;
@@ -11,6 +12,7 @@ import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.Fragments.WalkWalkFragment;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
+import com.evgenii.walktocircle.WalkWalk.WalkManyQuotes;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         if (!WalkLocationPermissions.getInstance().shouldShowRequestPermissionRationale()) {
             WalkLocationPermissions.getInstance().requestLocationPermissionIfNotGranted(this);
         }
+
+        Log.d("ii", WalkManyQuotes.quotes[3].text);
     }
 
     @Override
