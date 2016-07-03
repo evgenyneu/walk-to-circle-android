@@ -2,7 +2,7 @@ package com.evgenii.walktocircle.FragmentManager;
 
 import android.app.Fragment;
 
-import com.evgenii.walktocircle.Fragments.WalkFragment;
+import com.evgenii.walktocircle.Fragments.WalkWalkFragment;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
 import com.evgenii.walktocircle.MainActivityState;
@@ -73,7 +73,7 @@ public enum WalkFragmentType {
                 break;
 
             case Walk:
-                if (fragment instanceof WalkFragment) { return true; }
+                if (fragment instanceof WalkWalkFragment) { return true; }
                 break;
 
             case LocationDenied:
@@ -94,7 +94,7 @@ public enum WalkFragmentType {
                 return new WalkMapFragment();
 
             case Walk:
-                return new WalkFragment();
+                return new WalkWalkFragment();
 
             case LocationDenied:
                 return new WalkLocationDeniedFragment();

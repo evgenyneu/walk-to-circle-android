@@ -14,7 +14,7 @@ import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.Utils.WalkCameraDistance;
 
-public class WalkFragment extends Fragment {
+public class WalkWalkFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

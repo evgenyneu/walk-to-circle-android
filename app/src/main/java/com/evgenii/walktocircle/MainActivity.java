@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentOpener;
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
-import com.evgenii.walktocircle.Fragments.WalkFragment;
+import com.evgenii.walktocircle.Fragments.WalkWalkFragment;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
 import com.google.android.gms.common.ConnectionResult;
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
     // ----------------------
 
     public void didTapCloseWalkButton(View view) {
-        WalkFragment fragment = (WalkFragment) WalkFragmentType.Walk.getFragmentIfCurrentlyVisible();
+        WalkWalkFragment fragment = (WalkWalkFragment) WalkFragmentType.Walk.getFragmentIfCurrentlyVisible();
 
         if (fragment != null) {
             fragment.didTapCloseButton();
