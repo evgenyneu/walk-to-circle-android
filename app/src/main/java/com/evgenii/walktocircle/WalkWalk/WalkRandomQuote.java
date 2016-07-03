@@ -16,15 +16,24 @@ public class WalkRandomQuote {
      * @param alreadyShownQuotes the list of quotes that are already shown to the user.
      * @return the quote to be shown now and the set of already shown quotes.
      */
-    public static WalkQuoteToShow quoteToShow(WalkQuote[] allQuotes, Set<String> alreadyShownQuotes) {
+    public static WalkQuoteToShow quoteToShow(WalkQuote[] allQuotes, final Set<String> alreadyShownQuotes) {
         WalkQuoteToShow result = new WalkQuoteToShow();
-
-        WalkQuote[] newQuotes = excludeQuotes(allQuotes, alreadyShownQuotes);
-        result.quoteToShow = pickRandom(newQuotes);
 
         // Add the picked quote to the list of shown quotes to avoid showing it soon again
         Set<String> newAlreadyShownQuotes = new HashSet<String>();
         newAlreadyShownQuotes.addAll(alreadyShownQuotes);
+
+        WalkQuote[] newQuotes = excludeQuotes(allQuotes, newAlreadyShownQuotes);
+
+        if (newQuotes.length == 0) {
+            // All quotes are show. Clear the shown set.
+            result.quoteToShow = pickRandom(allQuotes);
+            newAlreadyShownQuotes.clear();
+        } else {
+            result.quoteToShow = pickRandom(newQuotes);
+        }
+
+
         newAlreadyShownQuotes.add(result.quoteToShow.text);
         result.alreadyShownQuotes = newAlreadyShownQuotes;
 

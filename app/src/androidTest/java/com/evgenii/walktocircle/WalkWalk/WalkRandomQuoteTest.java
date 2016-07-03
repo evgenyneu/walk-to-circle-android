@@ -59,6 +59,74 @@ public class WalkRandomQuoteTest {
         assertTrue(result.alreadyShownQuotes.contains("Quote 3"));
     }
 
+    @Test
+    public void returnsRandomAndUsedQuotes_allQuotesAreShown_clearAlreadyShownQuotes() {
+        WalkRandomQuote.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(1);
+
+        WalkQuote[] quotes = {
+                new WalkQuote("Quote 1", "Author 1"),
+                new WalkQuote("Quote 2", "Author 2"),
+                new WalkQuote("Quote 3", "Author 3")
+        };
+
+        Set<String> shown = new HashSet<String>(Arrays.asList("Quote 2", "Quote 1", "Quote 3"));
+
+        WalkQuoteToShow result = WalkRandomQuote.quoteToShow(quotes, shown);
+
+        // Quote to show
+        assertEquals("Quote 2", result.quoteToShow.text);
+        assertEquals("Author 2", result.quoteToShow.author);
+
+        // Already shown quotes
+        assertEquals(1, result.alreadyShownQuotes.size());
+        assertTrue(result.alreadyShownQuotes.contains("Quote 2"));
+    }
+
+    @Test
+    public void returnsRandomAndUsedQuotes_noQuotesAreShown() {
+        WalkRandomQuote.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(2);
+
+        WalkQuote[] quotes = {
+                new WalkQuote("Quote 1", "Author 1"),
+                new WalkQuote("Quote 2", "Author 2"),
+                new WalkQuote("Quote 3", "Author 3")
+        };
+
+        Set<String> shown = new HashSet<String>();
+
+        WalkQuoteToShow result = WalkRandomQuote.quoteToShow(quotes, shown);
+
+        // Quote to show
+        assertEquals("Quote 3", result.quoteToShow.text);
+        assertEquals("Author 3", result.quoteToShow.author);
+
+        // Already shown quotes
+        assertEquals(1, result.alreadyShownQuotes.size());
+        assertTrue(result.alreadyShownQuotes.contains("Quote 3"));
+    }
+
+    @Test
+    public void returnsRandomAndUsedQuotes_realRandomQuotes() {
+        WalkQuote[] quotes = {
+                new WalkQuote("Quote 1", "Author 1"),
+                new WalkQuote("Quote 2", "Author 2"),
+                new WalkQuote("Quote 3", "Author 3")
+        };
+
+        Set<String> shown = new HashSet<String>(Arrays.asList("Quote 2"));
+
+        for (int i = 0; i < 10; i++) {
+            WalkQuoteToShow result = WalkRandomQuote.quoteToShow(quotes, shown);
+
+            assertTrue(result.quoteToShow.text == "Quote 1" || result.quoteToShow.text == "Quote 3");
+
+            // Already shown quotes
+            assertEquals(2, result.alreadyShownQuotes.size());
+            assertTrue(result.alreadyShownQuotes.contains("Quote 2"));
+            assertTrue(result.alreadyShownQuotes.contains("Quote 1") || result.alreadyShownQuotes.contains("Quote 3"));
+        }
+    }
+
     // pickRandom
     // --------------------------
 
