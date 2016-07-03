@@ -7,6 +7,10 @@ import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.assertEquals;
@@ -26,6 +30,22 @@ public class WalkRandomQuoteTest {
         WalkQuote result = WalkRandomQuote.pickOne(true);
         assertTrue(result.text.contains("wonderful and"));
         assertEquals(result.author, "Evgenii Neumerzhitckii");
+    }
+
+    // quoteToShow
+    // --------------------------
+
+    @Test
+    public void returnsRandomAndUsedQuotes() {
+        WalkQuote[] quotes = {
+                new WalkQuote("Quote 1", "Author 1"),
+                new WalkQuote("Quote 2", "Author 2"),
+                new WalkQuote("Quote 3", "Author 3")
+        };
+
+        Set<String> shown = new HashSet<String>(Arrays.asList("Quote 2"));
+
+        WalkQuoteToShow result = WalkRandomQuote.quoteToShow(quotes, shown);
     }
 
     // pickRandom
@@ -104,5 +124,41 @@ public class WalkRandomQuoteTest {
         int result = WalkRandomQuote.getRandomNumberGenerator().getRandomIntUntil(3);
 
         assertEquals(117, result);
+    }
+
+
+    // pickRandom
+    // --------------------------
+
+    @Test
+    public void testExcludeQuotes() {
+        WalkQuote[] quotes = {
+                new WalkQuote("Quote 1", "Author 1"),
+                new WalkQuote("Quote 2", "Author 2"),
+                new WalkQuote("Quote 3", "Author 3")
+        };
+
+        Set<String> exclude = new HashSet<String>(Arrays.asList("Quote 2", "Quote 1"));
+
+        WalkQuote[] result = WalkRandomQuote.excludeQuotes(quotes, exclude);
+
+        assertEquals(1, result.length);
+        assertEquals("Quote 3", result[0].text);
+        assertEquals("Author 3", result[0].author);
+    }
+
+    @Test
+    public void testExcludeQuotes_excludesAll() {
+        WalkQuote[] quotes = {
+                new WalkQuote("Quote 1", "Author 1"),
+                new WalkQuote("Quote 2", "Author 2"),
+                new WalkQuote("Quote 3", "Author 3")
+        };
+
+        Set<String> exclude = new HashSet<String>(Arrays.asList("Quote 2", "Quote 1", "Quote 3"));
+
+        WalkQuote[] result = WalkRandomQuote.excludeQuotes(quotes, exclude);
+
+        assertEquals(0, result.length);
     }
 }
