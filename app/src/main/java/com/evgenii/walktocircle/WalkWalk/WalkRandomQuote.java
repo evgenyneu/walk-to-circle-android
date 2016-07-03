@@ -21,11 +21,12 @@ public class WalkRandomQuote {
 
     /**
      * Get the current quote to be shown to the user and the list of already shown quotes.
+     * @param isTutorial if true, the app is in tutorial mode which means the instructional is always shown instead of a random one..
      * @param allQuotes all the quotes.
      * @param alreadyShownQuotes the list of quotes that are already shown to the user.
      * @return the quote to be shown now and the set of already shown quotes.
      */
-    public static WalkQuoteToShow quoteToShow(WalkQuote[] allQuotes, final Set<String> alreadyShownQuotes) {
+    public static WalkQuoteToShow quoteToShow(boolean isTutorial, WalkQuote[] allQuotes, final Set<String> alreadyShownQuotes) {
         WalkQuoteToShow result = new WalkQuoteToShow();
 
         // Add the picked quote to the list of shown quotes to avoid showing it soon again
@@ -36,12 +37,11 @@ public class WalkRandomQuote {
 
         if (newQuotes.length == 0) {
             // All quotes are show. Clear the shown set.
-            result.quoteToShow = pickRandom(allQuotes);
+            result.quoteToShow = pickOne(isTutorial, allQuotes);
             newAlreadyShownQuotes.clear();
         } else {
-            result.quoteToShow = pickRandom(newQuotes);
+            result.quoteToShow = pickOne(isTutorial, newQuotes);
         }
-
 
         newAlreadyShownQuotes.add(result.quoteToShow.text);
         result.alreadyShownQuotes = newAlreadyShownQuotes;

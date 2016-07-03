@@ -73,7 +73,7 @@ public class WalkRandomQuoteTest {
 
         Set<String> shown = new HashSet<String>(Arrays.asList("Quote 2"));
 
-        WalkQuoteToShow result = WalkRandomQuote.quoteToShow(quotes, shown);
+        WalkQuoteToShow result = WalkRandomQuote.quoteToShow(false, quotes, shown);
 
         // Quote to show
         assertEquals("Quote 3", result.quoteToShow.text);
@@ -97,7 +97,7 @@ public class WalkRandomQuoteTest {
 
         Set<String> shown = new HashSet<String>(Arrays.asList("Quote 2", "Quote 1", "Quote 3"));
 
-        WalkQuoteToShow result = WalkRandomQuote.quoteToShow(quotes, shown);
+        WalkQuoteToShow result = WalkRandomQuote.quoteToShow(false, quotes, shown);
 
         // Quote to show
         assertEquals("Quote 2", result.quoteToShow.text);
@@ -120,7 +120,7 @@ public class WalkRandomQuoteTest {
 
         Set<String> shown = new HashSet<String>();
 
-        WalkQuoteToShow result = WalkRandomQuote.quoteToShow(quotes, shown);
+        WalkQuoteToShow result = WalkRandomQuote.quoteToShow(false, quotes, shown);
 
         // Quote to show
         assertEquals("Quote 3", result.quoteToShow.text);
@@ -142,7 +142,7 @@ public class WalkRandomQuoteTest {
         Set<String> shown = new HashSet<String>(Arrays.asList("Quote 2"));
 
         for (int i = 0; i < 10; i++) {
-            WalkQuoteToShow result = WalkRandomQuote.quoteToShow(quotes, shown);
+            WalkQuoteToShow result = WalkRandomQuote.quoteToShow(false, quotes, shown);
 
             assertTrue(result.quoteToShow.text == "Quote 1" || result.quoteToShow.text == "Quote 3");
 
