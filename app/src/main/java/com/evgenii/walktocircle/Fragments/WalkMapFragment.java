@@ -16,6 +16,7 @@ import android.app.Fragment;
 import android.graphics.Point;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -105,6 +106,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     // ----------------------
 
     void initMap() {
+        if (!WalkFragmentType.Map.shouldBeVisibleNow()) { return; }
         MapFragment mapFragment =  MapFragment.newInstance();
 
         getChildFragmentManager().beginTransaction()
@@ -181,6 +183,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
 
     // The map is zoomed to last known location.
     private void zoomMapToLastLocation(Location location) {
+        if (!WalkFragmentType.Map.shouldBeVisibleNow()) { return; }
         if (mMap == null) { return; }
 
         // Skip zoom if map is already centered correctly
@@ -203,6 +206,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     // ----------------------
 
     void startLocationUpdates() {
+        if (!WalkFragmentType.Map.shouldBeVisibleNow()) { return; }
         WalkApplication.getLocationService().startLocationUpdates(this, 1000);
     }
 
@@ -213,6 +217,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
     // Updated location is used to show the start button
     @Override
     public void onLocationChanged(Location location) {
+        if (!WalkFragmentType.Map.shouldBeVisibleNow()) { return; }
         zoomMapToLastLocation(location);
         mStartButton.show();
         stopLocationUpdates();

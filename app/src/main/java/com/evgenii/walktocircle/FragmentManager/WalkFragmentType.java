@@ -44,6 +44,14 @@ public enum WalkFragmentType {
     }
 
     /**
+     *
+     * @return true if the fragment should be visible now.
+     */
+    public boolean shouldBeVisibleNow() {
+        return WalkFragmentType.shouldBeDisplayedNow() == this;
+    }
+
+    /**
      * @return true if this is the currently shown fragment.
      */
     public boolean isVisible() {

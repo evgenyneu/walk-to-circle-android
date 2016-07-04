@@ -2,6 +2,7 @@ package com.evgenii.walktocircle;
 
 import android.content.SharedPreferences;
 
+import com.evgenii.walktocircle.WalkWalk.WalkQuote;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.HashSet;
@@ -18,7 +19,14 @@ public class MainActivityState {
     // The list of quotes already shown to the user. The list is maintained in order to avoid showing same quotes one after another.
     private Set<String> mAlreadyShownQuotes;
 
+    // True if the app is in tutorial mode. Changes to false when user reaches the first circle.
     private boolean mIsTutorialMode = true;
+
+    // Quote text that is current shown on Walk screen
+    private String mCurrentQuoteText;
+
+    // Quote text author that is current shown on Walk screen
+    private String mCurrentQuoteAuthor;
 
     static final String CURRENT_LOCATION_LATITUDE = "currentLocationLatitude";
     static final String CURRENT_LOCATION_LONGITUDE = "currentLocationLongitude";
@@ -26,6 +34,8 @@ public class MainActivityState {
     static final String ALREADY_SHOWN_QUOTES = "alreadyShownQuotes";
     static final String IS_TUTORIAL_MODE = "isTutorialMode";
 
+    static final String CURRENT_QUOTE_TEXT = "currentQuoteText";
+    static final String CURRENT_QUOTE_AUTHOR = "currentQuoteAuthor";
 
     private static MainActivityState mInstance;
 
@@ -53,6 +63,10 @@ public class MainActivityState {
         mIsTutorialMode = preferences.getBoolean(IS_TUTORIAL_MODE, true);
 
         mAlreadyShownQuotes = preferences.getStringSet(ALREADY_SHOWN_QUOTES, new HashSet<String>());
+
+        mCurrentQuoteText = preferences.getString(CURRENT_QUOTE_TEXT, null);
+
+        mCurrentQuoteAuthor = preferences.getString(CURRENT_QUOTE_AUTHOR, null);
     }
 
     private void saveState() {
@@ -72,6 +86,10 @@ public class MainActivityState {
         editor.putBoolean(IS_TUTORIAL_MODE, mIsTutorialMode);
 
         editor.putStringSet(ALREADY_SHOWN_QUOTES, mAlreadyShownQuotes);
+
+        editor.putString(CURRENT_QUOTE_TEXT, mCurrentQuoteText);
+
+        editor.putString(CURRENT_QUOTE_AUTHOR, mCurrentQuoteAuthor);
 
         editor.commit();
     }
@@ -116,5 +134,27 @@ public class MainActivityState {
             mInstance.mIsTutorialMode = value;
             mInstance.saveState();
         }
+    }
+
+    // Current quote text
+    // -----------
+
+    public String getCurrentQuoteText() {
+        return mCurrentQuoteText;
+    }
+
+    public static void saveCurrentQuote(WalkQuote quote) {
+        if (mInstance != null) {
+            mInstance.mCurrentQuoteText = quote.text;
+            mInstance.mCurrentQuoteText = quote.author;
+            mInstance.saveState();
+        }
+    }
+
+    // Current quote author
+    // -----------
+
+    public String getCurrentQuoteAuthor() {
+        return mCurrentQuoteAuthor;
     }
 }

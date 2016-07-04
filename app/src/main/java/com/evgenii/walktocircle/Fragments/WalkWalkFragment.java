@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.Utils.WalkCameraDistance;
+import com.evgenii.walktocircle.WalkWalk.WalkQuote;
+import com.evgenii.walktocircle.WalkWalk.WalkRandomQuote;
 
 public class WalkWalkFragment extends Fragment {
 
@@ -22,8 +25,24 @@ public class WalkWalkFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.walk_fragment, container, false);
         WalkCameraDistance.setFragmentCameraDistance(view);
+        showQuote(view);
         return view;
     }
+
+    // Show quote
+    // -----------
+
+    private void showQuote(View view) {
+        TextView textViewQuoteText =  (TextView) view.findViewById(R.id.walk_quote_text_text_view);
+        TextView textViewQuoteAuthor =  (TextView) view.findViewById(R.id.walk_quote_author_text_view);
+
+        WalkQuote quote = WalkRandomQuote.getQuoteToShow();
+        textViewQuoteText.setText(quote.text);
+        textViewQuoteAuthor.setText(quote.author);
+    }
+
+    // Cancel button
+    // --------------
 
     public void didTapCloseButton() {
         // Ask the user if they want to abandon the current walk

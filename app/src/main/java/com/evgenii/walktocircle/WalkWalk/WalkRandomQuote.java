@@ -12,14 +12,32 @@ public class WalkRandomQuote {
     public static WalkRandomQuoteNumberGenerator mRandomNumberGenerator;
 
     /**
-     * The main method to be called on the main screen to get the current quote to be shown.
+     * The main method to be called on the main screen to get the current quote to be shown on Walk screen.
      * The function also saves the set of already shown quotes in app preferences.
-     * @return the quote to be shown now and the set of already shown quotes.
+     * @return the quote to be shown.
      */
-    public static WalkQuote getQuoteToShowAndSaveShown() {
+    public static WalkQuote getQuoteToShow() {
+        String quoteText = MainActivityState.getInstance().getCurrentQuoteText();
+        String quoteAuthor = MainActivityState.getInstance().getCurrentQuoteAuthor();
+
+        // Show current quote if present
+        if (quoteText != null && quoteAuthor != null) {
+            return new WalkQuote(quoteText, quoteAuthor);
+        }
+
+        // Get next random quote
+        return getNextRandomQuoteToShowAndSaveShown();
+    }
+
+    /**
+     * Gets random quote to show on walk screen. It also saves the set of already shown quotes in app preferences.
+     * @return the quote to be shown.
+     */
+    private static WalkQuote getNextRandomQuoteToShowAndSaveShown() {
         MainActivityState state = MainActivityState.getInstance();
         WalkQuoteToShow toShow = quoteToShow(state.isTutorialMode(), WalkManyQuotes.quotes, state.getAlreadyShownQuotes());
         MainActivityState.saveAlreadyShownQuotes(toShow.alreadyShownQuotes);
+        MainActivityState.saveCurrentQuote(toShow.quoteToShow);
         return toShow.quoteToShow;
     }
 
