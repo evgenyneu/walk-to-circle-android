@@ -7,8 +7,8 @@ import java.util.Set;
 import java.util.Vector;
 
 public class WalkRandomQuote {
-    // Random number generator used to pick a random quote.
-    // The property is null normally but in the unit test it is set with a fake random number generator.
+    // Random number generator that is used to pick a random quote.
+    // The property is null normally but in the unit test has a fake random number generator instance.
     public static WalkRandomQuoteNumberGenerator mRandomNumberGenerator;
 
     /**
@@ -19,7 +19,7 @@ public class WalkRandomQuote {
     public static WalkQuote getQuoteToShowAndSaveShown() {
         MainActivityState state = MainActivityState.getInstance();
         WalkQuoteToShow toShow = quoteToShow(state.isTutorialMode(), WalkManyQuotes.quotes, state.getAlreadyShownQuotes());
-        state.saveAlreadyShownQuotes(toShow.alreadyShownQuotes);
+        MainActivityState.saveAlreadyShownQuotes(toShow.alreadyShownQuotes);
         return toShow.quoteToShow;
     }
 
