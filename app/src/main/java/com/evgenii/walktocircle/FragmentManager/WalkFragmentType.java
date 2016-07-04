@@ -20,7 +20,7 @@ public enum WalkFragmentType {
         }
 
         // Walk: if user has dropped the pin
-        if (MainActivityState.getInstance().getCurrentPinLocation() != null) {
+        if (MainActivityState.getInstance().getCurrentCircleLocation() != null) {
             return Walk;
         }
 

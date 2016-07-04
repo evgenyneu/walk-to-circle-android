@@ -14,7 +14,6 @@ import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.Utils.WalkCameraDistance;
-import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.WalkCircleReachDetector;
 import com.evgenii.walktocircle.WalkWalk.WalkQuote;
 import com.evgenii.walktocircle.WalkWalk.WalkRandomQuote;
@@ -70,7 +69,7 @@ public class WalkWalkFragment extends Fragment {
     }
 
     private void abandonTheWalk() {
-        MainActivityState.getInstance().savePinLocation(null);
+        MainActivityState.getInstance().saveCircleLocation(null);
         WalkFragmentType.showWithAnimation();
     }
 }

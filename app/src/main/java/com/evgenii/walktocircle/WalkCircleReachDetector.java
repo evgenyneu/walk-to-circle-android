@@ -19,7 +19,7 @@ public class WalkCircleReachDetector {
     private WalkCircleReachDetector() { } // Private constructor
 
     public static void startLocationUpdates() {
-        if (MainActivityState.getInstance().getCurrentPinLocation() != null) {
+        if (MainActivityState.getInstance().getCurrentCircleLocation() != null) {
             WalkApplication.getLocationService().startCircleUpdates();
         }
     }
@@ -46,7 +46,7 @@ public class WalkCircleReachDetector {
     // ----------------------
 
     void checkReachedPosition(Location location) {
-        LatLng circleLatLng = MainActivityState.getInstance().getCurrentPinLocation();
+        LatLng circleLatLng = MainActivityState.getInstance().getCurrentCircleLocation();
         if (circleLatLng == null) { return; }
         Location circleLocation = WalkLocation.locationFromLatLng(circleLatLng);
 
@@ -56,7 +56,9 @@ public class WalkCircleReachDetector {
     }
 
     void circleReached() {
-        MainActivityState.savePinLocation(null);
+        MainActivityState.savePreviouslyReachedCircleLocation(MainActivityState.getInstance().getCurrentCircleLocation());
+        MainActivityState.saveCircleLocation(null);
+        MainActivityState.saveShowCongratulationsScreen(true);
         WalkApplication.getLocationService().stopCircleUpdates();
         (new WalkNotification()).sendNotification("You reached your circle. Well done!");
     }

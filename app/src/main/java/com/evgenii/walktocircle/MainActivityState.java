@@ -10,8 +10,11 @@ import java.util.Set;
 
 // Saved state for the app
 public class MainActivityState {
-    // Contains the location of the currently dropped pin. If null, pin is not currently dropped.
-    private LatLng mCurrentPinLocation = null;
+    // Contains the location of the currently dropped circle. If null, circle is not currently dropped.
+    private LatLng mCurrentCircleLocation = null;
+
+    // Contains the location of the previously reached dropped circle. Can be null.
+    private LatLng mPreviouslyReachedCircleLocation = null;
 
     // If true then we show Congratulations fragment
     private boolean mShowCongratulationsScreen = false;
@@ -27,6 +30,10 @@ public class MainActivityState {
 
     static final String CURRENT_LOCATION_LATITUDE = "currentLocationLatitude";
     static final String CURRENT_LOCATION_LONGITUDE = "currentLocationLongitude";
+
+    static final String PREVIOUSLY_REACHED_LOCATION_LATITUDE = "previouslyReachedLocationLatitude";
+    static final String PREVIOUSLY_REACHED_LOCATION_LONGITUDE = "previouslyReachedLocationLongitude";
+
     static final String SHOW_CONGRATULATIONS_SCREEEN = "showCongratulationsScreen";
     static final String ALREADY_SHOWN_QUOTES = "alreadyShownQuotes";
     static final String IS_TUTORIAL_MODE = "isTutorialMode";
@@ -48,11 +55,24 @@ public class MainActivityState {
     private void loadState() {
         SharedPreferences preferences = MainActivity.instance.getPreferences(0);
 
+        // Current circle
+        // -------------
+
         double currentLocationLatitude = preferences.getFloat(CURRENT_LOCATION_LATITUDE, 0);
         double currentLocationLongitude =  preferences.getFloat(CURRENT_LOCATION_LONGITUDE, 0);
 
         if (currentLocationLatitude != 0 && currentLocationLongitude != 0) {
-            mCurrentPinLocation = new LatLng(currentLocationLatitude, currentLocationLongitude);
+            mCurrentCircleLocation = new LatLng(currentLocationLatitude, currentLocationLongitude);
+        }
+
+        // Previously reached circle
+        // -------------
+
+        double previouslyReachedLocationLatitude = preferences.getFloat(PREVIOUSLY_REACHED_LOCATION_LATITUDE, 0);
+        double previouslyReachedLocationLongitude =  preferences.getFloat(PREVIOUSLY_REACHED_LOCATION_LONGITUDE, 0);
+
+        if (previouslyReachedLocationLatitude != 0 && previouslyReachedLocationLongitude != 0) {
+            mPreviouslyReachedCircleLocation = new LatLng(previouslyReachedLocationLatitude, previouslyReachedLocationLongitude);
         }
 
         mShowCongratulationsScreen = preferences.getBoolean(SHOW_CONGRATULATIONS_SCREEEN, false);
@@ -73,12 +93,26 @@ public class MainActivityState {
         SharedPreferences preferences = MainActivity.instance.getPreferences(0);
         SharedPreferences.Editor editor = preferences.edit();
 
-        if (mCurrentPinLocation == null) {
+        // Current circle
+        // -------------
+
+        if (mCurrentCircleLocation == null) {
             editor.putFloat(CURRENT_LOCATION_LATITUDE, 0);
             editor.putFloat(CURRENT_LOCATION_LONGITUDE, 0);
         } else {
-            editor.putFloat(CURRENT_LOCATION_LATITUDE, (float)mCurrentPinLocation.latitude);
-            editor.putFloat(CURRENT_LOCATION_LONGITUDE, (float)mCurrentPinLocation.longitude);
+            editor.putFloat(CURRENT_LOCATION_LATITUDE, (float) mCurrentCircleLocation.latitude);
+            editor.putFloat(CURRENT_LOCATION_LONGITUDE, (float) mCurrentCircleLocation.longitude);
+        }
+
+        // Previously reached circle
+        // -------------
+
+        if (mPreviouslyReachedCircleLocation == null) {
+            editor.putFloat(PREVIOUSLY_REACHED_LOCATION_LATITUDE, 0);
+            editor.putFloat(PREVIOUSLY_REACHED_LOCATION_LONGITUDE, 0);
+        } else {
+            editor.putFloat(PREVIOUSLY_REACHED_LOCATION_LATITUDE, (float) mPreviouslyReachedCircleLocation.latitude);
+            editor.putFloat(PREVIOUSLY_REACHED_LOCATION_LONGITUDE, (float) mPreviouslyReachedCircleLocation.longitude);
         }
 
         editor.putBoolean(SHOW_CONGRATULATIONS_SCREEEN, mShowCongratulationsScreen);
@@ -89,22 +123,50 @@ public class MainActivityState {
 
         if (mCurrentQuote != null) {
             editor.putString(CURRENT_QUOTE_TEXT, mCurrentQuote.text);
-            editor.putString(CURRENT_QUOTE_AUTHOR, mCurrentQuote.text);
+            editor.putString(CURRENT_QUOTE_AUTHOR, mCurrentQuote.author);
         }
 
         editor.commit();
     }
 
-    // Pin location
+    // Show congratulations screen
     // -----------
 
-    public LatLng getCurrentPinLocation() {
-        return mCurrentPinLocation;
+    public boolean getShowCongratulationsScreen() {
+        return mShowCongratulationsScreen;
     }
 
-    public static void savePinLocation(LatLng pinLocation) {
+    public static void saveShowCongratulationsScreen(boolean value) {
         if (mInstance != null) {
-            mInstance.mCurrentPinLocation = pinLocation;
+            mInstance.mShowCongratulationsScreen = value;
+            mInstance.saveState();
+        }
+    }
+
+    // Previously reached circle location
+    // -----------
+
+    public LatLng getPreviouslyReachedCircleLocation() {
+        return mPreviouslyReachedCircleLocation;
+    }
+
+    public static void savePreviouslyReachedCircleLocation(LatLng pinLocation) {
+        if (mInstance != null) {
+            mInstance.mPreviouslyReachedCircleLocation = pinLocation;
+            mInstance.saveState();
+        }
+    }
+
+    // Circle location
+    // -----------
+
+    public LatLng getCurrentCircleLocation() {
+        return mCurrentCircleLocation;
+    }
+
+    public static void saveCircleLocation(LatLng pinLocation) {
+        if (mInstance != null) {
+            mInstance.mCurrentCircleLocation = pinLocation;
             mInstance.saveState();
         }
     }
