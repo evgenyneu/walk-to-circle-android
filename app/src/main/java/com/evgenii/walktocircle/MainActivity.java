@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentOpener;
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
+import com.evgenii.walktocircle.Fragments.WalkCongratulationsFragment;
 import com.evgenii.walktocircle.Fragments.WalkWalkFragment;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
@@ -169,6 +170,18 @@ public class MainActivity extends AppCompatActivity {
             fragment.didTapCloseButton();
         }
     }
+
+    // Congratulations fragment
+    // ----------------------
+
+    public void didTapProceedFromCongratulations(View view) {
+        WalkCongratulationsFragment fragment = (WalkCongratulationsFragment) WalkFragmentType.Congratulations.getFragmentIfCurrentlyVisible();
+
+        if (fragment != null) {
+            fragment.didTapProceedButton();
+        }
+    }
+
 
     // Location denied fragment
     // ----------------------

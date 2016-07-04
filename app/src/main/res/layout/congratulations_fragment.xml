@@ -60,7 +60,7 @@
         android:layout_height="@dimen/start_button_size"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="@dimen/margin_small"
-        android:onClick="didTapCloseWalkButton"
+        android:onClick="didTapProceedFromCongratulations"
         android:background="@drawable/stop_button_with_pressed_state" />
 
 </FrameLayout>

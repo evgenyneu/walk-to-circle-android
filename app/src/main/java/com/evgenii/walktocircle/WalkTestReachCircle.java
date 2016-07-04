@@ -27,7 +27,7 @@ public class WalkTestReachCircle {
                 testReached = true;
             }
 
-        }, 0, seconds * 1000);
+        }, seconds * 1000);
     }
 
     private void cancelTimer() {
