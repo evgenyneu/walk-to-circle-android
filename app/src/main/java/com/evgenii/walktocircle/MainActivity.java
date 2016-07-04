@@ -52,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
         if (!WalkLocationPermissions.getInstance().shouldShowRequestPermissionRationale()) {
             WalkLocationPermissions.getInstance().requestLocationPermissionIfNotGranted(this);
         }
-
-        Log.d("ii", WalkManyQuotes.quotes[3].text);
     }
 
     @Override
