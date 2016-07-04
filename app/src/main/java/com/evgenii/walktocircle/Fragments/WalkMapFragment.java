@@ -86,7 +86,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
                 WalkConstants.maxCircleDistanceFromCurrentLocationMeters);
 
         MainActivityState.saveCurrentCircleLocation(WalkLocation.latLngFromLocation(pinLocation));
-        WalkCircleReachDetector.startLocationUpdates();
+        WalkApplication.getLocationService().startLocationUpdatesIfNeeded();
 
         Point mapSizePixels = mapSize();
         Point startButtonSizePixels = mStartButton.getSizePixels();

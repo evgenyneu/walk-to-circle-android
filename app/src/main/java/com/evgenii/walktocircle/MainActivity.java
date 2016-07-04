@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         WalkFragmentOpener.allowShowingFragments();
         WalkFragmentType.showWithAnimation();
+        WalkApplication.getLocationService().startLocationUpdatesIfNeeded();
     }
 
 

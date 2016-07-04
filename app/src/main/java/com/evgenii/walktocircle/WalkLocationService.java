@@ -14,9 +14,6 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
     // Send location updates to the map fragment
     private boolean mSendUpdatesToMap = false;
 
-    // Send location updates to detect if the user is inside the circle
-    private boolean mSendCircleUpdates = false;
-
     public void startUpdatesForMap() {
         mSendUpdatesToMap = true;
         startLocationUpdatesIfNeeded();
@@ -24,21 +21,11 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
 
     public void stopUpdatesForMap() {
         mSendUpdatesToMap = false;
-        stopLocationUpdates();
-    }
-
-    public void startCircleUpdates() {
-        mSendCircleUpdates = true;
-        startLocationUpdatesIfNeeded();
-    }
-
-    public void stopCircleUpdates() {
-        mSendCircleUpdates = false;
-        stopLocationUpdates();
+        stopLocationUpdatesIfNeeded();
     }
 
     public void startLocationUpdatesIfNeeded() {
-        if (!mSendUpdatesToMap && !mSendCircleUpdates) { return; } // Updates are not needed
+        if (!mSendUpdatesToMap && !areCircleUpdatesNeeded()) { return; } // Updates are not needed
         if (isUpdating) { return; } // Already updating location
 
         if (!WalkGoogleApiClient.isConnected()) { return; }
@@ -52,14 +39,18 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
         LocationServices.FusedLocationApi.requestLocationUpdates(
                 WalkGoogleApiClient.getInstance().getClient(), mLocationRequest, this);
 
-        Log.d("ii", "!!!!!! startLocationUpdates");
+        Log.d("ii", "!!!!!! startLocationUpdates " + (mSendUpdatesToMap? "MAP" : "") + " " + (areCircleUpdatesNeeded() ? "CIRCLE": ""));
 
         isUpdating = true;
     }
 
-    private void stopLocationUpdates() {
+    private boolean areCircleUpdatesNeeded() {
+        return MainActivityState.getInstance().getCurrentCircleLocation() != null;
+    }
+
+    public void stopLocationUpdatesIfNeeded() {
         if (!isUpdating) { return; } // Not updating
-        if (mSendUpdatesToMap || mSendCircleUpdates) { return; } // Location updates are still needed
+        if (mSendUpdatesToMap || areCircleUpdatesNeeded()) { return; } // Location updates are still needed
 
         if (!WalkGoogleApiClient.isConnected()) { return; }
         if (!WalkLocationPermissions.getInstance().hasLocationPermission()) { return; }
@@ -67,7 +58,7 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
         LocationServices.FusedLocationApi.removeLocationUpdates(
             WalkGoogleApiClient.getInstance().getClient(), this);
 
-        Log.d("ii", "!!!!!! stopLocationUpdates");
+        Log.d("ii", "!!!!!! stopLocationUpdates " + (mSendUpdatesToMap? "MAP" : "") + " " + (areCircleUpdatesNeeded() ? "CIRCLE": ""));
 
         isUpdating = false;
     }
@@ -81,7 +72,7 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
             }
         }
 
-        if (mSendCircleUpdates) {
+        if (areCircleUpdatesNeeded()) {
             // Check if we reached the circle
             WalkCircleReachDetector.getInstance().checkReachedPosition(location);
         }

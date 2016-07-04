@@ -31,13 +31,6 @@ public class WalkWalkFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        WalkCircleReachDetector.startLocationUpdates();
-    }
-
     // Show quote
     // -----------
 
@@ -77,7 +70,7 @@ public class WalkWalkFragment extends Fragment {
 
     private void abandonTheWalk() {
         MainActivityState.saveCurrentCircleLocation(null);
-        WalkApplication.getLocationService().stopCircleUpdates();
+        WalkApplication.getLocationService().stopLocationUpdatesIfNeeded();
         WalkFragmentType.showWithAnimation();
     }
 }
