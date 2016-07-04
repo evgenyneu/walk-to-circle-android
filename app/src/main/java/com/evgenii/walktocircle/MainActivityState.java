@@ -157,14 +157,14 @@ public class MainActivityState {
         }
     }
 
-    // Circle location
+    // Current circle location
     // -----------
 
     public LatLng getCurrentCircleLocation() {
         return mCurrentCircleLocation;
     }
 
-    public static void saveCircleLocation(LatLng pinLocation) {
+    public static void saveCurrentCircleLocation(LatLng pinLocation) {
         if (mInstance != null) {
             mInstance.mCurrentCircleLocation = pinLocation;
             mInstance.saveState();

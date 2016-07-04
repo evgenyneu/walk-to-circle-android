@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
-                    WalkApplication.getLocationService().startLocationUpdates();
+                    WalkApplication.getLocationService().startLocationUpdatesIfNeeded();
                     WalkFragmentType.showWithAnimation();
                     WalkMapFragment.ifVisibleEnableMyLocationAndZoomToLastLocation();
                 }
@@ -128,8 +128,8 @@ public class MainActivity extends AppCompatActivity {
         WalkLocationPermissions.getInstance().didGrantCallback = new Runnable() {
             @Override
             public void run() {
-                WalkApplication.getLocationService().startLocationUpdates();
-                WalkFragmentType.shouldBeDisplayedNow();
+                WalkApplication.getLocationService().startLocationUpdatesIfNeeded();
+                WalkFragmentType.showWithAnimation();
                 WalkMapFragment.ifVisibleEnableMyLocationAndZoomToLastLocation();
             }
         };
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         WalkLocationPermissions.getInstance().didDenyCallback = new Runnable() {
             @Override
             public void run() {
-                WalkFragmentType.shouldBeDisplayedNow();
+                WalkFragmentType.showWithAnimation();
             }
         };
     }

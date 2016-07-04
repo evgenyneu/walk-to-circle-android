@@ -57,8 +57,9 @@ public class WalkCircleReachDetector {
     }
 
     void circleReached() {
+        if (MainActivityState.getInstance().getCurrentCircleLocation() == null) { return; }
         MainActivityState.savePreviouslyReachedCircleLocation(MainActivityState.getInstance().getCurrentCircleLocation());
-        MainActivityState.saveCircleLocation(null);
+        MainActivityState.saveCurrentCircleLocation(null);
         MainActivityState.saveShowCongratulationsScreen(true);
         WalkApplication.getLocationService().stopCircleUpdates();
         (new WalkNotification()).sendNotification("You reached your circle. Well done!");

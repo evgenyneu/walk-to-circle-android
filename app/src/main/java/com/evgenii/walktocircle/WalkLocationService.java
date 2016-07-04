@@ -19,7 +19,7 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
 
     public void startUpdatesForMap() {
         mSendUpdatesToMap = true;
-        startLocationUpdates();
+        startLocationUpdatesIfNeeded();
     }
 
     public void stopUpdatesForMap() {
@@ -29,7 +29,7 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
 
     public void startCircleUpdates() {
         mSendCircleUpdates = true;
-        startLocationUpdates();
+        startLocationUpdatesIfNeeded();
     }
 
     public void stopCircleUpdates() {
@@ -37,7 +37,7 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
         stopLocationUpdates();
     }
 
-    public void startLocationUpdates() {
+    public void startLocationUpdatesIfNeeded() {
         if (!mSendUpdatesToMap && !mSendCircleUpdates) { return; } // Updates are not needed
         if (isUpdating) { return; } // Already updating location
 

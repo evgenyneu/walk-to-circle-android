@@ -15,7 +15,7 @@ public enum WalkFragmentType {
     Congratulations,
     LocationDenied;
 
-    public static WalkFragmentType shouldBeDisplayedNow() {
+    private static WalkFragmentType shouldBeDisplayedNow() {
         // Location Denied: If location permission is not granted
         if (!WalkLocationPermissions.getInstance().hasLocationPermission()) {
             return LocationDenied;

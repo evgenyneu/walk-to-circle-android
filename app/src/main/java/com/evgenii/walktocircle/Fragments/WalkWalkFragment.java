@@ -76,7 +76,7 @@ public class WalkWalkFragment extends Fragment {
     }
 
     private void abandonTheWalk() {
-        MainActivityState.getInstance().saveCircleLocation(null);
+        MainActivityState.saveCurrentCircleLocation(null);
         WalkApplication.getLocationService().stopCircleUpdates();
         WalkFragmentType.showWithAnimation();
     }
