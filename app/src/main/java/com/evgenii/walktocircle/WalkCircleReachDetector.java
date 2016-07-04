@@ -64,6 +64,12 @@ public class WalkCircleReachDetector {
      * @return returns true if the user reached the circle
      */
     boolean reachedTheCircle(Location userLocation, Location circleLocation, double circleRadiusMeters) {
+        // User for manual testing
+        if (WalkTestReachCircle.getInstance().testReached) {
+            WalkTestReachCircle.getInstance().testReached = false;
+            return true;
+        }
+
         return circleLocation.distanceTo(userLocation) < circleRadiusMeters;
     }
 

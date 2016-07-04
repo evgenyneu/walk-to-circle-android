@@ -15,7 +15,6 @@ import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.Utils.WalkCameraDistance;
 import com.evgenii.walktocircle.WalkApplication;
-import com.evgenii.walktocircle.WalkCircleReachDetector;
 import com.evgenii.walktocircle.WalkWalk.WalkQuote;
 import com.evgenii.walktocircle.WalkWalk.WalkRandomQuote;
 
