@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (WalkLocationPermissions.getInstance().hasLocationPermission()) {
+                    WalkApplication.getLocationService().startLocationUpdates();
                     WalkFragmentType.showWithAnimation();
                     WalkMapFragment.ifVisibleEnableMyLocationAndZoomToLastLocation();
                 }
@@ -127,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
         WalkLocationPermissions.getInstance().didGrantCallback = new Runnable() {
             @Override
             public void run() {
+                WalkApplication.getLocationService().startLocationUpdates();
                 WalkFragmentType.shouldBeDisplayedNow();
                 WalkMapFragment.ifVisibleEnableMyLocationAndZoomToLastLocation();
             }

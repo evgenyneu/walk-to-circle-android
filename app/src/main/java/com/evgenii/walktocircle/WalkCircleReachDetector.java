@@ -2,6 +2,7 @@ package com.evgenii.walktocircle;
 
 import android.location.Location;
 
+import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.Utils.WalkLocation;
 import com.google.android.gms.maps.model.LatLng;
 
@@ -61,6 +62,7 @@ public class WalkCircleReachDetector {
         MainActivityState.saveShowCongratulationsScreen(true);
         WalkApplication.getLocationService().stopCircleUpdates();
         (new WalkNotification()).sendNotification("You reached your circle. Well done!");
+        WalkFragmentType.showWithAnimation();
     }
 
     /**

@@ -37,8 +37,9 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
         stopLocationUpdates();
     }
 
-    private void startLocationUpdates() {
+    public void startLocationUpdates() {
         if (!mSendUpdatesToMap && !mSendCircleUpdates) { return; } // Updates are not needed
+        if (isUpdating) { return; } // Already updating location
 
         if (!WalkGoogleApiClient.isConnected()) { return; }
         if (!WalkLocationPermissions.getInstance().hasLocationPermission()) { return; }

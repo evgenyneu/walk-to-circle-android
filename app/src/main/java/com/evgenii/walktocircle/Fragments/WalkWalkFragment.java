@@ -14,6 +14,7 @@ import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.Utils.WalkCameraDistance;
+import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.WalkCircleReachDetector;
 import com.evgenii.walktocircle.WalkWalk.WalkQuote;
 import com.evgenii.walktocircle.WalkWalk.WalkRandomQuote;
@@ -27,8 +28,14 @@ public class WalkWalkFragment extends Fragment {
         View view = inflater.inflate(R.layout.walk_fragment, container, false);
         WalkCameraDistance.setFragmentCameraDistance(view);
         showQuote(view);
-        WalkCircleReachDetector.startLocationUpdates();
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        WalkCircleReachDetector.startLocationUpdates();
     }
 
     // Show quote
@@ -70,6 +77,7 @@ public class WalkWalkFragment extends Fragment {
 
     private void abandonTheWalk() {
         MainActivityState.getInstance().saveCircleLocation(null);
+        WalkApplication.getLocationService().stopCircleUpdates();
         WalkFragmentType.showWithAnimation();
     }
 }
