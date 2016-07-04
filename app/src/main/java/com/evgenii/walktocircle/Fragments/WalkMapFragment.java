@@ -1,5 +1,6 @@
 package com.evgenii.walktocircle.Fragments;
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
+import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.Utils.WalkGeo;
 import com.evgenii.walktocircle.Utils.WalkLocation;
@@ -83,9 +84,11 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
                 WalkConstants.minCircleDistanceFromCurrentLocationMeters,
                 WalkConstants.maxCircleDistanceFromCurrentLocationMeters);
 
+        MainActivityState.getInstance().savePinLocation(WalkLocation.latLngFromLocation(pinLocation));
+
         Point mapSizePixels = new Point(getView().getWidth(), getView().getHeight());
         Point startButtonSizePixels = mStartButton.getSizePixels();
-        mStartButton.rotateAndShowInitialNumber(pinLocation);
+        mStartButton.rotateAndShowInitialNumber();
 
         mPrepareMapForPin.prepare(lastLocation, pinLocation, mMap,
                 mapSizePixels, startButtonSizePixels, new Runnable() {

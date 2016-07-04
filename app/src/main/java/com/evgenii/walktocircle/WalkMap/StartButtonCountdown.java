@@ -18,11 +18,6 @@ import com.evgenii.walktocircle.WalkConstants;
 public class StartButtonCountdown {
     CountDownTimer mCountdownTimer;
     int currentCountdownValue = 0;
-    Location mPinLocation;
-
-    public StartButtonCountdown(Location pinLocation) {
-        mPinLocation = pinLocation;
-    }
 
     void rotateAndShowInitialNumber() {
         cancelCountdownTimer();
@@ -31,7 +26,6 @@ public class StartButtonCountdown {
     }
 
     void stopCountdown() {
-        mPinLocation = null;
         cancelCountdownTimer();
     }
 
@@ -82,7 +76,6 @@ public class StartButtonCountdown {
     }
 
     private void startWalking() {
-            MainActivityState.getInstance().savePinLocation(WalkLocation.latLngFromLocation(mPinLocation));
         WalkFragmentType.showWithAnimation();
     }
 

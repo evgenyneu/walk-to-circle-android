@@ -38,9 +38,9 @@ public class StartButton {
     }
 
     // Rotates the start button and shows the countdown animation
-    public void rotateAndShowInitialNumber(Location pinLocation) {
+    public void rotateAndShowInitialNumber() {
         stopCountdown();
-        mStartButtonCountdown = new StartButtonCountdown(pinLocation);
+        mStartButtonCountdown = new StartButtonCountdown();
 
         if (isStartButtonVisible) {
             // Showing the start button, flip it around to show the countdown.
