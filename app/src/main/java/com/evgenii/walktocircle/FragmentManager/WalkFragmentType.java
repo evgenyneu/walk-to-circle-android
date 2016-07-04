@@ -38,6 +38,7 @@ public enum WalkFragmentType {
      * @return fragment object or null if this fragment is not the one that is currently shown.
      */
     public Fragment getFragmentIfCurrentlyVisible() {
+        if (!shouldBeVisibleNow()) { return null; }
         Fragment fragment = WalkFragmentOpener.getCurrentFragment();
         if (isFragmentOfType(fragment)) { return fragment; }
         return null;

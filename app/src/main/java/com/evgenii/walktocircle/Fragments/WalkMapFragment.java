@@ -27,8 +27,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 
-public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
-        com.google.android.gms.location.LocationListener {
+public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private StartButton mStartButton;
@@ -207,16 +206,15 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback,
 
     void startLocationUpdates() {
         if (!WalkFragmentType.Map.shouldBeVisibleNow()) { return; }
-        WalkApplication.getLocationService().startLocationUpdates(this, 1000);
+        WalkApplication.getLocationService().startUpdatesForMap();
     }
 
     void stopLocationUpdates() {
-        WalkApplication.getLocationService().stopLocationUpdates();
+        WalkApplication.getLocationService().stopUpdatesForMap();
     }
 
-    // Updated location is used to show the start button
-    @Override
-    public void onLocationChanged(Location location) {
+    public void didUpdateLocation(Location location) {
+        Log.d("ii", "!!!!!! MAP didUpdateLocation");
         if (!WalkFragmentType.Map.shouldBeVisibleNow()) { return; }
         zoomMapToLastLocation(location);
         mStartButton.show();
