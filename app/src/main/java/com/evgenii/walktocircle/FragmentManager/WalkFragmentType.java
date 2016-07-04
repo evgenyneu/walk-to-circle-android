@@ -2,6 +2,7 @@ package com.evgenii.walktocircle.FragmentManager;
 
 import android.app.Fragment;
 
+import com.evgenii.walktocircle.Fragments.WalkCongratulationsFragment;
 import com.evgenii.walktocircle.Fragments.WalkWalkFragment;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
@@ -11,6 +12,7 @@ import com.evgenii.walktocircle.WalkLocationPermissions;
 public enum WalkFragmentType {
     Map,
     Walk,
+    Congratulations,
     LocationDenied;
 
     public static WalkFragmentType shouldBeDisplayedNow() {
@@ -22,6 +24,11 @@ public enum WalkFragmentType {
         // Walk: if user has dropped the pin
         if (MainActivityState.getInstance().getCurrentCircleLocation() != null) {
             return Walk;
+        }
+
+        // Congratulations: shown when user reaches the circle.
+        if (MainActivityState.getInstance().getShowCongratulationsScreen()) {
+            return Congratulations;
         }
 
         return Map;
@@ -85,6 +92,10 @@ public enum WalkFragmentType {
                 if (fragment instanceof WalkWalkFragment) { return true; }
                 break;
 
+            case Congratulations:
+                if (fragment instanceof WalkCongratulationsFragment) { return true; }
+                break;
+
             case LocationDenied:
                 if (fragment instanceof WalkLocationDeniedFragment) { return true; }
                 break;
@@ -104,6 +115,9 @@ public enum WalkFragmentType {
 
             case Walk:
                 return new WalkWalkFragment();
+
+            case Congratulations:
+                return new WalkCongratulationsFragment();
 
             case LocationDenied:
                 return new WalkLocationDeniedFragment();
