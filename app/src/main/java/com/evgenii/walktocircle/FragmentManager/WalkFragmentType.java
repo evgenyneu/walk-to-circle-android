@@ -15,6 +15,10 @@ public enum WalkFragmentType {
     Congratulations,
     LocationDenied;
 
+    /**
+     *
+     * @return fragment type that should be displayed now.
+     */
     private static WalkFragmentType shouldBeDisplayedNow() {
         // Location Denied: If location permission is not granted
         if (!WalkLocationPermissions.getInstance().hasLocationPermission()) {
@@ -43,9 +47,20 @@ public enum WalkFragmentType {
 
     /**
      * @return fragment object or null if this fragment is not the one that is currently shown.
+     * Returns null if the fragment should not be shown now.
+     */
+    public Fragment getFragmentIfCurrentlyVisibleAndShouldBeVisible() {
+        if (!shouldBeVisibleNow()) { return null; }
+        Fragment fragment = WalkFragmentOpener.getCurrentFragment();
+        if (isFragmentOfType(fragment)) { return fragment; }
+        return null;
+    }
+
+    /**
+     *
+     * @return fragment object or null if this fragment is not the one that is currently shown.
      */
     public Fragment getFragmentIfCurrentlyVisible() {
-        if (!shouldBeVisibleNow()) { return null; }
         Fragment fragment = WalkFragmentOpener.getCurrentFragment();
         if (isFragmentOfType(fragment)) { return fragment; }
         return null;
@@ -62,7 +77,7 @@ public enum WalkFragmentType {
     /**
      * @return true if this is the currently shown fragment.
      */
-    public boolean isVisible() {
+    private boolean isVisible() {
         Fragment fragment = getFragmentIfCurrentlyVisible();
         return fragment != null;
     }

@@ -66,7 +66,7 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
     @Override
     public void onLocationChanged(Location location) {
         if (mSendUpdatesToMap) {
-            WalkMapFragment mapFragment = (WalkMapFragment) WalkFragmentType.Map.getFragmentIfCurrentlyVisible();
+            WalkMapFragment mapFragment = (WalkMapFragment) WalkFragmentType.Map.getFragmentIfCurrentlyVisibleAndShouldBeVisible();
             if (mapFragment != null) {
                 mapFragment.didUpdateLocation(location);
             }

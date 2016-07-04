@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentOpener;
@@ -13,7 +12,6 @@ import com.evgenii.walktocircle.Fragments.WalkCongratulationsFragment;
 import com.evgenii.walktocircle.Fragments.WalkWalkFragment;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
-import com.evgenii.walktocircle.WalkWalk.WalkManyQuotes;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
@@ -164,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
     // ----------------------
 
     public void didTapCloseWalkButton(View view) {
-        WalkWalkFragment fragment = (WalkWalkFragment) WalkFragmentType.Walk.getFragmentIfCurrentlyVisible();
+        WalkWalkFragment fragment = (WalkWalkFragment) WalkFragmentType.Walk.getFragmentIfCurrentlyVisibleAndShouldBeVisible();
 
         if (fragment != null) {
             fragment.didTapCloseButton();
@@ -175,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
     // ----------------------
 
     public void didTapProceedFromCongratulations(View view) {
-        WalkCongratulationsFragment fragment = (WalkCongratulationsFragment) WalkFragmentType.Congratulations.getFragmentIfCurrentlyVisible();
+        WalkCongratulationsFragment fragment = (WalkCongratulationsFragment) WalkFragmentType.Congratulations.getFragmentIfCurrentlyVisibleAndShouldBeVisible();
 
         if (fragment != null) {
             fragment.didTapProceedButton();
@@ -188,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void locationDenied_didTapOpenSettingsButton(View view) {
         WalkLocationDeniedFragment fragment = (WalkLocationDeniedFragment)
-                WalkFragmentType.LocationDenied.getFragmentIfCurrentlyVisible();
+                WalkFragmentType.LocationDenied.getFragmentIfCurrentlyVisibleAndShouldBeVisible();
 
         if (fragment == null) { return; }
         fragment.didTapOpenSettings();

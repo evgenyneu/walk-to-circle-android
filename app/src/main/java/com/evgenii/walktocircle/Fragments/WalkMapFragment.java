@@ -5,14 +5,12 @@ import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.Utils.WalkGeo;
 import com.evgenii.walktocircle.Utils.WalkLocation;
 import com.evgenii.walktocircle.WalkApplication;
-import com.evgenii.walktocircle.WalkCircleReachDetector;
 import com.evgenii.walktocircle.WalkConstants;
 import com.evgenii.walktocircle.WalkGoogleApiClient;
 import com.evgenii.walktocircle.WalkLocationPermissions;
 import com.evgenii.walktocircle.WalkMap.DropPin;
 import com.evgenii.walktocircle.WalkMap.PrepareMapForPin;
 import com.evgenii.walktocircle.WalkMap.StartButton;
-import com.evgenii.walktocircle.WalkTestReachCircle;
 import com.google.android.gms.maps.GoogleMap;
 import android.app.Fragment;
 import android.graphics.Point;
@@ -71,7 +69,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
      * Zoom the map to location if the map fragment is currently visible.
      */
     public static void ifVisibleEnableMyLocationAndZoomToLastLocation() {
-        WalkMapFragment fragment = (WalkMapFragment) WalkFragmentType.Map.getFragmentIfCurrentlyVisible();
+        WalkMapFragment fragment = (WalkMapFragment) WalkFragmentType.Map.getFragmentIfCurrentlyVisibleAndShouldBeVisible();
 
         if (fragment != null) {
             fragment.enableMyLocationAndZoomToLastLocation();
@@ -88,7 +86,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
 
         MainActivityState.saveCurrentCircleLocation(WalkLocation.latLngFromLocation(pinLocation));
         WalkApplication.getLocationService().startLocationUpdatesIfNeeded();
-        WalkTestReachCircle.getInstance().testCircleReachedAfterSeconds(8);
+//        WalkTestReachCircle.getInstance().testCircleReachedAfterSeconds(8);
 
         Point mapSizePixels = mapSize();
         Point startButtonSizePixels = mStartButton.getSizePixels();
