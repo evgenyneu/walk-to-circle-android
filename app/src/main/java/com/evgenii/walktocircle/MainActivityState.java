@@ -22,11 +22,8 @@ public class MainActivityState {
     // True if the app is in tutorial mode. Changes to false when user reaches the first circle.
     private boolean mIsTutorialMode = true;
 
-    // Quote text that is current shown on Walk screen
-    private String mCurrentQuoteText;
-
-    // Quote text author that is current shown on Walk screen
-    private String mCurrentQuoteAuthor;
+    // Quote that is currently shown on Walk screen
+    private WalkQuote mCurrentQuote;
 
     static final String CURRENT_LOCATION_LATITUDE = "currentLocationLatitude";
     static final String CURRENT_LOCATION_LONGITUDE = "currentLocationLongitude";
@@ -64,9 +61,12 @@ public class MainActivityState {
 
         mAlreadyShownQuotes = preferences.getStringSet(ALREADY_SHOWN_QUOTES, new HashSet<String>());
 
-        mCurrentQuoteText = preferences.getString(CURRENT_QUOTE_TEXT, null);
+        String currentQuoteText = preferences.getString(CURRENT_QUOTE_TEXT, null);
+        String currentQuoteAuthor = preferences.getString(CURRENT_QUOTE_AUTHOR, null);
 
-        mCurrentQuoteAuthor = preferences.getString(CURRENT_QUOTE_AUTHOR, null);
+        if (currentQuoteText != null && currentQuoteAuthor != null) {
+            mCurrentQuote = new WalkQuote(currentQuoteText, currentQuoteAuthor);
+        }
     }
 
     private void saveState() {
@@ -87,9 +87,10 @@ public class MainActivityState {
 
         editor.putStringSet(ALREADY_SHOWN_QUOTES, mAlreadyShownQuotes);
 
-        editor.putString(CURRENT_QUOTE_TEXT, mCurrentQuoteText);
-
-        editor.putString(CURRENT_QUOTE_AUTHOR, mCurrentQuoteAuthor);
+        if (mCurrentQuote != null) {
+            editor.putString(CURRENT_QUOTE_TEXT, mCurrentQuote.text);
+            editor.putString(CURRENT_QUOTE_AUTHOR, mCurrentQuote.text);
+        }
 
         editor.commit();
     }
@@ -139,22 +140,14 @@ public class MainActivityState {
     // Current quote text
     // -----------
 
-    public String getCurrentQuoteText() {
-        return mCurrentQuoteText;
+    public WalkQuote getCurrentQuote() {
+        return mCurrentQuote;
     }
 
     public static void saveCurrentQuote(WalkQuote quote) {
         if (mInstance != null) {
-            mInstance.mCurrentQuoteText = quote.text;
-            mInstance.mCurrentQuoteText = quote.author;
+            mInstance.mCurrentQuote = quote;
             mInstance.saveState();
         }
-    }
-
-    // Current quote author
-    // -----------
-
-    public String getCurrentQuoteAuthor() {
-        return mCurrentQuoteAuthor;
     }
 }

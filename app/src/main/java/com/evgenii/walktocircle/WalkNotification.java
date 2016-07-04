@@ -12,14 +12,14 @@ public class WalkNotification {
 
     public int mId = 1;
 
-    void sendNotification(String title, String text) {
+    void sendNotification(String title) {
         Context context = WalkApplication.getAppContext();
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle(title)
-                        .setContentText(text)
+//                        .setContentText(text)
                         .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
                         .setVibrate(new long[]{
                                 0, 100,

@@ -7,16 +7,21 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
-public class WalkLocationDetector {
+public class WalkCircleReachDetector {
     private static ArrayList<WalkPosition> walkPositions = new ArrayList<WalkPosition>();
 
-    private static WalkLocationDetector ourInstance = new WalkLocationDetector();
+    private static WalkCircleReachDetector ourInstance = new WalkCircleReachDetector();
 
-    public static WalkLocationDetector getInstance() {
+    public static WalkCircleReachDetector getInstance() {
         return ourInstance;
     }
 
-    private WalkLocationDetector() {
+    private WalkCircleReachDetector() { } // Private constructor
+
+    public static void startLocationUpdates() {
+        if (MainActivityState.getInstance().getCurrentPinLocation() != null) {
+            WalkApplication.getLocationService().startCircleUpdates();
+        }
     }
 
     public ArrayList<WalkPosition> getPositions() {
@@ -37,31 +42,30 @@ public class WalkLocationDetector {
         return walkPositions;
     }
 
-    // Reach position detector
+    // Checks if we reached the circle
     // ----------------------
 
     void checkReachedPosition(Location location) {
-        final WalkPosition position = reachedPosition(location, WalkConstants.mCircleRadiusMeters);
+        LatLng circleLatLng = MainActivityState.getInstance().getCurrentPinLocation();
+        if (circleLatLng == null) { return; }
+        Location circleLocation = WalkLocation.locationFromLatLng(circleLatLng);
 
-        clearReachedPositions(location,
-                WalkConstants.mCircleRadiusMeters + WalkConstants.mReachPositionVariationMeters);
-
-        if (position == null) { return; }
-        if (position.reached) { return; }
-        position.reached = true;
-        //(new WalkNotification()).sendNotification("Reached circle", position.name);
+        if (reachedTheCircle(location, circleLocation, WalkConstants.mCircleRadiusMeters)) {
+            circleReached();
+        }
     }
 
-    WalkPosition reachedPosition(Location userLocation, double distance) {
-        for(WalkPosition position: walkPositions) {
-            Location circleLocation = WalkLocation.locationFromLatLng(position.latLng);
+    void circleReached() {
+        MainActivityState.savePinLocation(null);
+        WalkApplication.getLocationService().stopCircleUpdates();
+        (new WalkNotification()).sendNotification("You reached your circle. Well done!");
+    }
 
-            if (circleLocation.distanceTo(userLocation) < distance) {
-                return position;
-            }
-        }
-
-        return null;
+    /**
+     * @return returns true if the user reached the circle
+     */
+    boolean reachedTheCircle(Location userLocation, Location circleLocation, double circleRadiusMeters) {
+        return circleLocation.distanceTo(userLocation) < circleRadiusMeters;
     }
 
     void clearReachedPositions(Location userLocation, double distance) {

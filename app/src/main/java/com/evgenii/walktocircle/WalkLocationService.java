@@ -5,14 +5,17 @@ import android.util.Log;
 
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
-import com.evgenii.walktocircle.WalkWalk.WalkQuote;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
 public class WalkLocationService implements  com.google.android.gms.location.LocationListener {
     private boolean isUpdating = false;
 
+    // Send location updates to the map fragment
     private boolean mSendUpdatesToMap = false;
+
+    // Send location updates to detect if the user is inside the circle
+    private boolean mSendCircleUpdates = false;
 
     public void startUpdatesForMap() {
         mSendUpdatesToMap = true;
@@ -24,8 +27,18 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
         stopLocationUpdates();
     }
 
+    public void startCircleUpdates() {
+        mSendCircleUpdates = true;
+        startLocationUpdates();
+    }
+
+    public void stopCircleUpdates() {
+        mSendCircleUpdates = false;
+        stopLocationUpdates();
+    }
+
     private void startLocationUpdates() {
-        if (!mSendUpdatesToMap) { return; } // Updates are not needed
+        if (!mSendUpdatesToMap && !mSendCircleUpdates) { return; } // Updates are not needed
 
         if (!WalkGoogleApiClient.isConnected()) { return; }
         if (!WalkLocationPermissions.getInstance().hasLocationPermission()) { return; }
@@ -45,7 +58,7 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
 
     private void stopLocationUpdates() {
         if (!isUpdating) { return; } // Not updating
-        if (mSendUpdatesToMap) { return; } // Need updates
+        if (mSendUpdatesToMap || mSendCircleUpdates) { return; } // Location updates are still needed
 
         if (!WalkGoogleApiClient.isConnected()) { return; }
         if (!WalkLocationPermissions.getInstance().hasLocationPermission()) { return; }
@@ -65,6 +78,11 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
             if (mapFragment != null) {
                 mapFragment.didUpdateLocation(location);
             }
+        }
+
+        if (mSendCircleUpdates) {
+            // Check if we reached the circle
+            WalkCircleReachDetector.getInstance().checkReachedPosition(location);
         }
     }
 }

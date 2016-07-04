@@ -17,12 +17,11 @@ public class WalkRandomQuote {
      * @return the quote to be shown.
      */
     public static WalkQuote getQuoteToShow() {
-        String quoteText = MainActivityState.getInstance().getCurrentQuoteText();
-        String quoteAuthor = MainActivityState.getInstance().getCurrentQuoteAuthor();
+        WalkQuote currentQuote = MainActivityState.getInstance().getCurrentQuote();
 
         // Show current quote if present
-        if (quoteText != null && quoteAuthor != null) {
-            return new WalkQuote(quoteText, quoteAuthor);
+        if (currentQuote != null) {
+            return currentQuote;
         }
 
         // Get next random quote
