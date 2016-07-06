@@ -11,6 +11,7 @@ import com.evgenii.walktocircle.WalkLocationPermissions;
 import com.evgenii.walktocircle.WalkMap.DropPin;
 import com.evgenii.walktocircle.WalkMap.PrepareMapForPin;
 import com.evgenii.walktocircle.WalkMap.StartButton;
+import com.evgenii.walktocircle.WalkTestReachCircle;
 import com.google.android.gms.maps.GoogleMap;
 import android.app.Fragment;
 import android.graphics.Point;
@@ -86,7 +87,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
 
         MainActivityState.saveCurrentCircleLocation(WalkLocation.latLngFromLocation(pinLocation));
         WalkApplication.getLocationService().startLocationUpdatesIfNeeded();
-//        WalkTestReachCircle.getInstance().testCircleReachedAfterSeconds(8);
+        WalkTestReachCircle.getInstance().testCircleReachedAfterSeconds(8);
 
         Point mapSizePixels = mapSize();
         Point startButtonSizePixels = mStartButton.getSizePixels();

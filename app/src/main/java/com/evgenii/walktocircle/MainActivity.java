@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentOpener;
@@ -25,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Save the instance to this Activity object
-        // Important: make sure the instance variable is cleared in onDestroy
         instance = this;
 
         // Load saved data
@@ -51,12 +51,6 @@ public class MainActivity extends AppCompatActivity {
         if (!WalkLocationPermissions.getInstance().shouldShowRequestPermissionRationale()) {
             WalkLocationPermissions.getInstance().requestLocationPermissionIfNotGranted(this);
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        instance = null;
-        super.onDestroy();
     }
 
     @Override
