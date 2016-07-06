@@ -11,6 +11,7 @@ public class WalkApplication extends Application {
     private static Context context;
     private static WalkSounds walkSounds;
     private static WalkLocationService locationService = new WalkLocationService();
+    private static Boolean mIsActive = false; // true if app is in the foreground.
 
     public void onCreate() {
         super.onCreate();
@@ -28,11 +29,23 @@ public class WalkApplication extends Application {
     }
 
     public static void activityResumed() {
+        mIsActive = true;
         walkSounds.unSilence();
+        Log.d("ii", "!!!!! App resumed");
     }
 
     public static void activityPaused() {
+        mIsActive = false;
         walkSounds.silence();
+        Log.d("ii", "!!!!! App paused");
+    }
+
+    /**
+     *
+     * @return true if application is in the foreground.
+     */
+    public static Boolean isActive() {
+        return mIsActive;
     }
 
     public static WalkLocationService getLocationService() {
