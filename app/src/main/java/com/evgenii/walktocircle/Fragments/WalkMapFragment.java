@@ -92,6 +92,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
         Point mapSizePixels = mapSize();
         Point startButtonSizePixels = mStartButton.getSizePixels();
         mStartButton.rotateAndShowInitialNumber();
+        mDropPin.showPinCircle(pinLocation, mMap);
 
         mPrepareMapForPin.prepare(lastLocation, pinLocation, mMap,
                 mapSizePixels, startButtonSizePixels, new Runnable() {
@@ -140,6 +141,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
         mMap = googleMap;
         enableMyLocationAndZoomToLastLocation();
         mMap.getUiSettings().setMapToolbarEnabled(false);
+        mStartButton.show();
     }
 
     public void enableMyLocationAndZoomToLastLocation() {
@@ -223,10 +225,8 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
     }
 
     public void didUpdateLocation(Location location) {
-        Log.d("ii", "!!!!!! MAP didUpdateLocation");
         if (!WalkFragmentType.Map.shouldBeVisibleNow()) { return; }
         zoomMapToLastLocation(location);
-        mStartButton.show();
         stopLocationUpdates();
     }
 }
