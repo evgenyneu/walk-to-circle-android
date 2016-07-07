@@ -1,5 +1,6 @@
 package com.evgenii.walktocircle.WalkMap;
 import com.evgenii.walktocircle.MainActivity;
+import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
 
 import android.animation.ObjectAnimator;
@@ -62,6 +63,11 @@ public class DropPin {
     }
 
     private void dropMarker(final Marker marker, GoogleMap map) {
+        if (MainActivityState.getInstance().isTutorialMode()) {
+            // Show "Walk to circle" message above the pin in tutorial mode
+            mPreviousMarker.showInfoWindow();
+        }
+
         final LatLng finalPosition = new LatLng(marker.getPosition().latitude, marker.getPosition().longitude);
 
         Projection projection = map.getProjection();
