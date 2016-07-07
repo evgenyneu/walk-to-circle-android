@@ -59,5 +59,6 @@ public class WalkConstants {
 
     public static double mapPinThrowAndDropVolume = 1.0;
     public static double mapStartButtonBlopVolume = 0.4;
+    public static double mapShowWalkScreenVolume = 0.2;
     public static double mapStartButtonCountdownClickVolume = 0.4;
 }

@@ -77,6 +77,7 @@ public class StartButtonCountdown {
 
     private void startWalking() {
         WalkFragmentType.showWithAnimation();
+        WalkApplication.getSounds().playSound(R.raw.large_door, WalkConstants.mapShowWalkScreenVolume);
     }
 
     private void cancelCountdownTimer() {
