@@ -84,4 +84,8 @@ public class WalkGeo {
 
         return WalkLocation.fromLatLng(Math.toDegrees(φ2), Math.toDegrees(λ2));
     }
+
+    public static double normalizedZoomLevelForLatitude(double latitude, double zoomLevel) {
+        return (1 - Math.pow(Math.abs(latitude) / 150.0, 3)) * zoomLevel;
+    }
 }

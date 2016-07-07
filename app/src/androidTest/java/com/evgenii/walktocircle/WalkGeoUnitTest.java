@@ -47,4 +47,16 @@ public class WalkGeoUnitTest {
         assertEquals(-37.81582, result.getLatitude(), 0.0001);
         assertEquals(144.97326, result.getLongitude(), 0.0001);
     }
+
+    @Test
+    public void returnsNormalizedZoomLevel() {
+        double result = WalkGeo.normalizedZoomLevelForLatitude(0, 15);
+        assertEquals(15.0, result, 0.0001);
+
+        result = WalkGeo.normalizedZoomLevelForLatitude(37, 15);
+        assertEquals(14.445, result, 0.0001);
+
+        result = WalkGeo.normalizedZoomLevelForLatitude(-37, 15);
+        assertEquals(14.445, result, 0.0001);
+    }
 }

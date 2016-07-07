@@ -1,0 +1,6 @@
+Locations
+
+Iceland: 65.9667, -18.5333
+Australia; -37.858821, 144.979955
+Indonesia: 1.674435, 110.208571
+Antarctica: -80.693927, 98.255446

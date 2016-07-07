@@ -13,17 +13,13 @@ public class WalkConstants {
     // before dropping the pin, in milliseconds.
     public static int mapPositionAnimationDurationMilliseconds = 400;
 
-    // The maximum allowed displacements of the current user position from the center of the map.
-    // If user position is farther away from the map's center the map is re-centered.
-    public static int mapMaxDistanceFromMapCenterMeters = 100;
-
     // The default zoom level of the map. The map is zoomed it this level before the pin is dropped.
-    public static float mapInitialZoom = 16;
+    public static double mapInitialZoom = 16.1;
 
     // The maximum allowed difference between the current map zoom level and the "mapInitialZoom"
     // setting. If the difference is greater the map is zoomed at the "mapInitialZoom" level.
     // Units: the GoogleMap zoom level units.
-    public static float mapZoomLevelDelta = 1;
+    public static double mapZoomLevelDelta = 1;
 
     // The maximum allowed bearing from zero degrees. If bearing is greater the map's bearing
     // is set back to zero.

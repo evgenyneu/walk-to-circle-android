@@ -26,6 +26,12 @@
         android:layout_marginBottom="@dimen/margin_small"
         android:alpha="0">
 
+        <ImageView
+            android:id="@+id/rewindArrowsImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rewind_arrows" />
+
         <TextView
             android:id="@+id/countdownTextView"
             android:layout_width="match_parent"
@@ -36,12 +42,6 @@
             android:text="5"
             android:background="@drawable/rewind"
             android:paddingBottom="4dp" />
-
-        <ImageView
-            android:id="@+id/rewindArrowsImageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/rewind_arrows" />
 
     </FrameLayout>
 

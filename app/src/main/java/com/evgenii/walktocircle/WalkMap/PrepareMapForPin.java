@@ -6,6 +6,7 @@ import android.location.Location;
 import android.util.Log;
 
 import com.evgenii.walktocircle.MainActivity;
+import com.evgenii.walktocircle.Utils.WalkGeo;
 import com.evgenii.walktocircle.Utils.WalkLocation;
 import com.evgenii.walktocircle.Utils.WalkView;
 import com.evgenii.walktocircle.WalkConstants;
@@ -70,9 +71,14 @@ public class PrepareMapForPin {
         boolean didChangeCamera = false;
 
         // Zoom
-        float currentZoom = map.getCameraPosition().zoom;
-        if (Math.abs(WalkConstants.mapInitialZoom - currentZoom) > WalkConstants.mapZoomLevelDelta) {
-            cameraPositionBuilder.zoom(WalkConstants.mapInitialZoom);
+        double mapInitialZoom = WalkGeo.normalizedZoomLevelForLatitude(userLocation.getLatitude(),
+                WalkConstants.mapInitialZoom);
+
+        double currentZoom = WalkGeo.normalizedZoomLevelForLatitude(userLocation.getLatitude(),
+                map.getCameraPosition().zoom);
+
+        if (Math.abs(mapInitialZoom - currentZoom) > WalkConstants.mapZoomLevelDelta) {
+            cameraPositionBuilder.zoom((float)mapInitialZoom);
             didChangeCamera = true;
         }
 
@@ -108,7 +114,6 @@ public class PrepareMapForPin {
      * @param map map object
      * @param mapSizePixels size of the map in pixels
      * @param startButtonSizePixels size of the start button in pixels
-     * @param callback called when camera update animation is finished
      */
     private void animateCameraToShowPin(Location pinLocation, GoogleMap map, Point mapSizePixels,
                                         Point startButtonSizePixels) {

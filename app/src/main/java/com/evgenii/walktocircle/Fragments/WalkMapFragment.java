@@ -195,20 +195,23 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
         if (!WalkFragmentType.Map.shouldBeVisibleNow()) { return; }
         if (mMap == null) { return; }
 
+        double mapInitialZoom = WalkGeo.normalizedZoomLevelForLatitude(location.getLatitude(), WalkConstants.mapInitialZoom);
+
         // Skip zoom if map is already centered correctly
         Location mapCenter =  WalkLocation.getMapCenter(mMap);
         if (mapCenter.distanceTo(location) < 150) {
-            float currentZoom = mMap.getCameraPosition().zoom;
+            double currentZoom = mMap.getCameraPosition().zoom;
+            currentZoom = WalkGeo.normalizedZoomLevelForLatitude(location.getLatitude(), currentZoom);
 
             // Skip zoom if already zoomed
-            if (Math.abs(WalkConstants.mapInitialZoom - currentZoom) < 1.5) {
+            if (Math.abs(mapInitialZoom - currentZoom) < 1.5) {
                 return;
             }
         }
 
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, WalkConstants.mapInitialZoom));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, (float) mapInitialZoom));
     }
 
     // Location updates
