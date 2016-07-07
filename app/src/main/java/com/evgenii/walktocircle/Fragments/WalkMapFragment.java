@@ -87,22 +87,21 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
 
         MainActivityState.saveCurrentCircleLocation(WalkLocation.latLngFromLocation(pinLocation));
         WalkApplication.getLocationService().startLocationUpdatesIfNeeded();
-        WalkTestReachCircle.getInstance().testCircleReachedAfterSeconds(8);
+//        WalkTestReachCircle.getInstance().testCircleReachedAfterSeconds(8);
 
         Point mapSizePixels = mapSize();
         Point startButtonSizePixels = mStartButton.getSizePixels();
         mStartButton.rotateAndShowInitialNumber();
-        mDropPin.showPinCircle(pinLocation, mMap);
 
         mPrepareMapForPin.prepare(lastLocation, pinLocation, mMap,
                 mapSizePixels, startButtonSizePixels, new Runnable() {
-
-            @Override
-            public void run() {
-                mDropPin.dropPin(pinLocation, mMap);
-                mStartButton.startCountdown();
-            }
-        });
+                    @Override
+                    public void run() {
+                        // Animated to show user location
+                        mDropPin.dropPin(pinLocation, mMap);
+                        mStartButton.startCountdown();
+                    }
+                });
     }
 
     private Point mapSize() {
@@ -116,7 +115,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
 
     void initMap() {
         if (!WalkFragmentType.Map.shouldBeVisibleNow()) { return; }
-        MapFragment mapFragment =  MapFragment.newInstance();
+        MapFragment mapFragment = MapFragment.newInstance();
 
         getChildFragmentManager().beginTransaction()
             .setCustomAnimations(R.animator.keep_child_fragment, 0, 0, 0)

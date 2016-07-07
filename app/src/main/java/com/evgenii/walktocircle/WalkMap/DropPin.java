@@ -36,16 +36,12 @@ public class DropPin {
         removePreviousMarker();
 
         LatLng latLng = WalkLocation.latLngFromLocation(pinLocation);
+        addCircle(latLng, map);
 
         MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Walk to Circle");
         mPreviousMarker = map.addMarker(markerOptions);
         dropMarker(mPreviousMarker, map);
         playPinThrowAndDropSound();
-    }
-
-    public void showPinCircle(Location pinLocation, GoogleMap map) {
-        LatLng latLng = WalkLocation.latLngFromLocation(pinLocation);
-        addCircle(latLng, map);
     }
 
     private void playPinThrowAndDropSound() {

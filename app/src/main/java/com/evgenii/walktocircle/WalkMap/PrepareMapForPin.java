@@ -20,12 +20,13 @@ import com.google.android.gms.maps.model.LatLngBounds;
 public class PrepareMapForPin {
     public void prepare(Location userLocation, final Location pinLocation,
                         final GoogleMap map, final Point mapSizePixels,
-                        final Point startButtonSizePixels, final Runnable callback) {
+                        final Point startButtonSizePixels, final Runnable complete) {
 
         animateCameraToUserLocation(userLocation, map, new Runnable() {
             @Override
             public void run() {
-                animateCameraToShowPin(pinLocation, map, mapSizePixels, startButtonSizePixels, callback);
+                complete.run();
+                animateCameraToShowPin(pinLocation, map, mapSizePixels, startButtonSizePixels);
             }
         });
     }
@@ -110,17 +111,13 @@ public class PrepareMapForPin {
      * @param callback called when camera update animation is finished
      */
     private void animateCameraToShowPin(Location pinLocation, GoogleMap map, Point mapSizePixels,
-                                        Point startButtonSizePixels, final Runnable callback) {
+                                        Point startButtonSizePixels) {
         CameraUpdate update = getCameraUpdateToShowPin(pinLocation, map, mapSizePixels, startButtonSizePixels);
 
-        if (update == null) {
-            // No camera update is necessary
-            callback.run();
-        } else {
+        if (update != null) {
             map.animateCamera(update, WalkConstants.mapPositionAnimationDurationMilliseconds, new GoogleMap.CancelableCallback() {
                 @Override
                 public void onFinish() {
-                    callback.run();
                 }
 
                 @Override
