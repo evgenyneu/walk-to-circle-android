@@ -1,6 +1,6 @@
 package com.evgenii.walktocircle.WalkCongrats;
 
-import com.evgenii.walktocircle.WalkWalk.WalkQuote;
+import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.WalkWalk.WalkRandomNumberGenerator;
 
 import java.util.Arrays;
@@ -34,12 +34,19 @@ public class WalkCongratsPhrase {
         return mPhrases;
     }
 
+    /**
+     * @return a random congratulatory phrase that is shown to user after reaching a circle.
+     */
+    public static String getRandomPhrase() {
+        int circlesReached = MainActivityState.getInstance().getCirclesReachedToday();
+        return getRandomPhraseForCirclesReached(circlesReached);
+    }
 
     /**
      * @param circlesReached number of circles reached today.
      * @return returns a random phrase for the given number of circles reached.
      */
-    public String getRandomPhraseForCirclesReached(int circlesReached) {
+    public static String getRandomPhraseForCirclesReached(int circlesReached) {
         if (circlesReached < 1) { circlesReached = 1; }
         String[] phrases = getUnseenPhrasesForCirclesReached(circlesReached);
 
@@ -55,7 +62,7 @@ public class WalkCongratsPhrase {
         return randomPhrase;
     }
 
-    public String[] getUnseenPhrasesForCirclesReached(int circlesReached) {
+    public static String[] getUnseenPhrasesForCirclesReached(int circlesReached) {
         String[] phrases = getPhrasesForCirclesReached(circlesReached);
         return excludePhrases(phrases, mPhrasesSeenToday);
     }
@@ -65,7 +72,7 @@ public class WalkCongratsPhrase {
      * @param circlesReached number of circles reached today.
      * @return Returns the array of phrases corresponding to the number of circles reached.
      */
-    public String[] getPhrasesForCirclesReached(int circlesReached) {
+    public static String[] getPhrasesForCirclesReached(int circlesReached) {
         if (circlesReached <1) { return new String[]{}; }
         Map<Integer, String[]> phrases = getPhrases();
 
@@ -86,7 +93,7 @@ public class WalkCongratsPhrase {
         return phrasesForCirclesReached;
     }
 
-    public String[] excludePhrases(String[] fromPhrases, Set<String> exclude) {
+    public static String[] excludePhrases(String[] fromPhrases, Set<String> exclude) {
         Vector filteredPhrases = new Vector();
 
         for (String phrase : fromPhrases){

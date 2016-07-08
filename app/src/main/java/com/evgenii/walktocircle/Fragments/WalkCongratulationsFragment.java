@@ -23,7 +23,10 @@ public class WalkCongratulationsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.congratulations_fragment, container, false);
         WalkCameraDistance.setFragmentCameraDistance(view);
+
+        showCongratulationPhrase(view);
         showNumberOfCirclesReached(view);
+
         return view;
     }
 
@@ -35,5 +38,10 @@ public class WalkCongratulationsFragment extends Fragment {
     private void showNumberOfCirclesReached(View view) {
         TextView textView =  (TextView) view.findViewById(R.id.congrats_circles_reached_today_text_view);
         textView.setText(WalkCirclesReachedToday.numberOfCirclesReachedTodayPhrase());
+    }
+
+    private void showCongratulationPhrase(View view) {
+        TextView textView =  (TextView) view.findViewById(R.id.congrats_well_done_phrase_text_view);
+        textView.setText(WalkCongratsPhrase.getRandomPhrase());
     }
 }

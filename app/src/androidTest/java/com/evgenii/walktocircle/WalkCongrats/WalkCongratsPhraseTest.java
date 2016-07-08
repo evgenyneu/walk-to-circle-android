@@ -21,13 +21,6 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 public class WalkCongratsPhraseTest {
-    WalkCongratsPhrase obj;
-
-    @Before
-    public void setup() {
-        obj = new WalkCongratsPhrase();
-    }
-
     @After
     public void after() {
         WalkCongratsPhrase.mRandomNumberGenerator = null; // Stop using fake random generator
@@ -41,7 +34,7 @@ public class WalkCongratsPhraseTest {
     public void getRandomPhrase_forOneCircleReached() {
         WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(4);
 
-        String result = obj.getRandomPhraseForCirclesReached(1);
+        String result = WalkCongratsPhrase.getRandomPhraseForCirclesReached(1);
 
         assertEquals("Good remembering!", result);
     }
@@ -50,7 +43,7 @@ public class WalkCongratsPhraseTest {
     public void getRandomPhrase_forZeroCircleReached() {
         WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(4);
 
-        String result = obj.getRandomPhraseForCirclesReached(0);
+        String result = WalkCongratsPhrase.getRandomPhraseForCirclesReached(0);
 
         assertEquals("Good remembering!", result);
     }
@@ -59,7 +52,7 @@ public class WalkCongratsPhraseTest {
     public void getRandomPhrase_for42CircleReached() {
         WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(0);
 
-        String result = obj.getRandomPhraseForCirclesReached(42);
+        String result = WalkCongratsPhrase.getRandomPhraseForCirclesReached(42);
 
         assertEquals("Holy Figs!", result);
     }
@@ -68,7 +61,7 @@ public class WalkCongratsPhraseTest {
     public void getRandomPhrase_forNineCircleReached() {
         WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(2);
 
-        String result = obj.getRandomPhraseForCirclesReached(9);
+        String result = WalkCongratsPhrase.getRandomPhraseForCirclesReached(9);
 
         assertEquals("Fantastic!", result);
     }
@@ -78,12 +71,12 @@ public class WalkCongratsPhraseTest {
         WalkCongratsPhrase.mRandomNumberGenerator = null;
 
         for (int i = 0; i < 100; i++) {
-            String result = obj.getRandomPhraseForCirclesReached(1);
+            String result = WalkCongratsPhrase.getRandomPhraseForCirclesReached(1);
             assertTrue(result.length() > 1);
         }
 
         for (int i = 0; i < 100; i++) {
-            String result = obj.getRandomPhraseForCirclesReached(i);
+            String result = WalkCongratsPhrase.getRandomPhraseForCirclesReached(i);
             assertTrue(result.length() > 1);
         }
     }
@@ -95,7 +88,7 @@ public class WalkCongratsPhraseTest {
 
         WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(4);
 
-        String result = obj.getRandomPhraseForCirclesReached(1);
+        String result = WalkCongratsPhrase.getRandomPhraseForCirclesReached(1);
 
         assertEquals("That's good!", result);
 
@@ -120,7 +113,7 @@ public class WalkCongratsPhraseTest {
 
         WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(2);
 
-        String result = obj.getRandomPhraseForCirclesReached(1);
+        String result = WalkCongratsPhrase.getRandomPhraseForCirclesReached(1);
 
         assertEquals("Good work!", result);
 
@@ -137,7 +130,7 @@ public class WalkCongratsPhraseTest {
     public void getUnseenPhrasesForCirclesReached() {
         WalkCongratsPhrase.mPhrasesSeenToday = new HashSet<String>(); // Reset seen phrases;
 
-        String[] result = obj.getUnseenPhrasesForCirclesReached(1);
+        String[] result = WalkCongratsPhrase.getUnseenPhrasesForCirclesReached(1);
 
         String[] expected = {
                 "Good start!",
@@ -155,7 +148,7 @@ public class WalkCongratsPhraseTest {
         WalkCongratsPhrase.mPhrasesSeenToday = new HashSet<String>(
                 Arrays.asList("Good start!", "OK!"));
 
-        String[] result = obj.getUnseenPhrasesForCirclesReached(1);
+        String[] result = WalkCongratsPhrase.getUnseenPhrasesForCirclesReached(1);
 
         String[] expected = {
                 "Good job!",
@@ -172,7 +165,7 @@ public class WalkCongratsPhraseTest {
                 Arrays.asList("Good start!", "OK!", "Good job!", "Good work!",
                         "Good remembering!", "That's good!"));
 
-        String[] result = obj.getUnseenPhrasesForCirclesReached(1);
+        String[] result = WalkCongratsPhrase.getUnseenPhrasesForCirclesReached(1);
 
         String[] expected = {};
 
@@ -191,7 +184,7 @@ public class WalkCongratsPhraseTest {
 
         Set<String> exclude = new HashSet<String>(Arrays.asList("Phrase 1", "Phrase 3"));
 
-        String[] result = obj.excludePhrases(all, exclude);
+        String[] result = WalkCongratsPhrase.excludePhrases(all, exclude);
 
         String[] expected = {"Phrase 2"};
 
@@ -207,7 +200,7 @@ public class WalkCongratsPhraseTest {
 
         Set<String> exclude = new HashSet<String>(Arrays.asList("Phrase 1", "Phrase 3", "Phrase 2"));
 
-        String[] result = obj.excludePhrases(all, exclude);
+        String[] result = WalkCongratsPhrase.excludePhrases(all, exclude);
 
         String[] expected = {};
 
@@ -223,7 +216,7 @@ public class WalkCongratsPhraseTest {
 
         Set<String> exclude = new HashSet<String>();
 
-        String[] result = obj.excludePhrases(all, exclude);
+        String[] result = WalkCongratsPhrase.excludePhrases(all, exclude);
 
         String[] expected = {"Phrase 1", "Phrase 2", "Phrase 3"};
 
@@ -236,7 +229,7 @@ public class WalkCongratsPhraseTest {
 
     @Test
     public void getPhrasesForCirclesReached_zero() {
-        String[] result = obj.getPhrasesForCirclesReached(0);
+        String[] result = WalkCongratsPhrase.getPhrasesForCirclesReached(0);
 
         String[] expected = {};
         assertArrayEquals(expected, result);
@@ -244,7 +237,7 @@ public class WalkCongratsPhraseTest {
 
     @Test
     public void getPhrasesForCirclesReached_one() {
-        String[] result = obj.getPhrasesForCirclesReached(1);
+        String[] result = WalkCongratsPhrase.getPhrasesForCirclesReached(1);
 
         String[] expected = {
                 "Good start!",
@@ -259,7 +252,7 @@ public class WalkCongratsPhraseTest {
 
     @Test
     public void getPhrasesForCirclesReached_two() {
-        String[] result = obj.getPhrasesForCirclesReached(2);
+        String[] result = WalkCongratsPhrase.getPhrasesForCirclesReached(2);
 
         String[] expected = {
                 "Congratulations!",
@@ -283,16 +276,16 @@ public class WalkCongratsPhraseTest {
 
         assertArrayEquals(expected, result);
 
-        result = obj.getPhrasesForCirclesReached(3);
+        result = WalkCongratsPhrase.getPhrasesForCirclesReached(3);
         assertArrayEquals(expected, result);
 
-        result = obj.getPhrasesForCirclesReached(4);
+        result = WalkCongratsPhrase.getPhrasesForCirclesReached(4);
         assertArrayEquals(expected, result);
     }
 
     @Test
     public void getPhrasesForCirclesReached_five() {
-        String[] result = obj.getPhrasesForCirclesReached(5);
+        String[] result = WalkCongratsPhrase.getPhrasesForCirclesReached(5);
 
         String[] expected = {
                 "That's really nice!",
@@ -307,16 +300,16 @@ public class WalkCongratsPhraseTest {
 
         assertArrayEquals(expected, result);
 
-        result = obj.getPhrasesForCirclesReached(6);
+        result = WalkCongratsPhrase.getPhrasesForCirclesReached(6);
         assertArrayEquals(expected, result);
 
-        result = obj.getPhrasesForCirclesReached(7);
+        result = WalkCongratsPhrase.getPhrasesForCirclesReached(7);
         assertArrayEquals(expected, result);
     }
 
     @Test
     public void getPhrasesForCirclesReached_eight() {
-        String[] result = obj.getPhrasesForCirclesReached(8);
+        String[] result = WalkCongratsPhrase.getPhrasesForCirclesReached(8);
 
         String[] expected = {
                 "Terrific!",
@@ -334,17 +327,17 @@ public class WalkCongratsPhraseTest {
 
         assertArrayEquals(expected, result);
 
-        result = obj.getPhrasesForCirclesReached(9);
+        result = WalkCongratsPhrase.getPhrasesForCirclesReached(9);
         assertArrayEquals(expected, result);
 
-        result = obj.getPhrasesForCirclesReached(12);
+        result = WalkCongratsPhrase.getPhrasesForCirclesReached(12);
         assertArrayEquals(expected, result);
     }
 
 
     @Test
     public void getPhrasesForCirclesReached_13() {
-        String[] result = obj.getPhrasesForCirclesReached(13);
+        String[] result = WalkCongratsPhrase.getPhrasesForCirclesReached(13);
 
         String[] expected = {
                 "That deserves a hug!",
@@ -364,16 +357,16 @@ public class WalkCongratsPhraseTest {
 
         assertArrayEquals(expected, result);
 
-        result = obj.getPhrasesForCirclesReached(16);
+        result = WalkCongratsPhrase.getPhrasesForCirclesReached(16);
         assertArrayEquals(expected, result);
 
-        result = obj.getPhrasesForCirclesReached(19);
+        result = WalkCongratsPhrase.getPhrasesForCirclesReached(19);
         assertArrayEquals(expected, result);
     }
 
     @Test
     public void getPhrasesForCirclesReached_twenty() {
-        String[] result = obj.getPhrasesForCirclesReached(20);
+        String[] result = WalkCongratsPhrase.getPhrasesForCirclesReached(20);
 
         String[] expected = {
                 "Holy Figs!",
@@ -384,10 +377,10 @@ public class WalkCongratsPhraseTest {
 
         assertArrayEquals(expected, result);
 
-        result = obj.getPhrasesForCirclesReached(21);
+        result = WalkCongratsPhrase.getPhrasesForCirclesReached(21);
         assertArrayEquals(expected, result);
 
-        result = obj.getPhrasesForCirclesReached(412);
+        result = WalkCongratsPhrase.getPhrasesForCirclesReached(412);
         assertArrayEquals(expected, result);
     }
 }
