@@ -1,6 +1,7 @@
 package com.evgenii.walktocircle.WalkCongrats;
 
 import com.evgenii.walktocircle.MainActivityState;
+import com.evgenii.walktocircle.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,6 +13,16 @@ public class WalkCirclesReachedToday {
     public static void increment() {
         MainActivityState.saveCirclesReachedToday(numberOfCirclesReachedToday() + 1);
         MainActivityState.saveLastCircleReachedDate(getCurrentYearMonthDay());
+    }
+
+    public static String numberOfCirclesReachedTodayPhrase() {
+        int circlesReachedToday = numberOfCirclesReachedToday();
+
+        if (circlesReachedToday == 1) {
+            return "" + R.string.congrats_reached_first_circle_today;
+        } else {
+            return circlesReachedToday + " " + R.string.congrats_circles_reached_today;
+        }
     }
 
     /**

@@ -12,4 +12,6 @@
     <string name="dialog_button_no">No</string>
     <string name="walk_screen_abandon_this_walk">Abandon this walk?</string>
     <string name="walk_location_disabled_message">Unable to detect your location.</string>
+    <string name="congrats_reached_first_circle_today">You\'ve reached your first circle today.</string>
+    <string name="congrats_circles_reached_today">circles reached today.</string>
 </resources>
