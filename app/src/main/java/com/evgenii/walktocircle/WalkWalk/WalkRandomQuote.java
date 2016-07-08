@@ -9,7 +9,7 @@ import java.util.Vector;
 public class WalkRandomQuote {
     // Random number generator that is used to pick a random quote.
     // The property is null normally but in the unit test has a fake random number generator instance.
-    public static WalkRandomQuoteNumberGenerator mRandomNumberGenerator;
+    public static WalkRandomNumberGenerator mRandomNumberGenerator;
 
     /**
      * The main method to be called on the main screen to get the current quote to be shown on Walk screen.
@@ -73,9 +73,9 @@ public class WalkRandomQuote {
         return result;
     }
 
-    public static WalkRandomQuoteNumberGenerator getRandomNumberGenerator() {
+    public static WalkRandomNumberGenerator getRandomNumberGenerator() {
         if (mRandomNumberGenerator == null) {
-            return new WalkRandomQuoteNumberGenerator();
+            return new WalkRandomNumberGenerator();
         } else {
             return mRandomNumberGenerator;
         }

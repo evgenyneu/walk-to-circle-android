@@ -13,14 +13,14 @@ import java.util.Map;
  * and shows a random one from this list.
  */
 public class WalkCongratsPhrase {
-    private Map<Integer, String[]> mPhrases;
+    private static Map<Integer, String[]> mPhrases;
 
-    public Map<Integer, String[]> getPhrases() {
+    public static Map<Integer, String[]> getPhrases() {
         addPhrases();
         return mPhrases;
     }
 
-    private void addPhrases() {
+    private static void addPhrases() {
         if (mPhrases != null) { return; }
 
         mPhrases = new HashMap<Integer, String[]>();
@@ -126,5 +126,9 @@ public class WalkCongratsPhrase {
                 "Shmowzow!"};
 
         mPhrases.put(20, values20);
+    }
+
+    public String getRandomPhrase(int circlesReached) {
+        return "";
     }
 }

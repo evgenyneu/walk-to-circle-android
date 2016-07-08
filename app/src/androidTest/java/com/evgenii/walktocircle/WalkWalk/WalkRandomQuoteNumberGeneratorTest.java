@@ -1,7 +1,6 @@
 package com.evgenii.walktocircle.WalkWalk;
 
 import android.support.test.runner.AndroidJUnit4;
-import android.util.Log;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +15,7 @@ public class WalkRandomQuoteNumberGeneratorTest {
 
     @Test
     public void returnsRandomNumber() {
-        WalkRandomQuoteNumberGenerator generator = new WalkRandomQuoteNumberGenerator();
+        WalkRandomNumberGenerator generator = new WalkRandomNumberGenerator();
 
         for (int i = 0; i < 100; i++) {
             int result = generator.getRandomIntUntil(5);
@@ -27,7 +26,7 @@ public class WalkRandomQuoteNumberGeneratorTest {
     }
 
     public void returnsRandomNumber_upperBoundaryIsOne() {
-        WalkRandomQuoteNumberGenerator generator = new WalkRandomQuoteNumberGenerator();
+        WalkRandomNumberGenerator generator = new WalkRandomNumberGenerator();
 
         int result = generator.getRandomIntUntil(1);
 
@@ -35,7 +34,7 @@ public class WalkRandomQuoteNumberGeneratorTest {
     }
 
     public void returnsRandomNumber_upperBoundaryIsZero() {
-        WalkRandomQuoteNumberGenerator generator = new WalkRandomQuoteNumberGenerator();
+        WalkRandomNumberGenerator generator = new WalkRandomNumberGenerator();
 
         int result = generator.getRandomIntUntil(0);
 

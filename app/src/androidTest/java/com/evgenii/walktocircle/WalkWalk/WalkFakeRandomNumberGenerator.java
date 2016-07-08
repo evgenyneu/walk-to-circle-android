@@ -1,8 +1,6 @@
 package com.evgenii.walktocircle.WalkWalk;
 
-import java.util.Random;
-
-public class WalkFakeRandomNumberGenerator extends WalkRandomQuoteNumberGenerator {
+public class WalkFakeRandomNumberGenerator extends WalkRandomNumberGenerator {
     private int mReturnNumber = 42; // The number that the fake generator will return instead of the random one.
 
     public WalkFakeRandomNumberGenerator(int returnNumber) {
