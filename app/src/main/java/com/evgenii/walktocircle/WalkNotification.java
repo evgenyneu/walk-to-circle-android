@@ -53,4 +53,13 @@ public class WalkNotification {
         // mId allows you to update the notification later on.
         mNotificationManager.notify(mId, mBuilder.build());
     }
+    
+    void remove() {
+        Context context = WalkApplication.getAppContext();
+
+        NotificationManager mNotificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        mNotificationManager.cancel(mId);
+    }
 }

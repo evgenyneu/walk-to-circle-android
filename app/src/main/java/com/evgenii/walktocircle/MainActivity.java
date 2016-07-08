@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         WalkApplication.activityResumed();
         startGooglePlayServices();
+        new WalkNotification().remove();
     }
 
     @Override
