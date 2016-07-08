@@ -24,7 +24,7 @@
     </style>
 
     <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorAccent">@color/walkColorShade70</item>
+        <item name="colorAccent">@color/walkColorShade75</item>
         <item name="android:textColorPrimary">@color/walkColorShade100</item>
         <item name="android:background">@color/walkColorShade30</item>
     </style>

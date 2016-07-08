@@ -7,6 +7,7 @@
     <color name="walkColorShade45">#757AB6</color>
     <color name="walkColorShade50">#9AA3F1</color>
     <color name="walkColorShade70">#A4AFFF</color>
+    <color name="walkColorShade75">#BAC3FF</color>
     <color name="walkColorShade100">#FFFFFF</color>
 
     <!-- Colors with Alpha -->

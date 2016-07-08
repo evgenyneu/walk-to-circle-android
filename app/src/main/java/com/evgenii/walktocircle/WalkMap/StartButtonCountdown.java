@@ -2,6 +2,8 @@ package com.evgenii.walktocircle.WalkMap;
 
 import android.location.Location;
 import android.os.CountDownTimer;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -15,8 +17,12 @@ import com.evgenii.walktocircle.Utils.WalkLocation;
 import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.WalkConstants;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class StartButtonCountdown {
-    CountDownTimer mCountdownTimer;
+    private Timer mTimer;
+
     int currentCountdownValue = 0;
 
     void rotateAndShowInitialNumber() {
@@ -47,32 +53,66 @@ public class StartButtonCountdown {
         view.startAnimation(animation);
     }
 
+//    public void startCountdownTimer() {
+//        cancelCountdownTimer();
+//
+//        int delayBeforeCountdownSeconds = getDelayBeforeCountdownSeconds();
+//
+//        int countdownDurationMilliseconds = (getCountdownDurationSeconds() +
+//                delayBeforeCountdownSeconds + 1) * 1000;
+//
+//        mCountdownTimer = new CountDownTimer(countdownDurationMilliseconds, 1000) {
+//            public void onTick(long millisUntilFinished) {
+//                currentCountdownValue -= 1;
+//
+//                if (currentCountdownValue < getCountdownDurationSeconds()) {
+//                    updateCountdownValue(currentCountdownValue);
+//                    playClickSound();
+//                }
+//
+//                if (currentCountdownValue == 0) {
+//                    startWalking();
+//                }
+//            }
+//
+//            public void onFinish() { }
+//        };
+//
+//        mCountdownTimer.start();
+//    }
+
     public void startCountdownTimer() {
         cancelCountdownTimer();
+        currentCountdownValue = getCountdownDurationSeconds() + getDelayBeforeCountdownSeconds();
 
-        int delayBeforeCountdownSeconds = getDelayBeforeCountdownSeconds();
+        mTimer = new Timer();
 
-        int countdownDurationMilliseconds = (getCountdownDurationSeconds() +
-                delayBeforeCountdownSeconds + 1) * 1000;
-
-        mCountdownTimer = new CountDownTimer(countdownDurationMilliseconds, 1000) {
-            public void onTick(long millisUntilFinished) {
-                currentCountdownValue -= 1;
-
-                if (currentCountdownValue < getCountdownDurationSeconds()) {
-                    updateCountdownValue(currentCountdownValue);
-                    playClickSound();
-                }
-
-                if (currentCountdownValue == 0) {
-                    startWalking();
-                }
+        mTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                MainActivity.instance.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        didTimerTick();
+                    }
+                });
             }
 
-            public void onFinish() { }
-        };
+        }, 500, 1000);
+    }
 
-        mCountdownTimer.start();
+    private void didTimerTick() {
+        currentCountdownValue -= 1;
+
+        if (currentCountdownValue < getCountdownDurationSeconds()) {
+            updateCountdownValue(currentCountdownValue);
+            playClickSound();
+        }
+
+        if (currentCountdownValue == 0) {
+            cancelCountdownTimer();
+            startWalking();
+        }
     }
 
     private void startWalking() {
@@ -81,10 +121,9 @@ public class StartButtonCountdown {
     }
 
     private void cancelCountdownTimer() {
-        currentCountdownValue = getCountdownDurationSeconds() + getDelayBeforeCountdownSeconds();
-        if (mCountdownTimer == null) { return; }
-        mCountdownTimer.cancel();
-        mCountdownTimer = null;
+        if (mTimer == null) { return; }
+        mTimer.cancel();
+        mTimer = null;
     }
 
     private void playClickSound() {
