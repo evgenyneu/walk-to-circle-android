@@ -81,6 +81,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
 
     public void didTapStartButton() {
         Location lastLocation = getLastLocation();
+
         if (lastLocation == null) {
             displayLocationDisabledMessage();
             return;

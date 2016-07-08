@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorStatusBar">#22000000</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#46496E</color>
+    <color name="colorPrimaryDark">#46496E</color>
     <color name="colorAccent">#FF4081</color>
     <color name="windowBackground">#000000</color>
     <color name="fragmentBackground">#5E6293</color>
     <color name="buttonColor">#FFFFFF</color>
     <color name="buttonTextColor">#757AB6</color>
     <color name="notificationBackgroundColor">#9AA3F1</color>
-    <color name="startButtonTextColor">#9AA3F1</color>
+    <color name="startButtonTextColor">#A3ACFF</color>
     <color name="mapPinFillColor">#33A4AFFF</color>
     <color name="mapPinStrokeColor">#A4AFFF</color>
     <color name="textViewColor">#FFFFFF</color>

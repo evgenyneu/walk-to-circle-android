@@ -2,11 +2,13 @@
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/startButtonTextColor</item>
         <item name="android:statusBarColor">@color/colorStatusBar</item>
         <item name="android:windowBackground">@color/windowBackground</item>
         <item name="android:colorBackground">@color/windowBackground</item>
         <item name="android:textViewStyle">@style/WalkTextViewStyle</item>
         <item name="colorButtonNormal">@color/buttonColor</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
     </style>
 
     <style name="WalkButtonStyle" parent="Widget.AppCompat.Button">
@@ -19,5 +21,11 @@
     <style name="WalkTextViewStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@string/font_family</item>
         <item name="android:textColor">@color/textViewColor</item>
+    </style>
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/startButtonTextColor</item>
+        <item name="android:textColorPrimary">@color/textViewColor</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
     </style>
 </resources>
