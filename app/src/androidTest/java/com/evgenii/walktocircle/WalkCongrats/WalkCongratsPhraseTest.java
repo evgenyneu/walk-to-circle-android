@@ -116,7 +116,7 @@ public class WalkCongratsPhraseTest {
 
         String[] result = obj.excludePhrases(all, exclude);
 
-        String[] expected = {"Phrase 2", "Phrase 2", "Phrase 3"};
+        String[] expected = {"Phrase 1", "Phrase 2", "Phrase 3"};
 
         assertArrayEquals(expected, result);
     }
