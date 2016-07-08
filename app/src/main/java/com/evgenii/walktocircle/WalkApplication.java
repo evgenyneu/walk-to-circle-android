@@ -31,13 +31,11 @@ public class WalkApplication extends Application {
     public static void activityResumed() {
         mIsActive = true;
         walkSounds.unSilence();
-        Log.d("ii", "!!!!! App resumed");
     }
 
     public static void activityPaused() {
         mIsActive = false;
         walkSounds.silence();
-        Log.d("ii", "!!!!! App paused");
     }
 
     /**

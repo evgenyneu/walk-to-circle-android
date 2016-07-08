@@ -6,7 +6,7 @@
     android:paddingTop="@dimen/margin_xx_large"
     android:paddingStart="@dimen/margin_normal"
     android:paddingEnd="@dimen/margin_normal"
-    android:background="@drawable/blank_background">
+    android:background="@drawable/blank_background_optimized">
 
 
     <TextView
