@@ -51,13 +51,17 @@ public class WalkCircleReachDetector {
         }
     }
 
+    /**
+     * A pretty important method. It is called when user reaches the circle.
+     */
     void circleReached() {
         if (MainActivityState.getInstance().getCurrentCircleLocation() == null) { return; }
         MainActivityState.savePreviouslyReachedCircleLocation(MainActivityState.getInstance().getCurrentCircleLocation());
         MainActivityState.saveCurrentCircleLocation(null);
         WalkApplication.getLocationService().stopLocationUpdatesIfNeeded();
         MainActivityState.saveShowCongratulationsScreen(true);
-        WalkCirclesReachedToday.increment();
+        MainActivityState.saveIsTutorialMode(false); // Circle reached, we are no longer in tutorial mode.
+        WalkCirclesReachedToday.increment(); // Increase the number of circles reached today.
         (new WalkNotification()).showNotification("You reached your circle.", "Well done!");
         WalkFragmentType.showWithAnimation();
     }
