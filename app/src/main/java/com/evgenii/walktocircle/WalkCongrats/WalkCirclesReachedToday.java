@@ -1,12 +1,25 @@
 package com.evgenii.walktocircle.WalkCongrats;
 
+import com.evgenii.walktocircle.MainActivityState;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class WalkCirclesReachedToday {
-    public static int get(String lastCirclesReachedSavedDate, Date today, int circlesReached) {
-        if (lastCirclesReachedSavedDate == getYearMonthDay(today)) {
-            return circlesReached;
+    /**
+     * Increments the number of circles reached today by one.
+     */
+    public static void increment() {
+        MainActivityState.saveCirclesReachedToday(numberOfCirclesReachedToday() + 1);
+        MainActivityState.saveLastCircleReachedDate(getCurrentYearMonthDay());
+    }
+
+    /**
+     * @return number of circles reached today
+     */
+    public static int numberOfCirclesReachedToday() {
+        if (MainActivityState.getInstance().getLastCircleReachedDate() == getCurrentYearMonthDay()) {
+            return MainActivityState.getInstance().getCirclesReachedToday();
         }
 
         return 0;
