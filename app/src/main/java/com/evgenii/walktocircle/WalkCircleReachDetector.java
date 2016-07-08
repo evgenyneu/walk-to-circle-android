@@ -61,6 +61,7 @@ public class WalkCircleReachDetector {
         WalkApplication.getLocationService().stopLocationUpdatesIfNeeded();
         MainActivityState.saveShowCongratulationsScreen(true);
         MainActivityState.saveIsTutorialMode(false); // Circle reached, we are no longer in tutorial mode.
+        MainActivityState.saveCurrentQuote(null);
         WalkCirclesReachedToday.increment(); // Increase the number of circles reached today.
         (new WalkNotification()).showNotification("You reached your circle.", "Well done!");
         WalkFragmentType.showWithAnimation();

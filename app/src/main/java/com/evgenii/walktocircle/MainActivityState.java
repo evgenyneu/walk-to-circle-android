@@ -135,7 +135,10 @@ public class MainActivityState {
 
         editor.putStringSet(ALREADY_SHOWN_QUOTES, mAlreadyShownQuotes);
 
-        if (mCurrentQuote != null) {
+        if (mCurrentQuote == null) {
+            editor.putString(CURRENT_QUOTE_TEXT, null);
+            editor.putString(CURRENT_QUOTE_AUTHOR, null);
+        } else {
             editor.putString(CURRENT_QUOTE_TEXT, mCurrentQuote.text);
             editor.putString(CURRENT_QUOTE_AUTHOR, mCurrentQuote.author);
         }
