@@ -34,14 +34,14 @@ public class WalkCongratsPhraseTest {
         WalkCongratsPhrase.mPhrasesSeenToday = new HashSet<String>(); // Reset seen phrases
     }
 
-    // getRandomPhrase
+    // getRandomPhraseForCirclesReached
     // ----------------------------
 
     @Test
     public void getRandomPhrase_forOneCircleReached() {
         WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(4);
 
-        String result = obj.getRandomPhrase(1);
+        String result = obj.getRandomPhraseForCirclesReached(1);
 
         assertEquals("Good remembering!", result);
     }
@@ -50,7 +50,7 @@ public class WalkCongratsPhraseTest {
     public void getRandomPhrase_forZeroCircleReached() {
         WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(4);
 
-        String result = obj.getRandomPhrase(0);
+        String result = obj.getRandomPhraseForCirclesReached(0);
 
         assertEquals("Good remembering!", result);
     }
@@ -59,7 +59,7 @@ public class WalkCongratsPhraseTest {
     public void getRandomPhrase_for42CircleReached() {
         WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(0);
 
-        String result = obj.getRandomPhrase(42);
+        String result = obj.getRandomPhraseForCirclesReached(42);
 
         assertEquals("Holy Figs!", result);
     }
@@ -68,7 +68,7 @@ public class WalkCongratsPhraseTest {
     public void getRandomPhrase_forNineCircleReached() {
         WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(2);
 
-        String result = obj.getRandomPhrase(9);
+        String result = obj.getRandomPhraseForCirclesReached(9);
 
         assertEquals("Fantastic!", result);
     }
@@ -78,12 +78,12 @@ public class WalkCongratsPhraseTest {
         WalkCongratsPhrase.mRandomNumberGenerator = null;
 
         for (int i = 0; i < 100; i++) {
-            String result = obj.getRandomPhrase(1);
+            String result = obj.getRandomPhraseForCirclesReached(1);
             assertTrue(result.length() > 1);
         }
 
         for (int i = 0; i < 100; i++) {
-            String result = obj.getRandomPhrase(i);
+            String result = obj.getRandomPhraseForCirclesReached(i);
             assertTrue(result.length() > 1);
         }
     }
@@ -95,7 +95,7 @@ public class WalkCongratsPhraseTest {
 
         WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(4);
 
-        String result = obj.getRandomPhrase(1);
+        String result = obj.getRandomPhraseForCirclesReached(1);
 
         assertEquals("That's good!", result);
 
@@ -120,7 +120,7 @@ public class WalkCongratsPhraseTest {
 
         WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(2);
 
-        String result = obj.getRandomPhrase(1);
+        String result = obj.getRandomPhraseForCirclesReached(1);
 
         assertEquals("Good work!", result);
 

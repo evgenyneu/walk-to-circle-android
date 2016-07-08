@@ -34,11 +34,12 @@ public class WalkCongratsPhrase {
         return mPhrases;
     }
 
+
     /**
      * @param circlesReached number of circles reached today.
      * @return returns a random phrase for the given number of circles reached.
      */
-    public String getRandomPhrase(int circlesReached) {
+    public String getRandomPhraseForCirclesReached(int circlesReached) {
         if (circlesReached < 1) { circlesReached = 1; }
         String[] phrases = getUnseenPhrasesForCirclesReached(circlesReached);
 
