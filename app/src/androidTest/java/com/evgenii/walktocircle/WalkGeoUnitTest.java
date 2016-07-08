@@ -53,10 +53,22 @@ public class WalkGeoUnitTest {
         double result = WalkGeo.normalizedZoomLevelForLatitude(0, 15);
         assertEquals(15.0, result, 0.0001);
 
+        // Latitude +- 37
+        // ------------------
+
         result = WalkGeo.normalizedZoomLevelForLatitude(37, 15);
-        assertEquals(14.445, result, 0.0001);
+        assertEquals(14.7748, result, 0.0001);
 
         result = WalkGeo.normalizedZoomLevelForLatitude(-37, 15);
-        assertEquals(14.445, result, 0.0001);
+        assertEquals(14.7748, result, 0.0001);
+
+        // Latitude +- 80
+        // ------------------
+
+        result = WalkGeo.normalizedZoomLevelForLatitude(80, 15);
+        assertEquals(12.7244, result, 0.0001);
+
+        result = WalkGeo.normalizedZoomLevelForLatitude(-80, 15);
+        assertEquals(12.7244, result, 0.0001);
     }
 }

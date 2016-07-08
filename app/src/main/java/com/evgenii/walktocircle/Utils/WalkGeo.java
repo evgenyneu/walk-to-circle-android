@@ -85,6 +85,12 @@ public class WalkGeo {
         return WalkLocation.fromLatLng(Math.toDegrees(φ2), Math.toDegrees(λ2));
     }
 
+    /**
+     * @return returns a "normalized" zoom level which depends on the latitude.
+     * The purpose is to display a circle of the same size on the map regardless of the user latitude.
+     * By default, for the same zoom level values the map shows increased ACTUAL zoom level for higher latitudes.
+     * We want the actual zoom level to be roughly equal on all latitudes.
+     */
     public static double normalizedZoomLevelForLatitude(double latitude, double zoomLevel) {
         return (1 - Math.pow(Math.abs(latitude) / 150.0, 3)) * zoomLevel;
     }
