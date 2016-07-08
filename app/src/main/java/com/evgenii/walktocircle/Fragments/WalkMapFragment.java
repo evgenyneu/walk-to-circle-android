@@ -21,6 +21,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.evgenii.walktocircle.Utils.WalkCameraDistance;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -79,7 +81,10 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
 
     public void didTapStartButton() {
         Location lastLocation = getLastLocation();
-        if (lastLocation == null) { return; }
+        if (lastLocation == null) {
+            displayLocationDisabledMessage();
+            return;
+        }
 
         final Location pinLocation = WalkGeo.randomLocationAtDistanceRange(lastLocation,
                 WalkConstants.minCircleDistanceFromCurrentLocationMeters,
@@ -108,6 +113,13 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
         View view = getView();
         if (view == null) { return new Point(1,1); }
         return new Point(view.getWidth(), view.getHeight());
+    }
+
+    private void displayLocationDisabledMessage() {
+        Toast.makeText(WalkApplication.getAppContext(),
+                R.string.walk_location_disabled_message,
+                Toast.LENGTH_SHORT)
+                .show();
     }
 
     // Map
