@@ -4,6 +4,7 @@ import android.location.Location;
 
 import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.Utils.WalkLocation;
+import com.evgenii.walktocircle.WalkCongrats.WalkCirclesReachedToday;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
@@ -56,6 +57,7 @@ public class WalkCircleReachDetector {
         MainActivityState.saveCurrentCircleLocation(null);
         WalkApplication.getLocationService().stopLocationUpdatesIfNeeded();
         MainActivityState.saveShowCongratulationsScreen(true);
+        WalkCirclesReachedToday.increment();
         (new WalkNotification()).showNotification("You reached your circle.", "Well done!");
         WalkFragmentType.showWithAnimation();
     }

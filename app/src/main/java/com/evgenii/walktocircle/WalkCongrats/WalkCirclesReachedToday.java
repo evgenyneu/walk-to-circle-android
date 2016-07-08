@@ -2,9 +2,11 @@ package com.evgenii.walktocircle.WalkCongrats;
 
 import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
+import com.evgenii.walktocircle.Utils.WalkString;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class WalkCirclesReachedToday {
     /**
@@ -19,17 +21,19 @@ public class WalkCirclesReachedToday {
         int circlesReachedToday = numberOfCirclesReachedToday();
 
         if (circlesReachedToday == 1) {
-            return "" + R.string.congrats_reached_first_circle_today;
+            return "" + WalkString.fromResource(R.string.congrats_reached_first_circle_today);
         } else {
-            return circlesReachedToday + " " + R.string.congrats_circles_reached_today;
+            return circlesReachedToday + " " +  WalkString.fromResource(R.string.congrats_circles_reached_today);
         }
     }
 
     /**
      * @return number of circles reached today
      */
-    public static int numberOfCirclesReachedToday() {
-        if (MainActivityState.getInstance().getLastCircleReachedDate() == getCurrentYearMonthDay()) {
+    private static int numberOfCirclesReachedToday() {
+        String lastDate = MainActivityState.getInstance().getLastCircleReachedDate();
+
+        if (lastDate != null && lastDate.equals(getCurrentYearMonthDay())) {
             return MainActivityState.getInstance().getCirclesReachedToday();
         }
 
@@ -40,11 +44,11 @@ public class WalkCirclesReachedToday {
      * @return converts the date to string, example: 2017.02.21
      */
     public static String getYearMonthDay(Date date) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd", Locale.US);
         return dateFormat.format(date);
     }
 
-    public static String getCurrentYearMonthDay() {
+    private static String getCurrentYearMonthDay() {
         return getYearMonthDay(new Date());
     }
 }
