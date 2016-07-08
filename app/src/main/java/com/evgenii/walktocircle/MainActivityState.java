@@ -28,6 +28,12 @@ public class MainActivityState {
     // Quote that is currently shown on Walk screen
     private WalkQuote mCurrentQuote;
 
+    // The date when the last circle was reached in YYYY.MM.dd format. Example: 2019.02.21.
+    private String mLastCircleReachedDate;
+
+    // Number of circles reached today
+    private int mCirclesReachedToday;
+
     static final String CURRENT_LOCATION_LATITUDE = "currentLocationLatitude";
     static final String CURRENT_LOCATION_LONGITUDE = "currentLocationLongitude";
 
@@ -40,6 +46,10 @@ public class MainActivityState {
 
     static final String CURRENT_QUOTE_TEXT = "currentQuoteText";
     static final String CURRENT_QUOTE_AUTHOR = "currentQuoteAuthor";
+
+    static final String LAST_CIRCLE_REACHED_DATE = "lastCircleReachedData";
+
+    static final String CIRCLES_REACHED_TODAY = "circlesReachedToday";
 
     private static MainActivityState mInstance;
 
@@ -87,6 +97,10 @@ public class MainActivityState {
         if (currentQuoteText != null && currentQuoteAuthor != null) {
             mCurrentQuote = new WalkQuote(currentQuoteText, currentQuoteAuthor);
         }
+
+        mLastCircleReachedDate = preferences.getString(LAST_CIRCLE_REACHED_DATE, null);
+
+        mCirclesReachedToday = preferences.getInt(CIRCLES_REACHED_TODAY, 0);
     }
 
     private void saveState() {
@@ -125,6 +139,10 @@ public class MainActivityState {
             editor.putString(CURRENT_QUOTE_TEXT, mCurrentQuote.text);
             editor.putString(CURRENT_QUOTE_AUTHOR, mCurrentQuote.author);
         }
+
+        editor.putString(LAST_CIRCLE_REACHED_DATE, mLastCircleReachedDate);
+
+        editor.putInt(CIRCLES_REACHED_TODAY, mCirclesReachedToday);
 
         editor.commit();
     }
@@ -209,6 +227,35 @@ public class MainActivityState {
     public static void saveCurrentQuote(WalkQuote quote) {
         if (mInstance != null) {
             mInstance.mCurrentQuote = quote;
+            mInstance.saveState();
+        }
+    }
+
+    // Last circle reached date
+    // -----------
+
+    public String getLastCircleReachedDate() {
+        return mLastCircleReachedDate;
+    }
+
+    public static void saveLastCircleReachedDate(String date) {
+        if (mInstance != null) {
+            mInstance.mLastCircleReachedDate = date;
+            mInstance.saveState();
+        }
+    }
+
+
+    // Circles reached today
+    // -----------
+
+    public int getCirclesReachedToday() {
+        return mCirclesReachedToday;
+    }
+
+    public static void saveCirclesReachedToday(int value) {
+        if (mInstance != null) {
+            mInstance.mCirclesReachedToday = value;
             mInstance.saveState();
         }
     }

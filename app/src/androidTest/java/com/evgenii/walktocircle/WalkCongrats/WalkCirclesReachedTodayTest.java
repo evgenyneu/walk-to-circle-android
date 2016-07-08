@@ -19,10 +19,12 @@ import static org.junit.Assert.assertThat;
 public class WalkCirclesReachedTodayTest {
 
     @Test
-    public void returnsCirclesReachedToday() {
-        int result = WalkCirclesReachedToday.get();
+    public void returnsCirclesReachedToday_lastDateMatchesToday() {
+        Date date = new GregorianCalendar(2021, 4, 21).getTime();
 
-        assertEquals(1, result);
+        int result = WalkCirclesReachedToday.get("2021.05.21", date, 2);
+
+        assertEquals(2, result);
     }
 
     @Test
