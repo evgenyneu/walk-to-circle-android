@@ -35,7 +35,7 @@ public class WalkNotification {
                         .setSmallIcon(R.drawable.notification)
                         .setContentTitle(title)
                         .setContentText(contentText)
-                        .setColor(ContextCompat.getColor(context, R.color.notificationBackgroundColor))
+                        .setColor(ContextCompat.getColor(context, R.color.walkColorShade50))
                         .setSound(soundUri)
                         .setPriority(Notification.PRIORITY_MAX)
                         .setAutoCancel(true) // Remove notification when it is touched. Also stops the notification sound.

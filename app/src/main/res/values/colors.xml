@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Shades -->
+    <color name="walkColorShade10">#000000</color>
+    <color name="walkColorShade30">#46496E</color>
+    <color name="walkColorShade40">#5E6293</color>
+    <color name="walkColorShade45">#757AB6</color>
+    <color name="walkColorShade50">#9AA3F1</color>
+    <color name="walkColorShade70">#A4AFFF</color>
+    <color name="walkColorShade100">#FFFFFF</color>
+
+    <!-- Colors with Alpha -->
     <color name="colorStatusBar">#22000000</color>
-    <color name="colorPrimary">#46496E</color>
-    <color name="colorPrimaryDark">#46496E</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="windowBackground">#000000</color>
-    <color name="fragmentBackground">#5E6293</color>
-    <color name="buttonColor">#FFFFFF</color>
-    <color name="buttonTextColor">#757AB6</color>
-    <color name="notificationBackgroundColor">#9AA3F1</color>
-    <color name="startButtonTextColor">#A3ACFF</color>
     <color name="mapPinFillColor">#33A4AFFF</color>
-    <color name="mapPinStrokeColor">#A4AFFF</color>
-    <color name="textViewColor">#FFFFFF</color>
-    <color name="colorTextShadowColor">#000000</color>
 </resources>

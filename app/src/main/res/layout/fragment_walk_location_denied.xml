@@ -12,7 +12,7 @@
     <TextView
         android:textSize="@dimen/font_size_body"
         android:lineSpacingMultiplier="@dimen/line_spacing_multiplier_body"
-        android:shadowColor="@color/colorTextShadowColor"
+        android:shadowColor="@color/walkColorShade10"
         android:shadowDx="@integer/text_shadow_dx"
         android:shadowDy="@integer/text_shadow_dy"
         android:shadowRadius="@integer/text_shadow_radius"
@@ -47,7 +47,7 @@
         <TextView
             android:textSize="@dimen/font_size_body"
             android:lineSpacingMultiplier="@dimen/line_spacing_multiplier_body"
-            android:shadowColor="@color/colorTextShadowColor"
+            android:shadowColor="@color/walkColorShade10"
             android:shadowDx="@integer/text_shadow_dx"
             android:shadowDy="@integer/text_shadow_dy"
             android:shadowRadius="@integer/text_shadow_radius"

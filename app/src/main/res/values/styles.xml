@@ -1,31 +1,31 @@
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/startButtonTextColor</item>
+        <item name="colorPrimary">@color/walkColorShade30</item>
+        <item name="colorPrimaryDark">@color/walkColorShade30</item>
+        <item name="colorAccent">@color/walkColorShade70</item>
         <item name="android:statusBarColor">@color/colorStatusBar</item>
-        <item name="android:windowBackground">@color/windowBackground</item>
-        <item name="android:colorBackground">@color/windowBackground</item>
+        <item name="android:windowBackground">@color/walkColorShade10</item>
+        <item name="android:colorBackground">@color/walkColorShade10</item>
         <item name="android:textViewStyle">@style/WalkTextViewStyle</item>
-        <item name="colorButtonNormal">@color/buttonColor</item>
+        <item name="colorButtonNormal">@color/walkColorShade100</item>
         <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
     </style>
 
     <style name="WalkButtonStyle" parent="Widget.AppCompat.Button">
-        <item name="backgroundTint">@color/buttonColor</item>
-        <item name="android:textColor">@color/buttonTextColor</item>
+        <item name="backgroundTint">@color/walkColorShade100</item>
+        <item name="android:textColor">@color/walkColorShade45</item>
         <item name="android:fontFamily">@string/font_family</item>
         <item name="android:textSize">@dimen/font_size_button</item>
     </style>
 
     <style name="WalkTextViewStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@string/font_family</item>
-        <item name="android:textColor">@color/textViewColor</item>
+        <item name="android:textColor">@color/walkColorShade100</item>
     </style>
 
     <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorAccent">@color/startButtonTextColor</item>
-        <item name="android:textColorPrimary">@color/textViewColor</item>
-        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/walkColorShade70</item>
+        <item name="android:textColorPrimary">@color/walkColorShade100</item>
+        <item name="android:background">@color/walkColorShade30</item>
     </style>
 </resources>
