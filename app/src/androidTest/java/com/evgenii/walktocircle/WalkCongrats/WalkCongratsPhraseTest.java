@@ -31,7 +31,11 @@ public class WalkCongratsPhraseTest {
     @After
     public void after() {
         WalkCongratsPhrase.mRandomNumberGenerator = null; // Stop using fake random generator
+        WalkCongratsPhrase.mPhrasesSeenToday = new HashSet<String>(); // Reset seen phrases
     }
+
+    // getRandomPhrase
+    // ----------------------------
 
     @Test
     public void getRandomPhrase_forOneCircleReached() {
@@ -70,7 +74,44 @@ public class WalkCongratsPhraseTest {
         }
     }
 
-    // getUnseenPhrases
+    // getUnseenPhrasesForCirclesReached
+    // ----------------------------
+
+    @Test
+    public void getUnseenPhrasesForCirclesReached() {
+        WalkCongratsPhrase.mPhrasesSeenToday = new HashSet<String>(); // Reset seen phrases;
+
+        String[] result = obj.getUnseenPhrasesForCirclesReached(1);
+
+        String[] expected = {
+                "Good start!",
+                "Good job!",
+                "Good work!",
+                "OK!",
+                "Good remembering!",
+                "That's good!"};
+
+        assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void getUnseenPhrasesForCirclesReached_returnUnsee() {
+        WalkCongratsPhrase.mPhrasesSeenToday = new HashSet<String>(Arrays.asList("Good start!", "OK!"));
+
+        String[] result = obj.getUnseenPhrasesForCirclesReached(1);
+
+        String[] expected = {
+                "Good start!",
+                "Good job!",
+                "Good work!",
+                "OK!",
+                "Good remembering!",
+                "That's good!"};
+
+        assertArrayEquals(expected, result);
+    }
+
+    // excludePhrases
     // ----------------------------
 
     @Test

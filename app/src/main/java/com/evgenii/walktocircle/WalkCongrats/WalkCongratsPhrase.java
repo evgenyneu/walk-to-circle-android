@@ -5,6 +5,7 @@ import com.evgenii.walktocircle.WalkWalk.WalkRandomNumberGenerator;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
@@ -20,6 +21,9 @@ import java.util.Vector;
  */
 public class WalkCongratsPhrase {
     private static Map<Integer, String[]> mPhrases;
+
+    // Phrases that were already seen today
+    public static Set<String> mPhrasesSeenToday = new HashSet<String>();
 
     // Random number generator that is used to pick a random phrase.
     // The property is null normally but in the unit test has a fake random number generator instance.
@@ -38,6 +42,10 @@ public class WalkCongratsPhrase {
         String[] phrases = getPhrasesForCirclesReached(circlesReached);
         int randomIndex = getRandomNumberGenerator().getRandomIntUntil(phrases.length);
         return phrases[randomIndex];
+    }
+
+    public String[] getUnseenPhrasesForCirclesReached(int circlesReached) {
+        return getPhrasesForCirclesReached(circlesReached);
     }
 
     /**
