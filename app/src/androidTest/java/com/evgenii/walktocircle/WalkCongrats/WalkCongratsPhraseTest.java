@@ -47,6 +47,15 @@ public class WalkCongratsPhraseTest {
     }
 
     @Test
+    public void getRandomPhrase_forZeroCircleReached() {
+        WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(4);
+
+        String result = obj.getRandomPhrase(0);
+
+        assertEquals("Good remembering!", result);
+    }
+
+    @Test
     public void getRandomPhrase_for42CircleReached() {
         WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(0);
 
@@ -72,6 +81,53 @@ public class WalkCongratsPhraseTest {
             String result = obj.getRandomPhrase(1);
             assertTrue(result.length() > 1);
         }
+
+        for (int i = 0; i < 100; i++) {
+            String result = obj.getRandomPhrase(i);
+            assertTrue(result.length() > 1);
+        }
+    }
+
+    @Test
+    public void getRandomPhrase_oneSeen() {
+        WalkCongratsPhrase.mPhrasesSeenToday = new HashSet<String>(
+                Arrays.asList("Good remembering!"));
+
+        WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(4);
+
+        String result = obj.getRandomPhrase(1);
+
+        assertEquals("That's good!", result);
+
+        // Add the random phrase to the list of seen phrases
+
+        String[] seenExpected = {
+                "Good remembering!",
+                "That's good!"};
+
+        assertArrayEquals(seenExpected, WalkCongratsPhrase.mPhrasesSeenToday.toArray());
+    }
+
+    @Test
+    public void getRandomPhrase_allSeen() {
+        WalkCongratsPhrase.mPhrasesSeenToday = new HashSet<String>(
+                Arrays.asList("Good start!",
+                        "Good job!",
+                        "Good work!",
+                        "OK!",
+                        "Good remembering!",
+                        "That's good!"));
+
+        WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(2);
+
+        String result = obj.getRandomPhrase(1);
+
+        assertEquals("Good work!", result);
+
+        // Add the random phrase to the list of seen phrases
+
+        String[] seenExpected = {"Good work!"};
+        assertArrayEquals(seenExpected, WalkCongratsPhrase.mPhrasesSeenToday.toArray());
     }
 
     // getUnseenPhrasesForCirclesReached

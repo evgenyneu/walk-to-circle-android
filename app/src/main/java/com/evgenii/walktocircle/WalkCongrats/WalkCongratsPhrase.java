@@ -39,9 +39,19 @@ public class WalkCongratsPhrase {
      * @return returns a random phrase for the given number of circles reached.
      */
     public String getRandomPhrase(int circlesReached) {
-        String[] phrases = getPhrasesForCirclesReached(circlesReached);
+        if (circlesReached < 1) { circlesReached = 1; }
+        String[] phrases = getUnseenPhrasesForCirclesReached(circlesReached);
+
+        if (phrases.length == 0) {
+            // All phrases seen, reset and start showing phrases again
+            mPhrasesSeenToday = new HashSet<String>();
+            phrases = getUnseenPhrasesForCirclesReached(circlesReached);
+        }
+
         int randomIndex = getRandomNumberGenerator().getRandomIntUntil(phrases.length);
-        return phrases[randomIndex];
+        String randomPhrase = phrases[randomIndex];
+        mPhrasesSeenToday.add(randomPhrase);
+        return randomPhrase;
     }
 
     public String[] getUnseenPhrasesForCirclesReached(int circlesReached) {
