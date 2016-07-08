@@ -45,7 +45,8 @@ public class WalkCongratsPhrase {
     }
 
     public String[] getUnseenPhrasesForCirclesReached(int circlesReached) {
-        return getPhrasesForCirclesReached(circlesReached);
+        String[] phrases = getPhrasesForCirclesReached(circlesReached);
+        return excludePhrases(phrases, mPhrasesSeenToday);
     }
 
     /**

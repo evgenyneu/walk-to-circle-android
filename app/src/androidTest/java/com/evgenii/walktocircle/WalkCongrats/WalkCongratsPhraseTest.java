@@ -95,18 +95,30 @@ public class WalkCongratsPhraseTest {
     }
 
     @Test
-    public void getUnseenPhrasesForCirclesReached_returnUnsee() {
-        WalkCongratsPhrase.mPhrasesSeenToday = new HashSet<String>(Arrays.asList("Good start!", "OK!"));
+    public void getUnseenPhrasesForCirclesReached_returnUnseen() {
+        WalkCongratsPhrase.mPhrasesSeenToday = new HashSet<String>(
+                Arrays.asList("Good start!", "OK!"));
 
         String[] result = obj.getUnseenPhrasesForCirclesReached(1);
 
         String[] expected = {
-                "Good start!",
                 "Good job!",
                 "Good work!",
-                "OK!",
                 "Good remembering!",
                 "That's good!"};
+
+        assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void getUnseenPhrasesForCirclesReached_returnEmptyAllSeen() {
+        WalkCongratsPhrase.mPhrasesSeenToday = new HashSet<String>(
+                Arrays.asList("Good start!", "OK!", "Good job!", "Good work!",
+                        "Good remembering!", "That's good!"));
+
+        String[] result = obj.getUnseenPhrasesForCirclesReached(1);
+
+        String[] expected = {};
 
         assertArrayEquals(expected, result);
     }
