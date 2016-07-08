@@ -1,7 +1,9 @@
 package com.evgenii.walktocircle.WalkCongrats;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * This class helps choosing a congratulation phrase shown to the user when a circle is reached.
@@ -130,5 +132,26 @@ public class WalkCongratsPhrase {
 
     public String getRandomPhrase(int circlesReached) {
         return "";
+    }
+
+    public String[] getPhrasesForCirclesReached(int circlesReached) {
+        if (circlesReached <1) { return new String[]{}; }
+        Map<Integer, String[]> phrases = getPhrases();
+
+        Set<Integer> keySet = phrases.keySet();
+        Integer[] keys = keySet.toArray(new Integer[keySet.size()]);
+        Arrays.sort(keys);
+
+        String[] phrasesForCirclesReached = phrases.get(keys[0]);
+
+        for (Integer minCirclesReached : keys) {
+            if (circlesReached >= minCirclesReached) {
+                phrasesForCirclesReached = phrases.get(minCirclesReached);
+            } else {
+                break;
+            }
+        }
+
+        return phrasesForCirclesReached;
     }
 }

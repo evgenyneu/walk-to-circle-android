@@ -25,6 +25,7 @@ public class WalkRandomQuoteNumberGeneratorTest {
         }
     }
 
+    @Test
     public void returnsRandomNumber_upperBoundaryIsOne() {
         WalkRandomNumberGenerator generator = new WalkRandomNumberGenerator();
 
@@ -33,6 +34,7 @@ public class WalkRandomQuoteNumberGeneratorTest {
         assertEquals(0, result);
     }
 
+    @Test
     public void returnsRandomNumber_upperBoundaryIsZero() {
         WalkRandomNumberGenerator generator = new WalkRandomNumberGenerator();
 

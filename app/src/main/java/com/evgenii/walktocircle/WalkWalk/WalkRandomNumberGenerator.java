@@ -8,6 +8,7 @@ public class WalkRandomNumberGenerator {
      * @return random integer in the range [0, maxExclusive). Includes zero, excludes maxExclusive.
      */
     public int getRandomIntUntil(int maxExclusive) {
+        if (maxExclusive == 0) { return 0; }
         Random r = new Random();
         return r.nextInt(maxExclusive);
     }
