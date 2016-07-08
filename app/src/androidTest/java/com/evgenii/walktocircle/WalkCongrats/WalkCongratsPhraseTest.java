@@ -1,13 +1,23 @@
 package com.evgenii.walktocircle.WalkCongrats;
 
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 
+import com.evgenii.walktocircle.WalkWalk.WalkFakeRandomNumberGenerator;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 public class WalkCongratsPhraseTest {
@@ -18,12 +28,102 @@ public class WalkCongratsPhraseTest {
         obj = new WalkCongratsPhrase();
     }
 
+    @After
+    public void after() {
+        WalkCongratsPhrase.mRandomNumberGenerator = null; // Stop using fake random generator
+    }
+
     @Test
-    public void sdfsdfs() {
+    public void getRandomPhrase_forOneCircleReached() {
+        WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(4);
+
         String result = obj.getRandomPhrase(1);
 
-//        assertEquals("asdsa", result);
+        assertEquals("Good remembering!", result);
     }
+
+    @Test
+    public void getRandomPhrase_for42CircleReached() {
+        WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(0);
+
+        String result = obj.getRandomPhrase(42);
+
+        assertEquals("Holy Figs!", result);
+    }
+
+    @Test
+    public void getRandomPhrase_forNineCircleReached() {
+        WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(2);
+
+        String result = obj.getRandomPhrase(9);
+
+        assertEquals("Fantastic!", result);
+    }
+
+    @Test
+    public void getRandomPhrase_realRandomNumber() {
+        WalkCongratsPhrase.mRandomNumberGenerator = null;
+
+        for (int i = 0; i < 100; i++) {
+            String result = obj.getRandomPhrase(1);
+            assertTrue(result.length() > 1);
+        }
+    }
+
+    // getUnseenPhrases
+    // ----------------------------
+
+    @Test
+    public void excludePhrases() {
+        String[] all = {
+                "Phrase 1",
+                "Phrase 2",
+                "Phrase 3"};
+
+        Set<String> exclude = new HashSet<String>(Arrays.asList("Phrase 1", "Phrase 3"));
+
+        String[] result = obj.excludePhrases(all, exclude);
+
+        String[] expected = {"Phrase 2"};
+
+        assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void excludePhrases_excludeAll() {
+        String[] all = {
+                "Phrase 1",
+                "Phrase 2",
+                "Phrase 3"};
+
+        Set<String> exclude = new HashSet<String>(Arrays.asList("Phrase 1", "Phrase 3", "Phrase 2"));
+
+        String[] result = obj.excludePhrases(all, exclude);
+
+        String[] expected = {};
+
+        assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void excludePhrases_nothingToExclude() {
+        String[] all = {
+                "Phrase 1",
+                "Phrase 2",
+                "Phrase 3"};
+
+        Set<String> exclude = new HashSet<String>();
+
+        String[] result = obj.excludePhrases(all, exclude);
+
+        String[] expected = {"Phrase 2", "Phrase 2", "Phrase 3"};
+
+        assertArrayEquals(expected, result);
+    }
+
+
+    // getPhrasesForCirclesReached
+    // ----------------------------
 
     @Test
     public void getPhrasesForCirclesReached_zero() {

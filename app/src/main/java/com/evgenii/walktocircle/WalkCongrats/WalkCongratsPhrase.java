@@ -1,9 +1,13 @@
 package com.evgenii.walktocircle.WalkCongrats;
 
+import com.evgenii.walktocircle.WalkWalk.WalkQuote;
+import com.evgenii.walktocircle.WalkWalk.WalkRandomNumberGenerator;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.Vector;
 
 /**
  * This class helps choosing a congratulation phrase shown to the user when a circle is reached.
@@ -17,9 +21,76 @@ import java.util.Set;
 public class WalkCongratsPhrase {
     private static Map<Integer, String[]> mPhrases;
 
+    // Random number generator that is used to pick a random phrase.
+    // The property is null normally but in the unit test has a fake random number generator instance.
+    public static WalkRandomNumberGenerator mRandomNumberGenerator;
+
     public static Map<Integer, String[]> getPhrases() {
         addPhrases();
         return mPhrases;
+    }
+
+    /**
+     * @param circlesReached number of circles reached today.
+     * @return returns a random phrase for the given number of circles reached.
+     */
+    public String getRandomPhrase(int circlesReached) {
+        String[] phrases = getPhrasesForCirclesReached(circlesReached);
+        int randomIndex = getRandomNumberGenerator().getRandomIntUntil(phrases.length);
+        return phrases[randomIndex];
+    }
+
+    /**
+     *
+     * @param circlesReached number of circles reached today.
+     * @return Returns the array of phrases corresponding to the number of circles reached.
+     */
+    public String[] getPhrasesForCirclesReached(int circlesReached) {
+        if (circlesReached <1) { return new String[]{}; }
+        Map<Integer, String[]> phrases = getPhrases();
+
+        Set<Integer> keySet = phrases.keySet();
+        Integer[] keys = keySet.toArray(new Integer[keySet.size()]);
+        Arrays.sort(keys);
+
+        String[] phrasesForCirclesReached = phrases.get(keys[0]);
+
+        for (Integer minCirclesReached : keys) {
+            if (circlesReached >= minCirclesReached) {
+                phrasesForCirclesReached = phrases.get(minCirclesReached);
+            } else {
+                break;
+            }
+        }
+
+        return phrasesForCirclesReached;
+    }
+
+    public String[] excludePhrases(String[] fromPhrases, Set<String> exclude) {
+        Vector filteredPhrases = new Vector();
+
+        for (String phrase : fromPhrases){
+            if (!exclude.contains(phrase)) {
+                filteredPhrases.addElement(phrase);
+            }
+        }
+
+        String[] filteredPhrasesArray = new String[filteredPhrases.size()];
+        filteredPhrases.copyInto(filteredPhrasesArray);
+
+        return filteredPhrasesArray;
+    }
+
+    /**
+     *
+     * @return real a random generator. A fake one will be returned in unit tests.
+     */
+    private static WalkRandomNumberGenerator getRandomNumberGenerator() {
+        if (mRandomNumberGenerator == null) {
+            return new WalkRandomNumberGenerator();
+        } else {
+            return mRandomNumberGenerator;
+        }
     }
 
     private static void addPhrases() {
@@ -128,30 +199,5 @@ public class WalkCongratsPhrase {
                 "Shmowzow!"};
 
         mPhrases.put(20, values20);
-    }
-
-    public String getRandomPhrase(int circlesReached) {
-        return "";
-    }
-
-    public String[] getPhrasesForCirclesReached(int circlesReached) {
-        if (circlesReached <1) { return new String[]{}; }
-        Map<Integer, String[]> phrases = getPhrases();
-
-        Set<Integer> keySet = phrases.keySet();
-        Integer[] keys = keySet.toArray(new Integer[keySet.size()]);
-        Arrays.sort(keys);
-
-        String[] phrasesForCirclesReached = phrases.get(keys[0]);
-
-        for (Integer minCirclesReached : keys) {
-            if (circlesReached >= minCirclesReached) {
-                phrasesForCirclesReached = phrases.get(minCirclesReached);
-            } else {
-                break;
-            }
-        }
-
-        return phrasesForCirclesReached;
     }
 }
