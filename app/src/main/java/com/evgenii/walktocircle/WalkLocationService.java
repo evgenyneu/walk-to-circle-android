@@ -39,8 +39,6 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
         LocationServices.FusedLocationApi.requestLocationUpdates(
                 WalkGoogleApiClient.getInstance().getClient(), mLocationRequest, this);
 
-        Log.d("ii", "!!!!!! startLocationUpdates " + (mSendUpdatesToMap? "MAP" : "") + " " + (areCircleUpdatesNeeded() ? "CIRCLE": ""));
-
         isUpdating = true;
     }
 
@@ -57,8 +55,6 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
 
         LocationServices.FusedLocationApi.removeLocationUpdates(
             WalkGoogleApiClient.getInstance().getClient(), this);
-
-        Log.d("ii", "!!!!!! stopLocationUpdates " + (mSendUpdatesToMap? "MAP" : "") + " " + (areCircleUpdatesNeeded() ? "CIRCLE": ""));
 
         isUpdating = false;
     }

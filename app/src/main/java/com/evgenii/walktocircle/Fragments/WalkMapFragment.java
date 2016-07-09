@@ -82,9 +82,6 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
     }
 
     public void didTapStartButton() {
-        Intent intent = new Intent(WalkApplication.getAppContext(), WalkInProgressService.class);
-        WalkApplication.getAppContext().startService(intent);
-
         Location lastLocation = getLastLocation();
 
         if (lastLocation == null) {
@@ -98,8 +95,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
 
         MainActivityState.saveCurrentCircleLocation(WalkLocation.latLngFromLocation(pinLocation));
         WalkApplication.getLocationService().startLocationUpdatesIfNeeded();
-        WalkTestReachCircle.getInstance().testCircleReachedAfterSeconds(8);
-
+//        WalkTestReachCircle.getInstance().testCircleReachedAfterSeconds(8)
         Point mapSizePixels = mapSize();
         Point startButtonSizePixels = mStartButton.getSizePixels();
         mStartButton.rotateAndShowInitialNumber();

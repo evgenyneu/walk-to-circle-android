@@ -19,7 +19,7 @@ public class WalkCongratsSoundsTest {
         int result = WalkCongratsSounds.getSoundForCirclesReached(0);
         assertEquals(R.raw.applause_1, result);
 
-        int result = WalkCongratsSounds.getSoundForCirclesReached(1);
+        result = WalkCongratsSounds.getSoundForCirclesReached(1);
         assertEquals(R.raw.applause_1, result);
 
         result = WalkCongratsSounds.getSoundForCirclesReached(2);
