@@ -13,4 +13,8 @@
     <!-- Colors with Alpha -->
     <color name="colorStatusBar">#22000000</color>
     <color name="mapPinFillColor">#33A4AFFF</color>
+
+    <!-- Grey colors -->
+    <color name="mapLastCircleStrokeColor">#22555555</color>
+    <color name="mapLastCircleFillColor">#15333333</color>
 </resources>

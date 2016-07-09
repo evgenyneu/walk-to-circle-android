@@ -14,4 +14,6 @@
     <string name="walk_location_disabled_message">Unable to detect your location.</string>
     <string name="congrats_reached_first_circle_today">You\'ve reached your first circle today.</string>
     <string name="congrats_circles_reached_today">circles reached today.</string>
+    <string name="map_previous_circle_marker_title">Previous circle</string>
+    <string name="map_marker_marker_title">Walk to circle</string>
 </resources>

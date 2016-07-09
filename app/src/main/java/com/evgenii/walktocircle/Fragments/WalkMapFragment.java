@@ -11,6 +11,7 @@ import com.evgenii.walktocircle.WalkGoogleApiClient;
 import com.evgenii.walktocircle.WalkLocationPermissions;
 import com.evgenii.walktocircle.walkMap.DropPin;
 import com.evgenii.walktocircle.walkMap.PrepareMapForPin;
+import com.evgenii.walktocircle.walkMap.PreviousCircleLocation;
 import com.evgenii.walktocircle.walkMap.StartButton;
 import com.google.android.gms.maps.GoogleMap;
 import android.app.Fragment;
@@ -86,13 +87,17 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
             return;
         }
 
+        PreviousCircleLocation.remove();
+
         final Location pinLocation = WalkGeo.randomLocationAtDistanceRange(lastLocation,
                 WalkConstants.minCircleDistanceFromCurrentLocationMeters,
                 WalkConstants.maxCircleDistanceFromCurrentLocationMeters);
 
         MainActivityState.saveCurrentCircleLocation(WalkLocation.latLngFromLocation(pinLocation));
+        MainActivityState.savePreviouslyReachedCircleLocation(WalkLocation.latLngFromLocation(pinLocation));
+
         WalkApplication.getLocationService().startLocationUpdatesIfNeeded();
-        WalkTestReachCircle.getInstance().testCircleReachedAfterSeconds(8);
+//        WalkTestReachCircle.getInstance().testCircleReachedAfterSeconds(8);
         Point mapSizePixels = mapSize();
         Point startButtonSizePixels = mStartButton.getSizePixels();
         mStartButton.rotateAndShowInitialNumber();
@@ -152,6 +157,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
         enableMyLocationAndZoomToLastLocation();
         mMap.getUiSettings().setMapToolbarEnabled(false);
         mStartButton.show();
+        PreviousCircleLocation.showLastCircleLocation(mMap);
     }
 
     public void enableMyLocationAndZoomToLastLocation() {

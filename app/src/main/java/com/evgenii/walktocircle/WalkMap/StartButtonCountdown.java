@@ -1,15 +1,18 @@
 package com.evgenii.walktocircle.walkMap;
 
+import android.location.Location;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.fragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.WalkConstants;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Timer;
 import java.util.TimerTask;

@@ -15,6 +15,7 @@ import com.evgenii.walktocircle.libs.BounceInterpolator;
 import com.evgenii.walktocircle.utils.WalkLocation;
 import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.WalkConstants;
+import com.evgenii.walktocircle.utils.WalkString;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.Projection;
 import com.google.android.gms.maps.model.Circle;
@@ -33,7 +34,10 @@ public class DropPin {
         LatLng latLng = WalkLocation.latLngFromLocation(pinLocation);
         addCircle(latLng, map);
 
-        MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Walk to Circle");
+        MarkerOptions markerOptions = new MarkerOptions()
+                .position(latLng)
+                .title(WalkString.fromResource(R.string.map_marker_marker_title));
+
         mPreviousMarker = map.addMarker(markerOptions);
         dropMarker(mPreviousMarker, map);
         playPinThrowAndDropSound();
