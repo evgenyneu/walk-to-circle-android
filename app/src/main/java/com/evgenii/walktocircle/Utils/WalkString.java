@@ -1,6 +1,5 @@
-package com.evgenii.walktocircle.Utils;
+package com.evgenii.walktocircle.utils;
 
-import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.WalkApplication;
 
 public class WalkString {

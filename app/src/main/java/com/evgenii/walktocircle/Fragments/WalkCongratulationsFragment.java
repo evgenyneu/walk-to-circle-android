@@ -1,4 +1,4 @@
-package com.evgenii.walktocircle.Fragments;
+package com.evgenii.walktocircle.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,15 +7,14 @@ import android.view.ViewGroup;
 import android.app.Fragment;
 import android.widget.TextView;
 
-import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
+import com.evgenii.walktocircle.fragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
-import com.evgenii.walktocircle.Utils.WalkCameraDistance;
+import com.evgenii.walktocircle.utils.WalkCameraDistance;
 import com.evgenii.walktocircle.WalkApplication;
-import com.evgenii.walktocircle.WalkCongrats.WalkCirclesReachedToday;
-import com.evgenii.walktocircle.WalkCongrats.WalkCongratsPhrase;
-import com.evgenii.walktocircle.WalkCongrats.WalkCongratsSounds;
-import com.evgenii.walktocircle.WalkWalk.WalkRandomQuote;
+import com.evgenii.walktocircle.walkCongrats.WalkCirclesReachedToday;
+import com.evgenii.walktocircle.walkCongrats.WalkCongratsPhrase;
+import com.evgenii.walktocircle.walkCongrats.WalkCongratsSounds;
 
 public class WalkCongratulationsFragment extends Fragment {
 

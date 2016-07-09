@@ -1,14 +1,12 @@
-package com.evgenii.walktocircle.WalkMap;
+package com.evgenii.walktocircle.walkMap;
 
-import android.app.Activity;
 import android.graphics.Point;
 import android.location.Location;
-import android.util.Log;
 
 import com.evgenii.walktocircle.MainActivity;
-import com.evgenii.walktocircle.Utils.WalkGeo;
-import com.evgenii.walktocircle.Utils.WalkLocation;
-import com.evgenii.walktocircle.Utils.WalkView;
+import com.evgenii.walktocircle.utils.WalkGeo;
+import com.evgenii.walktocircle.utils.WalkLocation;
+import com.evgenii.walktocircle.utils.WalkView;
 import com.evgenii.walktocircle.WalkConstants;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;

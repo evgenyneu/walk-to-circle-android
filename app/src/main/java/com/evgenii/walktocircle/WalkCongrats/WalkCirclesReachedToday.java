@@ -1,8 +1,8 @@
-package com.evgenii.walktocircle.WalkCongrats;
+package com.evgenii.walktocircle.walkCongrats;
 
 import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
-import com.evgenii.walktocircle.Utils.WalkString;
+import com.evgenii.walktocircle.utils.WalkString;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

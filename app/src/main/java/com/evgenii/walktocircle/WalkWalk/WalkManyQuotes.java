@@ -1,4 +1,4 @@
-package com.evgenii.walktocircle.WalkWalk;
+package com.evgenii.walktocircle.walkWalk;
 
 /**
  * The class contains quotes shown on the walk screen.

@@ -2,9 +2,9 @@ package com.evgenii.walktocircle;
 
 import android.location.Location;
 
-import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
-import com.evgenii.walktocircle.Utils.WalkLocation;
-import com.evgenii.walktocircle.WalkCongrats.WalkCirclesReachedToday;
+import com.evgenii.walktocircle.fragmentManager.WalkFragmentType;
+import com.evgenii.walktocircle.utils.WalkLocation;
+import com.evgenii.walktocircle.walkCongrats.WalkCirclesReachedToday;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;

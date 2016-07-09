@@ -2,7 +2,7 @@ package com.evgenii.walktocircle;
 
 import android.content.SharedPreferences;
 
-import com.evgenii.walktocircle.WalkWalk.WalkQuote;
+import com.evgenii.walktocircle.walkWalk.WalkQuote;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.HashSet;

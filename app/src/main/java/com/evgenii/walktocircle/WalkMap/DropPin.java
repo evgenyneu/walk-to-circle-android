@@ -1,23 +1,18 @@
-package com.evgenii.walktocircle.WalkMap;
+package com.evgenii.walktocircle.walkMap;
 import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
 
 import android.animation.ObjectAnimator;
 import android.animation.TypeEvaluator;
-import android.app.Activity;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.location.Location;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.util.Property;
-import android.util.Size;
 import android.view.animation.Interpolator;
 
-import com.evgenii.walktocircle.Libs.BounceInterpolator;
-import com.evgenii.walktocircle.Utils.WalkGeo;
-import com.evgenii.walktocircle.Utils.WalkLocation;
+import com.evgenii.walktocircle.libs.BounceInterpolator;
+import com.evgenii.walktocircle.utils.WalkLocation;
 import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.WalkConstants;
 import com.google.android.gms.maps.GoogleMap;

@@ -1,4 +1,4 @@
-package com.evgenii.walktocircle.Libs;
+package com.evgenii.walktocircle.libs;
 
 //
 // Interpolator to be used with Android view Animation class to achieve the spring-bounce effect.

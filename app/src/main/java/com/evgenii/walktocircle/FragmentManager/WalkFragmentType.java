@@ -1,11 +1,11 @@
-package com.evgenii.walktocircle.FragmentManager;
+package com.evgenii.walktocircle.fragmentManager;
 
 import android.app.Fragment;
 
-import com.evgenii.walktocircle.Fragments.WalkCongratulationsFragment;
-import com.evgenii.walktocircle.Fragments.WalkWalkFragment;
-import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
-import com.evgenii.walktocircle.Fragments.WalkMapFragment;
+import com.evgenii.walktocircle.fragments.WalkCongratulationsFragment;
+import com.evgenii.walktocircle.fragments.WalkWalkFragment;
+import com.evgenii.walktocircle.fragments.WalkLocationDeniedFragment;
+import com.evgenii.walktocircle.fragments.WalkMapFragment;
 import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.WalkLocationPermissions;
 

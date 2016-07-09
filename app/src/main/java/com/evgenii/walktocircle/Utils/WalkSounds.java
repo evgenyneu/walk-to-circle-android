@@ -1,8 +1,6 @@
-package com.evgenii.walktocircle.Utils;
+package com.evgenii.walktocircle.utils;
 
 import android.content.Context;
-import android.media.MediaPlayer;
-import android.util.Log;
 
 import java.util.HashMap;
 

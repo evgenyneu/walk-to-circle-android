@@ -1,10 +1,9 @@
 package com.evgenii.walktocircle;
 
 import android.location.Location;
-import android.util.Log;
 
-import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
-import com.evgenii.walktocircle.Fragments.WalkMapFragment;
+import com.evgenii.walktocircle.fragmentManager.WalkFragmentType;
+import com.evgenii.walktocircle.fragments.WalkMapFragment;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 

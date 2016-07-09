@@ -1,4 +1,4 @@
-package com.evgenii.walktocircle.Fragments;
+package com.evgenii.walktocircle.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.evgenii.walktocircle.R;
-import com.evgenii.walktocircle.Utils.WalkCameraDistance;
-import com.evgenii.walktocircle.Utils.WalkView;
+import com.evgenii.walktocircle.utils.WalkCameraDistance;
+import com.evgenii.walktocircle.utils.WalkView;
 import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.WalkLocationPermissions;
 

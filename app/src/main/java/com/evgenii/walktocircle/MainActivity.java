@@ -2,21 +2,16 @@ package com.evgenii.walktocircle;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.evgenii.walktocircle.FragmentManager.WalkFragmentOpener;
-import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
-import com.evgenii.walktocircle.Fragments.WalkCongratulationsFragment;
-import com.evgenii.walktocircle.Fragments.WalkWalkFragment;
-import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
-import com.evgenii.walktocircle.Fragments.WalkMapFragment;
+import com.evgenii.walktocircle.fragmentManager.WalkFragmentOpener;
+import com.evgenii.walktocircle.fragmentManager.WalkFragmentType;
+import com.evgenii.walktocircle.fragments.WalkCongratulationsFragment;
+import com.evgenii.walktocircle.fragments.WalkWalkFragment;
+import com.evgenii.walktocircle.fragments.WalkLocationDeniedFragment;
+import com.evgenii.walktocircle.fragments.WalkMapFragment;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
@@ -28,7 +23,7 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         // Save the instance to this Activity object
         instance = this;
 

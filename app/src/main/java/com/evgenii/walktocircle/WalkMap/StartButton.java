@@ -1,17 +1,15 @@
-package com.evgenii.walktocircle.WalkMap;
+package com.evgenii.walktocircle.walkMap;
 import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.R;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
-import android.app.Activity;
 import android.graphics.Point;
-import android.location.Location;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import com.evgenii.walktocircle.Libs.BounceInterpolator;
+import com.evgenii.walktocircle.libs.BounceInterpolator;
 import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.WalkConstants;
 

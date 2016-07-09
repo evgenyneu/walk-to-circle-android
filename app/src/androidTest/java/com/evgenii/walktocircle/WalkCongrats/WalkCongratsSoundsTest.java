@@ -1,4 +1,4 @@
-package com.evgenii.walktocircle.WalkCongrats;
+package com.evgenii.walktocircle.walkCongrats;
 
 import android.support.test.runner.AndroidJUnit4;
 

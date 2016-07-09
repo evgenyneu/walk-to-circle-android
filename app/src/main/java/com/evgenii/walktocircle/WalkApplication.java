@@ -2,9 +2,8 @@ package com.evgenii.walktocircle;
 
 import android.app.Application;
 import android.content.Context;
-import android.util.Log;
 
-import com.evgenii.walktocircle.Utils.WalkSounds;
+import com.evgenii.walktocircle.utils.WalkSounds;
 
 public class WalkApplication extends Application {
 

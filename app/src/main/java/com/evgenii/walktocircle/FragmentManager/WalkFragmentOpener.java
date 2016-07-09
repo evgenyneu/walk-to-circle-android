@@ -1,14 +1,11 @@
-package com.evgenii.walktocircle.FragmentManager;
+package com.evgenii.walktocircle.fragmentManager;
 
-import android.app.Activity;
 import android.app.Fragment;
-import android.util.Log;
 
-import com.evgenii.walktocircle.Fragments.WalkMapFragment;
+import com.evgenii.walktocircle.fragments.WalkMapFragment;
 import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.WalkAnimation;
-import com.evgenii.walktocircle.WalkApplication;
 
 /**
  * Show a fragment with animation.

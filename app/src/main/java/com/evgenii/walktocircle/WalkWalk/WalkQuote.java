@@ -1,4 +1,4 @@
-package com.evgenii.walktocircle.WalkWalk;
+package com.evgenii.walktocircle.walkWalk;
 
 public class WalkQuote {
     public String text;

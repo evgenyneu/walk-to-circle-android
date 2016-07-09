@@ -1,7 +1,7 @@
-package com.evgenii.walktocircle.WalkCongrats;
+package com.evgenii.walktocircle.walkCongrats;
 
 import com.evgenii.walktocircle.MainActivityState;
-import com.evgenii.walktocircle.WalkWalk.WalkRandomNumberGenerator;
+import com.evgenii.walktocircle.walkWalk.WalkRandomNumberGenerator;
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.evgenii.walktocircle.Utils;
+package com.evgenii.walktocircle.utils;
 
 import android.app.Fragment;
 

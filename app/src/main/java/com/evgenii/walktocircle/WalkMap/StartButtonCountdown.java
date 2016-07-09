@@ -1,19 +1,13 @@
-package com.evgenii.walktocircle.WalkMap;
+package com.evgenii.walktocircle.walkMap;
 
-import android.location.Location;
-import android.os.CountDownTimer;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
-import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
+import com.evgenii.walktocircle.fragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.MainActivity;
-import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
-import com.evgenii.walktocircle.Utils.WalkLocation;
 import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.WalkConstants;
 

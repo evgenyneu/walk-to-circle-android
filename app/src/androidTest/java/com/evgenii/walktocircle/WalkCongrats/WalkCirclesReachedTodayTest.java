@@ -1,6 +1,5 @@
-package com.evgenii.walktocircle.WalkCongrats;
+package com.evgenii.walktocircle.walkCongrats;
 
-import android.app.Activity;
 import android.support.test.runner.AndroidJUnit4;
 
 import org.junit.Test;
@@ -9,8 +8,6 @@ import org.junit.runner.RunWith;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import static org.hamcrest.Matchers.greaterThanOrEqualTo;
-import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 

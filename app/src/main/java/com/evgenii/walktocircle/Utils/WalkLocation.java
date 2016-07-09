@@ -1,9 +1,8 @@
-package com.evgenii.walktocircle.Utils;
+package com.evgenii.walktocircle.utils;
 
 import android.graphics.Point;
 import android.location.Location;
 
-import com.evgenii.walktocircle.WalkConstants;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.Projection;
 import com.google.android.gms.maps.model.LatLng;

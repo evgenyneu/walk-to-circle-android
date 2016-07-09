@@ -3,7 +3,7 @@ package com.evgenii.walktocircle;
 import android.location.Location;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.evgenii.walktocircle.Utils.WalkLocation;
+import com.evgenii.walktocircle.utils.WalkLocation;
 import com.google.android.gms.maps.model.LatLng;
 
 import org.junit.Test;

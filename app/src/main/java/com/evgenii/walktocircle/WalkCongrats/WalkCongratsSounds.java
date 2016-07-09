@@ -1,4 +1,4 @@
-package com.evgenii.walktocircle.WalkCongrats;
+package com.evgenii.walktocircle.walkCongrats;
 
 import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;

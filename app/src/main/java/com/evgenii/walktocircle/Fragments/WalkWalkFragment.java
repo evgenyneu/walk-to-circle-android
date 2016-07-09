@@ -1,4 +1,4 @@
-package com.evgenii.walktocircle.Fragments;
+package com.evgenii.walktocircle.fragments;
 
 import android.app.Fragment;
 import android.content.DialogInterface;
@@ -10,14 +10,14 @@ import android.widget.TextView;
 import android.support.v7.app.AlertDialog;
 
 
-import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
+import com.evgenii.walktocircle.fragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
-import com.evgenii.walktocircle.Utils.WalkCameraDistance;
+import com.evgenii.walktocircle.utils.WalkCameraDistance;
 import com.evgenii.walktocircle.WalkApplication;
-import com.evgenii.walktocircle.WalkWalk.WalkQuote;
-import com.evgenii.walktocircle.WalkWalk.WalkRandomQuote;
+import com.evgenii.walktocircle.walkWalk.WalkQuote;
+import com.evgenii.walktocircle.walkWalk.WalkRandomQuote;
 
 public class WalkWalkFragment extends Fragment {
 

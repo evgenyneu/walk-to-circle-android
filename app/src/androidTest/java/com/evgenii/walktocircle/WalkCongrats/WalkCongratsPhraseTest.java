@@ -1,12 +1,10 @@
-package com.evgenii.walktocircle.WalkCongrats;
+package com.evgenii.walktocircle.walkCongrats;
 
 import android.support.test.runner.AndroidJUnit4;
-import android.util.Log;
 
-import com.evgenii.walktocircle.WalkWalk.WalkFakeRandomNumberGenerator;
+import com.evgenii.walktocircle.walkWalk.WalkFakeRandomNumberGenerator;
 
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
