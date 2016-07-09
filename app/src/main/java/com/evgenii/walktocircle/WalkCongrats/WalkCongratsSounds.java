@@ -17,7 +17,7 @@ public class WalkCongratsSounds {
     }
 
     /**
-     * @return the congratulatory sound id played when user reaches the circle
+     * @return the congratulatory sound id played when user reaches the circle.
      */
     public static int getSoundId() {
         int circlesReached = MainActivityState.getInstance().getCirclesReachedToday();
@@ -47,7 +47,6 @@ public class WalkCongratsSounds {
 
         return soundIdForCirclesReached;
     }
-
 
     private static void addSoundIds() {
         if (mSoundIds != null) { return; }

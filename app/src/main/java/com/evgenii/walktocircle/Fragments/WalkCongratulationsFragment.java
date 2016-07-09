@@ -11,8 +11,10 @@ import com.evgenii.walktocircle.FragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.Utils.WalkCameraDistance;
+import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.WalkCongrats.WalkCirclesReachedToday;
 import com.evgenii.walktocircle.WalkCongrats.WalkCongratsPhrase;
+import com.evgenii.walktocircle.WalkCongrats.WalkCongratsSounds;
 import com.evgenii.walktocircle.WalkWalk.WalkRandomQuote;
 
 public class WalkCongratulationsFragment extends Fragment {
@@ -26,9 +28,12 @@ public class WalkCongratulationsFragment extends Fragment {
 
         showCongratulationPhrase(view);
         showNumberOfCirclesReached(view);
+        playSound();
 
         return view;
     }
+
+
 
     public void didTapProceedButton() {
         MainActivityState.saveShowCongratulationsScreen(false);
@@ -43,5 +48,10 @@ public class WalkCongratulationsFragment extends Fragment {
     private void showCongratulationPhrase(View view) {
         TextView textView =  (TextView) view.findViewById(R.id.congrats_well_done_phrase_text_view);
         textView.setText(WalkCongratsPhrase.getRandomPhrase());
+    }
+
+    private void playSound() {
+        int soundId = WalkCongratsSounds.getSoundId();
+        WalkApplication.getSounds().playSound(soundId, 0.3);
     }
 }
