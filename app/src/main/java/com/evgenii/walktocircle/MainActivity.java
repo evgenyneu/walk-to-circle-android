@@ -122,7 +122,6 @@ public class MainActivity extends AppCompatActivity  {
         WalkLocationPermissions.getInstance().didGrantCallback = new Runnable() {
             @Override
             public void run() {
-                MainActivityState.saveUserDidMakeLocationPermissionChoice(true);
                 WalkApplication.getLocationService().startLocationUpdatesIfNeeded();
                 WalkFragmentType.showWithAnimation();
                 WalkMapFragment.ifVisibleEnableMyLocationAndZoomToLastLocation();
@@ -133,7 +132,6 @@ public class MainActivity extends AppCompatActivity  {
         WalkLocationPermissions.getInstance().didDenyCallback = new Runnable() {
             @Override
             public void run() {
-                MainActivityState.saveUserDidMakeLocationPermissionChoice(true);
                 WalkFragmentType.showWithAnimation();
             }
         };

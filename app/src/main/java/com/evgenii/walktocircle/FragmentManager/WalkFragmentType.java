@@ -21,8 +21,7 @@ public enum WalkFragmentType {
      */
     private static WalkFragmentType shouldBeDisplayedNow() {
         // Location Denied: If location permission is not granted by user
-        if (MainActivityState.getInstance().getUserDidMakeLocationPermissionChoice() &&
-                !WalkLocationPermissions.getInstance().hasLocationPermission()) {
+        if (!WalkLocationPermissions.getInstance().hasLocationPermission()) {
             return LocationDenied;
         }
 
