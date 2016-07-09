@@ -41,7 +41,7 @@ public class StartButtonCountdown {
     }
 
     private void rotateRewindArrows() {
-        final Animation animation = AnimationUtils.loadAnimation(MainActivity.instance, R.anim.rotate_continuously);
+        final Animation animation = AnimationUtils.loadAnimation(WalkApplication.getAppContext(), R.anim.rotate_continuously);
         final View view = getRewindArrows();
         view.clearAnimation();
         view.startAnimation(animation);
@@ -106,10 +106,10 @@ public class StartButtonCountdown {
     }
 
     private int getCountdownDurationSeconds() {
-        return MainActivity.instance.getResources().getInteger(R.integer.map_countdown_duration_seconds);
+        return WalkApplication.getAppContext().getResources().getInteger(R.integer.map_countdown_duration_seconds);
     }
 
     private int getDelayBeforeCountdownSeconds() {
-        return MainActivity.instance.getResources().getInteger(R.integer.map_delay_before_countdown_seconds);
+        return WalkApplication.getAppContext().getResources().getInteger(R.integer.map_delay_before_countdown_seconds);
     }
 }

@@ -25,7 +25,7 @@ public class StartButton {
         if (button.getVisibility() == View.VISIBLE) { return; } // Start button already visible
         button.setVisibility(View.VISIBLE);
 
-        final Animation animation = AnimationUtils.loadAnimation(MainActivity.instance, R.anim.bounce);
+        final Animation animation = AnimationUtils.loadAnimation(WalkApplication.getAppContext(), R.anim.bounce);
 
         // Use bounce animation with amplitude and frequency
         BounceInterpolator interpolator = new BounceInterpolator(0.2, 20);
@@ -66,7 +66,7 @@ public class StartButton {
     private void rotateStartButton180DegreesOut() {
         final View button = getStartImage();
 
-        AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(MainActivity.instance,
+        AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(WalkApplication.getAppContext(),
                 R.animator.rotate_180_degress_out);
 
         BounceInterpolator interpolator = getRotate180BounceInterpolator();
@@ -90,7 +90,7 @@ public class StartButton {
     private void rotateRewindButton360Degrees() {
         final View button = getRewindGroup();
 
-        AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(MainActivity.instance,
+        AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(WalkApplication.getAppContext(),
                 R.animator.rotate_360_degrees);
 
         BounceInterpolator interpolator = getRotate180BounceInterpolator();

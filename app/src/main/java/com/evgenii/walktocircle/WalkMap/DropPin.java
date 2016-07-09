@@ -92,8 +92,8 @@ public class DropPin {
 
         CircleOptions circleOptions = new CircleOptions()
                 .center(latLng)
-                .fillColor(ContextCompat.getColor(MainActivity.instance, R.color.mapPinFillColor))
-                .strokeColor(ContextCompat.getColor(MainActivity.instance, R.color.walkColorShade70))
+                .fillColor(ContextCompat.getColor(WalkApplication.getAppContext(), R.color.mapPinFillColor))
+                .strokeColor(ContextCompat.getColor(WalkApplication.getAppContext(), R.color.walkColorShade70))
                 .strokeWidth(WalkConstants.mapPinStrokeWidth)
                 .radius(WalkConstants.mCircleRadiusMeters);
 

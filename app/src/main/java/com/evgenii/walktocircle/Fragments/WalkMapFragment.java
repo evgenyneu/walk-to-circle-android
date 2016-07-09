@@ -1,4 +1,5 @@
 package com.evgenii.walktocircle.fragments;
+import com.evgenii.walktocircle.WalkTestReachCircle;
 import com.evgenii.walktocircle.fragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
@@ -91,7 +92,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
 
         MainActivityState.saveCurrentCircleLocation(WalkLocation.latLngFromLocation(pinLocation));
         WalkApplication.getLocationService().startLocationUpdatesIfNeeded();
-//        WalkTestReachCircle.getInstance().testCircleReachedAfterSeconds(8)
+        WalkTestReachCircle.getInstance().testCircleReachedAfterSeconds(8);
         Point mapSizePixels = mapSize();
         Point startButtonSizePixels = mStartButton.getSizePixels();
         mStartButton.rotateAndShowInitialNumber();

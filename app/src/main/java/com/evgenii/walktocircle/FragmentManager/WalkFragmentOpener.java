@@ -2,6 +2,7 @@ package com.evgenii.walktocircle.fragmentManager;
 
 import android.app.Fragment;
 
+import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.fragments.WalkMapFragment;
 import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.R;
