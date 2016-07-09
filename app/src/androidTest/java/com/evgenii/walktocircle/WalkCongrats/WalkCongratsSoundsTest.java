@@ -26,6 +26,63 @@ public class WalkCongratsSoundsTest {
         assertEquals(R.raw.applause_3, result);
 
         result = WalkCongratsSounds.getSoundForCirclesReached(4);
-        assertEquals(R.raw.applause_3, result);
+        assertEquals(R.raw.applause_4, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(5);
+        assertEquals(R.raw.applause_4, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(6);
+        assertEquals(R.raw.applause_6, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(7);
+        assertEquals(R.raw.applause_7, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(8);
+        assertEquals(R.raw.applause_7, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(9);
+        assertEquals(R.raw.applause_9, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(10);
+        assertEquals(R.raw.applause_9, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(11);
+        assertEquals(R.raw.applause_9, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(12);
+        assertEquals(R.raw.applause_12, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(13);
+        assertEquals(R.raw.applause_12, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(14);
+        assertEquals(R.raw.applause_12, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(15);
+        assertEquals(R.raw.applause_15, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(16);
+        assertEquals(R.raw.applause_15, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(17);
+        assertEquals(R.raw.applause_15, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(18);
+        assertEquals(R.raw.applause_15, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(19);
+        assertEquals(R.raw.applause_15, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(20);
+        assertEquals(R.raw.applause_20, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(21);
+        assertEquals(R.raw.applause_20, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(22);
+        assertEquals(R.raw.applause_20, result);
+
+        result = WalkCongratsSounds.getSoundForCirclesReached(322);
+        assertEquals(R.raw.applause_20, result);
     }
 }
