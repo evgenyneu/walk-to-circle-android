@@ -2,6 +2,8 @@ package com.evgenii.walktocircle.walkWalk;
 
 import android.support.test.runner.AndroidJUnit4;
 
+import com.evgenii.walktocircle.utils.WalkRandomNumberGenerator;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

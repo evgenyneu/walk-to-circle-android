@@ -6,6 +6,8 @@ public class WalkConstants {
     // The height of the status bar in pixels. Used to avoid the circle from overlapping with the status bar.
     public static float statusBarHeightPixels = 50;
 
+    public static String walkPreferencesName = "WalkToCirclePreferences91";
+
     // Map position and zoom
     // -----------
 

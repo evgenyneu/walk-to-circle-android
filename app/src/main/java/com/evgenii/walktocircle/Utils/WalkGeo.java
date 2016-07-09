@@ -11,7 +11,7 @@ public class WalkGeo {
         Double min = 0.0;
         Double max = 360.0;
 
-        return WalkRandom.randomDoubleBetween(min, max);
+        return WalkRandomNumberGenerator.randomDoubleBetween(min, max);
     }
 
 
@@ -42,7 +42,7 @@ public class WalkGeo {
             minDistanceMetersCorrected = maxDistanceMetersCorrected;
         }
 
-        Double distanceMeters = WalkRandom.randomDoubleBetween(minDistanceMetersCorrected, maxDistanceMetersCorrected);
+        Double distanceMeters = WalkRandomNumberGenerator.randomDoubleBetween(minDistanceMetersCorrected, maxDistanceMetersCorrected);
         Double bearingDegrees = WalkGeo.randomBetween0and360Degrees();
 
         return destination(fromLocation, distanceMeters, bearingDegrees);

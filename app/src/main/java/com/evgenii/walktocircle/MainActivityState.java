@@ -7,6 +7,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.prefs.Preferences;
 
 // Saved state for the app
 public class MainActivityState {
@@ -63,7 +64,7 @@ public class MainActivityState {
     }
 
     private void loadState() {
-        SharedPreferences preferences = MainActivity.instance.getPreferences(0);
+        SharedPreferences preferences = getPreferences();
 
         // Current circle
         // -------------
@@ -104,7 +105,7 @@ public class MainActivityState {
     }
 
     private void saveState() {
-        SharedPreferences preferences = MainActivity.instance.getPreferences(0);
+        SharedPreferences preferences = getPreferences();
         SharedPreferences.Editor editor = preferences.edit();
 
         // Current circle
@@ -148,6 +149,11 @@ public class MainActivityState {
         editor.putInt(CIRCLES_REACHED_TODAY, mCirclesReachedToday);
 
         editor.commit();
+    }
+
+    private SharedPreferences getPreferences() {
+        return WalkApplication.getAppContext().getSharedPreferences(
+                WalkConstants.walkPreferencesName, 0);
     }
 
     // Show congratulations screen
