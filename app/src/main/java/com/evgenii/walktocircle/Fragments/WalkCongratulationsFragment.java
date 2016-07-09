@@ -33,8 +33,6 @@ public class WalkCongratulationsFragment extends Fragment {
         return view;
     }
 
-
-
     public void didTapProceedButton() {
         MainActivityState.saveShowCongratulationsScreen(false);
         WalkFragmentType.showWithAnimation();

@@ -64,7 +64,7 @@ public class StartButtonCountdown {
                 });
             }
 
-        }, 500, 1000);
+        }, 0, 1000);
     }
 
     private void didTimerTick() {

@@ -16,7 +16,7 @@ public class WalkConstants {
     public static int mapPositionAnimationDurationMilliseconds = 400;
 
     // The default zoom level of the map. The map is zoomed it this level before the pin is dropped.
-    public static double mapInitialZoom = 16.3;
+    public static double mapInitialZoom = 16.1;
 
     // The maximum allowed difference between the current map zoom level and the "mapInitialZoom"
     // setting. If the difference is greater the map is zoomed at the "mapInitialZoom" level.
