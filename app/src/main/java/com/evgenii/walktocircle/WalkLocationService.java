@@ -13,7 +13,9 @@ import java.util.Date;
 public class WalkLocationService implements  com.google.android.gms.location.LocationListener {
     private boolean isUpdating = false;
 
-
+    // The last time location updates has been started.
+    // This is use to check the time period location updates are running.
+    // Location updates are stopped if they have been running for too long to conserve the battery.
     private static Date mLastLocationUpdateStartTime = new Date();
 
     // Send location updates to the map fragment

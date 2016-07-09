@@ -35,6 +35,11 @@ public class MainActivityState {
     // Number of circles reached today
     private int mCirclesReachedToday;
 
+    // When true the user has permitted or denined location permission.
+    // When false, user has not make the choice yet - which happes when the app has
+    // been launched for the first time.
+    private boolean mUserDidMakeLocationPermissionChoice = false;
+
     static final String CURRENT_LOCATION_LATITUDE = "currentLocationLatitude";
     static final String CURRENT_LOCATION_LONGITUDE = "currentLocationLongitude";
 
@@ -51,6 +56,8 @@ public class MainActivityState {
     static final String LAST_CIRCLE_REACHED_DATE = "lastCircleReachedData";
 
     static final String CIRCLES_REACHED_TODAY = "circlesReachedToday";
+
+    static final String USER_DID_MAKE_LOCATION_PERMISSION_CHOICE = "userDidMakeLocationPermissionChoice";
 
     private static MainActivityState mInstance;
 
@@ -102,6 +109,8 @@ public class MainActivityState {
         mLastCircleReachedDate = preferences.getString(LAST_CIRCLE_REACHED_DATE, null);
 
         mCirclesReachedToday = preferences.getInt(CIRCLES_REACHED_TODAY, 0);
+
+        mUserDidMakeLocationPermissionChoice = preferences.getBoolean(USER_DID_MAKE_LOCATION_PERMISSION_CHOICE, false);
     }
 
     private void saveState() {
@@ -147,6 +156,8 @@ public class MainActivityState {
         editor.putString(LAST_CIRCLE_REACHED_DATE, mLastCircleReachedDate);
 
         editor.putInt(CIRCLES_REACHED_TODAY, mCirclesReachedToday);
+
+        editor.putBoolean(USER_DID_MAKE_LOCATION_PERMISSION_CHOICE, mUserDidMakeLocationPermissionChoice);
 
         editor.commit();
     }
@@ -265,6 +276,21 @@ public class MainActivityState {
     public static void saveCirclesReachedToday(int value) {
         if (mInstance != null) {
             mInstance.mCirclesReachedToday = value;
+            mInstance.saveState();
+        }
+    }
+
+
+    // User did make location permission choice
+    // -----------
+
+    public boolean getUserDidMakeLocationPermissionChoice() {
+        return mUserDidMakeLocationPermissionChoice;
+    }
+
+    public static void saveUserDidMakeLocationPermissionChoice(boolean value) {
+        if (mInstance != null) {
+            mInstance.mUserDidMakeLocationPermissionChoice = value;
             mInstance.saveState();
         }
     }
