@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.app.Fragment;
 import android.widget.TextView;
 
+import com.evgenii.walktocircle.WalkConstants;
 import com.evgenii.walktocircle.fragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
@@ -51,6 +52,6 @@ public class WalkCongratulationsFragment extends Fragment {
 
     private void playSound() {
         int soundId = WalkCongratsSounds.getSoundId();
-        WalkApplication.getSounds().playSound(soundId, 0.3);
+        WalkApplication.getSounds().playSound(soundId, WalkConstants.congratsApplauseVolume);
     }
 }
