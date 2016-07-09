@@ -6,7 +6,12 @@ public class WalkConstants {
     // The height of the status bar in pixels. Used to avoid the circle from overlapping with the status bar.
     public static float statusBarHeightPixels = 50;
 
+    // Name of the shared preferences for the app.
     public static String walkPreferencesName = "WalkToCirclePreferences91";
+
+    // The maximum time period for the location update to be running.
+    // Location updates are stopped if they are running for longer time to save battery.
+    public static int maximumLocationUpdatesRunningTimeSeconds = 30 * 60; // 30 minutes
 
     // Map position and zoom
     // -----------

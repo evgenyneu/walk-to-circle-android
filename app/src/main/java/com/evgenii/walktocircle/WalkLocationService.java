@@ -1,14 +1,20 @@
 package com.evgenii.walktocircle;
 
 import android.location.Location;
+import android.util.Log;
 
 import com.evgenii.walktocircle.fragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.fragments.WalkMapFragment;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
+import java.util.Date;
+
 public class WalkLocationService implements  com.google.android.gms.location.LocationListener {
     private boolean isUpdating = false;
+
+
+    private static Date mLastLocationUpdateStartTime = new Date();
 
     // Send location updates to the map fragment
     private boolean mSendUpdatesToMap = false;
@@ -25,6 +31,8 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
 
     public void startLocationUpdatesIfNeeded() {
         if (!mSendUpdatesToMap && !areCircleUpdatesNeeded()) { return; } // Updates are not needed
+
+        mLastLocationUpdateStartTime = new Date();
         if (isUpdating) { return; } // Already updating location
 
         if (!WalkGoogleApiClient.isConnected()) { return; }
@@ -38,6 +46,8 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
         LocationServices.FusedLocationApi.requestLocationUpdates(
                 WalkGoogleApiClient.getInstance().getClient(), mLocationRequest, this);
 
+        Log.d("ii", "startLocationUpdates");
+
         isUpdating = true;
     }
 
@@ -48,18 +58,32 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
     public void stopLocationUpdatesIfNeeded() {
         if (!isUpdating) { return; } // Not updating
         if (mSendUpdatesToMap || areCircleUpdatesNeeded()) { return; } // Location updates are still needed
+        stopLocationUpdates();
+    }
 
+    private void stopLocationUpdates() {
         if (!WalkGoogleApiClient.isConnected()) { return; }
         if (!WalkLocationPermissions.getInstance().hasLocationPermission()) { return; }
 
         LocationServices.FusedLocationApi.removeLocationUpdates(
-            WalkGoogleApiClient.getInstance().getClient(), this);
+                WalkGoogleApiClient.getInstance().getClient(), this);
+
+        Log.d("ii", "stopLocationUpdates");
 
         isUpdating = false;
     }
 
     @Override
     public void onLocationChanged(Location location) {
+        if (areLocationUpdatesRunningForTooLongAndDrainingBattery()) {
+            // Location updates are running for too long.
+            // Stop the updates to conserve the battery.
+            // User has probably abandoned the app.
+            // Location updates will be restarted when the app is brought to front again.
+            stopLocationUpdates();
+            return;
+        }
+
         if (mSendUpdatesToMap) {
             WalkMapFragment mapFragment = (WalkMapFragment) WalkFragmentType.Map.getFragmentIfCurrentlyVisibleAndShouldBeVisible();
             if (mapFragment != null) {
@@ -71,5 +95,11 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
             // Check if we reached the circle
             WalkCircleReachDetector.getInstance().checkReachedPosition(location);
         }
+    }
+
+    private boolean areLocationUpdatesRunningForTooLongAndDrainingBattery() {
+        long locationRunningTimeMilliseconds = new Date().getTime() - mLastLocationUpdateStartTime.getTime();
+        Log.d("ii", "locationRunningTimeMilliseconds: " + locationRunningTimeMilliseconds);
+        return locationRunningTimeMilliseconds > (WalkConstants.maximumLocationUpdatesRunningTimeSeconds * 1000);
     }
 }
