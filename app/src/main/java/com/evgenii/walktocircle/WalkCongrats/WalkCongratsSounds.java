@@ -1,5 +1,6 @@
 package com.evgenii.walktocircle.WalkCongrats;
 
+import com.evgenii.walktocircle.MainActivityState;
 import com.evgenii.walktocircle.R;
 
 import java.util.Arrays;
@@ -13,6 +14,14 @@ public class WalkCongratsSounds {
     public static Map<Integer, Integer> getSoundIds() {
         addSoundIds();
         return mSoundIds;
+    }
+
+    /**
+     * @return the congratulatory sound id played when user reaches the circle
+     */
+    public static int getSoundId() {
+        int circlesReached = MainActivityState.getInstance().getCirclesReachedToday();
+        return getSoundForCirclesReached(circlesReached);
     }
 
     /**
