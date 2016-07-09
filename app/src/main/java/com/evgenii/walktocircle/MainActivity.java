@@ -17,24 +17,18 @@ import com.evgenii.walktocircle.Fragments.WalkCongratulationsFragment;
 import com.evgenii.walktocircle.Fragments.WalkWalkFragment;
 import com.evgenii.walktocircle.Fragments.WalkLocationDeniedFragment;
 import com.evgenii.walktocircle.Fragments.WalkMapFragment;
-import com.evgenii.walktocircle.walkService.WalkInProgressService;
-import com.evgenii.walktocircle.walkService.WalkInProgressServiceCallbacks;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
 
-public class MainActivity extends AppCompatActivity implements WalkInProgressServiceCallbacks {
+public class MainActivity extends AppCompatActivity  {
     public static Activity instance;
-    WalkInProgressService mWalkInProgressService;
-    boolean mWalkInProgressServiceBound = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        startWalkInPorgressService();
-
+        
         // Save the instance to this Activity object
         instance = this;
 
@@ -61,13 +55,6 @@ public class MainActivity extends AppCompatActivity implements WalkInProgressSer
         if (!WalkLocationPermissions.getInstance().shouldShowRequestPermissionRationale()) {
             WalkLocationPermissions.getInstance().requestLocationPermissionIfNotGranted(this);
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        unbindWalkInProgressService();
-
-        super.onDestroy();
     }
 
     @Override
@@ -206,53 +193,5 @@ public class MainActivity extends AppCompatActivity implements WalkInProgressSer
 
     public void locationDenied_didTapRequestLocationPermissionButton(View view) {
         WalkLocationPermissions.getInstance().requestLocationPermissionIfNotGranted(this);
-    }
-
-    // Walk in progress service
-    // ----------------------
-
-    private void startWalkInPorgressService() {
-        Intent intent = new Intent(WalkApplication.getAppContext(), WalkInProgressService.class);
-        WalkApplication.getAppContext().startService(intent);
-        WalkApplication.getAppContext().bindService(intent, mConnection, 0);
-    }
-
-    private void unbindWalkInProgressService() {
-        if (mWalkInProgressServiceBound) {
-            Log.d("ii", "Unbind service");
-            mWalkInProgressService.setCallbacks(null);
-            WalkApplication.getAppContext().unbindService(mConnection);
-        }
-    }
-
-    /** Defines callbacks for service binding, passed to bindService() */
-    private ServiceConnection mConnection = new ServiceConnection() {
-
-        @Override
-        public void onServiceConnected(ComponentName className,
-                                       IBinder service) {
-            WalkInProgressService.WalkInProgressServiceBinder binder =
-                    (WalkInProgressService.WalkInProgressServiceBinder) service;
-
-            mWalkInProgressService = binder.getService();
-            mWalkInProgressService.setCallbacks(MainActivity.this);
-            mWalkInProgressServiceBound = true;
-            Log.d("ii", "onServiceConnected");
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName arg0) {
-            Log.d("ii", "onServiceDisconnected");
-            mWalkInProgressServiceBound = false;
-        }
-    };
-
-    // WalkInProgressServiceCallbacks
-    // ----------------------
-
-
-    @Override
-    public void didReachTheCircle() {
-        Log.d("ii", "didReachTheCircle callback recieved");
     }
 }
