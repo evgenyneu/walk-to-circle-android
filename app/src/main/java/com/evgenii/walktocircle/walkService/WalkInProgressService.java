@@ -1,0 +1,70 @@
+package com.evgenii.walktocircle.walkService;
+
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+import android.support.annotation.Nullable;
+import android.util.Log;
+
+import com.evgenii.walktocircle.MainActivity;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class WalkInProgressService extends Service {
+    private Timer mTimer;
+
+    @Override
+    // The system calls this method when the service is first created.
+    // If the service is already running, this method is not called.
+    public void onCreate() {
+        super.onCreate();
+    }
+
+    @Override
+    // The system calls this method when another component, such as an activity,
+    // requests that the service be started, by calling startService().
+    // Can be called multiple times.
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.d("ii", "WalkInProgressService onStartCommand");
+        startCountdownTimer();
+
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public void onDestroy() {
+        cancelCountdownTimer();
+        super.onDestroy();
+    }
+
+    public void startCountdownTimer() {
+        cancelCountdownTimer();
+
+        mTimer = new Timer();
+
+        mTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                didTimerTick();
+            }
+
+        }, 0, 5000);
+    }
+
+    private void cancelCountdownTimer() {
+        if (mTimer == null) { return; }
+        mTimer.cancel();
+        mTimer = null;
+    }
+
+    private void didTimerTick() {
+        Log.d("ii", "Service timer: " + System.currentTimeMillis());
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+}

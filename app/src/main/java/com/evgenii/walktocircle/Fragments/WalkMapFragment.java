@@ -12,8 +12,10 @@ import com.evgenii.walktocircle.WalkMap.DropPin;
 import com.evgenii.walktocircle.WalkMap.PrepareMapForPin;
 import com.evgenii.walktocircle.WalkMap.StartButton;
 import com.evgenii.walktocircle.WalkTestReachCircle;
+import com.evgenii.walktocircle.walkService.WalkInProgressService;
 import com.google.android.gms.maps.GoogleMap;
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Point;
 import android.location.Location;
 import android.os.Bundle;
@@ -80,6 +82,9 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
     }
 
     public void didTapStartButton() {
+        Intent intent = new Intent(WalkApplication.getAppContext(), WalkInProgressService.class);
+        WalkApplication.getAppContext().startService(intent);
+
         Location lastLocation = getLastLocation();
 
         if (lastLocation == null) {

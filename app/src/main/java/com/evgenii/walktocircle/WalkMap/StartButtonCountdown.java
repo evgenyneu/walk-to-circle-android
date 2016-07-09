@@ -53,34 +53,6 @@ public class StartButtonCountdown {
         view.startAnimation(animation);
     }
 
-//    public void startCountdownTimer() {
-//        cancelCountdownTimer();
-//
-//        int delayBeforeCountdownSeconds = getDelayBeforeCountdownSeconds();
-//
-//        int countdownDurationMilliseconds = (getCountdownDurationSeconds() +
-//                delayBeforeCountdownSeconds + 1) * 1000;
-//
-//        mCountdownTimer = new CountDownTimer(countdownDurationMilliseconds, 1000) {
-//            public void onTick(long millisUntilFinished) {
-//                currentCountdownValue -= 1;
-//
-//                if (currentCountdownValue < getCountdownDurationSeconds()) {
-//                    updateCountdownValue(currentCountdownValue);
-//                    playClickSound();
-//                }
-//
-//                if (currentCountdownValue == 0) {
-//                    startWalking();
-//                }
-//            }
-//
-//            public void onFinish() { }
-//        };
-//
-//        mCountdownTimer.start();
-//    }
-
     public void startCountdownTimer() {
         cancelCountdownTimer();
         currentCountdownValue = getCountdownDurationSeconds() + getDelayBeforeCountdownSeconds();
