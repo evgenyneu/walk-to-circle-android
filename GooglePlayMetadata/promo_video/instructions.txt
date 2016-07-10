@@ -1,0 +1,3 @@
+/Users/evgenii//Library/Android/sdk/platform-tools/adb shell screenrecord /sdcard/walk_to_circle.mp4 --verbose --bit-rate 8000000
+
+/Users/evgenii//Library/Android/sdk/platform-tools/adb pull /sdcard/walk_to_circle.mp4
