@@ -90,7 +90,7 @@ public class WalkCongratsPhraseTest {
 
         assertEquals("That's good!", result);
 
-        // Add the random phrase to the list of seen phrases
+        // Check the random phrase is added to the list of seen phrases
 
         String[] seenExpected = {
                 "Good remembering!",
@@ -123,7 +123,7 @@ public class WalkCongratsPhraseTest {
 
         assertEquals("Good work!", result);
 
-        // Add the random phrase to the list of seen phrases
+        // Check the random phrase is added to the list of seen phrases
 
         String[] seenExpected = {"Good work!"};
         assertArrayEquals(seenExpected, WalkCongratsPhrase.mPhrasesSeenToday.toArray());
