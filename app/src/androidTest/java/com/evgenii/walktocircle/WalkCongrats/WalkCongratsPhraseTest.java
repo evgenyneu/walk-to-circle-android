@@ -96,7 +96,15 @@ public class WalkCongratsPhraseTest {
                 "Good remembering!",
                 "That's good!"};
 
-        assertArrayEquals(seenExpected, WalkCongratsPhrase.mPhrasesSeenToday.toArray());
+        Arrays.sort(seenExpected);
+
+        String[] seenToday = WalkCongratsPhrase.mPhrasesSeenToday.toArray(
+                new String[WalkCongratsPhrase.mPhrasesSeenToday.size()]);
+
+        Arrays.sort(seenToday);
+
+        assertEquals(2, seenToday.length);
+        assertArrayEquals(seenExpected, seenToday);
     }
 
     @Test

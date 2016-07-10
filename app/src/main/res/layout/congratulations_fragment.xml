@@ -10,8 +10,7 @@
         android:layout_marginTop="@dimen/walk_screen_top_margin"
         android:layout_marginBottom="@dimen/walk_screen_bottom_margin"
         android:layout_marginStart="@dimen/margin_x_large"
-        android:layout_marginEnd="@dimen/margin_x_large"
-        >
+        android:layout_marginEnd="@dimen/margin_x_large">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,7 +21,7 @@
                 android:id="@+id/congrats_well_done_phrase_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/font_size_large"
+                android:textSize="@dimen/font_size_x_large"
                 android:lineSpacingExtra="@dimen/line_spacing_extra_for_large_text"
                 android:shadowColor="@color/walkColorShade10"
                 android:shadowDx="@integer/text_shadow_dx"

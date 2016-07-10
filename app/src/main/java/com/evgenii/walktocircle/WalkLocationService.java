@@ -48,8 +48,6 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
         LocationServices.FusedLocationApi.requestLocationUpdates(
                 WalkGoogleApiClient.getInstance().getClient(), mLocationRequest, this);
 
-        Log.d("ii", "startLocationUpdates");
-
         isUpdating = true;
     }
 
@@ -69,8 +67,6 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
 
         LocationServices.FusedLocationApi.removeLocationUpdates(
                 WalkGoogleApiClient.getInstance().getClient(), this);
-
-        Log.d("ii", "stopLocationUpdates");
 
         isUpdating = false;
     }
@@ -101,7 +97,6 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
 
     private boolean areLocationUpdatesRunningForTooLongAndDrainingBattery() {
         long locationRunningTimeMilliseconds = new Date().getTime() - mLastLocationUpdateStartTime.getTime();
-        Log.d("ii", "locationRunningTimeMilliseconds: " + locationRunningTimeMilliseconds);
         return locationRunningTimeMilliseconds > (WalkConstants.maximumLocationUpdatesRunningTimeSeconds * 1000);
     }
 }
