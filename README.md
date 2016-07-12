@@ -48,7 +48,7 @@ Walk to Circle is [also available](https://itunes.apple.com/us/app/walk-to-circl
 
 
 
-### Google maps API key
+## Google maps API key
 
 To use the repository you will need to create a google maps API key. Create `google_maps_api.xml` file in app/src/release/res/values and app/src/debug/res/values.
 
@@ -68,3 +68,8 @@ https://support.google.com/cloud/answer/6158862?hl=en#creating-android-api-keys
 * *xhdpi*: 2x
 * *xxhdpi*: 3x
 * *xxxhdpi*: 4x (Launcher icon only)
+
+
+## Feeback is welcome
+
+Please create an issue ticket if you have a problem with the source code or just want to chat.
