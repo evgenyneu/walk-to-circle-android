@@ -4,7 +4,7 @@ This app is made for walking and discovering places around you.
 
 <a href='https://play.google.com/store/apps/details?id=com.evgenii.walktocircle' title='Get Walk to Circle on Google Play'><img src='https://raw.githubusercontent.com/evgenyneu/walk-to-circle-android/master/Graphics/Github/google_play_badge.png' height="60" alt='Get Walk to Circle on Google Play'></a>
 
-Walk to Circle is [also available](https://itunes.apple.com/us/app/walk-to-circle/id955310614) on iOS.
+Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-ios) on iOS.
 
 
 <img src="https://raw.githubusercontent.com/evgenyneu/walk-to-circle-android/master/GooglePlayMetadata/Screenshots/1080_1920_2.png" alt="Walk to Circle for Android  screenshot" width="360">
