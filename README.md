@@ -2,7 +2,7 @@
 
 An Android app that helps stretch legs and discover places around.
 
-<a href='https://itunes.apple.com/us/app/walk-to-circle/id955310614' title='Get Walk to Circle on Google Play'><img src='https://raw.githubusercontent.com/evgenyneu/walk-to-circle-android/master/Graphics/Github/google_play_badge.png' height="60" alt='Get Walk to Circle on Google Play'></a>
+<a href='https://play.google.com/store/apps/details?id=com.evgenii.walktocircle' title='Get Walk to Circle on Google Play'><img src='https://raw.githubusercontent.com/evgenyneu/walk-to-circle-android/master/Graphics/Github/google_play_badge.png' height="60" alt='Get Walk to Circle on Google Play'></a>
 
 Walk to Circle is [also available](tps://itunes.apple.com/us/app/walk-to-circle/id955310614) on iOS.
 
