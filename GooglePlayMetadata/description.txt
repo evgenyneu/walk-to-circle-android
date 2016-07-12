@@ -7,3 +7,5 @@ Your task is to then walk to the circle, guided only by your memory of its where
 I love walking and exploring my city and Walk to Circle has led me to many places just a stone’s throw from my house that I had never been to before. For those that like to walk, or who maybe want a reason to get out and walk more, this app is great for taking you away from the same old familiar routes and helping you to discover new places in your town or city.
 
 I wish you happy and safe walking. I’d love to hear how you get on and welcome all feedback on the app. Drop me a message at evgenii.com.
+
+Walk to Circle is open source. Get its source code on walktocircle.com.
