@@ -62,7 +62,7 @@ https://support.google.com/cloud/answer/6158862?hl=en#creating-android-api-keys
 
 ## TODO
 
-1. Show fragment change animation only as a reaction to user action (tapping a button, for example). Do not show the animation when the app is brought to the foreground.
+1. Show fragment change animation only as a reaction to user action (tapping a button, for example). Currently the animation is also shown when the app is brought to the foreground and the animation stutters on some devices.
 1. Add top padding to Google Map with `setPadding` method to move compass from under the status bar.
 1. Change location update interval from 1 second to 5 seconds to conserve battery with `setInterval` method in `WalkLocationService` class.
 
