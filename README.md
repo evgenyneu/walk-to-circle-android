@@ -1,6 +1,6 @@
 # Walk to Circle for Android
 
-An Android app that helps to stretch legs and discover places around.
+This app is made for walking and discovering places around you.
 
 <a href='https://play.google.com/store/apps/details?id=com.evgenii.walktocircle' title='Get Walk to Circle on Google Play'><img src='https://raw.githubusercontent.com/evgenyneu/walk-to-circle-android/master/Graphics/Github/google_play_badge.png' height="60" alt='Get Walk to Circle on Google Play'></a>
 
