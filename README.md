@@ -72,4 +72,4 @@ https://support.google.com/cloud/answer/6158862?hl=en#creating-android-api-keys
 
 ## Feeback is welcome
 
-Please create an issue ticket if you have a problem with the source code or just want to chat.
+Please create an issue ticket if you have a problem with the app or just want to chat.
