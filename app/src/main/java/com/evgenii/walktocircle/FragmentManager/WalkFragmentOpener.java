@@ -1,6 +1,7 @@
 package com.evgenii.walktocircle.fragmentManager;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 
 import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.fragments.WalkCongratulationsFragment;
@@ -31,7 +32,12 @@ public class WalkFragmentOpener {
         mCanShowFragments = false;
     }
 
-    public static void showFragmentWithFlipAnimation(Fragment fragment) {
+    /**
+     * Shows the current fragment to user unless it is already shown
+     * @param withAnimation if true the fragment is shown with flip animation
+     * @param fragment the fragment to be shown
+     */
+    public static void showFragment(boolean withAnimation, Fragment fragment) {
         if (!mCanShowFragments) { return; }
 
         Fragment currentFragment = getCurrentFragment();
@@ -42,18 +48,23 @@ public class WalkFragmentOpener {
                 .beginTransaction()
                 .add(R.id.container, fragment)
                 .commit();
+
+            return;
         } else if (currentFragment.getClass().equals(fragment.getClass())) {
+            // The fragment is already shown.
             return;
         }
 
-        // Show fragment with animation
-        WalkAnimation animation = getNextAnimation();
+        FragmentTransaction fragmentTransaction = MainActivity.instance.getFragmentManager()
+                .beginTransaction();
 
-        MainActivity.instance.getFragmentManager()
-                .beginTransaction()
-                .setCustomAnimations(animation.enter, animation.exit, 0, 0)
-                .replace(R.id.container, fragment)
-                .commit();
+        if (withAnimation) {
+            // Show fragment with animation
+            WalkAnimation animation = getNextAnimation();
+            fragmentTransaction.setCustomAnimations(animation.enter, animation.exit, 0, 0);
+        }
+
+        fragmentTransaction.replace(R.id.container, fragment).commit();
     }
 
     private static WalkAnimation getNextAnimation() {

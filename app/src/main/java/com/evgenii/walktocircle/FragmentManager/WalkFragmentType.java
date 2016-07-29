@@ -42,7 +42,14 @@ public enum WalkFragmentType {
      * Create and show the current fragment with animation.
      */
     public static void showWithAnimation() {
-        shouldBeDisplayedNow().createAndShowWithAnimation();
+        shouldBeDisplayedNow().createAndShow(true);
+    }
+
+    /**
+     * Create and show the current fragment without animation.
+     */
+    public static void showWithoutAnimation() {
+        shouldBeDisplayedNow().createAndShow(false);
     }
 
     /**
@@ -143,10 +150,11 @@ public enum WalkFragmentType {
 
     /**
      * Shows the fragment to the user.
+     * @param withAnimation indicates whether to show the fragment with animation.
      */
-    private void createAndShowWithAnimation() {
+    private void createAndShow(boolean withAnimation) {
         if (isVisible()) { return; } // Already shown
         Fragment fragment = create();
-        WalkFragmentOpener.showFragmentWithFlipAnimation(fragment);
+        WalkFragmentOpener.showFragment(withAnimation, fragment);
     }
 };
