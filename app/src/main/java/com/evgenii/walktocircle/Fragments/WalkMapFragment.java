@@ -156,6 +156,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
         mMap = googleMap;
         enableMyLocationAndZoomToLastLocation();
         mMap.getUiSettings().setMapToolbarEnabled(false);
+        mMap.setPadding(0, (int) WalkConstants.statusBarHeightPixels, 0, 0); // Move compass from under the status bar
         mStartButton.show();
         PreviousCircleLocation.showLastCircleLocation(mMap);
     }

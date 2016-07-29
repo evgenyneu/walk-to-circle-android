@@ -13,6 +13,9 @@ public class WalkConstants {
     // Location updates are stopped if they are running for longer time to save battery.
     public static int maximumLocationUpdatesRunningTimeSeconds = 30 * 60; // 30 minutes
 
+    // How often the location updates are delivered to the app
+    public static int locationUpdateIntervalMilliseconds = 5000;
+
     // Map position and zoom
     // -----------
 
@@ -21,7 +24,7 @@ public class WalkConstants {
     public static int mapPositionAnimationDurationMilliseconds = 400;
 
     // The default zoom level of the map. The map is zoomed it this level before the pin is dropped.
-    public static double mapInitialZoom = 16.1;
+    public static double mapInitialZoom = 16.3;
 
     // The maximum allowed difference between the current map zoom level and the "mapInitialZoom"
     // setting. If the difference is greater the map is zoomed at the "mapInitialZoom" level.

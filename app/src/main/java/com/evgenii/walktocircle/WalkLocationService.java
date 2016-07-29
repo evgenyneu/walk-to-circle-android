@@ -41,8 +41,7 @@ public class WalkLocationService implements  com.google.android.gms.location.Loc
         if (!WalkLocationPermissions.getInstance().hasLocationPermission()) { return; }
 
         LocationRequest mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(1000);
-        mLocationRequest.setFastestInterval(1000);
+        mLocationRequest.setInterval(WalkConstants.locationUpdateIntervalMilliseconds);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
         LocationServices.FusedLocationApi.requestLocationUpdates(
