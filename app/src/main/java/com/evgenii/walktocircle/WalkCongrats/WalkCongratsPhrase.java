@@ -22,8 +22,14 @@ import java.util.Vector;
 public class WalkCongratsPhrase {
     private static Map<Integer, String[]> mPhrases;
 
-    // Phrases that were already seen today
+    // Phrases that were already seen today.
+    // This is used to show different phrase when a new circle is reached.
     public static Set<String> mPhrasesSeenToday = new HashSet<String>();
+
+    // Stores the current phrase to show to the user.
+    // The purpose of it is to avoid showing different phrases when screen orientation is changed on congratulations screen.
+    // This variable is set to null on map screen. This mean that a new phrase will be shown when the user reaches the circle.
+    public static String mCurrentPhrase;
 
     // Random number generator that is used to pick a random phrase.
     // The property is null normally but in the unit test has a fake random number generator instance.
@@ -47,6 +53,11 @@ public class WalkCongratsPhrase {
      * @return returns a random phrase for the given number of circles reached.
      */
     public static String getRandomPhraseForCirclesReached(int circlesReached) {
+        if (WalkCongratsPhrase.mCurrentPhrase != null) {
+            // Already generated the phrase, show the same one until a new circle is reached.
+            return WalkCongratsPhrase.mCurrentPhrase;
+        }
+
         if (circlesReached < 1) { circlesReached = 1; }
         String[] phrases = getUnseenPhrasesForCirclesReached(circlesReached);
 
@@ -59,6 +70,7 @@ public class WalkCongratsPhrase {
         int randomIndex = getRandomNumberGenerator().getRandomIntUntil(phrases.length);
         String randomPhrase = phrases[randomIndex];
         mPhrasesSeenToday.add(randomPhrase);
+        WalkCongratsPhrase.mCurrentPhrase = randomPhrase; // Remember current phrase
         return randomPhrase;
     }
 

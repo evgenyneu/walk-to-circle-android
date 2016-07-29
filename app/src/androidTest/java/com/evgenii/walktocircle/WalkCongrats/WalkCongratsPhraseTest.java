@@ -23,6 +23,7 @@ public class WalkCongratsPhraseTest {
     public void after() {
         WalkCongratsPhrase.mRandomNumberGenerator = null; // Stop using fake random generator
         WalkCongratsPhrase.mPhrasesSeenToday = new HashSet<String>(); // Reset seen phrases
+        WalkCongratsPhrase.mCurrentPhrase = null; // Remove current phrase.
     }
 
     // getRandomPhraseForCirclesReached
@@ -127,6 +128,27 @@ public class WalkCongratsPhraseTest {
 
         String[] seenExpected = {"Good work!"};
         assertArrayEquals(seenExpected, WalkCongratsPhrase.mPhrasesSeenToday.toArray());
+    }
+
+    // Remember current phrase
+    // ----------------------------
+
+    @Test
+    public void getRandomPhrase_returnCurrentPhrase() {
+        WalkCongratsPhrase.mCurrentPhrase = "The horses are blue.";
+
+        String result = WalkCongratsPhrase.getRandomPhraseForCirclesReached(0);
+
+        assertEquals("The horses are blue.", result);
+    }
+
+    @Test
+    public void getRandomPhrase_rememberCurrentPhrase() {
+        WalkCongratsPhrase.mRandomNumberGenerator = new WalkFakeRandomNumberGenerator(2);
+
+        String result = WalkCongratsPhrase.getRandomPhraseForCirclesReached(9);
+
+        assertEquals("Fantastic!", WalkCongratsPhrase.mCurrentPhrase);
     }
 
     // getUnseenPhrasesForCirclesReached

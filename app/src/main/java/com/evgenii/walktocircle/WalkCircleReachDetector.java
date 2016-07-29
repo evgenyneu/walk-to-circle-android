@@ -5,6 +5,7 @@ import android.location.Location;
 import com.evgenii.walktocircle.fragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.utils.WalkLocation;
 import com.evgenii.walktocircle.walkCongrats.WalkCirclesReachedToday;
+import com.evgenii.walktocircle.walkCongrats.WalkCongratsPhrase;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
@@ -58,6 +59,7 @@ public class WalkCircleReachDetector {
         if (MainActivityState.getInstance().getCurrentCircleLocation() == null) { return; }
         MainActivityState.saveCurrentCircleLocation(null);
         WalkApplication.getLocationService().stopLocationUpdatesIfNeeded();
+        WalkCongratsPhrase.mCurrentPhrase = null; // Forget the previous "Congrats!" phrase and show a new one
         MainActivityState.saveShowCongratulationsScreen(true);
         MainActivityState.saveIsTutorialMode(false); // Circle reached, we are no longer in tutorial mode.
         MainActivityState.saveCurrentQuote(null);
