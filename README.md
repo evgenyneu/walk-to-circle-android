@@ -49,7 +49,9 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 
 ### Congratulations images
 
-* **Image 20** [Christmas Light Knots](http://www.freeimages.com/photo/christmas-light-knots-1160023) by [dimitri_c](http://www.freeimages.com/photographer/dimitri_c-47343).
+* **Hubble eXtreme Deep Field** by NASA; ESA; G. Illingworth, D. Magee, and P. Oesch, University of California, Santa Cruz; R. Bouwens, Leiden University; and the HUDF09 Team. Sources: [Hubblesite](http://hubblesite.org/newscenter/archive/releases/2012/37/image/a/warn/), [NASA]( http://www.nasa.gov/images/content/690958main_p1237a1.jpg).
+
+* **Christmas Light Knots** by [dimitri_c](http://www.freeimages.com/photographer/dimitri_c-47343), Source: [freeimages.com](http://www.freeimages.com/photo/christmas-light-knots-1160023)
 
 
 
