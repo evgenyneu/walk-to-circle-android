@@ -11,6 +11,7 @@
         android:scaleType="centerCrop"/>
 
     <ScrollView
+        android:id="@+id/congrats_phrase_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/walk_screen_top_margin"
@@ -34,7 +35,7 @@
                 android:shadowDy="@integer/text_shadow_dy"
                 android:shadowRadius="@integer/text_shadow_radius"
                 android:gravity="center_horizontal"
-                android:text="Well done!"/>
+                android:text="Well done!" />
 
 
             <TextView
@@ -51,10 +52,51 @@
                 android:gravity="center_horizontal"
                 android:text="Woohoo!"/>
         </LinearLayout>
-
-
     </ScrollView>
 
+    <ScrollView
+        android:id="@+id/congrats_image_description_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/walk_screen_top_margin"
+        android:layout_marginBottom="@dimen/walk_screen_bottom_margin"
+        android:layout_marginStart="@dimen/margin_x_large"
+        android:layout_marginEnd="@dimen/margin_x_large"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/congrats_image_description_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_x_large"
+                android:lineSpacingExtra="@dimen/line_spacing_extra_for_large_text"
+                android:shadowColor="@color/walkColorShade10"
+                android:shadowDx="@integer/text_shadow_dx"
+                android:shadowDy="@integer/text_shadow_dy"
+                android:shadowRadius="@integer/text_shadow_radius"
+                android:gravity="center_horizontal"
+                android:onClick="didTapCongratsImageDescription"/>
+
+            <TextView
+                android:id="@+id/congrats_image_author_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
+                android:textStyle="italic"
+                android:textSize="@dimen/font_size_body"
+                android:shadowColor="@color/walkColorShade10"
+                android:shadowDx="@integer/text_shadow_dx"
+                android:shadowDy="@integer/text_shadow_dy"
+                android:shadowRadius="@integer/text_shadow_radius"
+                android:gravity="center_horizontal"
+                android:text=""/>
+        </LinearLayout>
+    </ScrollView>
 
     <ImageButton
         android:layout_width="@dimen/start_button_size"
@@ -63,5 +105,14 @@
         android:layout_marginBottom="@dimen/margin_small"
         android:onClick="didTapProceedFromCongratulations"
         android:background="@drawable/continue_button_with_pressed_state" />
+
+    <ImageButton
+        android:layout_width="@dimen/image_details_button_size"
+        android:layout_height="@dimen/image_details_button_size"
+        android:layout_gravity="end|bottom"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:onClick="didTapCongratsShowImageDescription"
+        android:background="@drawable/image_details" />
 
 </FrameLayout>

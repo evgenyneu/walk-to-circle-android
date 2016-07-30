@@ -1,5 +1,8 @@
 package com.evgenii.walktocircle.fragments;
 
+import android.content.Intent;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +11,7 @@ import android.app.Fragment;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.evgenii.walktocircle.MainActivity;
 import com.evgenii.walktocircle.WalkConstants;
 import com.evgenii.walktocircle.fragmentManager.WalkFragmentType;
 import com.evgenii.walktocircle.MainActivityState;
@@ -41,6 +45,14 @@ public class WalkCongratulationsFragment extends Fragment {
         WalkFragmentType.showWithAnimation();
     }
 
+    public void didTapImageDescription() {
+        final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://en.wikipedia.org/wiki/Milky_Way"));
+        MainActivity.instance.startActivity(intent);
+    }
+
+    public void didTapShowImageDescription() {
+    }
+
     private void showCongratulationImage(View view) {
         ImageView imageView =  (ImageView) view.findViewById(R.id.congrats_image_view);
         imageView.setImageResource(WalkCongratsImages.getImageId());
@@ -48,12 +60,13 @@ public class WalkCongratulationsFragment extends Fragment {
 
     private void showNumberOfCirclesReached(View view) {
         TextView textView =  (TextView) view.findViewById(R.id.congrats_circles_reached_today_text_view);
-        textView.setText(WalkCirclesReachedToday.numberOfCirclesReachedTodayPhrase());
+        textView.setText("By Ian Norman");
     }
 
     private void showCongratulationPhrase(View view) {
         TextView textView =  (TextView) view.findViewById(R.id.congrats_well_done_phrase_text_view);
-        textView.setText(WalkCongratsPhrase.getRandomPhrase());
+        textView.setText("Heavens Above Her");
+        textView.setPaintFlags(textView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
     }
 
     private void playSound() {

@@ -21,6 +21,7 @@ public class WalkCongratsImages {
      */
     public static int getImageId() {
         int circlesReached = MainActivityState.getInstance().getCirclesReachedToday();
+        circlesReached = 1;
         return getImageForCirclesReached(circlesReached);
     }
 

@@ -20,6 +20,7 @@
 
     <!-- Buttons -->
     <dimen name="start_button_size">92dp</dimen>
+    <dimen name="image_details_button_size">40dp</dimen>
 
     <!--Walk screen -->
     <dimen name="walk_screen_top_margin">120dp</dimen>
