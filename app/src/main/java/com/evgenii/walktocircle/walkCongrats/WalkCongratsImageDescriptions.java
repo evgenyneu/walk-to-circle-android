@@ -92,25 +92,30 @@ public class WalkCongratsImageDescriptions {
                         "https://en.wikipedia.org/wiki/Abdim%27s_stork",
                         "By Yathin S Krishnappa"));
 
+        mImageDescriptions.put(R.drawable.congrats_optimized_13,
+                new WalkCongratsImageDescription("Jupiter",
+                        "https://en.wikipedia.org/wiki/Jupiter",
+                        "By NASA/JPL/Space Science Institute"));
 
+        mImageDescriptions.put(R.drawable.congrats_optimized_15,
+                new WalkCongratsImageDescription("Honeymoon Bay Sunset",
+                        "https://en.wikipedia.org/wiki/Honeymoon_Bay_(Tasmania)",
+                        "By JJ Harrison / jjharrison89@facebook.com"));
 
-//        mImageIds.put(1, R.drawable.congrats_optimized_1);
-//        mImageIds.put(2, R.drawable.congrats_optimized_2);
-//        mImageIds.put(3, R.drawable.congrats_optimized_3);
-//        mImageIds.put(4, R.drawable.congrats_optimized_4);
-//        mImageIds.put(5, R.drawable.congrats_optimized_5);
-//        mImageIds.put(6, R.drawable.congrats_optimized_6);
-//        mImageIds.put(7, R.drawable.congrats_optimized_7);
-//        mImageIds.put(8, R.drawable.congrats_optimized_8);
-//        mImageIds.put(9, R.drawable.congrats_optimized_9);
-//        mImageIds.put(10, R.drawable.congrats_optimized_10);
-//
-//        mImageIds.put(11, R.drawable.congrats_optimized_11);
-//        mImageIds.put(12, R.drawable.congrats_optimized_12);
-//        mImageIds.put(13, R.drawable.congrats_optimized_13);
-//        mImageIds.put(15, R.drawable.congrats_optimized_15);
-//        mImageIds.put(16, R.drawable.congrats_optimized_16);
-//        mImageIds.put(18, R.drawable.congrats_optimized_18);
-//        mImageIds.put(20, R.drawable.congrats_optimized_20);
+        mImageDescriptions.put(R.drawable.congrats_optimized_16,
+                new WalkCongratsImageDescription("Water Dolphin",
+                        "https://en.wikipedia.org/wiki/Water",
+                        "By JJ Harrison / jjharrison89@facebook.com"));
+
+        mImageDescriptions.put(R.drawable.congrats_optimized_18,
+                new WalkCongratsImageDescription("Common Rock Thrush",
+                        "https://en.wikipedia.org/wiki/Common_rock_thrush",
+                        "By Pierre Dalous"));
+
+        mImageDescriptions.put(R.drawable.congrats_optimized_20,
+                new WalkCongratsImageDescription("Mars Sunset",
+                        "https://en.wikipedia.org/wiki/Mars",
+                        "By NASA's Mars Exploration Rover"));
+
     }
 }

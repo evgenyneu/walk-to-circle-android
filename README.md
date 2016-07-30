@@ -75,13 +75,13 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 
 * **Image 13**: [Jupiter](https://en.wikipedia.org/wiki/Jupiter) by NASA/JPL/Space Science Institute. Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Portrait_of_Jupiter_from_Cassini.jpg), [photojournal.jpl.nasa.gov](http://photojournal.jpl.nasa.gov/catalog/PIA04866).
 
-* **Image 15**: [Honeymoon Bay Sunset](https://commons.wikimedia.org/wiki/File:Honeymoon_Bay_Sunset_2.jpg) by JJ Harrison (jjharrison89@facebook.com) Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Monsax.jpg).
+* **Image 15**: [Honeymoon Bay Sunset](https://en.wikipedia.org/wiki/Honeymoon_Bay_(Tasmania)) by JJ Harrison (jjharrison89@facebook.com) Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Monsax.jpg).
 
-* **Image 16**: [Water Dolphin](https://commons.wikimedia.org/wiki/File:Water_Dolphin.jpg) by JJ Harrison (jjharrison89@facebook.com Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Water_Dolphin.jpg).
+* **Image 16**: [Water Dolphin](https://en.wikipedia.org/wiki/Water) by JJ Harrison (jjharrison89@facebook.com Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Water_Dolphin.jpg).
 
-* **Image 18**: [Monsax](https://en.wikipedia.org/wiki/Common_rock_thrush) by Pierre Dalous Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Honeymoon_Bay_Sunset_2.jpg).
+* **Image 18**: [Common Rock Thrush](https://en.wikipedia.org/wiki/Common_rock_thrush) by Pierre Dalous, Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Honeymoon_Bay_Sunset_2.jpg).
 
-* **Image 20** by [Mars sunset](https://en.wikipedia.org/wiki/Mars), by NASA's Mars Exploration Rover, Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:MarsSunset.jpg), [marsrovers.jpl.nasa.gov](http://marsrovers.jpl.nasa.gov/gallery/press/spirit/20050610a.html).
+* **Image 20** by [Mars Sunset](https://en.wikipedia.org/wiki/Mars), by NASA's Mars Exploration Rover, Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:MarsSunset.jpg), [marsrovers.jpl.nasa.gov](http://marsrovers.jpl.nasa.gov/gallery/press/spirit/20050610a.html).
 
 
 

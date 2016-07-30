@@ -81,5 +81,29 @@ public class WalkCongratsImageDescriptionsTest {
         assertEquals("https://en.wikipedia.org/wiki/Abdim%27s_stork", result.titleUrl);
         assertEquals("By Yathin S Krishnappa", result.author);
 
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_13);
+        assertEquals("Jupiter", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Jupiter", result.titleUrl);
+        assertEquals("By NASA/JPL/Space Science Institute", result.author);
+
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_15);
+        assertEquals("Honeymoon Bay Sunset", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Honeymoon_Bay_(Tasmania)", result.titleUrl);
+        assertEquals("By JJ Harrison / jjharrison89@facebook.com", result.author);
+
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_16);
+        assertEquals("Water Dolphin", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Water", result.titleUrl);
+        assertEquals("By JJ Harrison / jjharrison89@facebook.com", result.author);
+
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_18);
+        assertEquals("Common Rock Thrush", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Common_rock_thrush", result.titleUrl);
+        assertEquals("By Pierre Dalous", result.author);
+
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_20);
+        assertEquals("Mars Sunset", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Mars", result.titleUrl);
+        assertEquals("By NASA's Mars Exploration Rover", result.author);
     }
 }
