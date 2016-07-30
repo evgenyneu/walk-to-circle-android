@@ -58,6 +58,8 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 
 * **Image 4** [Tyto alba](https://en.wikipedia.org/wiki/Barn_owl) by Luc Viatour / [www.Lucnix.be](http://www.Lucnix.be), Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Tyto_alba_1_Luc_Viatour.jpg).
 
+* **Image 6**: [Hong Kong by David Iliff] (www.facebook.com/diliff), by David Iliff [www.facebook.com/diliff](https://www.facebook.com/diliff), Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hong_Kong_Skyline_Restitch_-_Dec_2007.jpg).
+
 * **Image 7**: [Emission nebula NGC 6357](https://en.wikipedia.org/wiki/NGC_6357), by NASA, ESA and Jesœs Ma­z Apellÿniz (Instituto de astrof­sica de Andaluc­a, Spain). Acknowledgement: Davide De Martin (ESA/Hubble), Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:EmissionNebula_NGC6357.jpg), [www.spacetelescope.org](https://www.spacetelescope.org/images/heic0619a/).
 
 * **Image 8**: [Sus scrofa piglet](https://en.wikipedia.org/wiki/Wild_boar) by [Sander van der Wel](http://www.flickr.com/people/40803964@N08). Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sus_scrofa_piglet.jpg), [www.flickr.com](http://www.flickr.com/photos/40803964@N08/4601502733/).
