@@ -19,12 +19,12 @@ public class WalkCongratsImageDescriptionsTest {
         WalkCongratsImageDescription result = WalkCongratsImageDescriptions.getDescription(0);
         assertEquals("Heavens Above Her", result.title);
         assertEquals("https://en.wikipedia.org/wiki/Milky_Way", result.titleUrl);
-        assertEquals("By Ian Norman", result.author);
+        assertEquals("By Ian Norman / www.lonelyspeck.com", result.author);
 
         result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_1);
         assertEquals("Heavens Above Her", result.title);
         assertEquals("https://en.wikipedia.org/wiki/Milky_Way", result.titleUrl);
-        assertEquals("By Ian Norman", result.author);
+        assertEquals("By Ian Norman / www.lonelyspeck.com", result.author);
 
         result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_2);
         assertEquals("Antennae Galaxies", result.title);
@@ -40,5 +40,20 @@ public class WalkCongratsImageDescriptionsTest {
         assertEquals("Blue Marble", result.title);
         assertEquals("http://earthobservatory.nasa.gov/IOTD/view.php?id=8108", result.titleUrl);
         assertEquals("By NASA images by Reto Stöckli, based on data from NASA and NOAA. Instrument: Terra - MODIS", result.author);
+
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_5);
+        assertEquals("Barn Owl", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Barn_owl", result.titleUrl);
+        assertEquals("By Luc Viatour / www.lucnix.be", result.author);
+
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_6);
+        assertEquals("Hong Kong", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Hong_Kong", result.titleUrl);
+        assertEquals("By David Iliff / www.facebook.com/diliff", result.author);
+
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_7);
+        assertEquals("Hong Kong", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Hong_Kong", result.titleUrl);
+        assertEquals("By David Iliff / www.facebook.com/diliff", result.author);
     }
 }
