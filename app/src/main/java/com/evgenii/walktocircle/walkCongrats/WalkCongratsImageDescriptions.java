@@ -32,7 +32,15 @@ public class WalkCongratsImageDescriptions {
 
         mImageDescriptions = new HashMap<Integer, WalkCongratsImageDescription>();
 
-        mImageDescriptions.put(R.drawable.congrats_optimized_1, new WalkCongratsImageDescription("Heavens Above Her", "https://en.wikipedia.org/wiki/Milky_Way", "By Ian Norman"));
+        mImageDescriptions.put(R.drawable.congrats_optimized_1,
+            new WalkCongratsImageDescription("Heavens Above Her",
+                "https://en.wikipedia.org/wiki/Milky_Way",
+                "By Ian Norman"));
+
+        mImageDescriptions.put(R.drawable.congrats_optimized_2,
+                new WalkCongratsImageDescription("Antennae galaxies",
+                        "https://en.wikipedia.org/wiki/Antennae_Galaxies",
+                        "By NASA, ESA, and the Hubble Heritage Team"));
 //
 //        mImageIds.put(1, R.drawable.congrats_optimized_1);
 //        mImageIds.put(2, R.drawable.congrats_optimized_2);

@@ -21,5 +21,14 @@ public class WalkCongratsImageDescriptionsTest {
         assertEquals("https://en.wikipedia.org/wiki/Milky_Way", result.titleUrl);
         assertEquals("By Ian Norman", result.author);
 
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_1);
+        assertEquals("Heavens Above Her", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Milky_Way", result.titleUrl);
+        assertEquals("By Ian Norman", result.author);
+
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_2);
+        assertEquals("Antennae galaxies", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Antennae_Galaxies", result.titleUrl);
+        assertEquals("By NASA, ESA, and the Hubble Heritage Team", result.author);
     }
 }
