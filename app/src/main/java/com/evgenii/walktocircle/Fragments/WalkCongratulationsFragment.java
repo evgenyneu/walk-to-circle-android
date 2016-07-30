@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.app.Fragment;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -51,15 +52,29 @@ public class WalkCongratulationsFragment extends Fragment {
     }
 
     public void didTapImageDescription() {
+        openImageUrl();
+    }
+
+    private void  openImageUrl() {
         if (imageUrl == null) { return; }
         final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(imageUrl));
         MainActivity.instance.startActivity(intent);
     }
 
     public void didTapShowImageDescription() {
+        // Show Wikipedia image instead of "i"
+        ImageButton informationButton = (ImageButton) getView().findViewById(R.id.congrats_show_image_description_button);
+        informationButton.setBackgroundResource(R.drawable.wikipedia_button_with_pressed_state);
+
         View phraseScrollView = (View) getView().findViewById(R.id.congrats_phrase_scroll_view);
         View imageDescriptionScrollView = (View) getView().findViewById(R.id.congrats_image_description_scroll_view);
 
+        if (imageDescriptionScrollView.getVisibility() == View.VISIBLE) {
+            // Image description already visible, open image URL
+            openImageUrl();
+        }
+
+        // Hide congrats message and show image description
         phraseScrollView.setVisibility(View.GONE);
         imageDescriptionScrollView.setVisibility(View.VISIBLE);
     }

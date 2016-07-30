@@ -109,6 +109,7 @@
         android:background="@drawable/continue_button_with_pressed_state" />
 
     <ImageButton
+        android:id="@+id/congrats_show_image_description_button"
         android:layout_width="@dimen/image_details_button_size"
         android:layout_height="@dimen/image_details_button_size"
         android:layout_gravity="bottom|end"
