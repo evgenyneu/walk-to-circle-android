@@ -72,7 +72,7 @@ public class WalkCongratulationsFragment extends Fragment {
     }
 
     private void showImageDescription(View view, int imageId) {
-        WalkCongratsImageDescription imageDescription = WalkCongratsImageDescriptions.getDescription(0);
+        WalkCongratsImageDescription imageDescription = WalkCongratsImageDescriptions.getDescription(imageId);
 
         imageUrl = imageDescription.titleUrl;
 

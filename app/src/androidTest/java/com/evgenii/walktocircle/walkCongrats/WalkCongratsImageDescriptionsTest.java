@@ -52,8 +52,14 @@ public class WalkCongratsImageDescriptionsTest {
         assertEquals("By David Iliff / www.facebook.com/diliff", result.author);
 
         result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_7);
-        assertEquals("Hong Kong", result.title);
-        assertEquals("https://en.wikipedia.org/wiki/Hong_Kong", result.titleUrl);
-        assertEquals("By David Iliff / www.facebook.com/diliff", result.author);
+        assertEquals("Emission Nebula NGC 6357", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/NGC_6357", result.titleUrl);
+        assertEquals("By NASA, ESA and Jesœs Ma\u00ADz Apellÿniz (Instituto de astrof\u00ADsica de Andaluc\u00ADa, Spain). Acknowledgement: Davide De Martin (ESA/Hubble)", result.author);
+
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_8);
+        assertEquals("Wild Boar", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Wild_boar", result.titleUrl);
+        assertEquals("By Sander van der Wel", result.author);
+
     }
 }

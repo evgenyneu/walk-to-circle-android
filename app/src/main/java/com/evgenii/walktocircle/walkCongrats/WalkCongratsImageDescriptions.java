@@ -62,6 +62,16 @@ public class WalkCongratsImageDescriptions {
                         "https://en.wikipedia.org/wiki/Hong_Kong",
                         "By David Iliff / www.facebook.com/diliff"));
 
+        mImageDescriptions.put(R.drawable.congrats_optimized_7,
+                new WalkCongratsImageDescription("Emission Nebula NGC 6357",
+                        "https://en.wikipedia.org/wiki/NGC_6357",
+                        "By NASA, ESA and Jesœs Ma\u00ADz Apellÿniz (Instituto de astrof\u00ADsica de Andaluc\u00ADa, Spain). Acknowledgement: Davide De Martin (ESA/Hubble)"));
+
+        mImageDescriptions.put(R.drawable.congrats_optimized_8,
+                new WalkCongratsImageDescription("Wild Boar",
+                        "https://en.wikipedia.org/wiki/Wild_boar",
+                        "By Sander van der Wel"));
+
 
 
 
