@@ -79,7 +79,7 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 
 * **Image 18**: [Monsax](https://en.wikipedia.org/wiki/Common_rock_thrush) by Pierre Dalous Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Honeymoon_Bay_Sunset_2.jpg).
 
-* **Image 20** by [Mars sunset](http://www.freeimages.com/photographer/dimitri_c-47343), by NASA's Mars Exploration Rover, Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:MarsSunset.jpg), [marsrovers.jpl.nasa.gov](http://marsrovers.jpl.nasa.gov/gallery/press/spirit/20050610a.html).
+* **Image 20** by [Mars sunset](https://en.wikipedia.org/wiki/Mars), by NASA's Mars Exploration Rover, Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:MarsSunset.jpg), [marsrovers.jpl.nasa.gov](http://marsrovers.jpl.nasa.gov/gallery/press/spirit/20050610a.html).
 
 
 
