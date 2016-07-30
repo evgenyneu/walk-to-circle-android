@@ -47,7 +47,7 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 * **Applause 20** Recorded by Stephan http://soundbible.com/693-Fireworks-Finale.html
 
 
-### Congratulations images
+### Congrats images
 
 * **Image 1** [Heavens Above Her](https://en.wikipedia.org/wiki/Milky_Way) by Ian Norman [www.lonelyspeck.com](http://www.lonelyspeck.com/), Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Heavens_Above_Her.jpg), [www.flickr.com](https://www.flickr.com/photos/inorman/14839117791/in/faves-75729488@N03/).
 
