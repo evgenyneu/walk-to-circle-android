@@ -20,24 +20,23 @@ public enum WalkFragmentType {
      * @return fragment type that should be displayed now.
      */
     private static WalkFragmentType shouldBeDisplayedNow() {
-        return Congratulations;
 
         // Location Denied: If location permission is not granted by user
-//        if (!WalkLocationPermissions.getInstance().hasLocationPermission()) {
-//            return LocationDenied;
-//        }
-//
-//        // Walk: if user has dropped the pin
-//        if (MainActivityState.getInstance().getCurrentCircleLocation() != null) {
-//            return Walk;
-//        }
-//
-//        // Congratulations: shown when user reaches the circle.
-//        if (MainActivityState.getInstance().getShowCongratulationsScreen()) {
-//            return Congratulations;
-//        }
-//
-//        return Map;
+        if (!WalkLocationPermissions.getInstance().hasLocationPermission()) {
+            return LocationDenied;
+        }
+
+        // Walk: if user has dropped the pin
+        if (MainActivityState.getInstance().getCurrentCircleLocation() != null) {
+            return Walk;
+        }
+
+        // Congratulations: shown when user reaches the circle.
+        if (MainActivityState.getInstance().getShowCongratulationsScreen()) {
+            return Congratulations;
+        }
+
+        return Map;
     }
 
     /**

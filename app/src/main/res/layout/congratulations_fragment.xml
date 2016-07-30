@@ -14,7 +14,7 @@
         android:id="@+id/congrats_phrase_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/walk_screen_top_margin"
+        android:layout_marginTop="@dimen/congrats_screen_top_margin"
         android:layout_marginBottom="@dimen/walk_screen_bottom_margin"
         android:layout_marginStart="@dimen/margin_x_large"
         android:layout_marginEnd="@dimen/margin_x_large">
@@ -58,7 +58,7 @@
         android:id="@+id/congrats_image_description_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/walk_screen_top_margin"
+        android:layout_marginTop="@dimen/congrats_screen_top_margin"
         android:layout_marginBottom="@dimen/walk_screen_bottom_margin"
         android:layout_marginStart="@dimen/margin_x_large"
         android:layout_marginEnd="@dimen/margin_x_large"

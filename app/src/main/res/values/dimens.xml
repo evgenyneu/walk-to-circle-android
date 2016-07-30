@@ -25,4 +25,7 @@
     <!--Walk screen -->
     <dimen name="walk_screen_top_margin">120dp</dimen>
     <dimen name="walk_screen_bottom_margin">136dp</dimen>
+
+    <!--Congrats screen -->
+    <dimen name="congrats_screen_top_margin">50dp</dimen>
 </resources>

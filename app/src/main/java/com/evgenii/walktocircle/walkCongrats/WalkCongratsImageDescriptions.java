@@ -35,7 +35,7 @@ public class WalkCongratsImageDescriptions {
         mImageDescriptions.put(R.drawable.congrats_optimized_1,
             new WalkCongratsImageDescription("Heavens Above Her",
                 "https://en.wikipedia.org/wiki/Milky_Way",
-                "By Ian Norman / www.lonelyspeck.com"));
+                "By Ian Norman \nwww.lonelyspeck.com"));
 
         mImageDescriptions.put(R.drawable.congrats_optimized_2,
                 new WalkCongratsImageDescription("Antennae Galaxies",
@@ -49,18 +49,18 @@ public class WalkCongratsImageDescriptions {
 
         mImageDescriptions.put(R.drawable.congrats_optimized_4,
                 new WalkCongratsImageDescription("Blue Marble",
-                        "http://earthobservatory.nasa.gov/IOTD/view.php?id=8108",
-                        "By NASA images by Reto Stöckli, based on data from NASA and NOAA. Instrument: Terra - MODIS"));
+                        "https://en.wikipedia.org/wiki/Earth",
+                        "NASA images by Reto Stöckli, based on data from NASA and NOAA. Instrument: Terra - MODIS"));
 
         mImageDescriptions.put(R.drawable.congrats_optimized_5,
                 new WalkCongratsImageDescription("Barn Owl",
                         "https://en.wikipedia.org/wiki/Barn_owl",
-                        "By Luc Viatour / www.lucnix.be"));
+                        "By Luc Viatour \nwww.lucnix.be"));
 
         mImageDescriptions.put(R.drawable.congrats_optimized_6,
                 new WalkCongratsImageDescription("Hong Kong",
                         "https://en.wikipedia.org/wiki/Hong_Kong",
-                        "By David Iliff / www.facebook.com/diliff"));
+                        "By David Iliff \nwww.facebook.com/diliff"));
 
         mImageDescriptions.put(R.drawable.congrats_optimized_7,
                 new WalkCongratsImageDescription("Emission Nebula NGC 6357",
@@ -100,12 +100,12 @@ public class WalkCongratsImageDescriptions {
         mImageDescriptions.put(R.drawable.congrats_optimized_15,
                 new WalkCongratsImageDescription("Honeymoon Bay Sunset",
                         "https://en.wikipedia.org/wiki/Honeymoon_Bay_(Tasmania)",
-                        "By JJ Harrison / jjharrison89@facebook.com"));
+                        "By JJ Harrison \njjharrison89@facebook.com"));
 
         mImageDescriptions.put(R.drawable.congrats_optimized_16,
                 new WalkCongratsImageDescription("Water Dolphin",
                         "https://en.wikipedia.org/wiki/Water",
-                        "By JJ Harrison / jjharrison89@facebook.com"));
+                        "By JJ Harrison \njjharrison89@facebook.com"));
 
         mImageDescriptions.put(R.drawable.congrats_optimized_18,
                 new WalkCongratsImageDescription("Common Rock Thrush",
@@ -113,7 +113,7 @@ public class WalkCongratsImageDescriptions {
                         "By Pierre Dalous"));
 
         mImageDescriptions.put(R.drawable.congrats_optimized_20,
-                new WalkCongratsImageDescription("Mars Sunset",
+                new WalkCongratsImageDescription("Sunset on Mars",
                         "https://en.wikipedia.org/wiki/Mars",
                         "By NASA's Mars Exploration Rover"));
 

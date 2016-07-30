@@ -19,12 +19,12 @@ public class WalkCongratsImageDescriptionsTest {
         WalkCongratsImageDescription result = WalkCongratsImageDescriptions.getDescription(0);
         assertEquals("Heavens Above Her", result.title);
         assertEquals("https://en.wikipedia.org/wiki/Milky_Way", result.titleUrl);
-        assertEquals("By Ian Norman / www.lonelyspeck.com", result.author);
+        assertEquals("By Ian Norman \nwww.lonelyspeck.com", result.author);
 
         result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_1);
         assertEquals("Heavens Above Her", result.title);
         assertEquals("https://en.wikipedia.org/wiki/Milky_Way", result.titleUrl);
-        assertEquals("By Ian Norman / www.lonelyspeck.com", result.author);
+        assertEquals("By Ian Norman \nwww.lonelyspeck.com", result.author);
 
         result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_2);
         assertEquals("Antennae Galaxies", result.title);
@@ -38,18 +38,18 @@ public class WalkCongratsImageDescriptionsTest {
 
         result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_4);
         assertEquals("Blue Marble", result.title);
-        assertEquals("http://earthobservatory.nasa.gov/IOTD/view.php?id=8108", result.titleUrl);
-        assertEquals("By NASA images by Reto Stöckli, based on data from NASA and NOAA. Instrument: Terra - MODIS", result.author);
+        assertEquals("https://en.wikipedia.org/wiki/Earth", result.titleUrl);
+        assertEquals("NASA images by Reto Stöckli, based on data from NASA and NOAA. Instrument: Terra - MODIS", result.author);
 
         result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_5);
         assertEquals("Barn Owl", result.title);
         assertEquals("https://en.wikipedia.org/wiki/Barn_owl", result.titleUrl);
-        assertEquals("By Luc Viatour / www.lucnix.be", result.author);
+        assertEquals("By Luc Viatour \nwww.lucnix.be", result.author);
 
         result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_6);
         assertEquals("Hong Kong", result.title);
         assertEquals("https://en.wikipedia.org/wiki/Hong_Kong", result.titleUrl);
-        assertEquals("By David Iliff / www.facebook.com/diliff", result.author);
+        assertEquals("By David Iliff \nwww.facebook.com/diliff", result.author);
 
         result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_7);
         assertEquals("Emission Nebula NGC 6357", result.title);
@@ -89,12 +89,12 @@ public class WalkCongratsImageDescriptionsTest {
         result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_15);
         assertEquals("Honeymoon Bay Sunset", result.title);
         assertEquals("https://en.wikipedia.org/wiki/Honeymoon_Bay_(Tasmania)", result.titleUrl);
-        assertEquals("By JJ Harrison / jjharrison89@facebook.com", result.author);
+        assertEquals("By JJ Harrison \njjharrison89@facebook.com", result.author);
 
         result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_16);
         assertEquals("Water Dolphin", result.title);
         assertEquals("https://en.wikipedia.org/wiki/Water", result.titleUrl);
-        assertEquals("By JJ Harrison / jjharrison89@facebook.com", result.author);
+        assertEquals("By JJ Harrison \njjharrison89@facebook.com", result.author);
 
         result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_18);
         assertEquals("Common Rock Thrush", result.title);
@@ -102,7 +102,7 @@ public class WalkCongratsImageDescriptionsTest {
         assertEquals("By Pierre Dalous", result.author);
 
         result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_20);
-        assertEquals("Mars Sunset", result.title);
+        assertEquals("Sunset on Mars", result.title);
         assertEquals("https://en.wikipedia.org/wiki/Mars", result.titleUrl);
         assertEquals("By NASA's Mars Exploration Rover", result.author);
     }
