@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.app.Fragment;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.evgenii.walktocircle.MainActivity;
@@ -51,6 +52,11 @@ public class WalkCongratulationsFragment extends Fragment {
     }
 
     public void didTapShowImageDescription() {
+        View phraseScrollView = (View) getView().findViewById(R.id.congrats_phrase_scroll_view);
+        View imageDescriptionScrollView = (View) getView().findViewById(R.id.congrats_image_description_scroll_view);
+
+        phraseScrollView.setVisibility(View.GONE);
+        imageDescriptionScrollView.setVisibility(View.VISIBLE);
     }
 
     private void showCongratulationImage(View view) {
@@ -58,15 +64,25 @@ public class WalkCongratulationsFragment extends Fragment {
         imageView.setImageResource(WalkCongratsImages.getImageId());
     }
 
+//    private void showNumberOfCirclesReached(View view) {
+//        TextView textView =  (TextView) view.findViewById(R.id.congrats_circles_reached_today_text_view);
+//        textView.setText("By Ian Norman");
+//    }
+//
+//    private void showCongratulationPhrase(View view) {
+//        TextView textView =  (TextView) view.findViewById(R.id.congrats_well_done_phrase_text_view);
+//        textView.setText("Heavens Above Her");
+//        textView.setPaintFlags(textView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+//    }
+
     private void showNumberOfCirclesReached(View view) {
         TextView textView =  (TextView) view.findViewById(R.id.congrats_circles_reached_today_text_view);
-        textView.setText("By Ian Norman");
+        textView.setText(WalkCirclesReachedToday.numberOfCirclesReachedTodayPhrase());
     }
 
     private void showCongratulationPhrase(View view) {
         TextView textView =  (TextView) view.findViewById(R.id.congrats_well_done_phrase_text_view);
-        textView.setText("Heavens Above Her");
-        textView.setPaintFlags(textView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        textView.setText(WalkCongratsPhrase.getRandomPhrase());
     }
 
     private void playSound() {

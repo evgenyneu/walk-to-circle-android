@@ -80,7 +80,8 @@
                 android:shadowDy="@integer/text_shadow_dy"
                 android:shadowRadius="@integer/text_shadow_radius"
                 android:gravity="center_horizontal"
-                android:onClick="didTapCongratsImageDescription"/>
+                android:onClick="didTapCongratsImageDescription"
+                android:text="Heavens Above Her"/>
 
             <TextView
                 android:id="@+id/congrats_image_author_text_view"
@@ -94,7 +95,7 @@
                 android:shadowDy="@integer/text_shadow_dy"
                 android:shadowRadius="@integer/text_shadow_radius"
                 android:gravity="center_horizontal"
-                android:text=""/>
+                android:text="By Ian Norman"/>
         </LinearLayout>
     </ScrollView>
 
