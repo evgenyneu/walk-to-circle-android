@@ -49,7 +49,9 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 
 ### Congratulations images
 
-* **Image 7**: [Emission nebula NGC 6357](https://en.wikipedia.org/wiki/NGC_6357), Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:EmissionNebula_NGC6357.jpg), [www.spacetelescope.org](https://www.spacetelescope.org/images/heic0619a/).
+* **Image 4** [Blue Marble Western Hemisphere](http://earthobservatory.nasa.gov/IOTD/view.php?id=8108) by NASA images by Reto Stöckli, based on data from NASA and NOAA. Instrument: Terra - MODIS, Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Blue_Marble_Western_Hemisphere.jpg), [http://earthobservatory.nasa.gov/](http://earthobservatory.nasa.gov/IOTD/view.php?id=8108).
+
+* **Image 7**: [Emission nebula NGC 6357](https://en.wikipedia.org/wiki/NGC_6357), by NASA, ESA and Jesœs Ma­z Apellÿniz (Instituto de astrof­sica de Andaluc­a, Spain). Acknowledgement: Davide De Martin (ESA/Hubble), Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:EmissionNebula_NGC6357.jpg), [www.spacetelescope.org](https://www.spacetelescope.org/images/heic0619a/).
 
 * **Image 9**: [Sombrero Galaxy](https://en.wikipedia.org/wiki/Sombrero_Galaxy) by NASA/ESA and The Hubble Heritage Team (STScI/AURA). Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:M104_ngc4594_sombrero_galaxy_hi-res.jpg), [hubblesite.org](http://hubblesite.org/newscenter/newsdesk/archive/releases/2003/28/image/a).
 
