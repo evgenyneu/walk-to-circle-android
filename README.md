@@ -47,6 +47,11 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 * **Applause 20** Recorded by Stephan http://soundbible.com/693-Fireworks-Finale.html
 
 
+### Congratulations images
+
+* **Image 20** [Christmas Light Knots](http://www.freeimages.com/photo/christmas-light-knots-1160023) by [dimitri_c](http://www.freeimages.com/photographer/dimitri_c-47343).
+
+
 
 ## Google maps API key
 
