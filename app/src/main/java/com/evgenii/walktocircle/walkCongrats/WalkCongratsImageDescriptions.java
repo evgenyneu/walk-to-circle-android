@@ -8,9 +8,21 @@ import java.util.Map;
 public class WalkCongratsImageDescriptions {
     private static Map<Integer, WalkCongratsImageDescription> mImageDescriptions;
 
-    public static Map<Integer, WalkCongratsImageDescription> getImageIds() {
+    public static Map<Integer, WalkCongratsImageDescription> getImageDescriptions() {
         addImageDescriptions();
         return mImageDescriptions;
+    }
+
+    public static WalkCongratsImageDescription getDescription(int imageId) {
+        Map<Integer, WalkCongratsImageDescription> imageDescriptions = getImageDescriptions();
+
+        WalkCongratsImageDescription imageDescription = imageDescriptions.get(imageId);
+
+        if (imageDescription == null) {
+            return imageDescriptions.get(R.drawable.congrats_optimized_1);
+        }
+
+        return imageDescription;
     }
 
     private static void addImageDescriptions() {
@@ -20,7 +32,7 @@ public class WalkCongratsImageDescriptions {
 
         mImageDescriptions = new HashMap<Integer, WalkCongratsImageDescription>();
 
-        mImageDescriptions.put(1, new WalkCongratsImageDescription("", "", ""));
+        mImageDescriptions.put(R.drawable.congrats_optimized_1, new WalkCongratsImageDescription("Heavens Above Her", "https://en.wikipedia.org/wiki/Milky_Way", "By Ian Norman"));
 //
 //        mImageIds.put(1, R.drawable.congrats_optimized_1);
 //        mImageIds.put(2, R.drawable.congrats_optimized_2);

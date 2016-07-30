@@ -20,11 +20,15 @@ import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.utils.WalkCameraDistance;
 import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.walkCongrats.WalkCirclesReachedToday;
+import com.evgenii.walktocircle.walkCongrats.WalkCongratsImageDescription;
+import com.evgenii.walktocircle.walkCongrats.WalkCongratsImageDescriptions;
 import com.evgenii.walktocircle.walkCongrats.WalkCongratsImages;
 import com.evgenii.walktocircle.walkCongrats.WalkCongratsPhrase;
 import com.evgenii.walktocircle.walkCongrats.WalkCongratsSounds;
 
 public class WalkCongratulationsFragment extends Fragment {
+
+    String imageUrl;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,7 +51,8 @@ public class WalkCongratulationsFragment extends Fragment {
     }
 
     public void didTapImageDescription() {
-        final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://en.wikipedia.org/wiki/Milky_Way"));
+        if (imageUrl == null) { return; }
+        final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(imageUrl));
         MainActivity.instance.startActivity(intent);
     }
 
@@ -61,19 +66,27 @@ public class WalkCongratulationsFragment extends Fragment {
 
     private void showCongratulationImage(View view) {
         ImageView imageView =  (ImageView) view.findViewById(R.id.congrats_image_view);
-        imageView.setImageResource(WalkCongratsImages.getImageId());
+        int imageId = WalkCongratsImages.getImageId();
+        imageView.setImageResource(imageId);
+        showImageDescription(view, imageId);
     }
 
-//    private void showNumberOfCirclesReached(View view) {
-//        TextView textView =  (TextView) view.findViewById(R.id.congrats_circles_reached_today_text_view);
-//        textView.setText("By Ian Norman");
-//    }
-//
-//    private void showCongratulationPhrase(View view) {
-//        TextView textView =  (TextView) view.findViewById(R.id.congrats_well_done_phrase_text_view);
-//        textView.setText("Heavens Above Her");
-//        textView.setPaintFlags(textView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-//    }
+    private void showImageDescription(View view, int imageId) {
+        WalkCongratsImageDescription imageDescription = WalkCongratsImageDescriptions.getDescription(0);
+
+        imageUrl = imageDescription.titleUrl;
+
+        // Show image title
+        TextView textViewTitle =  (TextView) view.findViewById(R.id.congrats_image_description_text_view);
+        textViewTitle.setText(imageDescription.title);
+
+        // Underline the title
+        textViewTitle.setPaintFlags(textViewTitle.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+        // Show image author
+        TextView textViewAuthor =  (TextView) view.findViewById(R.id.congrats_image_author_text_view);
+        textViewAuthor.setText(imageDescription.author);
+    }
 
     private void showNumberOfCirclesReached(View view) {
         TextView textView =  (TextView) view.findViewById(R.id.congrats_circles_reached_today_text_view);
