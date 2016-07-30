@@ -51,10 +51,6 @@ public class WalkCongratulationsFragment extends Fragment {
         WalkFragmentType.showWithAnimation();
     }
 
-    public void didTapImageDescription() {
-        openImageUrl();
-    }
-
     private void  openImageUrl() {
         if (imageUrl == null) { return; }
         final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(imageUrl));
@@ -94,9 +90,6 @@ public class WalkCongratulationsFragment extends Fragment {
         // Show image title
         TextView textViewTitle =  (TextView) view.findViewById(R.id.congrats_image_description_text_view);
         textViewTitle.setText(imageDescription.title);
-
-        // Underline the title
-        textViewTitle.setPaintFlags(textViewTitle.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         // Show image author
         TextView textViewAuthor =  (TextView) view.findViewById(R.id.congrats_image_author_text_view);

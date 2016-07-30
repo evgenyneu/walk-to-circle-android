@@ -80,7 +80,6 @@
                 android:shadowDy="@integer/text_shadow_dy"
                 android:shadowRadius="@integer/text_shadow_radius"
                 android:gravity="center_horizontal"
-                android:onClick="didTapCongratsImageDescription"
                 android:text="Heavens Above Her"/>
 
             <TextView

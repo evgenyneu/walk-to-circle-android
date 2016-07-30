@@ -175,14 +175,6 @@ public class MainActivity extends AppCompatActivity  {
         }
     }
 
-    public void didTapCongratsImageDescription(View view) {
-        WalkCongratulationsFragment fragment = (WalkCongratulationsFragment) WalkFragmentType.Congratulations.getFragmentIfCurrentlyVisibleAndShouldBeVisible();
-
-        if (fragment != null) {
-            fragment.didTapImageDescription();
-        }
-    }
-
     public void didTapCongratsShowImageDescription(View view) {
         WalkCongratulationsFragment fragment = (WalkCongratulationsFragment) WalkFragmentType.Congratulations.getFragmentIfCurrentlyVisibleAndShouldBeVisible();
 
