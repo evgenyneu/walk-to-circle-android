@@ -41,7 +41,7 @@
             android:textColor="@color/walkColorShade70"
             android:text="5"
             android:background="@drawable/rewind"
-            android:paddingBottom="8dp" />
+            android:paddingBottom="7dp" />
 
     </FrameLayout>
 
@@ -51,6 +51,7 @@
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="@dimen/margin_small"
         android:onClick="didTapMapButton"
+        android:contentDescription="@string/drop_the_circle"
         android:background="@android:color/transparent" />
 
 </FrameLayout>

@@ -105,15 +105,17 @@
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="@dimen/margin_small"
         android:onClick="didTapProceedFromCongratulations"
+        android:contentDescription="@string/walk_again"
         android:background="@drawable/continue_button_with_pressed_state" />
 
     <ImageButton
         android:layout_width="@dimen/image_details_button_size"
         android:layout_height="@dimen/image_details_button_size"
-        android:layout_gravity="end|bottom"
-        android:layout_marginBottom="@dimen/margin_small"
-        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
         android:onClick="didTapCongratsShowImageDescription"
-        android:background="@drawable/image_details" />
+        android:contentDescription="@string/show_image_description"
+        android:background="@drawable/image_details_button_with_pressed_state" />
 
 </FrameLayout>

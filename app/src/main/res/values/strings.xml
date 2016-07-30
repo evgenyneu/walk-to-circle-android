@@ -16,4 +16,8 @@
     <string name="congrats_circles_reached_today">circles reached today.</string>
     <string name="map_previous_circle_marker_title">Previous circle</string>
     <string name="map_marker_marker_title">Walk to circle</string>
+    <string name="walk_again">Walk again</string>
+    <string name="show_image_description">Show image description</string>
+    <string name="abandon_walk">Abandon this walk?</string>
+    <string name="drop_the_circle">Drop the circle</string>
 </resources>
