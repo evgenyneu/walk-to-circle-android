@@ -75,9 +75,22 @@ public class WalkCongratsImageDescriptions {
         mImageDescriptions.put(R.drawable.congrats_optimized_9,
                 new WalkCongratsImageDescription("Sombrero Galaxy",
                         "https://en.wikipedia.org/wiki/Sombrero_Galaxy",
-                        "NASA/ESA and The Hubble Heritage Team (STScI/AURA)"));
+                        "By NASA/ESA and The Hubble Heritage Team (STScI/AURA)"));
 
+        mImageDescriptions.put(R.drawable.congrats_optimized_10,
+                new WalkCongratsImageDescription("Portland Japanese Garden Maple",
+                        "https://en.wikipedia.org/wiki/Portland_Japanese_Garden",
+                        "By Jeremy Reding, Seattle, USA"));
 
+        mImageDescriptions.put(R.drawable.congrats_optimized_11,
+                new WalkCongratsImageDescription("Earthrise",
+                        "https://en.wikipedia.org/wiki/Earthrise",
+                        "By NASA / Bill Anders"));
+
+        mImageDescriptions.put(R.drawable.congrats_optimized_12,
+                new WalkCongratsImageDescription("Abdim's storks",
+                        "https://en.wikipedia.org/wiki/Abdim%27s_stork",
+                        "By Yathin S Krishnappa"));
 
 
 

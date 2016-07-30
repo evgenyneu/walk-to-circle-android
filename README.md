@@ -67,11 +67,11 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 
 * **Image 9**: [Sombrero Galaxy](https://en.wikipedia.org/wiki/Sombrero_Galaxy) by NASA/ESA and The Hubble Heritage Team (STScI/AURA). Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:M104_ngc4594_sombrero_galaxy_hi-res.jpg), [hubblesite.org](http://hubblesite.org/newscenter/newsdesk/archive/releases/2003/28/image/a).
 
-* **Image 10**: [Portland Japanese Garden maple](https://en.wikipedia.org/wiki/Portland_Japanese_Garden) by [Jeremy Reding](http://www.flickr.com/people/86913946@N00) from Seattle, USA. Sources: [www.flickr.com](http://www.flickr.com/photos/86913946@N00/4553826386/).
+* **Image 10**: [Portland Japanese Garden Maple](https://en.wikipedia.org/wiki/Portland_Japanese_Garden) by [Jeremy Reding](http://www.flickr.com/people/86913946@N00) from Seattle, USA. Sources: [www.flickr.com](http://www.flickr.com/photos/86913946@N00/4553826386/).
 
 * **Image 11**: [Earthrise](https://en.wikipedia.org/wiki/Earthrise) by NASA / Bill Anders. Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NASA-Apollo8-Dec24-Earthrise.jpg), [www.hq.nasa.gov](http://www.hq.nasa.gov/office/pao/History/alsj/a410/AS8-14-2383HR.jpg).
 
-* **Image 12**: [Abdim's storks in a storm](https://commons.wikimedia.org/wiki/File:Abdim%27s_storks_in_a_storm_(Etosha,_2013).jpg) by Yathin S Krishnappa. Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Abdim%27s_storks_in_a_storm_(Etosha,_2013).jpg).
+* **Image 12**: [Abdim's storks in a storm](https://en.wikipedia.org/wiki/Abdim%27s_stork) by Yathin S Krishnappa. Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Abdim%27s_storks_in_a_storm_(Etosha,_2013).jpg).
 
 * **Image 13**: [Jupiter](https://en.wikipedia.org/wiki/Jupiter) by NASA/JPL/Space Science Institute. Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Portrait_of_Jupiter_from_Cassini.jpg), [photojournal.jpl.nasa.gov](http://photojournal.jpl.nasa.gov/catalog/PIA04866).
 

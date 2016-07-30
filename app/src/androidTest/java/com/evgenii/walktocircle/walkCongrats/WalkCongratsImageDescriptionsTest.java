@@ -64,7 +64,22 @@ public class WalkCongratsImageDescriptionsTest {
         result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_9);
         assertEquals("Sombrero Galaxy", result.title);
         assertEquals("https://en.wikipedia.org/wiki/Sombrero_Galaxy", result.titleUrl);
-        assertEquals("NASA/ESA and The Hubble Heritage Team (STScI/AURA)", result.author);
+        assertEquals("By NASA/ESA and The Hubble Heritage Team (STScI/AURA)", result.author);
+
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_10);
+        assertEquals("Portland Japanese Garden Maple", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Portland_Japanese_Garden", result.titleUrl);
+        assertEquals("By Jeremy Reding, Seattle, USA", result.author);
+
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_11);
+        assertEquals("Earthrise", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Earthrise", result.titleUrl);
+        assertEquals("By NASA / Bill Anders", result.author);
+
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_12);
+        assertEquals("Abdim's storks", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Abdim%27s_stork", result.titleUrl);
+        assertEquals("By Yathin S Krishnappa", result.author);
 
     }
 }
