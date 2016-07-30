@@ -38,10 +38,21 @@ public class WalkCongratsImageDescriptions {
                 "By Ian Norman"));
 
         mImageDescriptions.put(R.drawable.congrats_optimized_2,
-                new WalkCongratsImageDescription("Antennae galaxies",
+                new WalkCongratsImageDescription("Antennae Galaxies",
                         "https://en.wikipedia.org/wiki/Antennae_Galaxies",
                         "By NASA, ESA, and the Hubble Heritage Team"));
+
+        mImageDescriptions.put(R.drawable.congrats_optimized_3,
+                new WalkCongratsImageDescription("Pluto",
+                        "https://en.wikipedia.org/wiki/Pluto",
+                        "By NASA / Johns Hopkins University Applied Physics Laboratory / Southwest Research Institute"));
+
+        mImageDescriptions.put(R.drawable.congrats_optimized_4,
+                new WalkCongratsImageDescription("Blue Marble",
+                        "http://earthobservatory.nasa.gov/IOTD/view.php?id=8108",
+                        "By NASA images by Reto Stöckli, based on data from NASA and NOAA. Instrument: Terra - MODIS"));
 //
+
 //        mImageIds.put(1, R.drawable.congrats_optimized_1);
 //        mImageIds.put(2, R.drawable.congrats_optimized_2);
 //        mImageIds.put(3, R.drawable.congrats_optimized_3);

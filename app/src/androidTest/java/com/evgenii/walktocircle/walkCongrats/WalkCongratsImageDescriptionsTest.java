@@ -27,8 +27,18 @@ public class WalkCongratsImageDescriptionsTest {
         assertEquals("By Ian Norman", result.author);
 
         result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_2);
-        assertEquals("Antennae galaxies", result.title);
+        assertEquals("Antennae Galaxies", result.title);
         assertEquals("https://en.wikipedia.org/wiki/Antennae_Galaxies", result.titleUrl);
         assertEquals("By NASA, ESA, and the Hubble Heritage Team", result.author);
+
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_3);
+        assertEquals("Pluto", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Pluto", result.titleUrl);
+        assertEquals("By NASA / Johns Hopkins University Applied Physics Laboratory / Southwest Research Institute", result.author);
+
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_4);
+        assertEquals("Blue Marble", result.title);
+        assertEquals("http://earthobservatory.nasa.gov/IOTD/view.php?id=8108", result.titleUrl);
+        assertEquals("By NASA images by Reto Stöckli, based on data from NASA and NOAA. Instrument: Terra - MODIS", result.author);
     }
 }
