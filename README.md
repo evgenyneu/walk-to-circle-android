@@ -50,7 +50,7 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 ### Congratulations images
 
 
-* **Image 2** [Antennae galaxies](https://en.wikipedia.org/wiki/Antennae_Galaxies) by NASA, ESA, and the Hubble Heritage Team (STScI/AURA)-ESA/Hubble Collaboration, Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Antennae_galaxies_xl.jpg), [www.spacetelescope.org](http://www.spacetelescope.org/images/html/heic0615a.html).
+* **Image 2** [Antennae galaxies](https://en.wikipedia.org/wiki/Antennae_Galaxies) by NASA, ESA, and the Hubble Heritage Team (STScI/AURA)-ESA/Hubble Collaboration, Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Antennae_galaxies_xl.jpg), [hubblesite.org](http://hubblesite.org/newscenter/archive/releases/2006/46/image/a/).
 
 * **Image 3** [Pluto](https://en.wikipedia.org/wiki/Pluto) by NASA / Johns Hopkins University Applied Physics Laboratory / Southwest Research Institute, Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pluto-01_Stern_03_Pluto_Color_TXT.jpg), [www.nasa.gov](http://www.nasa.gov/sites/default/files/thumbnails/image/crop_p_color2_enhanced_release.png).
 
