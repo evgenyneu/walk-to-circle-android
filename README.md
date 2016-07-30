@@ -53,11 +53,17 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 
 * **Image 4** [Blue Marble Western Hemisphere](http://earthobservatory.nasa.gov/IOTD/view.php?id=8108) by NASA images by Reto Stöckli, based on data from NASA and NOAA. Instrument: Terra - MODIS, Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Blue_Marble_Western_Hemisphere.jpg), [earthobservatory.nasa.gov](http://earthobservatory.nasa.gov/IOTD/view.php?id=8108).
 
+* **Image 4** [Tyto alba](https://en.wikipedia.org/wiki/Barn_owl) by Luc Viatour / [www.Lucnix.be](www.Lucnix.be), Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Tyto_alba_1_Luc_Viatour.jpg).
+
 * **Image 7**: [Emission nebula NGC 6357](https://en.wikipedia.org/wiki/NGC_6357), by NASA, ESA and Jesœs Ma­z Apellÿniz (Instituto de astrof­sica de Andaluc­a, Spain). Acknowledgement: Davide De Martin (ESA/Hubble), Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:EmissionNebula_NGC6357.jpg), [www.spacetelescope.org](https://www.spacetelescope.org/images/heic0619a/).
 
 * **Image 9**: [Sombrero Galaxy](https://en.wikipedia.org/wiki/Sombrero_Galaxy) by NASA/ESA and The Hubble Heritage Team (STScI/AURA). Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:M104_ngc4594_sombrero_galaxy_hi-res.jpg), [hubblesite.org](http://hubblesite.org/newscenter/newsdesk/archive/releases/2003/28/image/a).
 
 * **Image 12**: [Abdim's storks in a storm](https://commons.wikimedia.org/wiki/File:Abdim%27s_storks_in_a_storm_(Etosha,_2013).jpg) by Yathin S Krishnappa. Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Abdim%27s_storks_in_a_storm_(Etosha,_2013).jpg).
+
+* **Image 15**: [Honeymoon Bay Sunset](https://commons.wikimedia.org/wiki/File:Honeymoon_Bay_Sunset_2.jpg) by JJ Harrison (jjharrison89@facebook.com) Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Honeymoon_Bay_Sunset_2.jpg).
+
+
 
 * **Christmas Light Knots** by [dimitri_c](http://www.freeimages.com/photographer/dimitri_c-47343), Source: [freeimages.com](http://www.freeimages.com/photo/christmas-light-knots-1160023)
 
