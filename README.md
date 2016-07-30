@@ -53,7 +53,7 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 
 * **Image 4** [Blue Marble Western Hemisphere](http://earthobservatory.nasa.gov/IOTD/view.php?id=8108) by NASA images by Reto Stöckli, based on data from NASA and NOAA. Instrument: Terra - MODIS, Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Blue_Marble_Western_Hemisphere.jpg), [earthobservatory.nasa.gov](http://earthobservatory.nasa.gov/IOTD/view.php?id=8108).
 
-* **Image 4** [Tyto alba](https://en.wikipedia.org/wiki/Barn_owl) by Luc Viatour / [http://www.Lucnix.be](www.Lucnix.be), Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Tyto_alba_1_Luc_Viatour.jpg).
+* **Image 4** [Tyto alba](https://en.wikipedia.org/wiki/Barn_owl) by Luc Viatour / [www.Lucnix.be](https://commons.wikimedia.org/wiki/File:Tyto_alba_1_Luc_Viatour.jpg), Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Tyto_alba_1_Luc_Viatour.jpg).
 
 * **Image 7**: [Emission nebula NGC 6357](https://en.wikipedia.org/wiki/NGC_6357), by NASA, ESA and Jesœs Ma­z Apellÿniz (Instituto de astrof­sica de Andaluc­a, Spain). Acknowledgement: Davide De Martin (ESA/Hubble), Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:EmissionNebula_NGC6357.jpg), [www.spacetelescope.org](https://www.spacetelescope.org/images/heic0619a/).
 
