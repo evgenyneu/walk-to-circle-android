@@ -57,7 +57,7 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 
 * **Image 7**: [Emission nebula NGC 6357](https://en.wikipedia.org/wiki/NGC_6357), by NASA, ESA and Jesœs Ma­z Apellÿniz (Instituto de astrof­sica de Andaluc­a, Spain). Acknowledgement: Davide De Martin (ESA/Hubble), Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:EmissionNebula_NGC6357.jpg), [www.spacetelescope.org](https://www.spacetelescope.org/images/heic0619a/).
 
-* **Image 8**: [Sus scrofa piglet](https://en.wikipedia.org/wiki/Wild_boar) by [Sander van der Wel](https://commons.wikimedia.org/wiki/File:Sus_scrofa_piglet.jpg). Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:M104_ngc4594_sombrero_galaxy_hi-res.jpg), [www.flickr.com](http://www.flickr.com/photos/40803964@N08/4601502733/).
+* **Image 8**: [Sus scrofa piglet](https://en.wikipedia.org/wiki/Wild_boar) by [Sander van der Wel](http://www.flickr.com/people/40803964@N08). Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sus_scrofa_piglet.jpg), [www.flickr.com](http://www.flickr.com/photos/40803964@N08/4601502733/).
 
 * **Image 9**: [Sombrero Galaxy](https://en.wikipedia.org/wiki/Sombrero_Galaxy) by NASA/ESA and The Hubble Heritage Team (STScI/AURA). Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:M104_ngc4594_sombrero_galaxy_hi-res.jpg), [hubblesite.org](http://hubblesite.org/newscenter/newsdesk/archive/releases/2003/28/image/a).
 
