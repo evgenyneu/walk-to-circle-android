@@ -68,7 +68,7 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 
 * **Image 10**: [Portland Japanese Garden maple](https://en.wikipedia.org/wiki/Portland_Japanese_Garden) by [Jeremy Reding](http://www.flickr.com/people/86913946@N00) from Seattle, USA. Sources: [www.flickr.com](http://www.flickr.com/photos/86913946@N00/4553826386/).
 
-
+* **Image 11**: [Earthrise](https://en.wikipedia.org/wiki/Earthrise) by [NASA / Bill Anders. Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NASA-Apollo8-Dec24-Earthrise.jpg), [www.hq.nasa.gov](http://www.hq.nasa.gov/office/pao/History/alsj/a410/AS8-14-2383HR.jpg).
 
 * **Image 12**: [Abdim's storks in a storm](https://commons.wikimedia.org/wiki/File:Abdim%27s_storks_in_a_storm_(Etosha,_2013).jpg) by Yathin S Krishnappa. Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Abdim%27s_storks_in_a_storm_(Etosha,_2013).jpg).
 
