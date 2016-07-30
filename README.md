@@ -65,7 +65,6 @@ https://support.google.com/cloud/answer/6158862?hl=en#creating-android-api-keys
 1. User `setExpirationDuration` method in `LocationRequest` object to stop location updates after 30 minutes. Currently this is done with custom code (I was not aware there is a method for it)
 
 
-
 ## Feeback is welcome
 
 Please create an issue ticket if you have a problem with the app or just want to chat.
