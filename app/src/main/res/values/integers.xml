@@ -8,7 +8,7 @@
     <integer name="map_button_rewind_arrows_full_circle_duration">2000</integer>
     <integer name="map_countdown_duration_seconds">5</integer>
     <integer name="map_delay_before_countdown_seconds">2</integer>
-    <integer name="text_shadow_dx">2</integer>
-    <integer name="text_shadow_dy">3</integer>
-    <integer name="text_shadow_radius">5</integer>
+    <integer name="text_shadow_dx">3</integer>
+    <integer name="text_shadow_dy">4</integer>
+    <integer name="text_shadow_radius">8</integer>
 </resources>
