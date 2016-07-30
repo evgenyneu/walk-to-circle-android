@@ -49,7 +49,7 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 
 ### Congratulations images
 
-* **Image 4** [Blue Marble Western Hemisphere](http://earthobservatory.nasa.gov/IOTD/view.php?id=8108) by NASA images by Reto Stöckli, based on data from NASA and NOAA. Instrument: Terra - MODIS, Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Blue_Marble_Western_Hemisphere.jpg), [http://earthobservatory.nasa.gov/](http://earthobservatory.nasa.gov/IOTD/view.php?id=8108).
+* **Image 4** [Blue Marble Western Hemisphere](http://earthobservatory.nasa.gov/IOTD/view.php?id=8108) by NASA images by Reto Stöckli, based on data from NASA and NOAA. Instrument: Terra - MODIS, Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Blue_Marble_Western_Hemisphere.jpg), [earthobservatory.nasa.gov](http://earthobservatory.nasa.gov/IOTD/view.php?id=8108).
 
 * **Image 7**: [Emission nebula NGC 6357](https://en.wikipedia.org/wiki/NGC_6357), by NASA, ESA and Jesœs Ma­z Apellÿniz (Instituto de astrof­sica de Andaluc­a, Spain). Acknowledgement: Davide De Martin (ESA/Hubble), Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:EmissionNebula_NGC6357.jpg), [www.spacetelescope.org](https://www.spacetelescope.org/images/heic0619a/).
 
