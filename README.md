@@ -61,7 +61,7 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 
 * **Image 9**: [Sombrero Galaxy](https://en.wikipedia.org/wiki/Sombrero_Galaxy) by NASA/ESA and The Hubble Heritage Team (STScI/AURA). Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:M104_ngc4594_sombrero_galaxy_hi-res.jpg), [hubblesite.org](http://hubblesite.org/newscenter/newsdesk/archive/releases/2003/28/image/a).
 
-* **Image 10**: [Portland Japanese Garden maple](https://en.wikipedia.org/wiki/Portland_Japanese_Garden) by [Jeremy Reding](http://www.flickr.com/people/86913946@N00) from Seattle, USA. Sources: [Wikimedia Commons](http://www.flickr.com/photos/86913946@N00/4553826386/).
+* **Image 10**: [Portland Japanese Garden maple](https://en.wikipedia.org/wiki/Portland_Japanese_Garden) by [Jeremy Reding](http://www.flickr.com/people/86913946@N00) from Seattle, USA. Sources: [www.flickr.com](http://www.flickr.com/photos/86913946@N00/4553826386/).
 
 
 
