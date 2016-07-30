@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.app.Fragment;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.evgenii.walktocircle.WalkConstants;
@@ -14,6 +15,7 @@ import com.evgenii.walktocircle.R;
 import com.evgenii.walktocircle.utils.WalkCameraDistance;
 import com.evgenii.walktocircle.WalkApplication;
 import com.evgenii.walktocircle.walkCongrats.WalkCirclesReachedToday;
+import com.evgenii.walktocircle.walkCongrats.WalkCongratsImages;
 import com.evgenii.walktocircle.walkCongrats.WalkCongratsPhrase;
 import com.evgenii.walktocircle.walkCongrats.WalkCongratsSounds;
 
@@ -26,6 +28,7 @@ public class WalkCongratulationsFragment extends Fragment {
         View view = inflater.inflate(R.layout.congratulations_fragment, container, false);
         WalkCameraDistance.setFragmentCameraDistance(view);
 
+        showCongratulationImage(view);
         showCongratulationPhrase(view);
         showNumberOfCirclesReached(view);
         playSound();
@@ -36,6 +39,11 @@ public class WalkCongratulationsFragment extends Fragment {
     public void didTapProceedButton() {
         MainActivityState.saveShowCongratulationsScreen(false);
         WalkFragmentType.showWithAnimation();
+    }
+
+    private void showCongratulationImage(View view) {
+        ImageView imageView =  (ImageView) view.findViewById(R.id.congrats_image_view);
+        imageView.setImageResource(WalkCongratsImages.getImageId());
     }
 
     private void showNumberOfCirclesReached(View view) {

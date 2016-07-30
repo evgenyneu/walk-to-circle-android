@@ -5,10 +5,10 @@
     android:background="@color/walkColorShade10">
 
     <ImageView
+        android:id="@+id/congrats_image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/congrats_optimized_12"/>
+        android:scaleType="centerCrop"/>
 
     <ScrollView
         android:layout_width="match_parent"

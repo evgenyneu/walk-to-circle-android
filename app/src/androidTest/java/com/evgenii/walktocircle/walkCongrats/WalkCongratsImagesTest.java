@@ -19,7 +19,7 @@ public class WalkCongratsImagesTest {
         int result = WalkCongratsImages.getImageForCirclesReached(0);
         assertEquals(R.drawable.congrats_optimized_1, result);
 
-        result = WalkCongratsImages.getImageForCirclesReached(3);
+        result = WalkCongratsImages.getImageForCirclesReached(1);
         assertEquals(R.drawable.congrats_optimized_1, result);
 
         result = WalkCongratsImages.getImageForCirclesReached(2);

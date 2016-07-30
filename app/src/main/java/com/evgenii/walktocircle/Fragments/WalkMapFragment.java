@@ -97,7 +97,7 @@ public class WalkMapFragment extends Fragment implements OnMapReadyCallback {
         MainActivityState.savePreviouslyReachedCircleLocation(WalkLocation.latLngFromLocation(pinLocation));
 
         WalkApplication.getLocationService().startLocationUpdatesIfNeeded();
-        WalkTestReachCircle.getInstance().testCircleReachedAfterSeconds(8);
+//        WalkTestReachCircle.getInstance().testCircleReachedAfterSeconds(8);
         Point mapSizePixels = mapSize();
         Point startButtonSizePixels = mStartButton.getSizePixels();
         mStartButton.rotateAndShowInitialNumber();
