@@ -49,7 +49,7 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 
 ### Congratulations images
 
-* **Hubble eXtreme Deep Field** by NASA; ESA; G. Illingworth, D. Magee, and P. Oesch, University of California, Santa Cruz; R. Bouwens, Leiden University; and the HUDF09 Team. Sources: [Hubblesite](http://hubblesite.org/newscenter/archive/releases/2012/37/image/a/warn/), [NASA]( http://www.nasa.gov/images/content/690958main_p1237a1.jpg).
+* **Image 9**: [Sombrero Galaxy](https://en.wikipedia.org/wiki/Sombrero_Galaxy) by NASA/ESA and The Hubble Heritage Team (STScI/AURA). Sources: [www.spacetelescope.org](http://www.spacetelescope.org/images/html/opo0328a.html), [hubblesite.org](http://hubblesite.org/newscenter/newsdesk/archive/releases/2003/28/image/a).
 
 * **Christmas Light Knots** by [dimitri_c](http://www.freeimages.com/photographer/dimitri_c-47343), Source: [freeimages.com](http://www.freeimages.com/photo/christmas-light-knots-1160023)
 
