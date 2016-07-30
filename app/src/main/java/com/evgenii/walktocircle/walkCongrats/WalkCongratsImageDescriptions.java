@@ -72,6 +72,12 @@ public class WalkCongratsImageDescriptions {
                         "https://en.wikipedia.org/wiki/Wild_boar",
                         "By Sander van der Wel"));
 
+        mImageDescriptions.put(R.drawable.congrats_optimized_9,
+                new WalkCongratsImageDescription("Sombrero Galaxy",
+                        "https://en.wikipedia.org/wiki/Sombrero_Galaxy",
+                        "NASA/ESA and The Hubble Heritage Team (STScI/AURA)"));
+
+
 
 
 

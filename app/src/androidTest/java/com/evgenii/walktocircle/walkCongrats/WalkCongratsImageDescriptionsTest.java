@@ -61,5 +61,10 @@ public class WalkCongratsImageDescriptionsTest {
         assertEquals("https://en.wikipedia.org/wiki/Wild_boar", result.titleUrl);
         assertEquals("By Sander van der Wel", result.author);
 
+        result = WalkCongratsImageDescriptions.getDescription(R.drawable.congrats_optimized_9);
+        assertEquals("Sombrero Galaxy", result.title);
+        assertEquals("https://en.wikipedia.org/wiki/Sombrero_Galaxy", result.titleUrl);
+        assertEquals("NASA/ESA and The Hubble Heritage Team (STScI/AURA)", result.author);
+
     }
 }
