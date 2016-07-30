@@ -49,7 +49,7 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 
 ### Congratulations images
 
-* **Image 1** [Heavens Above Her](http://www.lonelyspeck.com/) by Ian Norman [www.lonelyspeck.com](http://www.lonelyspeck.com/), Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Heavens_Above_Her.jpg), [www.flickr.com](https://www.flickr.com/photos/inorman/14839117791/in/faves-75729488@N03/).
+* **Image 1** [Heavens Above Her](https://en.wikipedia.org/wiki/Milky_Way) by Ian Norman [www.lonelyspeck.com](http://www.lonelyspeck.com/), Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Heavens_Above_Her.jpg), [www.flickr.com](https://www.flickr.com/photos/inorman/14839117791/in/faves-75729488@N03/).
 
 * **Image 2** [Antennae galaxies](https://en.wikipedia.org/wiki/Antennae_Galaxies) by NASA, ESA, and the Hubble Heritage Team (STScI/AURA)-ESA/Hubble Collaboration, Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Antennae_galaxies_xl.jpg), [hubblesite.org](http://hubblesite.org/newscenter/archive/releases/2006/46/image/a/).
 
@@ -72,6 +72,8 @@ Walk to Circle is [also available](https://github.com/evgenyneu/walk-to-circle-i
 * **Image 11**: [Earthrise](https://en.wikipedia.org/wiki/Earthrise) by NASA / Bill Anders. Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NASA-Apollo8-Dec24-Earthrise.jpg), [www.hq.nasa.gov](http://www.hq.nasa.gov/office/pao/History/alsj/a410/AS8-14-2383HR.jpg).
 
 * **Image 12**: [Abdim's storks in a storm](https://commons.wikimedia.org/wiki/File:Abdim%27s_storks_in_a_storm_(Etosha,_2013).jpg) by Yathin S Krishnappa. Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Abdim%27s_storks_in_a_storm_(Etosha,_2013).jpg).
+
+* **Image 13**: [Jupiter](https://en.wikipedia.org/wiki/Jupiter) by NASA/JPL/Space Science Institute. Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Portrait_of_Jupiter_from_Cassini.jpg), [photojournal.jpl.nasa.gov](http://photojournal.jpl.nasa.gov/catalog/PIA04866).
 
 * **Image 15**: [Honeymoon Bay Sunset](https://commons.wikimedia.org/wiki/File:Honeymoon_Bay_Sunset_2.jpg) by JJ Harrison (jjharrison89@facebook.com) Sources: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Monsax.jpg).
 
